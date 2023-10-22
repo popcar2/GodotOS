@@ -13,7 +13,12 @@ config_version=5
 config/name="GodotOS"
 run/main_scene="res://Scenes/Main/MainScene.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
+run/low_processor_mode=true
 config/icon="res://icon.svg"
+
+[autoload]
+
+DefaultValues="res://Scenes/Autoloads/default_values.tscn"
 
 [file_customization]
 
