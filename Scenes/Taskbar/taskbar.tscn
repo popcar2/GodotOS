@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfj5p5pgfnywp"]
+
+[ext_resource type="Script" path="res://Scenes/Taskbar/start_button.gd" id="1_aypgd"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_s4q16"]
+
+[node name="Taskbar" type="Panel"]
+custom_minimum_size = Vector2(0, 40)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Start Button" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+script = ExtResource("1_aypgd")
+
+[node name="TextureRect" type="TextureRect" parent="Start Button"]
+self_modulate = Color(0, 0.792157, 0.952941, 1)
+layout_mode = 2
+texture = SubResource("CanvasTexture_s4q16")

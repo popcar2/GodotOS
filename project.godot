@@ -15,6 +15,12 @@ run/main_scene="res://Scenes/Main/MainScene.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[file_customization]
+
+folder_colors={
+"res://Scenes/": "blue"
+}
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

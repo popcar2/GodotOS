@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://bmjyglrsf04uo"]
+[gd_scene load_steps=3 format=3 uid="uid://bmjyglrsf04uo"]
 
 [ext_resource type="PackedScene" uid="uid://dci6t0fj42xpv" path="res://Scenes/Desktop/folder.tscn" id="1_bqso0"]
+[ext_resource type="PackedScene" uid="uid://cfj5p5pgfnywp" path="res://Scenes/Taskbar/taskbar.tscn" id="2_35ao4"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -15,6 +16,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_left = 10
@@ -70,3 +72,7 @@ layout_mode = 2
 
 [node name="Folder15" parent="MarginContainer/VFlowContainer" instance=ExtResource("1_bqso0")]
 layout_mode = 2
+
+[node name="Taskbar" parent="." instance=ExtResource("2_35ao4")]
+layout_mode = 1
+offset_top = 0.0
