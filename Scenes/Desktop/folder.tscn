@@ -1,6 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://dci6t0fj42xpv"]
+[gd_scene load_steps=4 format=3 uid="uid://dci6t0fj42xpv"]
 
 [ext_resource type="Script" path="res://Scenes/Desktop/desktop_folder.gd" id="1_44lov"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fr400"]
+bg_color = Color(0, 0.521569, 0.627451, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0, 0.792157, 0.952941, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_up0mv"]
 
@@ -11,12 +23,21 @@ anchors_preset = 0
 size_flags_horizontal = 4
 script = ExtResource("1_44lov")
 
+[node name="Highlight" type="Panel" parent="."]
+layout_mode = 0
+offset_left = -10.0
+offset_right = 90.0
+offset_bottom = 115.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fr400")
+
 [node name="Folder" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(80, 100)
 layout_mode = 2
 offset_right = 80.0
 offset_bottom = 100.0
 size_flags_vertical = 4
+mouse_filter = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
@@ -24,6 +45,7 @@ theme_override_constants/margin_bottom = 30
 
 [node name="TextureRect" type="TextureRect" parent="Folder"]
 layout_mode = 2
+mouse_filter = 2
 texture = SubResource("PlaceholderTexture2D_up0mv")
 
 [node name="Folder Title" type="RichTextLabel" parent="."]
@@ -40,6 +62,11 @@ offset_right = 50.0
 offset_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 bbcode_enabled = true
-text = "[center]YAAAAAAAAAAAAAAAAA"
+text = "[center]Temp
+Folder"
 fit_content = true
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
