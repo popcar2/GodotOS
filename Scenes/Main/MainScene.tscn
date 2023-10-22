@@ -1,0 +1,91 @@
+[gd_scene load_steps=2 format=3 uid="uid://bmjyglrsf04uo"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_io23y"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VFlowContainer" type="VFlowContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VFlowContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_io23y")
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VFlowContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_io23y")
+
+[node name="TextureRect3" type="TextureRect" parent="MarginContainer/VFlowContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_io23y")
+
+[node name="TextureRect4" type="TextureRect" parent="MarginContainer/VFlowContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_io23y")
+
+[node name="TextureRect5" type="TextureRect" parent="MarginContainer/VFlowContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_io23y")
+
+[node name="TextureRect6" type="TextureRect" parent="MarginContainer/VFlowContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_io23y")
+
+[node name="TextureRect7" type="TextureRect" parent="MarginContainer/VFlowContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_io23y")
+
+[node name="TextureRect8" type="TextureRect" parent="MarginContainer/VFlowContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_io23y")
+
+[node name="TextureRect9" type="TextureRect" parent="MarginContainer/VFlowContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_io23y")
+
+[node name="TextureRect10" type="TextureRect" parent="MarginContainer/VFlowContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_io23y")
+
+[node name="TextureRect11" type="TextureRect" parent="MarginContainer/VFlowContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_io23y")
+
+[node name="TextureRect12" type="TextureRect" parent="MarginContainer/VFlowContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_io23y")
+
+[node name="TextureRect13" type="TextureRect" parent="MarginContainer/VFlowContainer"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+texture = SubResource("PlaceholderTexture2D_io23y")
