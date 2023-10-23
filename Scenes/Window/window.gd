@@ -1,4 +1,5 @@
 extends Panel
+class_name FakeWindow
 
 var is_dragging: bool
 var start_drag_position: Vector2
@@ -6,6 +7,9 @@ var mouse_start_drag_position: Vector2
 
 var is_being_deleted: bool
 var is_minimized: bool
+
+signal minimized(is_minimized: bool)
+signal deleted()
 
 func _ready():
 	modulate.a = 0
@@ -45,6 +49,8 @@ func hide_window():
 		return
 	
 	is_minimized = true
+	minimized.emit(is_minimized)
+	
 	var tween: Tween = create_tween()
 	tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	tween.set_parallel(true)
@@ -53,4 +59,15 @@ func hide_window():
 	visible = false
 
 func show_window():
-	pass
+	if !is_minimized:
+		return
+	
+	is_minimized = false
+	minimized.emit(is_minimized)
+	
+	visible = true
+	var tween: Tween = create_tween()
+	tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	tween.set_parallel(true)
+	tween.tween_property(self, "position:y", position.y - 20, 0.25)
+	tween.tween_property(self, "modulate:a", 1, 0.25)

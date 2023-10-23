@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7mejsbueubva"]
+
+[ext_resource type="Script" path="res://Scenes/Taskbar/taskbar_button.gd" id="1_j5fdb"]
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_s4q16"]
+
+[node name="Taskbar Button" type="MarginContainer"]
+custom_minimum_size = Vector2(40, 0)
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+script = ExtResource("1_j5fdb")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+self_modulate = Color(0.427451, 0.905882, 0, 1)
+layout_mode = 2
+mouse_filter = 2
+texture = SubResource("CanvasTexture_s4q16")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
