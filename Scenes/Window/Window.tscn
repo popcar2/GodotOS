@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cojrqff5vocjv"]
+[gd_scene load_steps=6 format=3 uid="uid://cojrqff5vocjv"]
 
 [ext_resource type="Script" path="res://Scenes/Window/window.gd" id="1_c3iwi"]
+[ext_resource type="Script" path="res://Scenes/Window/resize_drag_spot.gd" id="2_xymxc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_es3h4"]
 bg_color = Color(0, 0, 0, 0.392157)
@@ -12,6 +13,7 @@ bg_color = Color(0.666667, 0, 0, 0.392157)
 bg_color = Color(1, 0.247059, 0.188235, 0.588235)
 
 [node name="Window" type="Panel" groups=["window"]]
+custom_minimum_size = Vector2(250, 150)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -62,6 +64,22 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_es3h4")
 theme_override_styles/hover = SubResource("StyleBoxFlat_iro1c")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_epasn")
 text = "X"
+
+[node name="Resize Drag Spot" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 5.0
+offset_bottom = 5.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_default_cursor_shape = 12
+script = ExtResource("2_xymxc")
 
 [connection signal="gui_input" from="Top Bar" to="." method="_on_top_bar_gui_input"]
 [connection signal="pressed" from="Top Bar/HBoxContainer/Minimize Button" to="." method="_on_minimize_button_pressed"]

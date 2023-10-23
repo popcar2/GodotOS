@@ -14,9 +14,7 @@ signal deleted()
 
 func _ready():
 	get_parent().move_child(self, 3)
-	for window in get_tree().get_nodes_in_group("window"):
-		if window == self: continue
-		window.deselect_window()
+	deselect_other_windows()
 	
 	modulate.a = 0
 	var tween: Tween = create_tween()
@@ -60,6 +58,7 @@ func hide_window():
 	if is_minimized:
 		return
 	
+	is_selected = false
 	is_minimized = true
 	minimized.emit(is_minimized)
 	
@@ -75,6 +74,7 @@ func show_window():
 		return
 	
 	get_parent().move_child(self, 3)
+	deselect_other_windows()
 	
 	is_minimized = false
 	minimized.emit(is_minimized)
@@ -96,9 +96,7 @@ func select_window():
 	tween.tween_property(self, "modulate:a", 1, 0.1)
 	get_parent().move_child(self, 3)
 	
-	for window in get_tree().get_nodes_in_group("window"):
-		if window == self: continue
-		window.deselect_window()
+	deselect_other_windows()
 
 func deselect_window():
 	if !is_selected:
@@ -108,3 +106,8 @@ func deselect_window():
 	var tween: Tween = create_tween()
 	tween.set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property(self, "modulate:a", 0.75, 0.25)
+
+func deselect_other_windows():
+	for window in get_tree().get_nodes_in_group("window"):
+		if window == self: continue
+		window.deselect_window()
