@@ -34,15 +34,16 @@ func _on_close_button_pressed():
 	if is_being_deleted:
 		return
 	
+	deleted.emit()
 	is_being_deleted = true
 	var tween: Tween = create_tween()
 	tween.set_trans(Tween.TRANS_CUBIC)
 	await tween.tween_property(self, "modulate:a", 0, 0.25).finished
 	queue_free()
 
-
 func _on_minimize_button_pressed():
 	hide_window()
+
 
 func hide_window():
 	if is_minimized:
