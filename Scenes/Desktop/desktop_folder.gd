@@ -1,5 +1,7 @@
 extends Control
 
+var mouse_over: bool
+
 func _ready():
 	$"Hover Highlight".self_modulate.a = 0
 	$"Selected Highlight".visible = false
@@ -10,13 +12,23 @@ func _input(event: InputEvent):
 		if !Rect2(Vector2(0,0), size).has_point(evLocal.position):
 			hide_selected_highlight()
 		else:
-			show_selected_highlight()
+			if !mouse_over:
+				return
+			
+			if $"Double Click".is_stopped():
+				show_selected_highlight()
+				$"Double Click".start()
+			else:
+				hide_selected_highlight()
+				spawn_window()
 
 func _on_mouse_entered():
 	show_hover_highlight()
+	mouse_over = true
 
 func _on_mouse_exited():
 	hide_hover_highlight()
+	mouse_over = false
 
 # ------
 
@@ -35,3 +47,7 @@ func show_selected_highlight():
 
 func hide_selected_highlight():
 	$"Selected Highlight".visible = false
+
+func spawn_window():
+	var window: Panel = load("res://Scenes/Window/Window.tscn").instantiate()
+	get_tree().current_scene.add_child(window)

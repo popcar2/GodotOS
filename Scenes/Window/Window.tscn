@@ -1,0 +1,68 @@
+[gd_scene load_steps=5 format=3 uid="uid://cojrqff5vocjv"]
+
+[ext_resource type="Script" path="res://Scenes/Window/window.gd" id="1_c3iwi"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_es3h4"]
+bg_color = Color(0, 0, 0, 0.392157)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iro1c"]
+bg_color = Color(0.666667, 0, 0, 0.392157)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_epasn"]
+bg_color = Color(1, 0.247059, 0.188235, 0.588235)
+
+[node name="Window" type="Panel"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -150.0
+offset_right = 250.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c3iwi")
+
+[node name="Top Bar" type="Panel" parent="."]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Top Bar"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -15.0
+offset_bottom = 15.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="Minimize Button" type="Button" parent="Top Bar/HBoxContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_es3h4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_iro1c")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_epasn")
+text = "-"
+
+[node name="Close Button" type="Button" parent="Top Bar/HBoxContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_es3h4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_iro1c")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_epasn")
+text = "X"
+
+[connection signal="gui_input" from="Top Bar" to="." method="_on_top_bar_gui_input"]
+[connection signal="pressed" from="Top Bar/HBoxContainer/Minimize Button" to="." method="_on_minimize_button_pressed"]
+[connection signal="pressed" from="Top Bar/HBoxContainer/Close Button" to="." method="_on_close_button_pressed"]

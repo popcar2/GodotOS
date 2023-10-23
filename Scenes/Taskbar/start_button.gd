@@ -2,11 +2,7 @@ extends MarginContainer
 
 func _input(event: InputEvent):
 	if event is InputEventMouseButton and event.button_index == 1 and event.is_pressed():
-		var evLocal = make_input_local(event)
-		if !Rect2(Vector2(0,0), size).has_point(evLocal.position):
-			hide_start_menu()
-		else:
-			show_start_menu()
+		handle_mouse_click(event)
 
 func _on_mouse_entered():
 	add_theme_constant_override("margin_bottom", 7)
@@ -19,6 +15,16 @@ func _on_mouse_exited():
 	add_theme_constant_override("margin_left", 5)
 	add_theme_constant_override("margin_right", 5)
 	add_theme_constant_override("margin_top", 5)
+
+func handle_mouse_click(event: InputEvent):
+	var evLocal = make_input_local(event)
+	if !Rect2(Vector2(0,0), size).has_point(evLocal.position):
+		hide_start_menu()
+	else:
+		if $"../Start Menu".position.y == 50:
+			show_start_menu()
+		else:
+			hide_start_menu()
 
 func show_start_menu():
 	var tween: Tween = create_tween()

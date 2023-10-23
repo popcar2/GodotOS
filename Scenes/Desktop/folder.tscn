@@ -84,5 +84,9 @@ text = "[center]Temp
 Folder"
 fit_content = true
 
+[node name="Double Click" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
