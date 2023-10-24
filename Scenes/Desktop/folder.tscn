@@ -77,11 +77,13 @@ offset_left = -10.0
 offset_top = 72.5
 offset_right = 90.0
 offset_bottom = 112.5
+mouse_filter = 2
 
 [node name="CenterContainer" type="CenterContainer" parent="Control"]
 layout_mode = 0
 offset_right = 100.0
 offset_bottom = 40.0
+mouse_filter = 2
 
 [node name="Folder Title" type="RichTextLabel" parent="Control/CenterContainer"]
 unique_name_in_owner = true
