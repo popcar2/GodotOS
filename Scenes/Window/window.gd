@@ -1,6 +1,8 @@
 extends Panel
 class_name FakeWindow
 
+static var num_of_windows: int
+
 var title_text: String
 
 var is_dragging: bool
@@ -15,8 +17,9 @@ signal minimized(is_minimized: bool)
 signal deleted()
 
 func _ready():
-	get_parent().move_child(self, 3)
+	num_of_windows += 1
 	deselect_other_windows()
+	get_parent().move_child(self, num_of_windows)
 	
 	$"Top Bar/Title Text".text = " ".join(title_text.split("\n"))
 	
@@ -51,6 +54,7 @@ func _on_close_button_pressed():
 		return
 	
 	deleted.emit()
+	num_of_windows -= 1
 	is_being_deleted = true
 	var tween: Tween = create_tween()
 	tween.set_trans(Tween.TRANS_CUBIC)
@@ -81,7 +85,7 @@ func show_window():
 		return
 	
 	is_selected = true
-	get_parent().move_child(self, 3)
+	get_parent().move_child(self, num_of_windows)
 	deselect_other_windows()
 	
 	is_minimized = false
@@ -102,7 +106,7 @@ func select_window():
 	var tween: Tween = create_tween()
 	tween.set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property(self, "modulate:a", 1, 0.1)
-	get_parent().move_child(self, 3)
+	get_parent().move_child(self, num_of_windows)
 	
 	deselect_other_windows()
 
