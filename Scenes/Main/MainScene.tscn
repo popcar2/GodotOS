@@ -30,21 +30,27 @@ theme_override_constants/h_separation = 20
 
 [node name="Folder" parent="MarginContainer/VFlowContainer" instance=ExtResource("1_bqso0")]
 layout_mode = 2
+folder_name = "Folder 1"
 
 [node name="Folder2" parent="MarginContainer/VFlowContainer" instance=ExtResource("1_bqso0")]
 layout_mode = 2
+folder_name = "Folder 2"
 
 [node name="Folder3" parent="MarginContainer/VFlowContainer" instance=ExtResource("1_bqso0")]
 layout_mode = 2
+folder_name = "Stuff"
 
 [node name="Folder4" parent="MarginContainer/VFlowContainer" instance=ExtResource("1_bqso0")]
 layout_mode = 2
+folder_name = "Other Stuff"
 
 [node name="Folder5" parent="MarginContainer/VFlowContainer" instance=ExtResource("1_bqso0")]
 layout_mode = 2
+folder_name = "Perhaps More Stuff"
 
 [node name="Folder6" parent="MarginContainer/VFlowContainer" instance=ExtResource("1_bqso0")]
 layout_mode = 2
+folder_name = "Temporary Folder"
 
 [node name="Folder7" parent="MarginContainer/VFlowContainer" instance=ExtResource("1_bqso0")]
 layout_mode = 2

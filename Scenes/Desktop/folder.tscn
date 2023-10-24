@@ -65,28 +65,33 @@ layout_mode = 2
 mouse_filter = 2
 texture = SubResource("PlaceholderTexture2D_up0mv")
 
-[node name="Folder Title" type="RichTextLabel" parent="."]
-custom_minimum_size = Vector2(90, 40)
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -45.0
-offset_top = -36.0
-offset_right = 45.0
-offset_bottom = 4.0
-grow_horizontal = 2
-grow_vertical = 0
-mouse_filter = 2
-bbcode_enabled = true
-text = "[center]Temp"
-fit_content = true
-
 [node name="Double Click" type="Timer" parent="."]
 wait_time = 0.3
 one_shot = true
+
+[node name="Control" type="Control" parent="."]
+clip_contents = true
+custom_minimum_size = Vector2(100, 0)
+anchors_preset = 0
+offset_left = -10.0
+offset_top = 72.5
+offset_right = 90.0
+offset_bottom = 112.5
+
+[node name="CenterContainer" type="CenterContainer" parent="Control"]
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 40.0
+
+[node name="Folder Title" type="RichTextLabel" parent="Control/CenterContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 14
+bbcode_enabled = true
+text = "[center]AAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+fit_content = true
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

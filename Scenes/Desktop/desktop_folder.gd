@@ -7,7 +7,7 @@ var mouse_over: bool
 func _ready():
 	$"Hover Highlight".self_modulate.a = 0
 	$"Selected Highlight".visible = false
-	$"Folder Title".text = "[center]%s" % folder_name
+	%"Folder Title".text = "[center]%s" % folder_name
 
 func _input(event: InputEvent):
 	if event is InputEventMouseButton and event.button_index == 1 and event.is_pressed():
@@ -53,7 +53,7 @@ func hide_selected_highlight():
 
 func spawn_window():
 	var window: Panel = load("res://Scenes/Window/Window.tscn").instantiate()
-	window.title_text = $"Folder Title".text
+	window.title_text = %"Folder Title".text
 	get_tree().current_scene.add_child(window)
 	
 	var taskbar_button: MarginContainer = load("res://Scenes/Taskbar/taskbar_button.tscn").instantiate()
