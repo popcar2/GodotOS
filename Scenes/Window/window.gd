@@ -1,6 +1,8 @@
 extends Panel
 class_name FakeWindow
 
+var title_text: String
+
 var is_dragging: bool
 var start_drag_position: Vector2
 var mouse_start_drag_position: Vector2
@@ -16,14 +18,19 @@ func _ready():
 	get_parent().move_child(self, 3)
 	deselect_other_windows()
 	
+	$"Top Bar/Title Text".text = " ".join(title_text.split("\n"))
+	
 	modulate.a = 0
 	var tween: Tween = create_tween()
 	tween.set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property(self, "modulate:a", 1, 0.5)
 
-func _process(_delta):
+func _physics_process(_delta):
 	if is_dragging:
 		global_position = start_drag_position + (get_global_mouse_position() - mouse_start_drag_position)
+		var game_window_size: Vector2 = DisplayServer.window_get_size()
+		global_position.y = clamp(global_position.y, 0, game_window_size.y - size.y - 40)
+		global_position.x = clamp(global_position.x, 0, game_window_size.x - size.x)
 
 func _gui_input(event: InputEvent):
 	if event is InputEventMouseButton and event.button_index == 1 and event.is_pressed():
@@ -58,7 +65,7 @@ func hide_window():
 	if is_minimized:
 		return
 	
-	is_selected = false
+	deselect_window()
 	is_minimized = true
 	minimized.emit(is_minimized)
 	
@@ -73,6 +80,7 @@ func show_window():
 	if !is_minimized:
 		return
 	
+	is_selected = true
 	get_parent().move_child(self, 3)
 	deselect_other_windows()
 	

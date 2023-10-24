@@ -34,6 +34,22 @@ anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
 
+[node name="Title Text" type="RichTextLabel" parent="Top Bar"]
+custom_minimum_size = Vector2(0, 22)
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -11.0
+offset_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+bbcode_enabled = true
+text = "[center]Hello World!"
+scroll_active = false
+
 [node name="HBoxContainer" type="HBoxContainer" parent="Top Bar"]
 layout_mode = 1
 anchors_preset = 6

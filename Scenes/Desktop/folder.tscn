@@ -29,12 +29,13 @@ layout_mode = 3
 anchors_preset = 0
 size_flags_horizontal = 4
 script = ExtResource("1_44lov")
+folder_name = "Temp Folder"
 
 [node name="Hover Highlight" type="Panel" parent="."]
 layout_mode = 0
 offset_left = -10.0
 offset_right = 90.0
-offset_bottom = 115.0
+offset_bottom = 114.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_fr400")
 
@@ -43,7 +44,7 @@ visible = false
 layout_mode = 0
 offset_left = -10.0
 offset_right = 90.0
-offset_bottom = 115.0
+offset_bottom = 114.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_3l4r3")
 
@@ -65,23 +66,22 @@ mouse_filter = 2
 texture = SubResource("PlaceholderTexture2D_up0mv")
 
 [node name="Folder Title" type="RichTextLabel" parent="."]
-custom_minimum_size = Vector2(100, 40)
+custom_minimum_size = Vector2(90, 40)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -50.0
-offset_top = -41.0
-offset_right = 50.0
-offset_bottom = 5.0
+offset_left = -45.0
+offset_top = -36.0
+offset_right = 45.0
+offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
 bbcode_enabled = true
-text = "[center]Temp
-Folder"
+text = "[center]Temp"
 fit_content = true
 
 [node name="Double Click" type="Timer" parent="."]
