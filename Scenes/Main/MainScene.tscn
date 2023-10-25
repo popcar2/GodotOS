@@ -1,6 +1,5 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmjyglrsf04uo"]
+[gd_scene load_steps=3 format=3 uid="uid://bmjyglrsf04uo"]
 
-[ext_resource type="PackedScene" uid="uid://dci6t0fj42xpv" path="res://Scenes/Desktop/folder.tscn" id="1_bqso0"]
 [ext_resource type="Script" path="res://Scenes/Main/folder_manager.gd" id="1_c0q37"]
 [ext_resource type="PackedScene" uid="uid://cfj5p5pgfnywp" path="res://Scenes/Taskbar/taskbar.tscn" id="2_35ao4"]
 
@@ -29,57 +28,6 @@ theme_override_constants/margin_bottom = 10
 layout_mode = 2
 theme_override_constants/h_separation = 20
 script = ExtResource("1_c0q37")
-
-[node name="Folder" parent="MarginContainer/VFlowContainer" instance=ExtResource("1_bqso0")]
-layout_mode = 2
-folder_name = "Folder 1"
-
-[node name="Folder2" parent="MarginContainer/VFlowContainer" instance=ExtResource("1_bqso0")]
-layout_mode = 2
-folder_name = "Folder 2"
-
-[node name="Folder3" parent="MarginContainer/VFlowContainer" instance=ExtResource("1_bqso0")]
-layout_mode = 2
-folder_name = "Stuff"
-
-[node name="Folder4" parent="MarginContainer/VFlowContainer" instance=ExtResource("1_bqso0")]
-layout_mode = 2
-folder_name = "Other Stuff"
-
-[node name="Folder5" parent="MarginContainer/VFlowContainer" instance=ExtResource("1_bqso0")]
-layout_mode = 2
-folder_name = "Perhaps More Stuff"
-
-[node name="Folder6" parent="MarginContainer/VFlowContainer" instance=ExtResource("1_bqso0")]
-layout_mode = 2
-folder_name = "Temporary Folder"
-
-[node name="Folder7" parent="MarginContainer/VFlowContainer" instance=ExtResource("1_bqso0")]
-layout_mode = 2
-
-[node name="Folder8" parent="MarginContainer/VFlowContainer" instance=ExtResource("1_bqso0")]
-layout_mode = 2
-
-[node name="Folder9" parent="MarginContainer/VFlowContainer" instance=ExtResource("1_bqso0")]
-layout_mode = 2
-
-[node name="Folder10" parent="MarginContainer/VFlowContainer" instance=ExtResource("1_bqso0")]
-layout_mode = 2
-
-[node name="Folder11" parent="MarginContainer/VFlowContainer" instance=ExtResource("1_bqso0")]
-layout_mode = 2
-
-[node name="Folder12" parent="MarginContainer/VFlowContainer" instance=ExtResource("1_bqso0")]
-layout_mode = 2
-
-[node name="Folder13" parent="MarginContainer/VFlowContainer" instance=ExtResource("1_bqso0")]
-layout_mode = 2
-
-[node name="Folder14" parent="MarginContainer/VFlowContainer" instance=ExtResource("1_bqso0")]
-layout_mode = 2
-
-[node name="Folder15" parent="MarginContainer/VFlowContainer" instance=ExtResource("1_bqso0")]
-layout_mode = 2
 
 [node name="Taskbar" parent="." instance=ExtResource("2_35ao4")]
 layout_mode = 1

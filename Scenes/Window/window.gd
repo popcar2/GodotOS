@@ -11,15 +11,14 @@ var mouse_start_drag_position: Vector2
 
 var is_being_deleted: bool
 var is_minimized: bool
-var is_selected: bool = true
+var is_selected: bool
 
 signal minimized(is_minimized: bool)
 signal deleted()
 
 func _ready():
 	num_of_windows += 1
-	deselect_other_windows()
-	get_parent().move_child(self, num_of_windows)
+	select_window(false)
 	
 	$"Top Bar/Title Text".text = " ".join(title_text.split("\n"))
 	
@@ -37,12 +36,12 @@ func _physics_process(_delta):
 
 func _gui_input(event: InputEvent):
 	if event is InputEventMouseButton and event.button_index == 1 and event.is_pressed():
-		select_window()
+		select_window(true)
 
 func _on_top_bar_gui_input(event):
 	if event is InputEventMouseButton and event.button_index == 1:
 		if event.is_pressed():
-			select_window()
+			select_window(true)
 			is_dragging = true
 			start_drag_position = global_position
 			mouse_start_drag_position = get_global_mouse_position()
@@ -84,9 +83,7 @@ func show_window():
 	if !is_minimized:
 		return
 	
-	is_selected = true
-	get_parent().move_child(self, num_of_windows)
-	deselect_other_windows()
+	select_window(false)
 	
 	is_minimized = false
 	minimized.emit(is_minimized)
@@ -98,14 +95,19 @@ func show_window():
 	tween.tween_property(self, "position:y", position.y - 20, 0.25)
 	tween.tween_property(self, "modulate:a", 1, 0.25)
 
-func select_window():
+func select_window(play_fade_animation: bool):
 	if is_selected:
 		return
 	
 	is_selected = true
+	
 	var tween: Tween = create_tween()
+	tween.set_parallel(true)
 	tween.set_trans(Tween.TRANS_CUBIC)
-	tween.tween_property(self, "modulate:a", 1, 0.1)
+	tween.tween_property($"Top Bar/Title Text", "modulate", Color("3cffff"), 0.25)
+	if play_fade_animation:
+		tween.tween_property(self, "modulate:a", 1, 0.1)
+	
 	get_parent().move_child(self, num_of_windows)
 	
 	deselect_other_windows()
@@ -116,8 +118,10 @@ func deselect_window():
 	
 	is_selected = false
 	var tween: Tween = create_tween()
+	tween.set_parallel(true)
 	tween.set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property(self, "modulate:a", 0.75, 0.25)
+	tween.tween_property($"Top Bar/Title Text", "modulate", Color.WHITE, 0.25)
 
 func deselect_other_windows():
 	for window in get_tree().get_nodes_in_group("window"):
