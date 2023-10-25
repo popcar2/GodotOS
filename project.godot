@@ -24,7 +24,8 @@ HotkeyManager="res://Scenes/Autoloads/hotkey_manager.tscn"
 [file_customization]
 
 folder_colors={
-"res://Scenes/": "blue"
+"res://Scenes/": "blue",
+"res://Scenes/Misc/": "gray"
 }
 
 [input]

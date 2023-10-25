@@ -59,6 +59,7 @@ func spawn_window():
 	var window: Panel = load("res://Scenes/Window/File Manager/file_manager_window.tscn").instantiate()
 	window.title_text = %"Folder Title".text
 	window.get_node("%File Manager Window").file_path = folder_path + folder_name
+	window.global_position = Vector2(randi_range(-500, 500), randi_range(-500, 500))
 	get_tree().current_scene.add_child(window)
 	
 	var taskbar_button: MarginContainer = load("res://Scenes/Taskbar/taskbar_button.tscn").instantiate()

@@ -23,7 +23,7 @@ corner_radius_bottom_left = 10
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_up0mv"]
 
-[node name="Folder" type="Control"]
+[node name="Folder" type="Control" groups=["folder"]]
 custom_minimum_size = Vector2(80, 110)
 layout_mode = 3
 anchors_preset = 0

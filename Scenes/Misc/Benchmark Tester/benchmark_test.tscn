@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://gmc12dsm1usj"]
+
+[ext_resource type="Script" path="res://Scenes/Misc/Benchmark Tester/benchmark_test.gd" id="1_vxxfi"]
+
+[node name="Benchmark Test" type="Node"]
+script = ExtResource("1_vxxfi")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+offset_right = 512.0
+offset_bottom = 171.0
+theme_override_font_sizes/normal_font_size = 32
+text = "Text"
