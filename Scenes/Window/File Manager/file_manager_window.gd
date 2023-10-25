@@ -23,3 +23,15 @@ func populate_window():
 		folder.folder_path = "%s/%s" % [file_path, folder_name]
 		folder.scale = Vector2(0.75, 0.75)
 		add_child(folder)
+
+
+func _on_back_button_pressed():
+	#TODO move it to a position that's less stupid
+	var split_path: PackedStringArray = file_path.split("/")
+	if split_path.size() <= 1:
+		return
+	
+	split_path.remove_at(split_path.size() - 1)
+	file_path = "/".join(split_path)
+	
+	reload_window(file_path)

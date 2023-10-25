@@ -24,3 +24,15 @@ layout_mode = 2
 theme_override_constants/h_separation = 35
 theme_override_constants/v_separation = 10
 script = ExtResource("2_prcfs")
+
+[node name="Back Button" type="Button" parent="Top Bar" index="2"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 8.0
+grow_vertical = 2
+focus_mode = 0
+text = "^"
+
+[connection signal="pressed" from="Top Bar/Back Button" to="MarginContainer/File Manager Window" method="_on_back_button_pressed"]
