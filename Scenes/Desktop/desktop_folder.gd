@@ -24,10 +24,10 @@ func _input(event: InputEvent):
 				$"Double Click".start()
 			else:
 				hide_selected_highlight()
-				if folder_path.is_empty():
+				if folder_path.is_empty(): #TODO spawn specific window depending on file type
 					spawn_window()
 				else:
-					pass #TODO reload window with new files
+					get_parent().reload_window(folder_path)
 
 func _on_mouse_entered():
 	show_hover_highlight()
@@ -56,8 +56,9 @@ func hide_selected_highlight():
 	$"Selected Highlight".visible = false
 
 func spawn_window():
-	var window: Panel = load("res://Scenes/Window/Window.tscn").instantiate()
+	var window: Panel = load("res://Scenes/Window/File Manager/file_manager_window.tscn").instantiate()
 	window.title_text = %"Folder Title".text
+	window.get_node("%File Manager Window").file_path = folder_path + folder_name
 	get_tree().current_scene.add_child(window)
 	
 	var taskbar_button: MarginContainer = load("res://Scenes/Taskbar/taskbar_button.tscn").instantiate()
