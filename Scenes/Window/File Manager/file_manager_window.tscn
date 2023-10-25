@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://i03dt4l5msgl"]
+
+[ext_resource type="PackedScene" uid="uid://cojrqff5vocjv" path="res://Scenes/Window/Window.tscn" id="1_xona8"]
+
+[node name="Window" instance=ExtResource("1_xona8")]
+
+[node name="MarginContainer" type="MarginContainer" parent="." index="2"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HFlowContainer" type="HFlowContainer" parent="MarginContainer" index="0"]
+layout_mode = 2

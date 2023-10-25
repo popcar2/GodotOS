@@ -1,6 +1,7 @@
 extends Control
 
 @export var folder_name: String
+var folder_path: String # Relative to user://files/
 
 var mouse_over: bool
 
@@ -23,7 +24,10 @@ func _input(event: InputEvent):
 				$"Double Click".start()
 			else:
 				hide_selected_highlight()
-				spawn_window()
+				if folder_path.is_empty():
+					spawn_window()
+				else:
+					pass #TODO reload window with new files
 
 func _on_mouse_entered():
 	show_hover_highlight()
