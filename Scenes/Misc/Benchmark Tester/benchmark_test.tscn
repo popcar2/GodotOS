@@ -6,7 +6,9 @@
 script = ExtResource("1_vxxfi")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
-offset_right = 512.0
+modulate = Color(1, 0.156863, 0.235294, 1)
+offset_left = 131.0
+offset_right = 643.0
 offset_bottom = 171.0
-theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/normal_font_size = 48
 text = "Text"
