@@ -23,6 +23,8 @@ func _ready():
 	
 	$"Top Bar/Title Text".text = " ".join(title_text.split("\n"))
 	
+	get_viewport().size_changed.connect(clamp_window_inside_viewport)
+	
 	modulate.a = 0
 	var tween: Tween = create_tween()
 	tween.set_trans(Tween.TRANS_CUBIC)
@@ -31,9 +33,7 @@ func _ready():
 func _physics_process(_delta):
 	if is_dragging:
 		global_position = start_drag_position + (get_global_mouse_position() - mouse_start_drag_position)
-		var game_window_size: Vector2 = DisplayServer.window_get_size()
-		global_position.y = clamp(global_position.y, 0, game_window_size.y - size.y - 40)
-		global_position.x = clamp(global_position.x, 0, game_window_size.x - size.x)
+		clamp_window_inside_viewport()
 
 func _gui_input(event: InputEvent):
 	if event is InputEventMouseButton and event.button_index == 1 and event.is_pressed():
@@ -123,3 +123,8 @@ func deselect_other_windows():
 	for window in get_tree().get_nodes_in_group("window"):
 		if window == self: continue
 		window.deselect_window()
+
+func clamp_window_inside_viewport():
+	var game_window_size: Vector2 = DisplayServer.window_get_size()
+	global_position.y = clamp(global_position.y, 0, game_window_size.y - size.y - 40)
+	global_position.x = clamp(global_position.x, 0, game_window_size.x - size.x)
