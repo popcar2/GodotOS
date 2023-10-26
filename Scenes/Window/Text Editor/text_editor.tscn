@@ -47,3 +47,4 @@ draw_tabs = true
 script = ExtResource("2_4wajo")
 
 [connection signal="text_changed" from="MarginContainer/Text Editor" to="MarginContainer/Text Editor" method="_on_text_changed"]
+[connection signal="tree_exited" from="MarginContainer/Text Editor" to="MarginContainer/Text Editor" method="_on_tree_exited"]
