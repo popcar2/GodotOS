@@ -45,3 +45,5 @@ placeholder_text = "Start writing!"
 caret_blink = true
 draw_tabs = true
 script = ExtResource("2_4wajo")
+
+[connection signal="text_changed" from="MarginContainer/Text Editor" to="MarginContainer/Text Editor" method="_on_text_changed"]
