@@ -1,0 +1,48 @@
+[gd_scene load_steps=3 format=3 uid="uid://dypxkfx8bfb0d"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oxmgl"]
+bg_color = Color(0, 0.8343, 0.819662, 0.490196)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="GDScript" id="GDScript_kaig5"]
+resource_name = "Saved_Notification"
+script/source = "extends Panel
+
+func _ready():
+	var tween: Tween = create_tween()
+	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+	tween.tween_property(self, \"position:y\", position.y - 75, 2)
+	
+	await get_tree().create_timer(1).timeout
+	var fade: Tween = create_tween()
+	fade.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+	await fade.tween_property(self, \"modulate:a\", 0, 1.5).finished
+	queue_free()
+"
+
+[node name="Panel" type="Panel"]
+offset_right = 96.0
+offset_bottom = 43.0
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_oxmgl")
+script = SubResource("GDScript_kaig5")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 28
+bbcode_enabled = true
+text = "[wave amp=30.0 freq=6.0 connected=1][center]Saved!"
