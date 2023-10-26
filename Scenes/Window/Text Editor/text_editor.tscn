@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://t8c17cefd8nc"]
+
+[ext_resource type="PackedScene" uid="uid://cojrqff5vocjv" path="res://Scenes/Window/Window.tscn" id="1_sycuj"]
+[ext_resource type="Script" path="res://Scenes/Window/Text Editor/text_editor.gd" id="2_4wajo"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y46kd"]
+bg_color = Color(0, 0.933333, 0.917647, 0.0588235)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uonls"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jhtvb"]
+
+[node name="Window" instance=ExtResource("1_sycuj")]
+
+[node name="Panel" type="Panel" parent="." index="0"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_y46kd")
+
+[node name="MarginContainer" type="MarginContainer" parent="." index="2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Text Editor" type="TextEdit" parent="MarginContainer" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 1
+theme_override_styles/normal = SubResource("StyleBoxEmpty_uonls")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_jhtvb")
+placeholder_text = "Start writing!"
+caret_blink = true
+draw_tabs = true
+script = ExtResource("2_4wajo")

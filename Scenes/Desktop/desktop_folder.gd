@@ -1,6 +1,10 @@
 extends Control
+class_name FakeFolder
 
-@export var folder_name: String
+enum file_type_enum {FOLDER, TEXT_FILE}
+@export var file_type: file_type_enum
+
+var folder_name: String
 var folder_path: String # Relative to user://files/
 
 var mouse_over: bool
@@ -9,6 +13,11 @@ func _ready():
 	$"Hover Highlight".self_modulate.a = 0
 	$"Selected Highlight".visible = false
 	%"Folder Title".text = "[center]%s" % folder_name
+	
+	if file_type == file_type_enum.FOLDER:
+		$Folder/TextureRect.modulate = Color("4efa82")
+	elif file_type == file_type_enum.TEXT_FILE:
+		$Folder/TextureRect.modulate = Color("4deff5")
 
 func _input(event: InputEvent):
 	if event is InputEventMouseButton and event.button_index == 1 and event.is_pressed():
@@ -56,9 +65,15 @@ func hide_selected_highlight():
 	$"Selected Highlight".visible = false
 
 func spawn_window():
-	var window: Panel = load("res://Scenes/Window/File Manager/file_manager_window.tscn").instantiate()
+	var window: FakeWindow
+	if file_type == file_type_enum.FOLDER:
+		window = load("res://Scenes/Window/File Manager/file_manager_window.tscn").instantiate()
+		window.get_node("%File Manager Window").file_path = folder_path + folder_name
+	elif file_type == file_type_enum.TEXT_FILE:
+		window = load("res://Scenes/Window/Text Editor/text_editor.tscn").instantiate()
+		window.get_node("%Text Editor").populate_text(folder_path + folder_name)
+	
 	window.title_text = %"Folder Title".text
-	window.get_node("%File Manager Window").file_path = folder_path + folder_name
 	get_tree().current_scene.add_child(window)
 	
 	var taskbar_button: MarginContainer = load("res://Scenes/Taskbar/taskbar_button.tscn").instantiate()

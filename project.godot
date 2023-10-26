@@ -28,6 +28,10 @@ folder_colors={
 "res://Scenes/Misc/": "gray"
 }
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 kill_all_windows={

@@ -21,7 +21,7 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_up0mv"]
+[sub_resource type="CanvasTexture" id="CanvasTexture_nljri"]
 
 [node name="Folder" type="Control" groups=["folder"]]
 custom_minimum_size = Vector2(80, 110)
@@ -29,7 +29,6 @@ layout_mode = 3
 anchors_preset = 0
 size_flags_horizontal = 4
 script = ExtResource("1_44lov")
-folder_name = "Temp Folder"
 
 [node name="Hover Highlight" type="Panel" parent="."]
 layout_mode = 0
@@ -61,9 +60,10 @@ theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 30
 
 [node name="TextureRect" type="TextureRect" parent="Folder"]
+modulate = Color(0.305882, 0.980392, 0.509804, 1)
 layout_mode = 2
 mouse_filter = 2
-texture = SubResource("PlaceholderTexture2D_up0mv")
+texture = SubResource("CanvasTexture_nljri")
 
 [node name="Double Click" type="Timer" parent="."]
 wait_time = 0.3
