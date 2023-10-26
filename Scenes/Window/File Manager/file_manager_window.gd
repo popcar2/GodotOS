@@ -23,6 +23,14 @@ func populate_window():
 		folder.folder_path = "%s/%s" % [file_path, folder_name]
 		folder.scale = Vector2(0.75, 0.75)
 		add_child(folder)
+	
+	for file_name: String in DirAccess.get_files_at("user://files/%s" % file_path):
+		if file_name.ends_with(".txt"):
+			var folder: FakeFolder = load("res://Scenes/Desktop/folder.tscn").instantiate()
+			folder.folder_name = file_name
+			folder.folder_path = "%s/%s" % [file_path, file_name]
+			folder.file_type = FakeFolder.file_type_enum.TEXT_FILE
+			add_child(folder)
 
 
 func _on_back_button_pressed():

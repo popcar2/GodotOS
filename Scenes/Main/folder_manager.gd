@@ -1,5 +1,7 @@
 extends VFlowContainer
 
+# Desktop file manager
+
 func _ready():
 	var user_dir: DirAccess = DirAccess.open("user://")
 	if !user_dir.dir_exists("files"):

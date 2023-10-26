@@ -33,7 +33,7 @@ func _input(event: InputEvent):
 				$"Double Click".start()
 			else:
 				hide_selected_highlight()
-				if folder_path.is_empty(): #TODO spawn specific window depending on file type
+				if folder_path.is_empty() or file_type != file_type_enum.FOLDER:
 					spawn_window()
 				else:
 					get_parent().reload_window(folder_path)
@@ -71,7 +71,11 @@ func spawn_window():
 		window.get_node("%File Manager Window").file_path = folder_path + folder_name
 	elif file_type == file_type_enum.TEXT_FILE:
 		window = load("res://Scenes/Window/Text Editor/text_editor.tscn").instantiate()
-		window.get_node("%Text Editor").populate_text(folder_path + folder_name)
+		# TODO make this more flexible?
+		if folder_path.is_empty():
+			window.get_node("%Text Editor").populate_text(folder_name)
+		else:
+			window.get_node("%Text Editor").populate_text(folder_path)
 	
 	window.title_text = %"Folder Title".text
 	get_tree().current_scene.add_child(window)
