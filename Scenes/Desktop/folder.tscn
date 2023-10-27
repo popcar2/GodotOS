@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dci6t0fj42xpv"]
+[gd_scene load_steps=8 format=3 uid="uid://dci6t0fj42xpv"]
 
 [ext_resource type="Script" path="res://Scenes/Desktop/desktop_folder.gd" id="1_44lov"]
+[ext_resource type="Script" path="res://Scenes/Desktop/folder_title_edit.gd" id="2_aux0e"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fr400"]
 bg_color = Color(0, 0.521569, 0.627451, 0.784314)
@@ -22,6 +23,15 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_nljri"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1hkig"]
+bg_color = Color(0, 0, 0, 0.784314)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r1fwe"]
 
 [node name="Folder" type="Control" groups=["folder"]]
 custom_minimum_size = Vector2(80, 110)
@@ -94,6 +104,26 @@ theme_override_font_sizes/normal_font_size = 14
 bbcode_enabled = true
 text = "[center]AAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
 fit_content = true
+
+[node name="CenterContainer2" type="CenterContainer" parent="Control"]
+visible = false
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="Folder Title Edit" type="TextEdit" parent="Control/CenterContainer2"]
+custom_minimum_size = Vector2(95, 40)
+layout_mode = 2
+theme_override_constants/line_spacing = 0
+theme_override_font_sizes/font_size = 14
+theme_override_styles/normal = SubResource("StyleBoxFlat_1hkig")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_r1fwe")
+context_menu_enabled = false
+wrap_mode = 1
+autowrap_mode = 1
+scroll_fit_content_height = true
+script = ExtResource("2_aux0e")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

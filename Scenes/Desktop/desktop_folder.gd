@@ -77,10 +77,13 @@ func spawn_window():
 		if folder_path.is_empty():
 			window.get_node("%Text Editor").populate_text(folder_name)
 		else:
-			window.get_node("%Text Editor").populate_text(folder_path)
+			window.get_node("%Text Editor").populate_text("%s/%s" % [folder_path, folder_name])
 	elif file_type == file_type_enum.IMAGE:
 		window = load("res://Scenes/Window/Image Viewer/image_viewer.tscn").instantiate()
-		window.get_node("%Image Viewer").import_image(folder_name)
+		if folder_path.is_empty():
+			window.get_node("%Image Viewer").import_image(folder_name)
+		else:
+			window.get_node("%Image Viewer").import_image("%s/%s" % [folder_path, folder_name])
 	
 	window.title_text = %"Folder Title".text
 	get_tree().current_scene.add_child(window)
