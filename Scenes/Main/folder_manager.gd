@@ -18,3 +18,9 @@ func _ready():
 			folder.folder_name = file_name
 			folder.file_type = FakeFolder.file_type_enum.TEXT_FILE
 			add_child(folder)
+		elif file_name.ends_with(".png") or file_name.ends_with(".jpg") or file_name.ends_with(".jpeg")\
+		or file_name.ends_with(".webp"):
+			var folder: FakeFolder = load("res://Scenes/Desktop/folder.tscn").instantiate()
+			folder.folder_name = file_name
+			folder.file_type = FakeFolder.file_type_enum.IMAGE
+			add_child(folder)

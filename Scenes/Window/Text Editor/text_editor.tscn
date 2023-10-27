@@ -39,6 +39,7 @@ theme_override_constants/margin_bottom = 10
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 1
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_uonls")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_jhtvb")
 placeholder_text = "Start writing!"

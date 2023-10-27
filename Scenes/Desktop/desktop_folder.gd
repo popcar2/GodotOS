@@ -1,7 +1,7 @@
 extends Control
 class_name FakeFolder
 
-enum file_type_enum {FOLDER, TEXT_FILE}
+enum file_type_enum {FOLDER, TEXT_FILE, IMAGE}
 @export var file_type: file_type_enum
 
 var folder_name: String
@@ -18,6 +18,8 @@ func _ready():
 		$Folder/TextureRect.modulate = Color("4efa82")
 	elif file_type == file_type_enum.TEXT_FILE:
 		$Folder/TextureRect.modulate = Color("4deff5")
+	elif file_type == file_type_enum.IMAGE:
+		$Folder/TextureRect.modulate = Color("ffed4c")
 
 func _input(event: InputEvent):
 	if event is InputEventMouseButton and event.button_index == 1 and event.is_pressed():
@@ -76,6 +78,9 @@ func spawn_window():
 			window.get_node("%Text Editor").populate_text(folder_name)
 		else:
 			window.get_node("%Text Editor").populate_text(folder_path)
+	elif file_type == file_type_enum.IMAGE:
+		window = load("res://Scenes/Window/Image Viewer/image_viewer.tscn").instantiate()
+		window.get_node("%Image Viewer").import_image(folder_name)
 	
 	window.title_text = %"Folder Title".text
 	get_tree().current_scene.add_child(window)
