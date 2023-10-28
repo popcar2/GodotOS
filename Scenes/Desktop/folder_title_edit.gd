@@ -15,7 +15,6 @@ func _input(event: InputEvent):
 		if folder.file_type != folder.file_type_enum.FOLDER:
 			var old_folder_name: String = folder.folder_name
 			folder.folder_name = "%s.%s" % [text, folder.folder_name.split('.')[-1]]
-			print("user://%s/%s" % [folder.folder_path, old_folder_name])
 			DirAccess.rename_absolute("user://files/%s/%s" % [folder.folder_path, old_folder_name], "user://files/%s/%s" % [folder.folder_path, folder.folder_name])
 			%"Folder Title".text = "[center]%s" % folder.folder_name
 			
@@ -25,5 +24,7 @@ func _input(event: InputEvent):
 			for text_editor in get_tree().get_nodes_in_group("text_editor_window"):
 				if text_editor.file_path == "%s/%s" % [folder.folder_path, old_folder_name]:
 					text_editor.file_path = "%s/%s" % [folder.folder_path, folder.folder_name]
+				elif text_editor.file_path == old_folder_name: # In desktop
+					text_editor.file_path = folder.folder_name 
 		
 		text = ""

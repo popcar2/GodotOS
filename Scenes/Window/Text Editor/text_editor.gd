@@ -4,13 +4,17 @@ var text_edited: bool
 var file_path: String : 
 	set(value):
 		file_path = value
-		$"../../Top Bar/Title Text".text = "[center]%s" % file_path.split('/')[-1]
+		if text_edited:
+			$"../../Top Bar/Title Text".text = "[center]%s*" % file_path.split('/')[-1]
+		else:
+			$"../../Top Bar/Title Text".text = "[center]%s" % file_path.split('/')[-1]
 
 func _input(event: InputEvent):
 	if !$"../..".is_selected:
 		return
 	
 	if event.is_action_pressed("save"):
+		accept_event()
 		save_file()
 
 func populate_text(path: String):
@@ -21,6 +25,9 @@ func populate_text(path: String):
 func _on_text_changed():
 	if text_edited:
 		return
+	
+	if Input.is_action_just_pressed("save"):
+		pass
 	
 	text_edited = true
 	$"../../Top Bar/Title Text".text += '*' 
