@@ -18,6 +18,6 @@ func _input(event: InputEvent):
 			print("user://%s/%s" % [folder.folder_path, old_folder_name])
 			DirAccess.rename_absolute("user://files/%s/%s" % [folder.folder_path, old_folder_name], "user://files/%s/%s" % [folder.folder_path, folder.folder_name])
 			%"Folder Title".text = "[center]%s" % folder.folder_name
-			#TODO reload all file manager windows?
+			#TODO reload all windows?
 		
 		text = ""
