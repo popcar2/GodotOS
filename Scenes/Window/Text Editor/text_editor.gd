@@ -1,7 +1,10 @@
 extends TextEdit
 
 var text_edited: bool
-var file_path: String
+var file_path: String : 
+	set(value):
+		file_path = value
+		$"../../Top Bar/Title Text".text = "[center]%s" % file_path.split('/')[-1]
 
 func _input(event: InputEvent):
 	if !$"../..".is_selected:
@@ -33,6 +36,6 @@ func save_file():
 	saved_notification.global_position.y = global_position.y + size.y - saved_notification.size.y
 	saved_notification.global_position.x = global_position.x + size.x - saved_notification.size.x
 	get_tree().current_scene.add_child(saved_notification)
-	#TODO make this a parent child?
+	#TODO make this the parent?
 
 #TODO add warning when someone exits without saving

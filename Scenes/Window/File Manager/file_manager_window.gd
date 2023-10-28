@@ -6,7 +6,9 @@ func _ready():
 	populate_window()
 
 func reload_window(folder_path: String):
-	file_path = folder_path
+	# Reload the same path if not given folder_path
+	if !folder_path.is_empty():
+		file_path = folder_path
 	
 	for child in get_children():
 		child.queue_free()
@@ -14,7 +16,7 @@ func reload_window(folder_path: String):
 	populate_window()
 	
 	#TODO make this less dumb
-	$"../../Top Bar/Title Text".text = "[center]%s" % folder_path
+	$"../../Top Bar/Title Text".text = "[center]%s" % file_path
 
 func populate_window():
 	for folder_name in DirAccess.get_directories_at("user://files/%s" % file_path):
