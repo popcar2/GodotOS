@@ -28,3 +28,7 @@ func _input(event: InputEvent):
 					text_editor.file_path = folder.folder_name 
 		
 		text = ""
+	
+	if event.is_action_pressed("ui_cancel"):
+		get_parent().visible = false
+		text = ""

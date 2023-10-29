@@ -25,6 +25,10 @@ boot_splash/minimum_display_time=2000
 DefaultValues="res://Scenes/Autoloads/default_values.tscn"
 HotkeyManager="res://Scenes/Autoloads/hotkey_manager.tscn"
 
+[display]
+
+window/size/mode=3
+
 [file_customization]
 
 folder_colors={
