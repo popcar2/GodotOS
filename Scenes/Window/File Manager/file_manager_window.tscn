@@ -33,6 +33,7 @@ anchor_bottom = 1.0
 offset_right = 8.0
 grow_vertical = 2
 focus_mode = 0
+mouse_filter = 1
 text = "^"
 
 [connection signal="pressed" from="Top Bar/Back Button" to="MarginContainer/File Manager Window" method="_on_back_button_pressed"]

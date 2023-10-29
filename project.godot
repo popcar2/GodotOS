@@ -18,6 +18,7 @@ boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/image="res://Art/Godot Logo.png"
 boot_splash/fullsize=false
 config/icon="res://icon.svg"
+boot_splash/minimum_display_time=2000
 
 [autoload]
 

@@ -103,7 +103,7 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 14
 bbcode_enabled = true
-text = "[center]AAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+text = "[center]Hello World!"
 fit_content = true
 
 [node name="CenterContainer2" type="CenterContainer" parent="Control"]
