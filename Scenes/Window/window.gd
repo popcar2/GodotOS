@@ -41,7 +41,6 @@ func _gui_input(event: InputEvent):
 func _on_top_bar_gui_input(event):
 	if event is InputEventMouseButton and event.button_index == 1:
 		if event.is_pressed():
-			select_window(true)
 			is_dragging = true
 			start_drag_position = global_position
 			mouse_start_drag_position = get_global_mouse_position()

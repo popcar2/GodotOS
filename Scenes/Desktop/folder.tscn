@@ -38,6 +38,7 @@ custom_minimum_size = Vector2(80, 110)
 layout_mode = 3
 anchors_preset = 0
 size_flags_horizontal = 4
+mouse_filter = 1
 script = ExtResource("1_44lov")
 
 [node name="Hover Highlight" type="Panel" parent="."]
