@@ -1,10 +1,9 @@
 extends CanvasLayer
 
 var multiplier: float = 1.0
-var start_screen_size: Vector2
+var start_screen_size: Vector2 = Vector2(1152, 648)
 
 func _ready():
-	start_screen_size = DisplayServer.window_get_size()
 	var tween: Tween = create_tween()
 	tween.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_EXPO)
 	tween.set_parallel(true)
