@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://bwyybu5i3kid"]
+
+[ext_resource type="Texture2D" uid="uid://b7m5up7nr6tko" path="res://Art/Godot Logo.png" id="1_h7qs8"]
+[ext_resource type="Script" path="res://Scenes/Main/Boot Splash/boot_splash.gd" id="1_oyw0a"]
+
+[sub_resource type="Gradient" id="Gradient_w533j"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_033me"]
+gradient = SubResource("Gradient_w533j")
+width = 1
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_m3kw8"]
+blend_mode = 2
+
+[node name="Boot Splash" type="CanvasLayer"]
+script = ExtResource("1_oyw0a")
+
+[node name="CanvasGroup" type="CanvasGroup" parent="."]
+
+[node name="Background" type="Sprite2D" parent="CanvasGroup"]
+position = Vector2(576, 324)
+scale = Vector2(1152, 648)
+texture = SubResource("GradientTexture1D_033me")
+
+[node name="Logo" type="Sprite2D" parent="CanvasGroup"]
+texture_filter = 6
+material = SubResource("CanvasItemMaterial_m3kw8")
+position = Vector2(576, 324)
+texture = ExtResource("1_h7qs8")
+
+[node name="Logo" type="Sprite2D" parent="."]
+texture_filter = 6
+position = Vector2(576, 324)
+texture = ExtResource("1_h7qs8")

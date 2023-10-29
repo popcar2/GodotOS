@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmjyglrsf04uo"]
+[gd_scene load_steps=4 format=3 uid="uid://bmjyglrsf04uo"]
 
 [ext_resource type="Script" path="res://Scenes/Main/folder_manager.gd" id="1_c0q37"]
 [ext_resource type="PackedScene" uid="uid://cfj5p5pgfnywp" path="res://Scenes/Taskbar/taskbar.tscn" id="2_35ao4"]
+[ext_resource type="PackedScene" uid="uid://bwyybu5i3kid" path="res://Scenes/Main/Boot Splash/boot_splash.tscn" id="3_ifoxq"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -30,5 +31,9 @@ theme_override_constants/h_separation = 20
 script = ExtResource("1_c0q37")
 
 [node name="Taskbar" parent="." instance=ExtResource("2_35ao4")]
+z_index = 0
 layout_mode = 1
 offset_top = 0.0
+
+[node name="Boot Splash" parent="." instance=ExtResource("3_ifoxq")]
+layout_mode = 1

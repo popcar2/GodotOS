@@ -14,6 +14,9 @@ config/name="GodotOS"
 run/main_scene="res://Scenes/Main/MainScene.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 run/low_processor_mode=true
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/image="res://Art/Godot Logo.png"
+boot_splash/fullsize=false
 config/icon="res://icon.svg"
 
 [autoload]
@@ -24,6 +27,7 @@ HotkeyManager="res://Scenes/Autoloads/hotkey_manager.tscn"
 [file_customization]
 
 folder_colors={
+"res://Art/": "green",
 "res://Scenes/": "blue",
 "res://Scenes/Misc/": "gray"
 }
