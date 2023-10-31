@@ -129,5 +129,10 @@ func deselect_other_windows():
 
 func clamp_window_inside_viewport():
 	var game_window_size: Vector2 = DisplayServer.window_get_size()
+	if (size.y > game_window_size.y - 40):
+		size.y = game_window_size.y - 40
+	if (size.x > game_window_size.x):
+		size.x = game_window_size.x
+	
 	global_position.y = clamp(global_position.y, 0, game_window_size.y - size.y - 40)
 	global_position.x = clamp(global_position.x, 0, game_window_size.x - size.x)
