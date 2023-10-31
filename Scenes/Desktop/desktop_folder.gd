@@ -35,10 +35,10 @@ func _input(event: InputEvent):
 				$"Double Click".start()
 			else:
 				hide_selected_highlight()
-				if folder_path.is_empty() or file_type != file_type_enum.FOLDER:
-					spawn_window()
-				else:
+				if get_parent().is_in_group("file_manager_window") and file_type == file_type_enum.FOLDER:
 					get_parent().reload_window(folder_path)
+				else:
+					spawn_window()
 
 func _on_mouse_entered():
 	show_hover_highlight()
@@ -70,7 +70,7 @@ func spawn_window():
 	var window: FakeWindow
 	if file_type == file_type_enum.FOLDER:
 		window = load("res://Scenes/Window/File Manager/file_manager_window.tscn").instantiate()
-		window.get_node("%File Manager Window").file_path = folder_path + folder_name
+		window.get_node("%File Manager Window").file_path = folder_path
 	elif file_type == file_type_enum.TEXT_FILE:
 		window = load("res://Scenes/Window/Text Editor/text_editor.tscn").instantiate()
 		# TODO make this more flexible?

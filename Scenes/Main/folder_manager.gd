@@ -9,6 +9,7 @@ func _ready():
 	
 	for folder_name: String in DirAccess.get_directories_at("user://files/"):
 		var folder: FakeFolder = load("res://Scenes/Desktop/folder.tscn").instantiate()
+		folder.folder_path = folder_name
 		folder.folder_name = folder_name
 		add_child(folder)
 	
