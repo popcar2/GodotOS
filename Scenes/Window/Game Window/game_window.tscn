@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://c73tsgfxmn37a"]
+[gd_scene load_steps=2 format=3 uid="uid://c73tsgfxmn37a"]
 
 [ext_resource type="PackedScene" uid="uid://cojrqff5vocjv" path="res://Scenes/Window/Window.tscn" id="1_r6cfa"]
-[ext_resource type="PackedScene" uid="uid://vd6e1ofpyhwd" path="res://Games/Cube Scene/cube_scene.tscn" id="2_w2s8g"]
 
 [node name="Window" instance=ExtResource("1_r6cfa")]
 
@@ -16,8 +15,7 @@ grow_vertical = 2
 stretch = true
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer" index="0"]
+unique_name_in_owner = true
 handle_input_locally = false
 size = Vector2i(500, 270)
 render_target_update_mode = 4
-
-[node name="Cube Scene" parent="SubViewportContainer/SubViewport" index="0" instance=ExtResource("2_w2s8g")]

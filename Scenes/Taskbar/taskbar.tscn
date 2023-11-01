@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://cfj5p5pgfnywp"]
+[gd_scene load_steps=4 format=3 uid="uid://cfj5p5pgfnywp"]
 
 [ext_resource type="Script" path="res://Scenes/Taskbar/start_button.gd" id="1_aypgd"]
+[ext_resource type="PackedScene" uid="uid://da4oly47yx3ja" path="res://Scenes/Taskbar/start_menu_option.tscn" id="2_1ualm"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_s4q16"]
 
@@ -37,6 +38,18 @@ offset_left = 5.0
 offset_top = 50.0
 offset_right = 355.0
 offset_bottom = 450.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Start Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Start Menu Option" parent="Start Menu/VBoxContainer" instance=ExtResource("2_1ualm")]
+layout_mode = 2
+game_scene = "res://Scenes/Main/MainScene.tscn"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." groups=["taskbar_buttons"]]
 layout_mode = 1

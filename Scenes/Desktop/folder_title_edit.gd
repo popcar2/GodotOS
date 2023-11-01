@@ -4,6 +4,8 @@ func _input(event: InputEvent):
 	if event.is_action_pressed("rename") and $"../../../Selected Highlight".visible:
 		get_parent().visible = true
 		grab_focus()
+		text = %"Folder Title".text.trim_prefix("[center]")
+		select_all()
 	
 	if !get_parent().visible:
 		return

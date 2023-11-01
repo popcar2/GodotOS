@@ -76,7 +76,8 @@ func hide_window():
 	tween.set_parallel(true)
 	tween.tween_property(self, "position:y", position.y + 20, 0.25)
 	await tween.tween_property(self, "modulate:a", 0, 0.25).finished
-	visible = false
+	if !is_selected:
+		visible = false
 
 func show_window():
 	if !is_minimized:
