@@ -8,6 +8,7 @@ var disabled_color: Color = Color("908a8c")
 func _ready():
 	target_window.minimized.connect(on_window_minimized)
 	target_window.deleted.connect(on_window_deleted)
+	$TextureRect.self_modulate = active_color
 
 func _gui_input(event: InputEvent):
 	if event is InputEventMouseButton and event.button_index == 1 and event.is_pressed():

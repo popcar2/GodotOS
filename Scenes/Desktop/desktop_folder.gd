@@ -4,6 +4,10 @@ class_name FakeFolder
 enum file_type_enum {FOLDER, TEXT_FILE, IMAGE}
 @export var file_type: file_type_enum
 
+const FOLDER_COLOR: Color = Color("4efa82")
+const TEXT_FILE_COLOR: Color = Color("4deff5")
+const IMAGE_COLOR: Color = Color("ffed4c")
+
 var folder_name: String
 var folder_path: String # Relative to user://files/
 
@@ -15,11 +19,11 @@ func _ready():
 	%"Folder Title".text = "[center]%s" % folder_name
 	
 	if file_type == file_type_enum.FOLDER:
-		$Folder/TextureRect.modulate = Color("4efa82")
+		$Folder/TextureRect.modulate = FOLDER_COLOR
 	elif file_type == file_type_enum.TEXT_FILE:
-		$Folder/TextureRect.modulate = Color("4deff5")
+		$Folder/TextureRect.modulate = TEXT_FILE_COLOR
 	elif file_type == file_type_enum.IMAGE:
-		$Folder/TextureRect.modulate = Color("ffed4c")
+		$Folder/TextureRect.modulate = IMAGE_COLOR
 
 func _input(event: InputEvent):
 	if event is InputEventMouseButton and event.button_index == 1 and event.is_pressed():
@@ -90,4 +94,12 @@ func spawn_window():
 	
 	var taskbar_button: MarginContainer = load("res://Scenes/Taskbar/taskbar_button.tscn").instantiate()
 	taskbar_button.target_window = window
+	
+	if file_type == file_type_enum.FOLDER:
+		taskbar_button.active_color = FOLDER_COLOR
+	if file_type == file_type_enum.TEXT_FILE:
+		taskbar_button.active_color = TEXT_FILE_COLOR
+	elif file_type == file_type_enum.IMAGE:
+		taskbar_button.active_color = IMAGE_COLOR
+	
 	get_tree().get_first_node_in_group("taskbar_buttons").add_child(taskbar_button)
