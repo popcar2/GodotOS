@@ -4,7 +4,7 @@ func _input(event: InputEvent):
 	if event.is_action_pressed("rename") and $"../../../Selected Highlight".visible:
 		get_parent().visible = true
 		grab_focus()
-		text = %"Folder Title".text.trim_prefix("[center]")
+		text = %"Folder Title".text.trim_prefix("[center]").split(".")[0]
 		select_all()
 	
 	if !get_parent().visible:
@@ -42,6 +42,8 @@ func _input(event: InputEvent):
 			DirAccess.rename_absolute("user://files/%s" % old_folder_path, "user://files/%s" % folder.folder_path)
 			
 			for file_manager in get_tree().get_nodes_in_group("file_manager_window"):
+				if file_manager.file_path.begins_with(old_folder_path):
+					file_manager.file_path = file_manager.file_path.replace(old_folder_path, folder.folder_path)
 				file_manager.reload_window("")
 		
 		text = ""
