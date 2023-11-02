@@ -1,8 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://c73tsgfxmn37a"]
+[gd_scene load_steps=3 format=3 uid="uid://c73tsgfxmn37a"]
 
 [ext_resource type="PackedScene" uid="uid://cojrqff5vocjv" path="res://Scenes/Window/Window.tscn" id="1_r6cfa"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5cq01"]
+bg_color = Color(0.196078, 0.101961, 0.196078, 0.6)
+
 [node name="Window" instance=ExtResource("1_r6cfa")]
+theme_override_styles/panel = SubResource("StyleBoxFlat_5cq01")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="." index="1"]
 layout_mode = 1

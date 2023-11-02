@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bw213qcym41ma"]
+[gd_scene load_steps=4 format=3 uid="uid://bw213qcym41ma"]
 
 [ext_resource type="PackedScene" uid="uid://cojrqff5vocjv" path="res://Scenes/Window/Window.tscn" id="1_bisfo"]
 [ext_resource type="Script" path="res://Scenes/Window/Image Viewer/image_viewer.gd" id="2_3oyj5"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8a368"]
+bg_color = Color(0.196078, 0.196078, 0.101961, 0.6)
+
 [node name="Window" instance=ExtResource("1_bisfo")]
+theme_override_styles/panel = SubResource("StyleBoxFlat_8a368")
 
 [node name="Image Viewer" type="TextureRect" parent="." index="2"]
 unique_name_in_owner = true
