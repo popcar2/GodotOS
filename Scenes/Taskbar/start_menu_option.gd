@@ -1,11 +1,15 @@
 extends Panel
 
 @export var game_scene: String
+@export var title_text: String
+@export var description_text: String
 
 var is_mouse_over: bool
 
 func _ready():
 	$"Background Panel".visible = false
+	%"Menu Title".text = "[center]%s" % title_text
+	%"Menu Description".text = "[center]%s" % description_text
 
 func _gui_input(event: InputEvent):
 	if event is InputEventMouseButton and event.button_index == 1 and event.is_pressed():

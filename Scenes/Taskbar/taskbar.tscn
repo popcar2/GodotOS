@@ -49,7 +49,8 @@ grow_vertical = 2
 
 [node name="Start Menu Option" parent="Start Menu/VBoxContainer" instance=ExtResource("2_1ualm")]
 layout_mode = 2
-game_scene = "res://Scenes/Main/MainScene.tscn"
+title_text = "Cube Scene"
+description_text = "THE CUBE. THE CUBE. THE CUBE."
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." groups=["taskbar_buttons"]]
 layout_mode = 1

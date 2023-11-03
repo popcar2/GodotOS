@@ -20,8 +20,6 @@ func _ready():
 	num_of_windows += 1
 	select_window(false)
 	
-	print(get_theme_stylebox("", "Panel").bg_color)
-	
 	$"Top Bar/Title Text".text = " ".join(title_text.split("\n"))
 	
 	get_viewport().size_changed.connect(clamp_window_inside_viewport)

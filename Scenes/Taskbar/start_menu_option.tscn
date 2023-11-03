@@ -71,6 +71,7 @@ bbcode_enabled = true
 text = "[center]GodotOS"
 
 [node name="Menu Description" type="RichTextLabel" parent="HBoxContainer/Control"]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
