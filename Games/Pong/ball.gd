@@ -11,4 +11,3 @@ func _physics_process(delta):
 		velocity.y += randf_range(-500, 500)
 		velocity = velocity.bounce(collision_data.get_normal())
 		velocity.y = clamp(velocity.y, -1000, 1000)
-		print(velocity)

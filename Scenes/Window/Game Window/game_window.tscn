@@ -6,7 +6,11 @@
 bg_color = Color(0.196078, 0.101961, 0.196078, 0.6)
 
 [node name="Window" instance=ExtResource("1_r6cfa")]
+offset_right = 233.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_5cq01")
+
+[node name="Title Text" parent="Top Bar" index="0"]
+texture_filter = 2
 
 [node name="AspectRatioContainer" type="AspectRatioContainer" parent="." index="1"]
 layout_mode = 1
