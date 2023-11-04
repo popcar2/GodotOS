@@ -1,8 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://dcf7si5errywd"]
+[gd_scene load_steps=20 format=3 uid="uid://dcf7si5errywd"]
 
+[ext_resource type="Script" path="res://Games/Pong/PongManager.gd" id="1_lckgx"]
 [ext_resource type="Script" path="res://Games/Pong/player.gd" id="1_viq10"]
 [ext_resource type="Script" path="res://Games/Pong/enemy.gd" id="2_rtbuo"]
 [ext_resource type="Script" path="res://Games/Pong/ball.gd" id="2_u2eou"]
+[ext_resource type="Script" path="res://Games/Pong/player_fail_area.gd" id="5_df0gh"]
+[ext_resource type="Script" path="res://Games/Pong/enemy_fail_area.gd" id="6_wcv8o"]
 
 [sub_resource type="Gradient" id="Gradient_01x5j"]
 offsets = PackedFloat32Array(0)
@@ -43,7 +46,14 @@ width = 1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ws6uw"]
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xyrmq"]
+size = Vector2(20, 2000)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iubhc"]
+size = Vector2(20, 2000)
+
+[node name="Pong" type="Node2D"]
+script = ExtResource("1_lckgx")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -98,3 +108,50 @@ texture = SubResource("GradientTexture1D_02wmw")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
 shape = SubResource("RectangleShape2D_ws6uw")
+
+[node name="Player Fail Area" type="Area2D" parent="."]
+script = ExtResource("5_df0gh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player Fail Area"]
+position = Vector2(-650, 0)
+shape = SubResource("RectangleShape2D_xyrmq")
+
+[node name="Enemy Fail Area" type="Area2D" parent="."]
+script = ExtResource("6_wcv8o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy Fail Area"]
+position = Vector2(650, 0)
+shape = SubResource("RectangleShape2D_iubhc")
+
+[node name="Player Score Text" type="RichTextLabel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -250.0
+offset_right = -221.0
+offset_bottom = -121.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 92
+text = "0"
+
+[node name="Enemy Score Text" type="RichTextLabel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 350.0
+offset_top = -250.0
+offset_right = 479.0
+offset_bottom = -121.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 92
+text = "0"
+
+[connection signal="body_entered" from="Player Fail Area" to="Player Fail Area" method="_on_body_entered"]
+[connection signal="body_entered" from="Enemy Fail Area" to="Enemy Fail Area" method="_on_body_entered"]
