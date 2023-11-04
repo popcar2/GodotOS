@@ -52,6 +52,12 @@ layout_mode = 2
 title_text = "Cube Scene"
 description_text = "THE CUBE. THE CUBE. THE CUBE."
 
+[node name="Start Menu Option2" parent="Start Menu/VBoxContainer" instance=ExtResource("2_1ualm")]
+layout_mode = 2
+game_scene = "res://Games/Pong/pong.tscn"
+title_text = "Pong"
+description_text = "A timeless classic"
+
 [node name="HBoxContainer" type="HBoxContainer" parent="." groups=["taskbar_buttons"]]
 layout_mode = 1
 anchors_preset = 15

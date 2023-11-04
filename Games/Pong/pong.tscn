@@ -1,0 +1,100 @@
+[gd_scene load_steps=15 format=3 uid="uid://dcf7si5errywd"]
+
+[ext_resource type="Script" path="res://Games/Pong/player.gd" id="1_viq10"]
+[ext_resource type="Script" path="res://Games/Pong/enemy.gd" id="2_rtbuo"]
+[ext_resource type="Script" path="res://Games/Pong/ball.gd" id="2_u2eou"]
+
+[sub_resource type="Gradient" id="Gradient_01x5j"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_m1rdx"]
+gradient = SubResource("Gradient_01x5j")
+width = 1
+
+[sub_resource type="Gradient" id="Gradient_4jnus"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ytia8"]
+gradient = SubResource("Gradient_4jnus")
+width = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x5dyd"]
+size = Vector2(1, 0.0154321)
+
+[sub_resource type="Gradient" id="Gradient_emrk7"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_02tf3"]
+gradient = SubResource("Gradient_emrk7")
+width = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j6emb"]
+size = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_p5y0n"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_02wmw"]
+gradient = SubResource("Gradient_p5y0n")
+width = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ws6uw"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Background" type="Sprite2D" parent="."]
+scale = Vector2(1152, 648)
+texture = SubResource("GradientTexture1D_m1rdx")
+
+[node name="Background2" type="Sprite2D" parent="Background"]
+scale = Vector2(1, 0.969136)
+texture = SubResource("GradientTexture1D_ytia8")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Background"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/StaticBody2D"]
+position = Vector2(0, -0.492284)
+shape = SubResource("RectangleShape2D_x5dyd")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Background/StaticBody2D"]
+position = Vector2(0, 0.492)
+shape = SubResource("RectangleShape2D_x5dyd")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(-476, 0)
+script = ExtResource("1_viq10")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+scale = Vector2(20, 100)
+texture = SubResource("GradientTexture1D_02tf3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+scale = Vector2(20, 100)
+shape = SubResource("RectangleShape2D_j6emb")
+
+[node name="Enemy" type="CharacterBody2D" parent="."]
+position = Vector2(476, 0)
+script = ExtResource("2_rtbuo")
+
+[node name="Sprite2D" type="Sprite2D" parent="Enemy"]
+scale = Vector2(20, 100)
+texture = SubResource("GradientTexture1D_02tf3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
+scale = Vector2(20, 100)
+shape = SubResource("RectangleShape2D_j6emb")
+
+[node name="Ball" type="CharacterBody2D" parent="."]
+script = ExtResource("2_u2eou")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball"]
+scale = Vector2(20, 20)
+texture = SubResource("GradientTexture1D_02wmw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+shape = SubResource("RectangleShape2D_ws6uw")

@@ -36,7 +36,7 @@ func _on_mouse_exited():
 func spawn_window():
 	var window: FakeWindow
 	window = load("res://Scenes/Window/Game Window/game_window.tscn").instantiate()
-	window.get_node("%SubViewport").add_child(load(game_scene).instantiate())
+	window.get_node("%Game Window").add_child(load(game_scene).instantiate())
 	
 	window.title_text = %"Menu Title".text
 	get_tree().current_scene.add_child(window)

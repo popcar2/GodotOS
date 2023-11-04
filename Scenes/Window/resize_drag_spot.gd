@@ -17,3 +17,5 @@ func _gui_input(event):
 func _physics_process(_delta):
 	if is_dragging:
 		get_parent().size = start_size + get_global_mouse_position() - mouse_start_drag_position
+		print("Dragging")
+		print(get_parent().size)

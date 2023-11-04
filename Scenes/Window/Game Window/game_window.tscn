@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://c73tsgfxmn37a"]
+[gd_scene load_steps=4 format=3 uid="uid://c73tsgfxmn37a"]
 
 [ext_resource type="PackedScene" uid="uid://cojrqff5vocjv" path="res://Scenes/Window/Window.tscn" id="1_r6cfa"]
+[ext_resource type="Script" path="res://Scenes/Window/Game Window/game_window.gd" id="2_rvu4i"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5cq01"]
 bg_color = Color(0.196078, 0.101961, 0.196078, 0.6)
@@ -8,18 +9,18 @@ bg_color = Color(0.196078, 0.101961, 0.196078, 0.6)
 [node name="Window" instance=ExtResource("1_r6cfa")]
 theme_override_styles/panel = SubResource("StyleBoxFlat_5cq01")
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="." index="1"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 30.0
-grow_horizontal = 2
-grow_vertical = 2
-stretch = true
-
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer" index="0"]
+[node name="Game Window" type="Window" parent="." index="1"]
 unique_name_in_owner = true
-handle_input_locally = false
-size = Vector2i(500, 270)
-render_target_update_mode = 4
+own_world_3d = true
+transparent_bg = true
+audio_listener_enable_2d = true
+audio_listener_enable_3d = true
+transient = true
+borderless = true
+transparent = true
+unfocusable = true
+mouse_passthrough = true
+content_scale_size = Vector2i(1152, 648)
+content_scale_mode = 2
+content_scale_aspect = 1
+script = ExtResource("2_rvu4i")

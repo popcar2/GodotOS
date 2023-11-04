@@ -1,0 +1,15 @@
+extends CharacterBody2D
+
+const SPEED = 5.0
+
+var ball: CharacterBody2D
+
+func _ready():
+	ball = $"../Ball"
+
+func _physics_process(delta):
+	global_position.y = move_toward(global_position.y, ball.global_position.y, SPEED)
+	
+	move_and_slide()
+	
+	position.y = clamp(position.y, -264, 264)
