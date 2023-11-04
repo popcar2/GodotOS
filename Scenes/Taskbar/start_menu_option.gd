@@ -43,4 +43,5 @@ func spawn_window():
 	
 	var taskbar_button: MarginContainer = load("res://Scenes/Taskbar/taskbar_button.tscn").instantiate()
 	taskbar_button.target_window = window
+	taskbar_button.active_color = Color.MEDIUM_VIOLET_RED
 	get_tree().get_first_node_in_group("taskbar_buttons").add_child(taskbar_button)
