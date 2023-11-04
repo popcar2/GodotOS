@@ -6,7 +6,10 @@
 bg_color = Color(0.196078, 0.101961, 0.196078, 0.6)
 
 [node name="Window" instance=ExtResource("1_r6cfa")]
-offset_right = 233.0
+offset_left = -288.0
+offset_top = -177.0
+offset_right = 288.0
+offset_bottom = 177.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_5cq01")
 
 [node name="Title Text" parent="Top Bar" index="0"]
@@ -32,6 +35,7 @@ stretch = true
 unique_name_in_owner = true
 own_world_3d = true
 handle_input_locally = false
-size = Vector2i(481, 271)
+size = Vector2i(576, 324)
 size_2d_override = Vector2i(1152, 648)
 size_2d_override_stretch = true
+render_target_update_mode = 4
