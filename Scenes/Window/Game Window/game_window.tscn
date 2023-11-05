@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://c73tsgfxmn37a"]
+[gd_scene load_steps=4 format=3 uid="uid://c73tsgfxmn37a"]
 
 [ext_resource type="PackedScene" uid="uid://cojrqff5vocjv" path="res://Scenes/Window/Window.tscn" id="1_r6cfa"]
+[ext_resource type="Script" path="res://Scenes/Window/Game Window/game_window.gd" id="2_83d0v"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5cq01"]
 bg_color = Color(0.196078, 0.101961, 0.196078, 0.6)
@@ -38,4 +39,4 @@ handle_input_locally = false
 size = Vector2i(576, 324)
 size_2d_override = Vector2i(1152, 648)
 size_2d_override_stretch = true
-render_target_update_mode = 4
+script = ExtResource("2_83d0v")

@@ -3,13 +3,13 @@ extends CharacterBody2D
 var collision_data: KinematicCollision2D
 
 func _ready():
-	velocity = Vector2(300,0)
+	velocity = Vector2(350,0)
 
 func _physics_process(delta):
 	collision_data = move_and_collide(velocity * delta)
 	if collision_data:
 		if collision_data.get_collider() is CharacterBody2D:
-			velocity.x *= 1.02
+			velocity.x *= 1.03
 			velocity.y += (global_position.y - collision_data.get_collider().global_position.y) * 4
 			velocity.y += randf_range(-50, 50)
 		velocity = velocity.bounce(collision_data.get_normal())
