@@ -14,6 +14,7 @@ var is_minimized: bool
 var is_selected: bool
 
 signal minimized(is_minimized: bool)
+signal selected(is_selected: bool)
 signal deleted()
 
 func _ready():
@@ -100,6 +101,7 @@ func select_window(play_fade_animation: bool):
 		return
 	
 	is_selected = true
+	selected.emit(true)
 	
 	var tween: Tween = create_tween()
 	tween.set_parallel(true)
@@ -117,6 +119,8 @@ func deselect_window():
 		return
 	
 	is_selected = false
+	selected.emit(false)
+	
 	var tween: Tween = create_tween()
 	tween.set_parallel(true)
 	tween.set_trans(Tween.TRANS_CUBIC)
