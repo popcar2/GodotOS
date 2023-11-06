@@ -11,3 +11,10 @@ func _input(event: InputEvent):
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	if event.is_action_pressed("open_in_file_manager"):
 		OS.shell_show_in_file_manager(ProjectSettings.globalize_path("user://files/"))
+	
+	if event.is_action_pressed("zoom_in"):
+		if get_tree().root.content_scale_factor < 4:
+			get_tree().root.content_scale_factor += 0.05
+	elif event.is_action_pressed("zoom_out"):
+		if get_tree().root.content_scale_factor > 0.25:
+			get_tree().root.content_scale_factor -= 0.05

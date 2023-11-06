@@ -1,0 +1,10 @@
+Welcome to GodotOS!
+
+GodotOS is a fake operating system where
+you can play games, manage folders,
+view images, and edit text files!
+
+Here are some shortcuts to get you started:
+
+*    Fullscreen: Alt + Enter
+*    Open file manager: Ctrl + Shift + F

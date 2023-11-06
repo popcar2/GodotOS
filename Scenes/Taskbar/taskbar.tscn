@@ -6,7 +6,6 @@
 [sub_resource type="CanvasTexture" id="CanvasTexture_s4q16"]
 
 [node name="Taskbar" type="Panel"]
-z_index = 100
 custom_minimum_size = Vector2(0, 40)
 anchors_preset = 12
 anchor_top = 1.0
