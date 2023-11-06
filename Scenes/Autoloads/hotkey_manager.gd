@@ -9,3 +9,5 @@ func _input(event: InputEvent):
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 		else:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	if event.is_action_pressed("open_in_file_manager"):
+		OS.shell_show_in_file_manager(ProjectSettings.globalize_path("user://files/"))

@@ -1,11 +1,11 @@
 [gd_scene load_steps=20 format=3 uid="uid://dcf7si5errywd"]
 
 [ext_resource type="Script" path="res://Games/Pong/PongManager.gd" id="1_lckgx"]
-[ext_resource type="Script" path="res://Games/Pong/player.gd" id="1_viq10"]
-[ext_resource type="Script" path="res://Games/Pong/enemy.gd" id="2_rtbuo"]
-[ext_resource type="Script" path="res://Games/Pong/ball.gd" id="2_u2eou"]
-[ext_resource type="Script" path="res://Games/Pong/player_fail_area.gd" id="5_df0gh"]
-[ext_resource type="Script" path="res://Games/Pong/enemy_fail_area.gd" id="6_wcv8o"]
+[ext_resource type="Script" path="res://Games/Pong/pong_player.gd" id="1_viq10"]
+[ext_resource type="Script" path="res://Games/Pong/pong_enemy.gd" id="2_rtbuo"]
+[ext_resource type="Script" path="res://Games/Pong/pong_ball.gd" id="2_u2eou"]
+[ext_resource type="Script" path="res://Games/Pong/pong_player_fail_area.gd" id="5_df0gh"]
+[ext_resource type="Script" path="res://Games/Pong/pong_enemy_fail_area.gd" id="6_wcv8o"]
 
 [sub_resource type="Gradient" id="Gradient_01x5j"]
 offsets = PackedFloat32Array(0)
