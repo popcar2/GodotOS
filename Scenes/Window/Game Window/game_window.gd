@@ -15,5 +15,11 @@ func _handle_window_minimized(is_minimized: bool):
 
 func _handle_window_selected(is_selected: bool):
 	# TODO figure out how to pause inputs here
-	handle_input_locally = false
-	get_child(0).set_process_input(false)
+	#handle_input_locally = false
+	#set_input(self, is_selected)
+	pass
+
+func set_input(node: Node, can_input: bool):
+	node.set_process_input(can_input)
+	for n in node.get_children():
+		set_input(n, can_input)

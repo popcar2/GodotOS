@@ -1,11 +1,11 @@
-[gd_scene load_steps=20 format=3 uid="uid://dcf7si5errywd"]
+[gd_scene load_steps=23 format=3 uid="uid://dcf7si5errywd"]
 
-[ext_resource type="Script" path="res://Games/Pong/PongManager.gd" id="1_lckgx"]
-[ext_resource type="Script" path="res://Games/Pong/pong_player.gd" id="1_viq10"]
-[ext_resource type="Script" path="res://Games/Pong/pong_enemy.gd" id="2_rtbuo"]
-[ext_resource type="Script" path="res://Games/Pong/pong_ball.gd" id="2_u2eou"]
-[ext_resource type="Script" path="res://Games/Pong/pong_player_fail_area.gd" id="5_df0gh"]
-[ext_resource type="Script" path="res://Games/Pong/pong_enemy_fail_area.gd" id="6_wcv8o"]
+[ext_resource type="Script" path="res://Games/Pong/Scripts/pong_singleplayer_manager.gd" id="1_oef8c"]
+[ext_resource type="Script" path="res://Games/Pong/Scripts/pong_player.gd" id="2_ugmxi"]
+[ext_resource type="Script" path="res://Games/Pong/Scripts/pong_enemy.gd" id="3_oxy8k"]
+[ext_resource type="Script" path="res://Games/Pong/Scripts/pong_ball.gd" id="4_oaee3"]
+[ext_resource type="Script" path="res://Games/Pong/Scripts/pong_player_fail_area.gd" id="5_n8v32"]
+[ext_resource type="Script" path="res://Games/Pong/Scripts/pong_enemy_fail_area.gd" id="6_dbi4x"]
 
 [sub_resource type="Gradient" id="Gradient_01x5j"]
 offsets = PackedFloat32Array(0)
@@ -52,8 +52,27 @@ size = Vector2(20, 2000)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iubhc"]
 size = Vector2(20, 2000)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kq2ie"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nrrws"]
+bg_color = Color(0.239216, 0.239216, 0.239216, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w40oq"]
+bg_color = Color(1, 1, 1, 1)
+
 [node name="Pong" type="Node2D"]
-script = ExtResource("1_lckgx")
+script = ExtResource("1_oef8c")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -77,7 +96,7 @@ shape = SubResource("RectangleShape2D_x5dyd")
 
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(-476, 0)
-script = ExtResource("1_viq10")
+script = ExtResource("2_ugmxi")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player"]
 scale = Vector2(20, 100)
@@ -89,7 +108,7 @@ shape = SubResource("RectangleShape2D_j6emb")
 
 [node name="Enemy" type="CharacterBody2D" parent="."]
 position = Vector2(476, 0)
-script = ExtResource("2_rtbuo")
+script = ExtResource("3_oxy8k")
 
 [node name="Sprite2D" type="Sprite2D" parent="Enemy"]
 scale = Vector2(20, 100)
@@ -100,7 +119,7 @@ scale = Vector2(20, 100)
 shape = SubResource("RectangleShape2D_j6emb")
 
 [node name="Ball" type="CharacterBody2D" parent="."]
-script = ExtResource("2_u2eou")
+script = ExtResource("4_oaee3")
 
 [node name="Sprite2D" type="Sprite2D" parent="Ball"]
 scale = Vector2(20, 20)
@@ -110,14 +129,14 @@ texture = SubResource("GradientTexture1D_02wmw")
 shape = SubResource("RectangleShape2D_ws6uw")
 
 [node name="Player Fail Area" type="Area2D" parent="."]
-script = ExtResource("5_df0gh")
+script = ExtResource("5_n8v32")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player Fail Area"]
 position = Vector2(-650, 0)
 shape = SubResource("RectangleShape2D_xyrmq")
 
 [node name="Enemy Fail Area" type="Area2D" parent="."]
-script = ExtResource("6_wcv8o")
+script = ExtResource("6_dbi4x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy Fail Area"]
 position = Vector2(650, 0)
@@ -153,5 +172,63 @@ grow_vertical = 2
 theme_override_font_sizes/normal_font_size = 92
 text = "0"
 
+[node name="Game Over Screen" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SingleplayerContainer" type="VBoxContainer" parent="Game Over Screen"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -245.0
+offset_top = -158.0
+offset_right = 205.0
+offset_bottom = 242.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 50
+
+[node name="RestartBtn" type="Button" parent="Game Over Screen/SingleplayerContainer"]
+custom_minimum_size = Vector2(0, 125)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_kq2ie")
+theme_override_styles/hover = SubResource("StyleBoxFlat_nrrws")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_w40oq")
+text = "Restart"
+
+[node name="MainMenuBtn" type="Button" parent="Game Over Screen/SingleplayerContainer"]
+custom_minimum_size = Vector2(0, 125)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_kq2ie")
+theme_override_styles/hover = SubResource("StyleBoxFlat_nrrws")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_w40oq")
+text = "Main Menu"
+
+[node name="Game Over Title" type="RichTextLabel" parent="Game Over Screen"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -520.0
+offset_top = -250.0
+offset_right = 480.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 72
+bbcode_enabled = true
+text = "[center]You won!"
+
 [connection signal="body_entered" from="Player Fail Area" to="Player Fail Area" method="_on_body_entered"]
 [connection signal="body_entered" from="Enemy Fail Area" to="Enemy Fail Area" method="_on_body_entered"]
+[connection signal="pressed" from="Game Over Screen/SingleplayerContainer/RestartBtn" to="." method="_on_restart_btn_pressed"]
+[connection signal="pressed" from="Game Over Screen/SingleplayerContainer/MainMenuBtn" to="." method="_on_main_menu_btn_pressed"]

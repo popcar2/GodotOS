@@ -29,7 +29,6 @@ ratio = 1.777
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="AspectRatioContainer" index="0"]
 layout_mode = 2
-mouse_filter = 2
 stretch = true
 
 [node name="Game Window" type="SubViewport" parent="AspectRatioContainer/SubViewportContainer" index="0"]

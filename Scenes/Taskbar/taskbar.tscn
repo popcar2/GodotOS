@@ -53,7 +53,7 @@ description_text = "THE CUBE. THE CUBE. THE CUBE."
 
 [node name="Start Menu Option2" parent="Start Menu/VBoxContainer" instance=ExtResource("2_1ualm")]
 layout_mode = 2
-game_scene = "res://Games/Pong/pong.tscn"
+game_scene = "res://Games/Pong/Scenes/pong_main_menu.tscn"
 title_text = "Pong"
 description_text = "A timeless classic"
 

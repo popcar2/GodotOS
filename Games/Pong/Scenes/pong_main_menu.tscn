@@ -1,0 +1,136 @@
+[gd_scene load_steps=7 format=3 uid="uid://dui0012ehv8h0"]
+
+[ext_resource type="Script" path="res://Games/Pong/Scripts/pong_main_menu.gd" id="1_jwauq"]
+
+[sub_resource type="Gradient" id="Gradient_beqym"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_d5rf6"]
+gradient = SubResource("Gradient_beqym")
+width = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6x20d"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gfm2w"]
+bg_color = Color(0.239216, 0.239216, 0.239216, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wxonl"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="Pong Main Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jwauq")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_d5rf6")
+
+[node name="TitleText" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -400.0
+offset_top = 75.0
+offset_right = 400.0
+offset_bottom = 275.0
+grow_horizontal = 2
+theme_override_font_sizes/normal_font_size = 96
+bbcode_enabled = true
+text = "[center]PONG"
+
+[node name="MainContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -225.0
+offset_top = -400.0
+offset_right = 225.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 50
+
+[node name="SingleplayerBtn" type="Button" parent="MainContainer"]
+custom_minimum_size = Vector2(0, 125)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_6x20d")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gfm2w")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wxonl")
+text = "Singleplayer"
+
+[node name="MultiplayerBtn" type="Button" parent="MainContainer"]
+custom_minimum_size = Vector2(0, 125)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_6x20d")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gfm2w")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wxonl")
+text = "Multiplayer"
+
+[node name="SingleplayerContainer" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -225.0
+offset_top = -400.0
+offset_right = 225.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 50
+
+[node name="RegularSingleBtn" type="Button" parent="SingleplayerContainer"]
+custom_minimum_size = Vector2(0, 125)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_6x20d")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gfm2w")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wxonl")
+text = "Regular"
+
+[node name="SurvivalSingleBtn" type="Button" parent="SingleplayerContainer"]
+custom_minimum_size = Vector2(0, 125)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_6x20d")
+theme_override_styles/hover = SubResource("StyleBoxFlat_gfm2w")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_wxonl")
+text = "Survival"
+
+[connection signal="pressed" from="MainContainer/SingleplayerBtn" to="." method="_on_singleplayer_btn_pressed"]
+[connection signal="pressed" from="MainContainer/MultiplayerBtn" to="." method="_on_multiplayer_btn_pressed"]
+[connection signal="pressed" from="SingleplayerContainer/RegularSingleBtn" to="." method="_on_regular_single_btn_pressed"]
+[connection signal="pressed" from="SingleplayerContainer/SurvivalSingleBtn" to="." method="_on_survival_single_btn_pressed"]

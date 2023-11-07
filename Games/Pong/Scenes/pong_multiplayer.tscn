@@ -1,0 +1,238 @@
+[gd_scene load_steps=22 format=3 uid="uid://dsqko5xw1sbgu"]
+
+[ext_resource type="Script" path="res://Games/Pong/Scripts/pong_singleplayer_manager.gd" id="1_3gis3"]
+[ext_resource type="Script" path="res://Games/Pong/Scripts/pong_player.gd" id="2_t48bb"]
+[ext_resource type="Script" path="res://Games/Pong/Scripts/pong_ball.gd" id="4_dyths"]
+[ext_resource type="Script" path="res://Games/Pong/Scripts/pong_player_fail_area.gd" id="5_njxpq"]
+[ext_resource type="Script" path="res://Games/Pong/Scripts/pong_enemy_fail_area.gd" id="6_jre6e"]
+
+[sub_resource type="Gradient" id="Gradient_01x5j"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_m1rdx"]
+gradient = SubResource("Gradient_01x5j")
+width = 1
+
+[sub_resource type="Gradient" id="Gradient_4jnus"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ytia8"]
+gradient = SubResource("Gradient_4jnus")
+width = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x5dyd"]
+size = Vector2(1, 0.0154321)
+
+[sub_resource type="Gradient" id="Gradient_emrk7"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_02tf3"]
+gradient = SubResource("Gradient_emrk7")
+width = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j6emb"]
+size = Vector2(1, 1)
+
+[sub_resource type="Gradient" id="Gradient_p5y0n"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_02wmw"]
+gradient = SubResource("Gradient_p5y0n")
+width = 1
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ws6uw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xyrmq"]
+size = Vector2(20, 2000)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iubhc"]
+size = Vector2(20, 2000)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kq2ie"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nrrws"]
+bg_color = Color(0.239216, 0.239216, 0.239216, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w40oq"]
+bg_color = Color(1, 1, 1, 1)
+
+[node name="Pong" type="Node2D"]
+script = ExtResource("1_3gis3")
+player_won_text = "Player 1 wins!"
+enemy_won_text = "Player 2 wins!"
+restart_scene_string = "res://Games/Pong/Scenes/pong_multiplayer.tscn"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Background" type="Sprite2D" parent="."]
+scale = Vector2(1152, 648)
+texture = SubResource("GradientTexture1D_m1rdx")
+
+[node name="Background2" type="Sprite2D" parent="Background"]
+scale = Vector2(1, 0.969136)
+texture = SubResource("GradientTexture1D_ytia8")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Background"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/StaticBody2D"]
+position = Vector2(0, -0.492284)
+shape = SubResource("RectangleShape2D_x5dyd")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Background/StaticBody2D"]
+position = Vector2(0, 0.492)
+shape = SubResource("RectangleShape2D_x5dyd")
+
+[node name="Player" type="CharacterBody2D" parent="."]
+position = Vector2(-476, 0)
+script = ExtResource("2_t48bb")
+up_axis = "w"
+down_axis = "s"
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+scale = Vector2(20, 100)
+texture = SubResource("GradientTexture1D_02tf3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+scale = Vector2(20, 100)
+shape = SubResource("RectangleShape2D_j6emb")
+
+[node name="Player2" type="CharacterBody2D" parent="."]
+position = Vector2(476, 0)
+script = ExtResource("2_t48bb")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player2"]
+scale = Vector2(20, 100)
+texture = SubResource("GradientTexture1D_02tf3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2"]
+scale = Vector2(20, 100)
+shape = SubResource("RectangleShape2D_j6emb")
+
+[node name="Ball" type="CharacterBody2D" parent="."]
+script = ExtResource("4_dyths")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ball"]
+scale = Vector2(20, 20)
+texture = SubResource("GradientTexture1D_02wmw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+shape = SubResource("RectangleShape2D_ws6uw")
+
+[node name="Player Fail Area" type="Area2D" parent="."]
+script = ExtResource("5_njxpq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player Fail Area"]
+position = Vector2(-650, 0)
+shape = SubResource("RectangleShape2D_xyrmq")
+
+[node name="Enemy Fail Area" type="Area2D" parent="."]
+script = ExtResource("6_jre6e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy Fail Area"]
+position = Vector2(650, 0)
+shape = SubResource("RectangleShape2D_iubhc")
+
+[node name="Player Score Text" type="RichTextLabel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -350.0
+offset_top = -250.0
+offset_right = -220.0
+offset_bottom = -120.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 92
+text = "0"
+
+[node name="Enemy Score Text" type="RichTextLabel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 350.0
+offset_top = -250.0
+offset_right = 480.0
+offset_bottom = -120.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 92
+text = "0"
+
+[node name="Game Over Screen" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="SingleplayerContainer" type="VBoxContainer" parent="Game Over Screen"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -245.0
+offset_top = -158.0
+offset_right = 205.0
+offset_bottom = 242.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/separation = 50
+
+[node name="RestartBtn" type="Button" parent="Game Over Screen/SingleplayerContainer"]
+custom_minimum_size = Vector2(0, 125)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_kq2ie")
+theme_override_styles/hover = SubResource("StyleBoxFlat_nrrws")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_w40oq")
+text = "Restart"
+
+[node name="MainMenuBtn" type="Button" parent="Game Over Screen/SingleplayerContainer"]
+custom_minimum_size = Vector2(0, 125)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 64
+theme_override_styles/normal = SubResource("StyleBoxFlat_kq2ie")
+theme_override_styles/hover = SubResource("StyleBoxFlat_nrrws")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_w40oq")
+text = "Main Menu"
+
+[node name="Game Over Title" type="RichTextLabel" parent="Game Over Screen"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -520.0
+offset_top = -250.0
+offset_right = 480.0
+grow_horizontal = 2
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 72
+bbcode_enabled = true
+text = "[center]You won!"
+
+[connection signal="body_entered" from="Player Fail Area" to="Player Fail Area" method="_on_body_entered"]
+[connection signal="body_entered" from="Enemy Fail Area" to="Enemy Fail Area" method="_on_body_entered"]
+[connection signal="pressed" from="Game Over Screen/SingleplayerContainer/RestartBtn" to="." method="_on_restart_btn_pressed"]
+[connection signal="pressed" from="Game Over Screen/SingleplayerContainer/MainMenuBtn" to="." method="_on_main_menu_btn_pressed"]
