@@ -5,7 +5,7 @@ var window: FakeWindow
 func _ready():
 	window = $"../../.."
 	window.minimized.connect(_handle_window_minimized)
-	window.selected.connect(_handle_window_selected)
+	#window.selected.connect(_handle_window_selected)
 
 func _handle_window_minimized(is_minimized: bool):
 	if is_minimized:
