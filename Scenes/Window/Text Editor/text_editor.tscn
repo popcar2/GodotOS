@@ -3,26 +3,17 @@
 [ext_resource type="PackedScene" uid="uid://cojrqff5vocjv" path="res://Scenes/Window/Window.tscn" id="1_sycuj"]
 [ext_resource type="Script" path="res://Scenes/Window/Text Editor/text_editor.gd" id="2_4wajo"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y46kd"]
-bg_color = Color(0, 0.933333, 0.917647, 0.0588235)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_22tla"]
+bg_color = Color(0, 0.337255, 0.333333, 0.784314)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uonls"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jhtvb"]
 
 [node name="Window" instance=ExtResource("1_sycuj")]
+theme_override_styles/panel = SubResource("StyleBoxFlat_22tla")
 
-[node name="Panel" type="Panel" parent="." index="0"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 30.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_y46kd")
-
-[node name="MarginContainer" type="MarginContainer" parent="." index="2"]
+[node name="MarginContainer" type="MarginContainer" parent="." index="1"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
