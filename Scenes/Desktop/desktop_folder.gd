@@ -11,7 +11,7 @@ const IMAGE_COLOR: Color = Color("ffed4c")
 var folder_name: String
 var folder_path: String # Relative to user://files/
 
-var mouse_over: bool
+var is_mouse_over: bool
 
 func _ready():
 	$"Hover Highlight".self_modulate.a = 0
@@ -31,7 +31,7 @@ func _input(event: InputEvent):
 		if !Rect2(Vector2(0,0), size).has_point(evLocal.position):
 			hide_selected_highlight()
 		else:
-			if !mouse_over:
+			if !is_mouse_over:
 				return
 			
 			if $"Double Click".is_stopped():
@@ -46,11 +46,11 @@ func _input(event: InputEvent):
 
 func _on_mouse_entered():
 	show_hover_highlight()
-	mouse_over = true
+	is_mouse_over = true
 
 func _on_mouse_exited():
 	hide_hover_highlight()
-	mouse_over = false
+	is_mouse_over = false
 
 # ------
 

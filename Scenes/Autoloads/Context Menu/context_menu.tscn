@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://b2hpvnoxdgfvn"]
+
+[ext_resource type="Script" path="res://Scenes/Autoloads/Context Menu/context_menu_manager.gd" id="1_kg358"]
+
+[node name="Context Menu" type="Panel"]
+offset_right = 160.0
+offset_bottom = 200.0
+script = ExtResource("1_kg358")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

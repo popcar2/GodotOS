@@ -129,11 +129,12 @@ func deselect_window():
 
 func deselect_other_windows():
 	for window in get_tree().get_nodes_in_group("window"):
-		if window == self: continue
+		if window == self:
+			continue
 		window.deselect_window()
 
 func clamp_window_inside_viewport():
-	var game_window_size: Vector2 = DisplayServer.window_get_size()
+	var game_window_size: Vector2 = get_viewport_rect().size
 	if (size.y > game_window_size.y - 40):
 		size.y = game_window_size.y - 40
 	if (size.x > game_window_size.x):
