@@ -1,11 +1,42 @@
-[gd_scene load_steps=2 format=3 uid="uid://b2hpvnoxdgfvn"]
+[gd_scene load_steps=3 format=3 uid="uid://b2hpvnoxdgfvn"]
 
 [ext_resource type="Script" path="res://Scenes/Autoloads/Context Menu/context_menu_manager.gd" id="1_kg358"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aoyy7"]
+bg_color = Color(0, 0, 0, 0)
 
 [node name="Context Menu" type="Panel"]
 offset_right = 160.0
 offset_bottom = 200.0
 script = ExtResource("1_kg358")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_aoyy7")
+
+[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/Panel/CenterContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+mouse_filter = 2
+text = "Hello, World!"
+fit_content = true
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

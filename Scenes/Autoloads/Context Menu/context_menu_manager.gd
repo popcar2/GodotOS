@@ -22,7 +22,7 @@ func show_context_menu():
 
 func hide_context_menu():
 	var tween: Tween = create_tween()
-	await tween.tween_property(self, "modulate:a", 0, 0.2).finished
+	await tween.tween_property(self, "modulate:a", 0, 0.15).finished
 	if modulate.a == 0:
 		visible = false
 
