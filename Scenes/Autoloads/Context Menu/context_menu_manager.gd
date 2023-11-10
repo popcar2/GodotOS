@@ -1,7 +1,5 @@
 extends Panel
 
-var target: Control
-
 var is_mouse_over: bool
 
 func _ready():

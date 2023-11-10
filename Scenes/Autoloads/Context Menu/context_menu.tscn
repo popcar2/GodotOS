@@ -5,11 +5,6 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xn8jj"]
 bg_color = Color(0, 0.792157, 0.952941, 0.72549)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0, 1, 0.952941, 1)
 
 [node name="Context Menu" type="Panel"]
 clip_contents = true
@@ -50,59 +45,7 @@ mouse_filter = 2
 text = "Hello, World!"
 fit_content = true
 
-[node name="Context Menu Option2" type="Panel" parent="VBoxContainer"]
-self_modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_xn8jj")
-script = ExtResource("2_ccid5")
-
-[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/Context Menu Option2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/Context Menu Option2/CenterContainer"]
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 2
-mouse_filter = 2
-text = "Hello, World!"
-fit_content = true
-
-[node name="Context Menu Option3" type="Panel" parent="VBoxContainer"]
-self_modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(0, 30)
-layout_mode = 2
-mouse_filter = 1
-theme_override_styles/panel = SubResource("StyleBoxFlat_xn8jj")
-script = ExtResource("2_ccid5")
-
-[node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/Context Menu Option3"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="RichTextLabel" type="RichTextLabel" parent="VBoxContainer/Context Menu Option3/CenterContainer"]
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 2
-mouse_filter = 2
-text = "Hello, World!"
-fit_content = true
-
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="VBoxContainer/Context Menu Option" to="VBoxContainer/Context Menu Option" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="VBoxContainer/Context Menu Option" to="VBoxContainer/Context Menu Option" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="VBoxContainer/Context Menu Option2" to="VBoxContainer/Context Menu Option2" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="VBoxContainer/Context Menu Option2" to="VBoxContainer/Context Menu Option2" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="VBoxContainer/Context Menu Option3" to="VBoxContainer/Context Menu Option3" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="VBoxContainer/Context Menu Option3" to="VBoxContainer/Context Menu Option3" method="_on_mouse_exited"]
