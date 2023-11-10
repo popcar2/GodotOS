@@ -4,6 +4,10 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xn8jj"]
 bg_color = Color(0, 0.792157, 0.952941, 0.72549)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
 
 [node name="Context Menu Option" type="Panel"]
 self_modulate = Color(1, 1, 1, 0.3)
@@ -17,6 +21,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -65.0
+offset_right = 85.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
