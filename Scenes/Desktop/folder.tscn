@@ -114,6 +114,7 @@ offset_bottom = 40.0
 mouse_filter = 2
 
 [node name="Folder Title Edit" type="TextEdit" parent="Control/CenterContainer2"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(95, 40)
 layout_mode = 2
 theme_override_constants/line_spacing = 0

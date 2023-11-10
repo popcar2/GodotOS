@@ -1,6 +1,9 @@
 extends Panel
 
-var right_click_handler: PackedScene = preload("res://Scenes/Autoloads/Context Menu/right_click_handler.tscn")
+const right_click_handler: PackedScene = preload("res://Scenes/Autoloads/Context Menu/right_click_handler.tscn")
+const context_menu_option: PackedScene = preload("res://Scenes/Autoloads/Context Menu/context_menu_option.tscn")
+
+var target: Control
 
 var is_mouse_over: bool
 
@@ -15,11 +18,23 @@ func _add_right_click_handler(node: Node):
 
 ## This gets called from right_click_handler
 func handle_right_click(node: Control):
-	show_context_menu()
+	for option in $VBoxContainer.get_children():
+		option.queue_free()
+	
 	if node is FakeFolder:
-		print("Hit a folder")
+		target = node
+		var rename_option: Control = context_menu_option.instantiate()
+		if node.file_type == FakeFolder.file_type_enum.FOLDER:
+			rename_option.get_node("%Option Text").text = "Rename Folder"
+		else:
+			rename_option.get_node("%Option Text").text = "Rename File"
+		rename_option.option_clicked.connect(_handle_folder_rename)
+		$VBoxContainer.add_child(rename_option)
 	elif node is FileManagerWindow:
+		target = node
 		print("Hit a window")
+	
+	show_context_menu()
 
 func _input(event: InputEvent):
 	if event is InputEventMouseButton and event.is_pressed():
@@ -55,3 +70,6 @@ func clamp_inside_viewport():
 	
 	global_position.y = clamp(global_position.y, 0, game_window_size.y - size.y - 40)
 	global_position.x = clamp(global_position.x, 0, game_window_size.x - size.x)
+
+func _handle_folder_rename():
+	target.get_node("%Folder Title Edit").show_rename()
