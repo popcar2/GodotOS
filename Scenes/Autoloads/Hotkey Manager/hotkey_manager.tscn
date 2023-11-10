@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b0rebfqhlcmhp"]
 
-[ext_resource type="Script" path="res://Scenes/Autoloads/hotkey_manager.gd" id="1_lg507"]
+[ext_resource type="Script" path="res://Scenes/Autoloads/Hotkey Manager/hotkey_manager.gd" id="1_lg507"]
 
 [node name="Hotkey Manager" type="Node"]
 script = ExtResource("1_lg507")

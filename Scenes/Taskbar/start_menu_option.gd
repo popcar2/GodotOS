@@ -18,16 +18,15 @@ func _gui_input(event: InputEvent):
 func _on_mouse_entered():
 	is_mouse_over = true
 	$"Background Panel".visible = true
-	$"Background Panel".modulate.a = 0
 	var tween: Tween = create_tween()
 	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
-	tween.tween_property($"Background Panel", "modulate:a", 1, 0.25)
+	tween.tween_property($"Background Panel", "modulate:a", 1, 0.2)
 
 func _on_mouse_exited():
 	is_mouse_over = false
 	var tween: Tween = create_tween()
 	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
-	await tween.tween_property($"Background Panel", "modulate:a", 0, 0.25).finished
+	await tween.tween_property($"Background Panel", "modulate:a", 0, 0.2).finished
 	if !is_mouse_over:
 		$"Background Panel".visible = false
 

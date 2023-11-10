@@ -45,6 +45,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 1
 
 [node name="Start Menu Option" parent="Start Menu/VBoxContainer" instance=ExtResource("2_1ualm")]
 layout_mode = 2

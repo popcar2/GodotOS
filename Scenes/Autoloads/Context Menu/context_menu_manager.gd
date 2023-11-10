@@ -1,5 +1,7 @@
 extends Panel
 
+var target: Control
+
 var is_mouse_over: bool
 
 func _ready():
@@ -14,7 +16,7 @@ func _input(event: InputEvent):
 
 func show_context_menu():
 	visible = true
-	global_position = get_global_mouse_position()
+	global_position = get_global_mouse_position() + Vector2(10, 15)
 	clamp_inside_viewport()
 	modulate.a = 0
 	var tween: Tween = create_tween()

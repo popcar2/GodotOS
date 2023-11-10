@@ -36,6 +36,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 script = ExtResource("1_jwauq")
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -57,6 +58,7 @@ offset_top = 75.0
 offset_right = 400.0
 offset_bottom = 275.0
 grow_horizontal = 2
+mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 96
 bbcode_enabled = true
 text = "[center]PONG"
