@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0r424y7glqu4"]
+
+[ext_resource type="Script" path="res://Scenes/Autoloads/Context Menu/right_click_handler.gd" id="1_8oxm2"]
+
+[node name="RightClickHandler" type="Node"]
+script = ExtResource("1_8oxm2")

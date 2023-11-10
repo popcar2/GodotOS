@@ -1,4 +1,5 @@
 extends HFlowContainer
+class_name FileManagerWindow
 
 var file_path: String # Relative to user://files/
 

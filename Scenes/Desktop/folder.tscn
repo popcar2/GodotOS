@@ -33,7 +33,7 @@ corner_radius_bottom_left = 10
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r1fwe"]
 
-[node name="Folder" type="Control" groups=["folder"]]
+[node name="Folder" type="Control" groups=["folder", "right_click_enabled"]]
 custom_minimum_size = Vector2(80, 110)
 layout_mode = 3
 anchors_preset = 0

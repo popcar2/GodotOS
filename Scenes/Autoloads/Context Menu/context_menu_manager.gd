@@ -1,15 +1,29 @@
 extends Panel
 
+var right_click_handler: PackedScene = preload("res://Scenes/Autoloads/Context Menu/right_click_handler.tscn")
+
 var is_mouse_over: bool
 
 func _ready():
 	visible = false
+	get_tree().node_added.connect(_add_right_click_handler)
+
+## Adds right click handler to every node in the group
+func _add_right_click_handler(node: Node):
+	if node.is_in_group("right_click_enabled"):
+		node.add_child(right_click_handler.instantiate())
+
+## This gets called from right_click_handler
+func handle_right_click(node: Control):
+	show_context_menu()
+	if node is FakeFolder:
+		print("Hit a folder")
+	elif node is FileManagerWindow:
+		print("Hit a window")
 
 func _input(event: InputEvent):
 	if event is InputEventMouseButton and event.is_pressed():
-		if event.button_index == 2 and !is_mouse_over:
-			show_context_menu()
-		elif event.button_index == 1 and !is_mouse_over and visible:
+		if event.button_index == 1 and !is_mouse_over and visible:
 			hide_context_menu()
 
 func show_context_menu():
