@@ -24,6 +24,7 @@ config/icon="res://icon.svg"
 DefaultValues="res://Scenes/Autoloads/Default Values/default_values.tscn"
 HotkeyManager="res://Scenes/Autoloads/Hotkey Manager/hotkey_manager.tscn"
 ContextMenu="*res://Scenes/Autoloads/Context Menu/context_menu.tscn"
+NotificationManager="*res://Scenes/Autoloads/Notification Manager/notification_manager.tscn"
 
 [file_customization]
 
