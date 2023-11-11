@@ -6,13 +6,18 @@ var collision_data: KinematicCollision2D
 @export var rand_angle: float = 50
 
 func _ready():
-	velocity = Vector2(350,0)
+	velocity = Vector2(400,0)
 
 func _physics_process(delta):
 	collision_data = move_and_collide(velocity * delta)
 	if collision_data:
 		if collision_data.get_collider() is CharacterBody2D:
-			velocity.x *= speed_gain_percent
+			if velocity.x < 700:
+				velocity.x *= speed_gain_percent
+			elif velocity.x < 900:
+				velocity.x *= speed_gain_percent / 2
+			else:
+				velocity.x *= speed_gain_percent / 4
 			velocity.y += (global_position.y - collision_data.get_collider().global_position.y) * 4
 			velocity.y += randf_range(-rand_angle, rand_angle)
 		velocity = velocity.bounce(collision_data.get_normal())
