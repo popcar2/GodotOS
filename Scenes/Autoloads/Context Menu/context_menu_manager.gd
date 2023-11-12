@@ -23,13 +23,7 @@ func handle_right_click(node: Control):
 	
 	if node is FakeFolder:
 		target = node
-		var rename_option: Control = context_menu_option.instantiate()
-		if node.file_type == FakeFolder.file_type_enum.FOLDER:
-			rename_option.get_node("%Option Text").text = "Rename Folder"
-		else:
-			rename_option.get_node("%Option Text").text = "Rename File"
-		rename_option.option_clicked.connect(_handle_folder_rename)
-		$VBoxContainer.add_child(rename_option)
+		add_folder_options()
 	elif node is FileManagerWindow:
 		target = node
 		print("Hit a window")
@@ -55,6 +49,34 @@ func hide_context_menu():
 	if modulate.a == 0:
 		visible = false
 
+# ----------
+
+func add_folder_options():
+	var type_name: String
+	if target.file_type == FakeFolder.file_type_enum.FOLDER:
+		type_name = "Folder"
+	else:
+		type_name = "File"
+	
+	var rename_option: Control = context_menu_option.instantiate()
+	rename_option.get_node("%Option Text").text = "Rename %s" % type_name
+	rename_option.option_clicked.connect(_handle_folder_rename)
+	
+	var delete_option: Control = context_menu_option.instantiate()
+	delete_option.get_node("%Option Text").text = "Move to trash"
+	delete_option.option_clicked.connect(_handle_folder_delete)
+	
+	$VBoxContainer.add_child(rename_option)
+	$VBoxContainer.add_child(delete_option)
+
+# ----------
+
+func _handle_folder_rename():
+	target.get_node("%Folder Title Edit").show_rename()
+
+func _handle_folder_delete():
+	target.delete_file()
+
 func _on_mouse_entered():
 	is_mouse_over = true
 
@@ -70,6 +92,3 @@ func clamp_inside_viewport():
 	
 	global_position.y = clamp(global_position.y, 0, game_window_size.y - size.y - 40)
 	global_position.x = clamp(global_position.x, 0, game_window_size.x - size.x)
-
-func _handle_folder_rename():
-	target.get_node("%Folder Title Edit").show_rename()

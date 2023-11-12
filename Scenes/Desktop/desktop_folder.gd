@@ -44,21 +44,7 @@ func _input(event: InputEvent):
 				else:
 					spawn_window()
 	elif event.is_action_pressed("delete") and $"Selected Highlight".visible:
-		if file_type == file_type_enum.FOLDER:
-			var delete_path: String = ProjectSettings.globalize_path("user://files/%s" % folder_path)
-			if !DirAccess.dir_exists_absolute(delete_path):
-				return
-			OS.move_to_trash(delete_path)
-			NotificationManager.spawn_notification("Deleted folder \"%s\" successfully!" % folder_name)
-		else:
-			var delete_path: String = ProjectSettings.globalize_path("user://files/%s/%s" % [folder_path, folder_name])
-			if !FileAccess.file_exists(delete_path):
-				return
-			OS.move_to_trash(delete_path)
-			NotificationManager.spawn_notification("Deleted file \"%s\" successfully!" % folder_name)
-		for file_manager in get_tree().get_nodes_in_group("file_manager_window"):
-			file_manager.reload_window("")
-		get_tree().get_first_node_in_group("desktop_file_manager").refresh_files()
+		delete_file()
 
 func _on_mouse_entered():
 	show_hover_highlight()
@@ -121,4 +107,19 @@ func spawn_window():
 	get_tree().get_first_node_in_group("taskbar_buttons").add_child(taskbar_button)
 
 func delete_file():
-	pass
+	if file_type == file_type_enum.FOLDER:
+		var delete_path: String = ProjectSettings.globalize_path("user://files/%s" % folder_path)
+		if !DirAccess.dir_exists_absolute(delete_path):
+			return
+		OS.move_to_trash(delete_path)
+	else:
+		var delete_path: String = ProjectSettings.globalize_path("user://files/%s/%s" % [folder_path, folder_name])
+		if !FileAccess.file_exists(delete_path):
+			return
+		OS.move_to_trash(delete_path)
+	for file_manager in get_tree().get_nodes_in_group("file_manager_window"):
+		file_manager.reload_window("")
+	get_tree().get_first_node_in_group("desktop_file_manager").refresh_files()
+	# TODO make the color file_type dependent?
+	NotificationManager.spawn_notification("Moved [color=59ea90][wave freq=7]%s[/wave][/color] to trash!" % folder_name)
+	queue_free()
