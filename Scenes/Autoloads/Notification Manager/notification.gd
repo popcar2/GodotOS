@@ -17,9 +17,9 @@ func adjust_width():
 func play_animation():
 	var tween: Tween = create_tween()
 	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
-	tween.tween_property(self, "position:y", position.y - 75, 2)
+	tween.tween_property(self, "position:y", position.y - 75, 3)
 	
-	await get_tree().create_timer(1).timeout
+	await get_tree().create_timer(2).timeout
 	var fade: Tween = create_tween()
 	fade.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
 	await fade.tween_property(self, "modulate:a", 0, 1.5).finished

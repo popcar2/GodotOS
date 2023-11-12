@@ -7,6 +7,11 @@ func _ready():
 	if !user_dir.dir_exists("files"):
 		user_dir.make_dir("files")
 	
+	refresh_files()
+
+func refresh_files():
+	for child in get_children():
+		child.queue_free()
 	for folder_name: String in DirAccess.get_directories_at("user://files/"):
 		var folder: FakeFolder = load("res://Scenes/Desktop/folder.tscn").instantiate()
 		folder.folder_path = folder_name

@@ -35,7 +35,7 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VFlowContainer" type="VFlowContainer" parent="MarginContainer"]
+[node name="VFlowContainer" type="VFlowContainer" parent="MarginContainer" groups=["desktop_file_manager"]]
 layout_mode = 2
 theme_override_constants/h_separation = 20
 script = ExtResource("1_c0q37")
