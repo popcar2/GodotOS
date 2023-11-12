@@ -39,6 +39,7 @@ folder_colors={
 [filesystem]
 
 import/blender/enabled=false
+import/fbx/enabled=false
 
 [input]
 
@@ -114,5 +115,6 @@ delete={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=2
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
