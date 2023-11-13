@@ -12,7 +12,8 @@ func reload_window(folder_path: String):
 		file_path = folder_path
 	
 	for child in get_children():
-		child.queue_free()
+		if child is Control:
+			child.queue_free()
 	
 	populate_window()
 	
@@ -42,6 +43,29 @@ func populate_window():
 			folder.file_type = FakeFolder.file_type_enum.IMAGE
 			add_child(folder)
 
+func new_folder():
+	var new_folder_path: String = "user://files/%s/New Folder" % file_path
+	if DirAccess.dir_exists_absolute(new_folder_path):
+		for i in range(2, 1000):
+			new_folder_path = "user://files/%s/New Folder %d" % [file_path, i]
+			if !DirAccess.dir_exists_absolute(new_folder_path):
+				break
+	
+	DirAccess.make_dir_absolute(new_folder_path)
+	reload_window("")
+
+func new_file(extension: String):
+	var new_file_path: String = "user://files/%s/New File%s" % [file_path, extension]
+	
+	if FileAccess.file_exists(new_file_path):
+		for i in range(2, 1000):
+			new_file_path = "user://files/%s/New File %d%s" % [file_path, i, extension]
+			if !FileAccess.file_exists(new_file_path):
+				break
+	
+	# Just touches the file
+	var _file: FileAccess = FileAccess.open(new_file_path, FileAccess.WRITE)
+	reload_window("")
 
 func _on_back_button_pressed():
 	#TODO move it to a position that's less stupid

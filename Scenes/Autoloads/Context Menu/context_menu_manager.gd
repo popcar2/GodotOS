@@ -6,6 +6,7 @@ const context_menu_option: PackedScene = preload("res://Scenes/Autoloads/Context
 var target: Control
 
 var is_mouse_over: bool
+var is_shown_recently: bool
 
 func _ready():
 	visible = false
@@ -18,15 +19,20 @@ func _add_right_click_handler(node: Node):
 
 ## This gets called from right_click_handler
 func handle_right_click(node: Control):
+	if is_shown_recently:
+		return
+	
 	for option in $VBoxContainer.get_children():
 		option.queue_free()
 	
 	if node is FakeFolder:
 		target = node
 		add_folder_options()
+		play_cooldown()
 	elif node is FileManagerWindow:
 		target = node
-		print("Hit a window")
+		add_file_manager_options()
+		play_cooldown()
 	
 	show_context_menu()
 
@@ -69,6 +75,18 @@ func add_folder_options():
 	$VBoxContainer.add_child(rename_option)
 	$VBoxContainer.add_child(delete_option)
 
+func add_file_manager_options():
+	var new_folder_option: Control = context_menu_option.instantiate()
+	new_folder_option.get_node("%Option Text").text = "New Folder"
+	new_folder_option.option_clicked.connect(_handle_new_folder)
+	
+	var new_text_file_option: Control = context_menu_option.instantiate()
+	new_text_file_option.get_node("%Option Text").text = "New Text File"
+	new_text_file_option.option_clicked.connect(_handle_new_text_file)
+	
+	$VBoxContainer.add_child(new_folder_option)
+	$VBoxContainer.add_child(new_text_file_option)
+
 # ----------
 
 func _handle_folder_rename():
@@ -77,11 +95,24 @@ func _handle_folder_rename():
 func _handle_folder_delete():
 	target.delete_file()
 
+func _handle_new_folder():
+	target.new_folder()
+
+func _handle_new_text_file():
+	target.new_file(".txt")
+
+# ----------
+
 func _on_mouse_entered():
 	is_mouse_over = true
 
 func _on_mouse_exited():
 	is_mouse_over = false
+
+func play_cooldown():
+	is_shown_recently = true
+	await get_tree().create_timer(0.1).timeout
+	is_shown_recently = false
 
 func clamp_inside_viewport():
 	var game_window_size: Vector2 = get_viewport_rect().size

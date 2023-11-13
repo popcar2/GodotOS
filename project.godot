@@ -41,6 +41,12 @@ folder_colors={
 import/blender/enabled=false
 import/fbx/enabled=false
 
+[gui]
+
+theme/default_font_hinting=2
+theme/default_font_multichannel_signed_distance_field=true
+theme/lcd_subpixel_layout=0
+
 [input]
 
 ui_accept={

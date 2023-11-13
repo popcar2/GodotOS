@@ -14,8 +14,8 @@ func _input(event: InputEvent):
 	
 	#TODO notification for zoom levels
 	if event.is_action_pressed("zoom_in"):
-		if get_tree().root.content_scale_factor < 4:
-			get_tree().root.content_scale_factor += 0.125
+		if get_window().content_scale_factor < 4:
+			get_window().content_scale_factor += 0.125
 	elif event.is_action_pressed("zoom_out"):
-		if get_tree().root.content_scale_factor > 0.25:
-			get_tree().root.content_scale_factor -= 0.125
+		if get_window().content_scale_factor > 0.25:
+			get_window().content_scale_factor -= 0.125
