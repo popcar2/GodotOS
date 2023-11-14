@@ -49,11 +49,11 @@ func show_context_menu():
 	clamp_inside_viewport()
 	modulate.a = 0
 	var tween: Tween = create_tween()
-	tween.tween_property(self, "modulate:a", 1, 0.3)
+	tween.tween_property(self, "modulate:a", 1, 0.15)
 
 func hide_context_menu():
 	var tween: Tween = create_tween()
-	await tween.tween_property(self, "modulate:a", 0, 0.15).finished
+	await tween.tween_property(self, "modulate:a", 0, 0.10).finished
 	if modulate.a == 0:
 		visible = false
 

@@ -25,7 +25,7 @@ offset_top = 29.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-ratio = 1.777
+ratio = 1.7778
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="AspectRatioContainer" index="0"]
 layout_mode = 2
