@@ -14,7 +14,7 @@ func _physics_process(delta):
 		if collision_data.get_collider() is CharacterBody2D:
 			if abs(velocity.x) < 700:
 				velocity.x *= speed_gain_percent
-			elif abs(velocity.x) < 1100:
+			elif abs(velocity.x) < 1000:
 				velocity.x *= speed_gain_percent - 0.025
 			else:
 				velocity.x *= speed_gain_percent - 0.028
