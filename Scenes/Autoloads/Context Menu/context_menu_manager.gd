@@ -10,6 +10,8 @@ var is_shown_recently: bool
 
 func _ready():
 	visible = false
+	for node in get_tree().get_nodes_in_group("right_click_enabled"):
+		node.add_child(right_click_handler.instantiate())
 	get_tree().node_added.connect(_add_right_click_handler)
 
 ## Adds right click handler to every node in the group
@@ -29,7 +31,7 @@ func handle_right_click(node: Control):
 		target = node
 		add_folder_options()
 		play_cooldown()
-	elif node is FileManagerWindow:
+	elif node is FileManagerWindow or DesktopFileManager:
 		target = node
 		add_file_manager_options()
 		play_cooldown()
