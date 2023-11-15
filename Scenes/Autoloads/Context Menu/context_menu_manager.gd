@@ -40,7 +40,7 @@ func handle_right_click(node: Control):
 
 func _input(event: InputEvent):
 	if event is InputEventMouseButton and event.is_pressed():
-		if event.button_index == 1 and !is_mouse_over and visible:
+		if event.button_index == 1 and visible:
 			hide_context_menu()
 
 func show_context_menu():
