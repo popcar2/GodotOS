@@ -112,13 +112,19 @@ func delete_file():
 		if !DirAccess.dir_exists_absolute(delete_path):
 			return
 		OS.move_to_trash(delete_path)
+		for file_manager: FileManagerWindow in get_tree().get_nodes_in_group("file_manager_window"):
+			if file_manager.file_path.begins_with(folder_path):
+				file_manager.close_window()
+			else:
+				file_manager.reload_window("")
 	else:
 		var delete_path: String = ProjectSettings.globalize_path("user://files/%s/%s" % [folder_path, folder_name])
 		if !FileAccess.file_exists(delete_path):
 			return
 		OS.move_to_trash(delete_path)
-	for file_manager in get_tree().get_nodes_in_group("file_manager_window"):
-		file_manager.reload_window("")
+		for file_manager in get_tree().get_nodes_in_group("file_manager_window"):
+			file_manager.reload_window("")
+	
 	get_tree().get_first_node_in_group("desktop_file_manager").refresh_files()
 	# TODO make the color file_type dependent?
 	NotificationManager.spawn_notification("Moved [color=59ea90][wave freq=7]%s[/wave][/color] to trash!" % folder_name)

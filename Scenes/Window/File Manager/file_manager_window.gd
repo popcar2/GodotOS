@@ -52,7 +52,10 @@ func new_folder():
 				break
 	
 	DirAccess.make_dir_absolute(new_folder_path)
-	reload_window("")
+	for file_manager in get_tree().get_nodes_in_group("file_manager_window"):
+		if file_manager.file_path.begins_with(file_path):
+			file_manager.reload_window("")
+	
 
 func new_file(extension: String):
 	var new_file_path: String = "user://files/%s/New File%s" % [file_path, extension]
@@ -66,6 +69,9 @@ func new_file(extension: String):
 	# Just touches the file
 	var _file: FileAccess = FileAccess.open(new_file_path, FileAccess.WRITE)
 	reload_window("")
+
+func close_window():
+	$"../.."._on_close_button_pressed()
 
 func _on_back_button_pressed():
 	#TODO move it to a position that's less stupid

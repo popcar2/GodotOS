@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://ctmotds7d1sr1" path="res://Scenes/Autoloads/Context Menu/context_menu_option.tscn" id="2_v21do"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qnd7w"]
-bg_color = Color(0.2, 0.2, 0.3, 1)
+bg_color = Color(0.2, 0.2, 0.25, 1)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
