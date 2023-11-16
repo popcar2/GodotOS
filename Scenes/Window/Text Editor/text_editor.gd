@@ -1,4 +1,4 @@
-extends TextEdit
+extends CodeEdit
 
 var text_edited: bool
 var file_path: String : 
@@ -26,13 +26,17 @@ func _on_text_changed():
 	if text_edited:
 		return
 	
-	if Input.is_action_just_pressed("save"):
-		pass
-	
 	text_edited = true
 	$"../../Top Bar/Title Text".text += '*' 
 
 func save_file():
+	if !text_edited:
+		return
+	
+	if !FileAccess.file_exists("user://files/%s" % file_path):
+		NotificationManager.spawn_notification("[color=fc6c64]Couldn't save text file: File no longer exists")
+		return
+	
 	var file: FileAccess = FileAccess.open("user://files/%s" % file_path, FileAccess.WRITE)
 	file.store_string(text)
 	
@@ -40,9 +44,8 @@ func save_file():
 	text_edited = false
 	
 	var saved_notification: Panel = load("res://Scenes/Window/Text Editor/saved_notification.tscn").instantiate()
-	saved_notification.global_position.y = global_position.y + size.y - saved_notification.size.y
-	saved_notification.global_position.x = global_position.x + size.x - saved_notification.size.x
-	get_tree().current_scene.add_child(saved_notification)
-	#TODO make this the parent?
+	saved_notification.position.y = $"../..".size.y - saved_notification.size.y - 15
+	saved_notification.position.x = $"../..".size.x - saved_notification.size.x - 15
+	$"../..".add_child(saved_notification)
 
 #TODO add warning when someone exits without saving

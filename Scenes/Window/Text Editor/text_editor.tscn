@@ -26,7 +26,7 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="Text Editor" type="TextEdit" parent="MarginContainer" index="0" groups=["text_editor_window"]]
+[node name="Text Editor" type="CodeEdit" parent="MarginContainer" index="0" groups=["text_editor_window"]]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 1
@@ -35,8 +35,9 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_uonls")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_jhtvb")
 placeholder_text = "Start writing!"
 caret_blink = true
+highlight_all_occurrences = true
 draw_tabs = true
+gutters_draw_line_numbers = true
 script = ExtResource("2_4wajo")
 
 [connection signal="text_changed" from="MarginContainer/Text Editor" to="MarginContainer/Text Editor" method="_on_text_changed"]
-[connection signal="tree_exited" from="MarginContainer/Text Editor" to="MarginContainer/Text Editor" method="_on_tree_exited"]
