@@ -18,6 +18,7 @@ corner_radius_bottom_left = 3
 corner_detail = 5
 
 [node name="Window" instance=ExtResource("1_xona8")]
+offset_right = 285.0
 theme = SubResource("Theme_nruh0")
 theme_override_styles/panel = SubResource("StyleBoxFlat_8j66m")
 
