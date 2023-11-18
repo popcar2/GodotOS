@@ -1,4 +1,4 @@
-extends HFlowContainer
+extends SmoothContainer
 class_name FileManagerWindow
 
 var file_path: String # Relative to user://files/
@@ -42,6 +42,10 @@ func populate_window():
 			folder.folder_path = file_path
 			folder.file_type = FakeFolder.file_type_enum.IMAGE
 			add_child(folder)
+	
+	await get_tree().process_frame
+	await get_tree().process_frame # TODO fix whatever's causing a race condition :/
+	update_positions()
 
 func new_folder():
 	var new_folder_path: String = "user://files/%s/New Folder" % file_path

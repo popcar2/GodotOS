@@ -18,7 +18,6 @@ func _physics_process(delta):
 				velocity.x *= speed_gain_percent - 0.025
 			else:
 				velocity.x *= speed_gain_percent - 0.028
-			print(velocity.x)
 			velocity.y += (global_position.y - collision_data.get_collider().global_position.y) * 4
 			velocity.y += randf_range(-rand_angle, rand_angle)
 		velocity = velocity.bounce(collision_data.get_normal())

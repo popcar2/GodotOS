@@ -21,7 +21,7 @@ corner_detail = 5
 theme = SubResource("Theme_nruh0")
 theme_override_styles/panel = SubResource("StyleBoxFlat_8j66m")
 
-[node name="MarginContainer" type="MarginContainer" parent="." index="0"]
+[node name="ScrollContainer" type="ScrollContainer" parent="." index="0"]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 1.0
@@ -29,17 +29,19 @@ anchor_bottom = 1.0
 offset_top = 30.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 15
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
 
-[node name="File Manager Window" type="HFlowContainer" parent="MarginContainer" index="0" groups=["file_manager_window", "right_click_enabled"]]
+[node name="File Manager Window" type="Control" parent="ScrollContainer" index="0" groups=["file_manager_window", "right_click_enabled"]]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/h_separation = 35
-theme_override_constants/v_separation = 10
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("2_prcfs")
+horizontal_spacing = 0
+vertical_spacing = 0
+left_margin = 15
+up_margin = 15
+right_margin = 15
+down_margin = 15
 
 [node name="Back Button" type="Button" parent="Top Bar" index="2"]
 custom_minimum_size = Vector2(40, 0)
@@ -52,4 +54,4 @@ focus_mode = 0
 mouse_filter = 1
 text = "^"
 
-[connection signal="pressed" from="Top Bar/Back Button" to="MarginContainer/File Manager Window" method="_on_back_button_pressed"]
+[connection signal="pressed" from="Top Bar/Back Button" to="ScrollContainer/File Manager Window" method="_on_back_button_pressed"]
