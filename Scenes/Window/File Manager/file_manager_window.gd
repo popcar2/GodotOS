@@ -5,6 +5,7 @@ var file_path: String # Relative to user://files/
 
 func _ready():
 	populate_window()
+	$"../../Resize Drag Spot".window_resized.connect(update_positions)
 
 func reload_window(folder_path: String):
 	# Reload the same path if not given folder_path
@@ -25,7 +26,6 @@ func populate_window():
 		var folder: Control = load("res://Scenes/Desktop/folder.tscn").instantiate()
 		folder.folder_name = folder_name
 		folder.folder_path = "%s/%s" % [file_path, folder_name]
-		folder.scale = Vector2(0.75, 0.75)
 		add_child(folder)
 	
 	for file_name: String in DirAccess.get_files_at("user://files/%s" % file_path):

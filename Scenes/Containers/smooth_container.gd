@@ -29,9 +29,6 @@ var start_min_size: Vector2
 func _ready():
 	# I don't know why but having a container parent forces this node's size to be (0, 0) in the first frame
 	await get_tree().physics_frame
-	
-	# Change this signal to whenever you'd like to update
-	get_window().size_changed.connect(update_positions)
 	start_min_size = custom_minimum_size
 	update_positions(false)
 
