@@ -114,15 +114,18 @@ func delete_file():
 		for file_manager: FileManagerWindow in get_tree().get_nodes_in_group("file_manager_window"):
 			if file_manager.file_path.begins_with(folder_path):
 				file_manager.close_window()
-			else:
-				file_manager.reload_window("")
+			elif get_parent() is FileManagerWindow and file_manager.file_path == get_parent().file_path:
+				file_manager.delete_file_with_name(folder_name)
+				file_manager.update_positions()
 	else:
 		var delete_path: String = ProjectSettings.globalize_path("user://files/%s/%s" % [folder_path, folder_name])
 		if !FileAccess.file_exists(delete_path):
 			return
 		OS.move_to_trash(delete_path)
-		for file_manager in get_tree().get_nodes_in_group("file_manager_window"):
-			file_manager.reload_window("")
+		for file_manager: FileManagerWindow in get_tree().get_nodes_in_group("file_manager_window"):
+			if file_manager.file_path == folder_path:
+				file_manager.delete_file_with_name(folder_name)
+				file_manager.update_positions()
 	
 	get_tree().get_first_node_in_group("desktop_file_manager").refresh_files()
 	# TODO make the color file_type dependent?

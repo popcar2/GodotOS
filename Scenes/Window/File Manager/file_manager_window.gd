@@ -74,6 +74,14 @@ func new_file(extension: String):
 	var _file: FileAccess = FileAccess.open(new_file_path, FileAccess.WRITE)
 	reload_window("")
 
+func delete_file_with_name(file_name: String):
+	for child in get_children():
+		if !(child is FakeFolder):
+			continue
+		
+		if child.folder_name == file_name:
+			child.queue_free()
+
 func close_window():
 	$"../.."._on_close_button_pressed()
 
