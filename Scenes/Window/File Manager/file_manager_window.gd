@@ -13,7 +13,7 @@ func reload_window(folder_path: String):
 		file_path = folder_path
 	
 	for child in get_children():
-		if child is Control:
+		if child is FakeFolder:
 			child.queue_free()
 	
 	populate_window()
@@ -23,29 +23,25 @@ func reload_window(folder_path: String):
 
 func populate_window():
 	for folder_name in DirAccess.get_directories_at("user://files/%s" % file_path):
-		var folder: Control = load("res://Scenes/Desktop/folder.tscn").instantiate()
-		folder.folder_name = folder_name
-		folder.folder_path = "%s/%s" % [file_path, folder_name]
-		add_child(folder)
+		instantiate_file(folder_name, "%s/%s" % [file_path, folder_name], FakeFolder.file_type_enum.FOLDER)
 	
 	for file_name: String in DirAccess.get_files_at("user://files/%s" % file_path):
 		if file_name.ends_with(".txt"):
-			var folder: FakeFolder = load("res://Scenes/Desktop/folder.tscn").instantiate()
-			folder.folder_name = file_name
-			folder.folder_path = file_path
-			folder.file_type = FakeFolder.file_type_enum.TEXT_FILE
-			add_child(folder)
+			instantiate_file(file_name, file_path, FakeFolder.file_type_enum.TEXT_FILE)
 		elif file_name.ends_with(".png") or file_name.ends_with(".jpg") or file_name.ends_with(".jpeg")\
 		or file_name.ends_with(".webp"):
-			var folder: FakeFolder = load("res://Scenes/Desktop/folder.tscn").instantiate()
-			folder.folder_name = file_name
-			folder.folder_path = file_path
-			folder.file_type = FakeFolder.file_type_enum.IMAGE
-			add_child(folder)
+			instantiate_file(file_name, file_path, FakeFolder.file_type_enum.IMAGE)
 	
 	await get_tree().process_frame
 	await get_tree().process_frame # TODO fix whatever's causing a race condition :/
 	update_positions()
+
+func instantiate_file(file_name: String, file_path: String, file_type: FakeFolder.file_type_enum):
+	var folder: FakeFolder = load("res://Scenes/Desktop/folder.tscn").instantiate()
+	folder.folder_name = file_name
+	folder.folder_path = file_path
+	folder.file_type = file_type
+	add_child(folder)
 
 func new_folder():
 	var new_folder_path: String = "user://files/%s/New Folder" % file_path
