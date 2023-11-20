@@ -46,35 +46,34 @@ func instantiate_file(file_name: String, path: String, file_type: FakeFolder.fil
 	if !sort:
 		return
 	
-	var final_index: int
+	var final_index: int = 0
 	for child in get_children():
 		if !(child is FakeFolder) or !(child.file_type == file_type):
 			continue
 		if child.folder_name < file_name:
-			final_index = child.get_index()
+			final_index = child.get_index() + 1
 	
 	await get_tree().process_frame
 	move_child(folder, final_index)
 
 func new_folder():
-	var new_folder_path: String = "%s/New Folder" % file_path
 	var new_folder_name: String = "New Folder"
-	if DirAccess.dir_exists_absolute("user://files/%s" % new_folder_path):
+	print("user://files/%s/%s" % [file_path, new_folder_name])
+	if DirAccess.dir_exists_absolute("user://files/%s/%s" % [file_path, new_folder_name]):
 		for i in range(2, 1000):
-			new_folder_path = "%s/New Folder %d" % [file_path, i]
-			if !DirAccess.dir_exists_absolute("user://files/%s" % new_folder_path):
-				new_folder_name = "New Folder %d" % i
+			new_folder_name = "New Folder %d" % i
+			if !DirAccess.dir_exists_absolute("user://files/%s/%s" % [file_path, new_folder_name]):
 				break
 	
-	DirAccess.make_dir_absolute("user://files/%s" % new_folder_path)
+	DirAccess.make_dir_absolute("user://files/%s/%s" % [file_path, new_folder_name])
 	for file_manager: FileManagerWindow in get_tree().get_nodes_in_group("file_manager_window"):
 		if file_manager.file_path == file_path:
-			file_manager.instantiate_file(new_folder_name, new_folder_path, FakeFolder.file_type_enum.FOLDER, true)
+			file_manager.instantiate_file(new_folder_name, "%s/%s" % [file_path, new_folder_name], FakeFolder.file_type_enum.FOLDER, true)
 			await get_tree().process_frame # Waiting for child to get moved...
 			file_manager.update_positions()
 	
 
-func new_file(extension: String):
+func new_file(extension: String, file_type: FakeFolder.file_type_enum):
 	var new_file_path: String = "user://files/%s/New File%s" % [file_path, extension]
 	
 	if FileAccess.file_exists(new_file_path):
@@ -85,7 +84,6 @@ func new_file(extension: String):
 	
 	# Just touches the file
 	var _file: FileAccess = FileAccess.open(new_file_path, FileAccess.WRITE)
-	reload_window("")
 
 func delete_file_with_name(file_name: String):
 	for child in get_children():
