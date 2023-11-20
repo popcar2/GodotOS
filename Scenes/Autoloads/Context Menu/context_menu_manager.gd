@@ -101,7 +101,7 @@ func _handle_new_folder():
 	target.new_folder()
 
 func _handle_new_text_file():
-	target.new_file(".txt")
+	target.new_file(".txt", FakeFolder.file_type_enum.TEXT_FILE)
 
 # ----------
 

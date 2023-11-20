@@ -46,7 +46,7 @@ func instantiate_file(file_name: String, path: String, file_type: FakeFolder.fil
 	if !sort:
 		return
 	
-	var final_index: int = 0
+	var final_index: int = -1
 	for child in get_children():
 		if !(child is FakeFolder) or !(child.file_type == file_type):
 			continue
@@ -58,7 +58,6 @@ func instantiate_file(file_name: String, path: String, file_type: FakeFolder.fil
 
 func new_folder():
 	var new_folder_name: String = "New Folder"
-	print("user://files/%s/%s" % [file_path, new_folder_name])
 	if DirAccess.dir_exists_absolute("user://files/%s/%s" % [file_path, new_folder_name]):
 		for i in range(2, 1000):
 			new_folder_name = "New Folder %d" % i
@@ -74,16 +73,22 @@ func new_folder():
 	
 
 func new_file(extension: String, file_type: FakeFolder.file_type_enum):
-	var new_file_path: String = "user://files/%s/New File%s" % [file_path, extension]
+	var new_file_name: String = "New File%s" % extension
 	
-	if FileAccess.file_exists(new_file_path):
+	if FileAccess.file_exists("user://files/%s/%s" % [file_path, new_file_name]):
 		for i in range(2, 1000):
-			new_file_path = "user://files/%s/New File %d%s" % [file_path, i, extension]
-			if !FileAccess.file_exists(new_file_path):
+			new_file_name = "New File %d%s" % [i, extension]
+			if !FileAccess.file_exists("user://files/%s/%s" % [file_path, new_file_name]):
 				break
 	
 	# Just touches the file
-	var _file: FileAccess = FileAccess.open(new_file_path, FileAccess.WRITE)
+	var _file: FileAccess = FileAccess.open("user://files/%s/%s" % [file_path, new_file_name], FileAccess.WRITE)
+	
+	for file_manager: FileManagerWindow in get_tree().get_nodes_in_group("file_manager_window"):
+		if file_manager.file_path == file_path:
+			file_manager.instantiate_file(new_file_name, "%s/%s" % [file_path, new_file_name], file_type, true)
+			await get_tree().process_frame # Waiting for child to get moved...
+			file_manager.update_positions()
 
 func delete_file_with_name(file_name: String):
 	for child in get_children():
