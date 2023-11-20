@@ -36,25 +36,42 @@ func populate_window():
 	await get_tree().process_frame # TODO fix whatever's causing a race condition :/
 	update_positions()
 
-func instantiate_file(file_name: String, file_path: String, file_type: FakeFolder.file_type_enum):
+func instantiate_file(file_name: String, path: String, file_type: FakeFolder.file_type_enum, sort: bool = false):
 	var folder: FakeFolder = load("res://Scenes/Desktop/folder.tscn").instantiate()
 	folder.folder_name = file_name
-	folder.folder_path = file_path
+	folder.folder_path = path
 	folder.file_type = file_type
 	add_child(folder)
+	
+	if !sort:
+		return
+	
+	var final_index: int
+	for child in get_children():
+		if !(child is FakeFolder) or !(child.file_type == file_type):
+			continue
+		if child.folder_name < file_name:
+			final_index = child.get_index()
+	
+	await get_tree().process_frame
+	move_child(folder, final_index)
 
 func new_folder():
-	var new_folder_path: String = "user://files/%s/New Folder" % file_path
-	if DirAccess.dir_exists_absolute(new_folder_path):
+	var new_folder_path: String = "%s/New Folder" % file_path
+	var new_folder_name: String = "New Folder"
+	if DirAccess.dir_exists_absolute("user://files/%s" % new_folder_path):
 		for i in range(2, 1000):
-			new_folder_path = "user://files/%s/New Folder %d" % [file_path, i]
-			if !DirAccess.dir_exists_absolute(new_folder_path):
+			new_folder_path = "%s/New Folder %d" % [file_path, i]
+			if !DirAccess.dir_exists_absolute("user://files/%s" % new_folder_path):
+				new_folder_name = "New Folder %d" % i
 				break
 	
-	DirAccess.make_dir_absolute(new_folder_path)
-	for file_manager in get_tree().get_nodes_in_group("file_manager_window"):
-		if file_manager.file_path.begins_with(file_path):
-			file_manager.reload_window("")
+	DirAccess.make_dir_absolute("user://files/%s" % new_folder_path)
+	for file_manager: FileManagerWindow in get_tree().get_nodes_in_group("file_manager_window"):
+		if file_manager.file_path == file_path:
+			file_manager.instantiate_file(new_folder_name, new_folder_path, FakeFolder.file_type_enum.FOLDER, true)
+			await get_tree().process_frame # Waiting for child to get moved...
+			file_manager.update_positions()
 	
 
 func new_file(extension: String):
