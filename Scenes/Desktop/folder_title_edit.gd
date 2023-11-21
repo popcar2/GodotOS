@@ -30,7 +30,12 @@ func trigger_rename():
 	var folder: FakeFolder = $"../../.."
 	if folder.file_type != folder.file_type_enum.FOLDER:
 		var old_folder_name: String = folder.folder_name
-		folder.folder_name = "%s.%s" % [text, folder.folder_name.split('.')[-1]]
+		var new_folder_name: String = "%s.%s" % [text, folder.folder_name.split('.')[-1]]
+		if FileAccess.file_exists("user://files/%s/%s" % [folder.folder_path, folder.folder_name]):
+			cancel_rename()
+			NotificationManager.spawn_notification("That file already exists!")
+			return
+		folder.folder_name = new_folder_name
 		DirAccess.rename_absolute("user://files/%s/%s" % [folder.folder_path, old_folder_name], "user://files/%s/%s" % [folder.folder_path, folder.folder_name])
 		%"Folder Title".text = "[center]%s" % folder.folder_name
 		
@@ -50,8 +55,17 @@ func trigger_rename():
 		var old_folder_path: String = folder.folder_path
 		
 		if old_folder_path.contains("/"):
-			folder.folder_path = "%s%s" % [folder.folder_path.trim_suffix(old_folder_name), text]
+			var new_folder_path: String = "%s%s" % [folder.folder_path.trim_suffix(old_folder_name), text]
+			if DirAccess.dir_exists_absolute("user://files/%s" % new_folder_path):
+				cancel_rename()
+				NotificationManager.spawn_notification("That folder already exists!")
+				return
+			folder.folder_path = new_folder_path
 		else:
+			if DirAccess.dir_exists_absolute("user://files/%s" % text):
+				cancel_rename()
+				NotificationManager.spawn_notification("That folder already exists!")
+				return
 			folder.folder_path = text
 		folder.folder_name = text
 		%"Folder Title".text = "[center]%s" % folder.folder_name
