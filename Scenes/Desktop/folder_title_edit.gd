@@ -31,7 +31,7 @@ func trigger_rename():
 	if folder.file_type != folder.file_type_enum.FOLDER:
 		var old_folder_name: String = folder.folder_name
 		var new_folder_name: String = "%s.%s" % [text, folder.folder_name.split('.')[-1]]
-		if FileAccess.file_exists("user://files/%s/%s" % [folder.folder_path, folder.folder_name]):
+		if FileAccess.file_exists("user://files/%s/%s" % [folder.folder_path, new_folder_name]):
 			cancel_rename()
 			NotificationManager.spawn_notification("That file already exists!")
 			return

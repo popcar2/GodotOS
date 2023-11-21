@@ -51,7 +51,7 @@ func instantiate_file(file_name: String, path: String, file_type: FakeFolder.fil
 func sort_file(folder: FakeFolder):
 	var final_index: int = -1
 	for child in get_children():
-		if !(child is FakeFolder) or !(child.file_type == folder.file_type):
+		if !(child is FakeFolder) or child.file_type != folder.file_type:
 			continue
 		if child.folder_name < folder.folder_name:
 			final_index = child.get_index() + 1
