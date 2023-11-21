@@ -35,8 +35,10 @@ func trigger_rename():
 		%"Folder Title".text = "[center]%s" % folder.folder_name
 		
 		# Reloads open windows
-		for file_manager in get_tree().get_nodes_in_group("file_manager_window"):
-			file_manager.reload_window("")
+		for file_manager: FileManagerWindow in get_tree().get_nodes_in_group("file_manager_window"):
+			if file_manager.file_path == folder.folder_path:
+				file_manager.sort_file(folder)
+				file_manager.update_positions()
 		for text_editor in get_tree().get_nodes_in_group("text_editor_window"):
 			if text_editor.file_path == "%s/%s" % [folder.folder_path, old_folder_name]:
 				text_editor.file_path = "%s/%s" % [folder.folder_path, folder.folder_name]
@@ -55,10 +57,13 @@ func trigger_rename():
 		%"Folder Title".text = "[center]%s" % folder.folder_name
 		DirAccess.rename_absolute("user://files/%s" % old_folder_path, "user://files/%s" % folder.folder_path)
 		
-		for file_manager in get_tree().get_nodes_in_group("file_manager_window"):
+		for file_manager: FileManagerWindow in get_tree().get_nodes_in_group("file_manager_window"):
 			if file_manager.file_path.begins_with(old_folder_path):
 				file_manager.file_path = file_manager.file_path.replace(old_folder_path, folder.folder_path)
-			file_manager.reload_window("")
+				file_manager.reload_window("")
+			elif file_manager.file_path == folder.folder_path.trim_suffix("/%s" % folder.folder_name):
+				file_manager.sort_file(folder)
+				file_manager.update_positions()
 	
 	text = ""
 

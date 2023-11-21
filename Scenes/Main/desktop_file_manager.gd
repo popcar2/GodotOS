@@ -1,4 +1,4 @@
-extends VFlowContainer
+extends SmoothContainer
 class_name DesktopFileManager
 
 # Desktop file manager
@@ -10,6 +10,8 @@ func _ready():
 		user_dir.make_dir("files")
 	
 	refresh_files()
+	
+	get_window().size_changed.connect(update_positions)
 
 func refresh_files():
 	for child in get_children():
@@ -34,6 +36,9 @@ func refresh_files():
 			folder.folder_name = file_name
 			folder.file_type = FakeFolder.file_type_enum.IMAGE
 			add_child(folder)
+	
+	await get_tree().physics_frame
+	update_positions()
 
 func new_folder():
 	var new_folder_path: String = "user://files/New Folder"
@@ -46,7 +51,7 @@ func new_folder():
 	DirAccess.make_dir_absolute(new_folder_path)
 	refresh_files()
 
-func new_file(extension: String):
+func new_file(extension: String, file_type: FakeFolder.file_type_enum):
 	var new_file_path: String = "user://files/New File%s" % extension
 	
 	if FileAccess.file_exists(new_file_path):

@@ -29,8 +29,6 @@ func _ready():
 	var tween: Tween = create_tween()
 	tween.set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property(self, "modulate:a", 1, 0.5)
-	
-	await get_tree()
 
 func _physics_process(_delta):
 	if is_dragging:
