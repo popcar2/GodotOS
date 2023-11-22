@@ -46,8 +46,7 @@ func trigger_rename():
 			# Reloads open windows
 			for file_manager: FileManagerWindow in get_tree().get_nodes_in_group("file_manager_window"):
 				if file_manager.file_path == folder.folder_path:
-					file_manager.sort_file(folder)
-					file_manager.update_positions()
+					file_manager.sort_folders()
 		for text_editor in get_tree().get_nodes_in_group("text_editor_window"):
 			if text_editor.file_path == "%s/%s" % [folder.folder_path, old_folder_name]:
 				text_editor.file_path = "%s/%s" % [folder.folder_path, folder.folder_name]
@@ -80,8 +79,7 @@ func trigger_rename():
 				file_manager.file_path = file_manager.file_path.replace(old_folder_path, folder.folder_path)
 				file_manager.reload_window("")
 			elif file_manager.file_path == folder.folder_path.trim_suffix("/%s" % folder.folder_name):
-				file_manager.sort_file(folder)
-				file_manager.update_positions()
+				file_manager.sort_folders()
 	
 	text = ""
 

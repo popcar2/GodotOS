@@ -49,7 +49,7 @@ func new_folder():
 				break
 	
 	DirAccess.make_dir_absolute("user://files/%s" % new_folder_name)
-	instantiate_file(new_folder_name, "user://files/", FakeFolder.file_type_enum.FOLDER, true)
+	instantiate_file(new_folder_name, new_folder_name, FakeFolder.file_type_enum.FOLDER, true)
 	await get_tree().process_frame # Waiting for child to get moved...
 	update_positions()
 

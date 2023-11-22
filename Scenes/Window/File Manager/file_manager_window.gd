@@ -5,6 +5,8 @@ var file_path: String # Relative to user://files/
 
 func _ready():
 	populate_window()
+	sort_folders()
+	
 	$"../../Resize Drag Spot".window_resized.connect(update_positions)
 
 func reload_window(folder_path: String):
@@ -36,33 +38,29 @@ func populate_window():
 	await get_tree().process_frame # TODO fix whatever's causing a race condition :/
 	update_positions()
 
-func instantiate_file(file_name: String, path: String, file_type: FakeFolder.file_type_enum, sort: bool = false):
+func instantiate_file(file_name: String, path: String, file_type: FakeFolder.file_type_enum):
 	var folder: FakeFolder = load("res://Scenes/Desktop/folder.tscn").instantiate()
 	folder.folder_name = file_name
 	folder.folder_path = path
 	folder.file_type = file_type
 	add_child(folder)
-	
-	if sort:
-		await get_tree().process_frame
-		sort_file(folder)
 
-func sort_file(folder: FakeFolder):
-	var final_index: int = -1
-	var last_file_type_index: int = 0 # So it jumps to the end of the same file type if final_index is -1
+func sort_folders():
+	if len(get_children()) < 3:
+		update_positions(false)
+		return
+	var sorted_children: Array[Node]
 	for child in get_children():
-		if !(child is FakeFolder) or child.file_type != folder.file_type:
-			continue
-		print("%s %d" % [child.folder_name, child.get_index()])
-		if child.folder_name < folder.folder_name:
-			final_index = child.get_index()
-		if final_index == -1:
-			last_file_type_index = child.get_index()
+		if child is FakeFolder:
+			sorted_children.append(child)
+			remove_child(child)
+	sorted_children.sort_custom(_custom_folder_sort)
+	sorted_children.sort_custom(_custom_folders_first_sort)
+	for child in sorted_children:
+		add_child(child)
 	
-	if final_index == -1:
-		final_index = last_file_type_index
-	
-	move_child(folder, final_index)
+	await get_tree().process_frame
+	update_positions(false)
 
 func new_folder():
 	var new_folder_name: String = "New Folder"
@@ -75,9 +73,9 @@ func new_folder():
 	DirAccess.make_dir_absolute("user://files/%s/%s" % [file_path, new_folder_name])
 	for file_manager: FileManagerWindow in get_tree().get_nodes_in_group("file_manager_window"):
 		if file_manager.file_path == file_path:
-			file_manager.instantiate_file(new_folder_name, "%s/%s" % [file_path, new_folder_name], FakeFolder.file_type_enum.FOLDER, true)
-			await get_tree().process_frame # Waiting for child to get moved...
-			file_manager.update_positions()
+			file_manager.instantiate_file(new_folder_name, "%s/%s" % [file_path, new_folder_name], FakeFolder.file_type_enum.FOLDER)
+			await get_tree().process_frame # Waiting for child to get added...
+			sort_folders()
 	
 
 func new_file(extension: String, file_type: FakeFolder.file_type_enum):
@@ -94,9 +92,9 @@ func new_file(extension: String, file_type: FakeFolder.file_type_enum):
 	
 	for file_manager: FileManagerWindow in get_tree().get_nodes_in_group("file_manager_window"):
 		if file_manager.file_path == file_path:
-			file_manager.instantiate_file(new_file_name, "%s/%s" % [file_path, new_file_name], file_type, true)
-			await get_tree().process_frame # Waiting for child to get moved...
-			file_manager.update_positions()
+			file_manager.instantiate_file(new_file_name, file_path, file_type)
+			await get_tree().process_frame # Waiting for child to get added...
+			file_manager.sort_folders()
 
 func delete_file_with_name(file_name: String):
 	for child in get_children():
@@ -119,3 +117,13 @@ func _on_back_button_pressed():
 	file_path = "/".join(split_path)
 	
 	reload_window(file_path)
+
+func _custom_folder_sort(a: FakeFolder, b: FakeFolder):
+	if a.folder_name.to_lower() < b.folder_name.to_lower():
+		return true
+	return false
+
+func _custom_folders_first_sort(a: FakeFolder, b: FakeFolder):
+	if a.file_type == FakeFolder.file_type_enum.FOLDER and a.file_type != b.file_type:
+		return true
+	return false
