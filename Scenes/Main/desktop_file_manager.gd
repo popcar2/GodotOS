@@ -41,25 +41,50 @@ func refresh_files():
 	update_positions()
 
 func new_folder():
-	var new_folder_path: String = "user://files/New Folder"
-	if DirAccess.dir_exists_absolute(new_folder_path):
+	var new_folder_name: String = "New Folder"
+	if DirAccess.dir_exists_absolute("user://files/%s" % new_folder_name):
 		for i in range(2, 1000):
-			new_folder_path = "user://files/New Folder %d" % i
-			if !DirAccess.dir_exists_absolute(new_folder_path):
+			new_folder_name = "New Folder %d" % i
+			if !DirAccess.dir_exists_absolute("user://files/%s" % new_folder_name):
 				break
 	
-	DirAccess.make_dir_absolute(new_folder_path)
-	refresh_files()
+	DirAccess.make_dir_absolute("user://files/%s" % new_folder_name)
+	instantiate_file(new_folder_name, "user://files/", FakeFolder.file_type_enum.FOLDER, true)
+	await get_tree().process_frame # Waiting for child to get moved...
+	update_positions()
 
 func new_file(extension: String, file_type: FakeFolder.file_type_enum):
-	var new_file_path: String = "user://files/New File%s" % extension
+	var new_file_name: String = "New File%s" % extension
 	
-	if FileAccess.file_exists(new_file_path):
+	if FileAccess.file_exists("user://files/%s" % new_file_name):
 		for i in range(2, 1000):
-			new_file_path = "user://files/New File %d%s" % [i, extension]
-			if !FileAccess.file_exists(new_file_path):
+			new_file_name = "New File %d%s" % [i, extension]
+			if !FileAccess.file_exists("user://files/%s" % new_file_name):
 				break
 	
 	# Just touches the file
-	var _file: FileAccess = FileAccess.open(new_file_path, FileAccess.WRITE)
-	refresh_files()
+	var _file: FileAccess = FileAccess.open("user://files/%s" % new_file_name, FileAccess.WRITE)
+	instantiate_file(new_file_name, "user://files/", file_type, true)
+	await get_tree().process_frame # Waiting for child to get moved...
+	update_positions()
+
+func instantiate_file(file_name: String, path: String, file_type: FakeFolder.file_type_enum, sort: bool = false):
+	var folder: FakeFolder = load("res://Scenes/Desktop/folder.tscn").instantiate()
+	folder.folder_name = file_name
+	folder.folder_path = path
+	folder.file_type = file_type
+	add_child(folder)
+	
+	if sort:
+		await get_tree().process_frame
+		sort_file(folder)
+
+func sort_file(folder: FakeFolder):
+	var final_index: int = -1
+	for child in get_children():
+		if !(child is FakeFolder) or child.file_type != folder.file_type:
+			continue
+		if child.folder_name < folder.folder_name:
+			final_index = child.get_index() + 1
+	
+	move_child(folder, final_index)

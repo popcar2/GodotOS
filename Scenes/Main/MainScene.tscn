@@ -27,6 +27,7 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_c0q37")
@@ -35,7 +36,6 @@ horizontal_spacing = 20
 left_margin = 10
 up_margin = 10
 right_margin = 10
-down_margin = 5
 
 [node name="Taskbar" parent="." instance=ExtResource("2_35ao4")]
 layout_mode = 1

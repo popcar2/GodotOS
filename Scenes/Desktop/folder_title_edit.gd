@@ -39,11 +39,15 @@ func trigger_rename():
 		DirAccess.rename_absolute("user://files/%s/%s" % [folder.folder_path, old_folder_name], "user://files/%s/%s" % [folder.folder_path, folder.folder_name])
 		%"Folder Title".text = "[center]%s" % folder.folder_name
 		
-		# Reloads open windows
-		for file_manager: FileManagerWindow in get_tree().get_nodes_in_group("file_manager_window"):
-			if file_manager.file_path == folder.folder_path:
-				file_manager.sort_file(folder)
-				file_manager.update_positions()
+		if folder.get_parent() is DesktopFileManager:
+			folder.get_parent().sort_file(folder)
+			folder.get_parent().update_positions()
+		else:
+			# Reloads open windows
+			for file_manager: FileManagerWindow in get_tree().get_nodes_in_group("file_manager_window"):
+				if file_manager.file_path == folder.folder_path:
+					file_manager.sort_file(folder)
+					file_manager.update_positions()
 		for text_editor in get_tree().get_nodes_in_group("text_editor_window"):
 			if text_editor.file_path == "%s/%s" % [folder.folder_path, old_folder_name]:
 				text_editor.file_path = "%s/%s" % [folder.folder_path, folder.folder_name]

@@ -10,6 +10,7 @@ var is_shown_recently: bool
 
 func _ready():
 	visible = false
+	await get_tree().physics_frame # Give nodes a chance to add other children first
 	for node in get_tree().get_nodes_in_group("right_click_enabled"):
 		node.add_child(right_click_handler.instantiate())
 	get_tree().node_added.connect(_add_right_click_handler)
@@ -17,6 +18,7 @@ func _ready():
 ## Adds right click handler to every node in the group
 func _add_right_click_handler(node: Node):
 	if node.is_in_group("right_click_enabled"):
+		await node.ready # Give nodes a chance to add other children first
 		node.add_child(right_click_handler.instantiate())
 
 ## This gets called from right_click_handler

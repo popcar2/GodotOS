@@ -43,18 +43,24 @@ func instantiate_file(file_name: String, path: String, file_type: FakeFolder.fil
 	folder.file_type = file_type
 	add_child(folder)
 	
-	
 	if sort:
 		await get_tree().process_frame
 		sort_file(folder)
 
 func sort_file(folder: FakeFolder):
 	var final_index: int = -1
+	var last_file_type_index: int = 0 # So it jumps to the end of the same file type if final_index is -1
 	for child in get_children():
 		if !(child is FakeFolder) or child.file_type != folder.file_type:
 			continue
+		print("%s %d" % [child.folder_name, child.get_index()])
 		if child.folder_name < folder.folder_name:
-			final_index = child.get_index() + 1
+			final_index = child.get_index()
+		if final_index == -1:
+			last_file_type_index = child.get_index()
+	
+	if final_index == -1:
+		final_index = last_file_type_index
 	
 	move_child(folder, final_index)
 
