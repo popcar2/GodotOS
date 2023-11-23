@@ -35,7 +35,7 @@ func sort_folders():
 	if len(get_children()) < 3:
 		update_positions(false)
 		return
-	var sorted_children: Array[Node]
+	var sorted_children: Array[Node] = []
 	for child in get_children():
 		if child is FakeFolder:
 			sorted_children.append(child)
@@ -56,7 +56,6 @@ func new_folder():
 	if DirAccess.dir_exists_absolute("user://files/%s%s" % [padded_file_path, new_folder_name]):
 		for i in range(2, 1000):
 			new_folder_name = "New Folder %d" % i
-			print(new_folder_name)
 			if !DirAccess.dir_exists_absolute("user://files/%s%s" % [padded_file_path, new_folder_name]):
 				break
 	

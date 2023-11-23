@@ -40,8 +40,7 @@ func trigger_rename():
 		%"Folder Title".text = "[center]%s" % folder.folder_name
 		
 		if folder.get_parent() is DesktopFileManager:
-			folder.get_parent().sort_file(folder)
-			folder.get_parent().update_positions()
+			folder.get_parent().sort_folders()
 		else:
 			# Reloads open windows
 			for file_manager: FileManagerWindow in get_tree().get_nodes_in_group("file_manager_window"):
