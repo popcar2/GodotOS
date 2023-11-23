@@ -125,9 +125,12 @@ func delete_file():
 		for file_manager: FileManagerWindow in get_tree().get_nodes_in_group("file_manager_window"):
 			if file_manager.file_path == folder_path:
 				file_manager.delete_file_with_name(folder_name)
-				file_manager.update_positions()
+				file_manager.sort_folders()
 	
-	get_tree().get_first_node_in_group("desktop_file_manager").refresh_files()
+	if folder_path.is_empty() or (file_type == file_type_enum.FOLDER and len(folder_path.split('/')) == 1):
+		var desktop_file_manager: DesktopFileManager = get_tree().get_first_node_in_group("desktop_file_manager")
+		desktop_file_manager.delete_file_with_name(folder_name)
+		desktop_file_manager.sort_folders()
 	# TODO make the color file_type dependent?
 	NotificationManager.spawn_notification("Moved [color=59ea90][wave freq=7]%s[/wave][/color] to trash!" % folder_name)
 	queue_free()
