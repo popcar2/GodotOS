@@ -14,6 +14,7 @@ func _ready():
 	
 	populate_file_manager()
 	get_window().size_changed.connect(update_positions)
+	get_window().focus_entered.connect(_on_window_focus)
 
 func copy_from_res(from: String, to: String):
 	var file_from: FileAccess = FileAccess.open(from, FileAccess.READ)
@@ -22,3 +23,27 @@ func copy_from_res(from: String, to: String):
 	
 	file_from.close()
 	file_to.close()
+
+## Checks if any files were changed on the desktop, and populates the file manager again if so.
+func _on_window_focus():
+	var current_file_names: Array[String] = []
+	for child in get_children():
+		if !(child is FakeFolder):
+			continue
+		
+		current_file_names.append(child.folder_name)
+	
+	var new_file_names: Array[String] = []
+	for file_name in DirAccess.get_files_at("user://files/"):
+		new_file_names.append(file_name)
+	for folder_name in DirAccess.get_directories_at("user://files/"):
+		new_file_names.append(folder_name)
+	
+	if current_file_names.size() != new_file_names.size():
+		populate_file_manager()
+		return
+	
+	for file_name in new_file_names:
+		if !current_file_names.has(file_name):
+			populate_file_manager()
+			return

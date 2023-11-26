@@ -13,7 +13,6 @@ bg_color = Color(0.666667, 0, 0, 0.392157)
 bg_color = Color(1, 0.247059, 0.188235, 0.588235)
 
 [node name="Window" type="Panel" groups=["window"]]
-clip_contents = true
 custom_minimum_size = Vector2(250, 150)
 anchors_preset = 8
 anchor_left = 0.5
@@ -90,10 +89,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -19.0
-offset_top = -19.0
-offset_right = 1.0
-offset_bottom = 1.0
+offset_left = -15.0
+offset_top = -15.0
+offset_right = 5.0
+offset_bottom = 5.0
 grow_horizontal = 0
 grow_vertical = 0
 mouse_default_cursor_shape = 12

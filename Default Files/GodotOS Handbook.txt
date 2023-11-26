@@ -1,0 +1,24 @@
+Welcome to GodotOS! This handbook will show in detail all the things you can do in GodotOS.
+
+Chapters:
+	1. Handling windows
+	2. Managing files
+	3. Playing games
+
+----- CHAPTER 1: HANDLING WINDOWS -----
+To open a new window, you can either double click a file or open a game through the start menu in the bottom left of the screen.
+Judging by the fact that you're reading this, you already figured out how to open files. Congratulations!
+
+You can drag a window by holding left click on the top bar and moving your mouse. You cannot move windows outside of the screen.
+You can resize a window by dragging the bottom right corner of the window. Hold shift while dragging to maintain the aspect ratio.
+Every window spawned has a taskbar button that spawns next to the start menu (bottom left of the screen). Clicking that window's taskbar button will minimize or restore the window. You can also press the _ button in the top right of the window to minimize it.
+Click the X button in the top right of a window to close it.
+
+Notice the COLORS of each window. Every window type has a specific color theme:
+	* Blue windows are text editors (like this one!)
+	* Green windows are file managers
+	* Yellow windows are images
+	* Purple windows are games
+
+----- CHAPTER 2: MANAGING FILES -----
+
