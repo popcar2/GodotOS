@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://jqitoetare6"]
 
 [ext_resource type="Script" path="res://Games/Pong/Scripts/pong_survival_manager.gd" id="1_jcasi"]
-[ext_resource type="Script" path="res://Games/pong_player.gd" id="2_bxknv"]
+[ext_resource type="Script" path="res://Games/Pong/Scripts/pong_player.gd" id="2_bxknv"]
 [ext_resource type="Script" path="res://Games/Pong/Scripts/pong_ball.gd" id="4_yffib"]
 
 [sub_resource type="Gradient" id="Gradient_01x5j"]
