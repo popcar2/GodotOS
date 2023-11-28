@@ -1,7 +1,7 @@
 [gd_scene load_steps=23 format=3 uid="uid://dcf7si5errywd"]
 
 [ext_resource type="Script" path="res://Games/Pong/Scripts/pong_singleplayer_manager.gd" id="1_oef8c"]
-[ext_resource type="Script" path="res://Games/Pong/Scripts/pong_player.gd" id="2_ugmxi"]
+[ext_resource type="Script" path="res://Games/pong_player.gd" id="2_ugmxi"]
 [ext_resource type="Script" path="res://Games/Pong/Scripts/pong_enemy.gd" id="3_oxy8k"]
 [ext_resource type="Script" path="res://Games/Pong/Scripts/pong_ball.gd" id="4_oaee3"]
 [ext_resource type="Script" path="res://Games/Pong/Scripts/pong_player_fail_area.gd" id="5_n8v32"]

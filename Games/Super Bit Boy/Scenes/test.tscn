@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=3 uid="uid://b7c1q7v5qtx28"]
+
+[ext_resource type="Script" path="res://Games/Super Bit Boy/Scenes/bit_boy_player.gd" id="1_qhj62"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_adjwb"]
+size = Vector2(32, 32)
+
+[sub_resource type="Gradient" id="Gradient_njy6s"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_fxqk7"]
+gradient = SubResource("Gradient_njy6s")
+width = 32
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nc7re"]
+size = Vector2(10, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vogel"]
+size = Vector2(500, 269)
+
+[node name="Test Scene" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+
+[node name="Player" type="CharacterBody2D" parent="."]
+script = ExtResource("1_qhj62")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("RectangleShape2D_adjwb")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+scale = Vector2(1, 32)
+texture = SubResource("GradientTexture1D_fxqk7")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
+remote_path = NodePath("../../Camera2D")
+
+[node name="Wall Jump Areas" type="Node2D" parent="Player"]
+
+[node name="LeftWallJumpArea2D" type="Area2D" parent="Player/Wall Jump Areas"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Wall Jump Areas/LeftWallJumpArea2D"]
+position = Vector2(-18, 0)
+shape = SubResource("RectangleShape2D_nc7re")
+
+[node name="RightWallJumpArea2D" type="Area2D" parent="Player/Wall Jump Areas"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Wall Jump Areas/RightWallJumpArea2D"]
+position = Vector2(18, 0)
+shape = SubResource("RectangleShape2D_nc7re")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+process_callback = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 7.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(0, 49)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 124.5)
+shape = SubResource("RectangleShape2D_vogel")
+
+[connection signal="body_entered" from="Player/Wall Jump Areas/LeftWallJumpArea2D" to="Player" method="_on_left_wall_jump_area_2d_body_entered"]
+[connection signal="body_exited" from="Player/Wall Jump Areas/LeftWallJumpArea2D" to="Player" method="_on_left_wall_jump_area_2d_body_exited"]
+[connection signal="body_entered" from="Player/Wall Jump Areas/RightWallJumpArea2D" to="Player" method="_on_right_wall_jump_area_2d_body_entered"]
+[connection signal="body_exited" from="Player/Wall Jump Areas/RightWallJumpArea2D" to="Player" method="_on_right_wall_jump_area_2d_body_exited"]
