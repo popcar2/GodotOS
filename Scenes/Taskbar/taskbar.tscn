@@ -58,6 +58,12 @@ game_scene = "res://Games/Pong/Scenes/pong_main_menu.tscn"
 title_text = "Pong"
 description_text = "A timeless classic"
 
+[node name="Start Menu Option3" parent="Start Menu/VBoxContainer" instance=ExtResource("2_1ualm")]
+layout_mode = 2
+game_scene = "res://Games/Super Bit Boy/Scenes/test.tscn"
+title_text = "Super Bit Boy"
+description_text = "Hard but fair 2D platformer"
+
 [node name="HBoxContainer" type="HBoxContainer" parent="." groups=["taskbar_buttons"]]
 layout_mode = 1
 anchors_preset = 15
