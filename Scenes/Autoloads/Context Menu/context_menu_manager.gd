@@ -72,11 +72,16 @@ func add_folder_options():
 	rename_option.get_node("%Option Text").text = "Rename %s" % type_name
 	rename_option.option_clicked.connect(_handle_folder_rename)
 	
+	var copy_option: Control = context_menu_option.instantiate()
+	copy_option.get_node("%Option Text").text = "Copy %s" % type_name
+	copy_option.option_clicked.connect(_handle_copy_folder)
+	
 	var delete_option: Control = context_menu_option.instantiate()
 	delete_option.get_node("%Option Text").text = "Move to trash"
 	delete_option.option_clicked.connect(_handle_folder_delete)
 	
 	$VBoxContainer.add_child(rename_option)
+	$VBoxContainer.add_child(copy_option)
 	$VBoxContainer.add_child(delete_option)
 
 func add_file_manager_options():
@@ -90,6 +95,15 @@ func add_file_manager_options():
 	
 	$VBoxContainer.add_child(new_folder_option)
 	$VBoxContainer.add_child(new_text_file_option)
+	if CopyPasteManager.target_folder != null:
+		var paste_folder_option: Control = context_menu_option.instantiate()
+		if CopyPasteManager.target_folder.file_type == FakeFolder.file_type_enum.FOLDER:
+			paste_folder_option.get_node("%Option Text").text = "Paste Folder"
+		else:
+			paste_folder_option.get_node("%Option Text").text = "Paste File"
+		paste_folder_option.option_clicked.connect(_handle_paste_folder)
+		
+		$VBoxContainer.add_child(paste_folder_option)
 
 # ----------
 
@@ -105,6 +119,11 @@ func _handle_new_folder():
 func _handle_new_text_file():
 	target.new_file(".txt", FakeFolder.file_type_enum.TEXT_FILE)
 
+func _handle_copy_folder():
+	CopyPasteManager.copy_folder(target)
+
+func _handle_paste_folder():
+	CopyPasteManager.paste_folder(target.file_path)
 # ----------
 
 func _on_mouse_entered():

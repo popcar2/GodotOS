@@ -36,7 +36,7 @@ func _physics_process(_delta):
 		clamp_window_inside_viewport()
 
 func _gui_input(event: InputEvent):
-	if event is InputEventMouseButton and event.button_index == 1 and event.is_pressed():
+	if event is InputEventMouseButton and (event.button_index == 1 or event.button_index == 2) and event.is_pressed():
 		select_window(true)
 
 func _on_top_bar_gui_input(event):

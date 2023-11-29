@@ -25,6 +25,7 @@ DefaultValues="res://Scenes/Autoloads/Default Values/default_values.tscn"
 HotkeyManager="res://Scenes/Autoloads/Hotkey Manager/hotkey_manager.tscn"
 ContextMenu="*res://Scenes/Autoloads/Context Menu/context_menu.tscn"
 NotificationManager="*res://Scenes/Autoloads/Notification Manager/notification_manager.tscn"
+CopyPasteManager="*res://Scenes/Autoloads/CopyPaste Manager/copy_paste_manager.tscn"
 
 [file_customization]
 
