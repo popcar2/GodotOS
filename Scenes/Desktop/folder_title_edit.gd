@@ -73,6 +73,8 @@ func trigger_rename():
 		%"Folder Title".text = "[center]%s" % folder.folder_name
 		DirAccess.rename_absolute("user://files/%s" % old_folder_path, "user://files/%s" % folder.folder_path)
 		
+		if folder.get_parent() is DesktopFileManager:
+			folder.get_parent().sort_folders()
 		for file_manager: FileManagerWindow in get_tree().get_nodes_in_group("file_manager_window"):
 			if file_manager.file_path.begins_with(old_folder_path):
 				file_manager.file_path = file_manager.file_path.replace(old_folder_path, folder.folder_path)

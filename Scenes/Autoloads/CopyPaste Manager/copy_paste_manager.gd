@@ -25,7 +25,9 @@ func paste_folder(to_path: String):
 	
 	target_folder.modulate.a = 1
 	target_folder = null
-	# TODO: Update every file man window with the same path
+	for file_manager: FileManagerWindow in get_tree().get_nodes_in_group("file_manager_window"):
+		if file_manager.file_path == to_path:
+			file_manager.populate_file_manager()
 
 func copy_directory_recursively(dir_path: String, to_path: String):
 	for file_name in DirAccess.get_files_at(dir_path):
