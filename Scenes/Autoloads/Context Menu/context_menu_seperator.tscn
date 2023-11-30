@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://dc6higwdbswel"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ruojt"]
+bg_color = Color(0.258824, 0.258824, 0.321569, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.258824, 0.258824, 0.321569, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+corner_detail = 12
+anti_aliasing_size = 0.1
+
+[node name="HSeparator" type="HSeparator"]
+theme_override_styles/separator = SubResource("StyleBoxFlat_ruojt")

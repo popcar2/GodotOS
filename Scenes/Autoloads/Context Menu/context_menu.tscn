@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2hpvnoxdgfvn"]
+[gd_scene load_steps=5 format=3 uid="uid://b2hpvnoxdgfvn"]
 
 [ext_resource type="Script" path="res://Scenes/Autoloads/Context Menu/context_menu_manager.gd" id="1_kg358"]
 [ext_resource type="PackedScene" uid="uid://ctmotds7d1sr1" path="res://Scenes/Autoloads/Context Menu/context_menu_option.tscn" id="2_v21do"]
+[ext_resource type="PackedScene" uid="uid://dc6higwdbswel" path="res://Scenes/Autoloads/Context Menu/context_menu_seperator.tscn" id="3_ygltd"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qnd7w"]
-bg_color = Color(0.2, 0.2, 0.25, 1)
+bg_color = Color(0.2, 0.2, 0.25098, 1)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
@@ -31,6 +32,9 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Context Menu Option" parent="VBoxContainer" instance=ExtResource("2_v21do")]
+layout_mode = 2
+
+[node name="HSeparator" parent="VBoxContainer" instance=ExtResource("3_ygltd")]
 layout_mode = 2
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

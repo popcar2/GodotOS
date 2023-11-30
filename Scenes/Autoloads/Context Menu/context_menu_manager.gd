@@ -2,6 +2,7 @@ extends Panel
 
 const right_click_handler: PackedScene = preload("res://Scenes/Autoloads/Context Menu/right_click_handler.tscn")
 const context_menu_option: PackedScene = preload("res://Scenes/Autoloads/Context Menu/context_menu_option.tscn")
+const context_menu_seperator: PackedScene = preload("res://Scenes/Autoloads/Context Menu/context_menu_seperator.tscn")
 
 var target: Control
 
@@ -82,6 +83,7 @@ func add_folder_options():
 	
 	$VBoxContainer.add_child(rename_option)
 	$VBoxContainer.add_child(copy_option)
+	$VBoxContainer.add_child(context_menu_seperator.instantiate())
 	$VBoxContainer.add_child(delete_option)
 
 func add_file_manager_options():
@@ -93,8 +95,6 @@ func add_file_manager_options():
 	new_text_file_option.get_node("%Option Text").text = "New Text File"
 	new_text_file_option.option_clicked.connect(_handle_new_text_file)
 	
-	$VBoxContainer.add_child(new_folder_option)
-	$VBoxContainer.add_child(new_text_file_option)
 	if CopyPasteManager.target_folder != null:
 		var paste_folder_option: Control = context_menu_option.instantiate()
 		if CopyPasteManager.target_folder.file_type == FakeFolder.file_type_enum.FOLDER:
@@ -104,6 +104,9 @@ func add_file_manager_options():
 		paste_folder_option.option_clicked.connect(_handle_paste_folder)
 		
 		$VBoxContainer.add_child(paste_folder_option)
+		$VBoxContainer.add_child(context_menu_seperator.instantiate())
+	$VBoxContainer.add_child(new_folder_option)
+	$VBoxContainer.add_child(new_text_file_option)
 
 # ----------
 
