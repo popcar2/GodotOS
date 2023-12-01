@@ -77,12 +77,18 @@ func add_folder_options():
 	copy_option.get_node("%Option Text").text = "Copy %s" % type_name
 	copy_option.option_clicked.connect(_handle_copy_folder)
 	
+	var cut_option: Control = context_menu_option.instantiate()
+	cut_option.get_node("%Option Text").text = "Cut %s" % type_name
+	cut_option.option_clicked.connect(_handle_cut_folder)
+	
 	var delete_option: Control = context_menu_option.instantiate()
 	delete_option.get_node("%Option Text").text = "Move to trash"
 	delete_option.option_clicked.connect(_handle_folder_delete)
 	
 	$VBoxContainer.add_child(rename_option)
+	$VBoxContainer.add_child(context_menu_seperator.instantiate())
 	$VBoxContainer.add_child(copy_option)
+	$VBoxContainer.add_child(cut_option)
 	$VBoxContainer.add_child(context_menu_seperator.instantiate())
 	$VBoxContainer.add_child(delete_option)
 
@@ -124,6 +130,9 @@ func _handle_new_text_file():
 
 func _handle_copy_folder():
 	CopyPasteManager.copy_folder(target)
+
+func _handle_cut_folder():
+	CopyPasteManager.cut_folder(target)
 
 func _handle_paste_folder():
 	CopyPasteManager.paste_folder(target.file_path)
