@@ -1,9 +1,17 @@
-[gd_scene load_steps=4 format=3 uid="uid://cfj5p5pgfnywp"]
+[gd_scene load_steps=8 format=3 uid="uid://cfj5p5pgfnywp"]
 
 [ext_resource type="Script" path="res://Scenes/Taskbar/start_button.gd" id="1_aypgd"]
 [ext_resource type="PackedScene" uid="uid://da4oly47yx3ja" path="res://Scenes/Taskbar/start_menu_option.tscn" id="2_1ualm"]
+[ext_resource type="Texture2D" uid="uid://dnvmy7l1wrerh" path="res://Art/power-button.png" id="3_sudyn"]
+[ext_resource type="Script" path="res://Scenes/Taskbar/power_button.gd" id="4_cnyss"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_s4q16"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lnonj"]
+bg_color = Color(0.666667, 0, 0, 0.392157)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nbmie"]
+bg_color = Color(1, 0.247059, 0.188235, 0.588235)
 
 [node name="Taskbar" type="Panel"]
 custom_minimum_size = Vector2(0, 40)
@@ -64,6 +72,24 @@ game_scene = "res://Games/Super Bit Boy/Scenes/test.tscn"
 title_text = "Super Bit Boy"
 description_text = "Hard but fair 2D platformer"
 
+[node name="Power Button" type="Button" parent="Start Menu"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -48.0
+offset_top = -48.0
+grow_horizontal = 0
+grow_vertical = 0
+focus_mode = 0
+theme_override_styles/hover = SubResource("StyleBoxFlat_lnonj")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_nbmie")
+icon = ExtResource("3_sudyn")
+icon_alignment = 1
+script = ExtResource("4_cnyss")
+
 [node name="HBoxContainer" type="HBoxContainer" parent="." groups=["taskbar_buttons"]]
 layout_mode = 1
 anchors_preset = 15
@@ -75,3 +101,6 @@ grow_vertical = 2
 
 [connection signal="mouse_entered" from="Start Button" to="Start Button" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Start Button" to="Start Button" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Start Menu" to="Start Button" method="_on_start_menu_mouse_entered"]
+[connection signal="mouse_exited" from="Start Menu" to="Start Button" method="_on_start_menu_mouse_exited"]
+[connection signal="pressed" from="Start Menu/Power Button" to="Start Menu/Power Button" method="_on_pressed"]
