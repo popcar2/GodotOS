@@ -42,13 +42,15 @@ func paste_folder_copy(to_path: String):
 		DirAccess.copy_absolute(from, to)
 	
 	target_folder.modulate.a = 1
-	target_folder = null
 	if to_path.is_empty():
-		get_tree().get_first_node_in_group("desktop_file_manager").populate_file_manager()
+		var desktop_file_manager: DesktopFileManager = get_tree().get_first_node_in_group("desktop_file_manager")
+		instantiate_file_and_sort(desktop_file_manager, to_path)
 	else:
 		for file_manager: FileManagerWindow in get_tree().get_nodes_in_group("file_manager_window"):
 			if file_manager.file_path == to_path:
-				file_manager.populate_file_manager()
+				instantiate_file_and_sort(file_manager, to_path)
+	
+	target_folder = null
 
 func paste_folder_cut(to_path: String):
 	var to: String = "user://files/%s/%s" % [to_path, target_folder.folder_name]
@@ -59,20 +61,21 @@ func paste_folder_cut(to_path: String):
 			if file_manager.file_path.begins_with(target_folder.folder_path):
 				file_manager.close_window()
 			elif file_manager.file_path == to_path:
-				file_manager.populate_file_manager()
+				instantiate_file_and_sort(file_manager, to_path)
 	else:
 		var from: String = "user://files/%s/%s" % [target_folder.folder_path, target_folder.folder_name]
 		DirAccess.rename_absolute(from, to)
 		for file_manager: FileManagerWindow in get_tree().get_nodes_in_group("file_manager_window"):
 			if file_manager.file_path == to_path:
-				file_manager.populate_file_manager()
+				instantiate_file_and_sort(file_manager, to_path)
 	
-	target_folder.queue_free()
-	target_folder.get_parent().sort_folders()
-	target_folder = null
+	target_folder.get_parent().delete_file_with_name(target_folder.folder_name)
 	
 	if to_path.is_empty():
-		get_tree().get_first_node_in_group("desktop_file_manager").populate_file_manager()
+		var desktop_file_manager: DesktopFileManager = get_tree().get_first_node_in_group("desktop_file_manager")
+		instantiate_file_and_sort(desktop_file_manager, to_path)
+	
+	target_folder = null
 
 func copy_directory_recursively(dir_path: String, to_path: String):
 	if to_path.begins_with(dir_path):
@@ -83,3 +86,10 @@ func copy_directory_recursively(dir_path: String, to_path: String):
 		copy_directory_recursively("%s/%s" % [dir_path, dir_name], "%s/%s" % [to_path, dir_name])
 	for file_name in DirAccess.get_files_at(dir_path):
 		DirAccess.copy_absolute("%s/%s" % [dir_path, file_name], "%s/%s" % [to_path, file_name])
+
+func instantiate_file_and_sort(file_manager: BaseFileManager, to_path: String):
+	if target_folder.file_type == FakeFolder.file_type_enum.FOLDER:
+		file_manager.instantiate_file(target_folder.folder_name, "%s/%s" % [to_path, target_folder.folder_name], target_folder.file_type)
+	else:
+		file_manager.instantiate_file(target_folder.folder_name, to_path, target_folder.file_type)
+	file_manager.sort_folders()
