@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://b7c1q7v5qtx28"]
+[gd_scene load_steps=9 format=3 uid="uid://b7c1q7v5qtx28"]
 
 [ext_resource type="Script" path="res://Games/Super Bit Boy/Other Scripts/Camera2D.gd" id="1_1vy60"]
+[ext_resource type="Script" path="res://Games/Super Bit Boy/Scenes/bit_boy_scene_manager.gd" id="1_mbrs5"]
 [ext_resource type="Texture2D" uid="uid://bwxnhif5h1cck" path="res://Art/Pixel_32.png" id="1_uhyve"]
 [ext_resource type="PackedScene" uid="uid://bxv24mjcranba" path="res://Games/Super Bit Boy/Scenes/Player/bit_boy_player.tscn" id="2_aaiv1"]
 
@@ -15,17 +16,27 @@ width = 1920
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kk343"]
 texture = ExtResource("1_uhyve")
 texture_region_size = Vector2i(32, 32)
+0:0/next_alternative_id = 2
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:0/1 = 1
+0:0/1/modulate = Color(1, 0, 0, 1)
+0:0/1/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/1/physics_layer_0/angular_velocity = 0.0
+0:0/1/physics_layer_0/polygon_0/points = PackedVector2Array(-10.6667, -10.6667, 10.6667, -10.6667, 10.6667, 10.6667, -10.6667, 10.6667)
+0:0/1/custom_data_0 = true
 
 [sub_resource type="TileSet" id="TileSet_k0n52"]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
+custom_data_layer_0/name = "instakill"
+custom_data_layer_0/type = 1
 sources/1 = SubResource("TileSetAtlasSource_kk343")
 
 [node name="Test Scene" type="Node2D"]
+script = ExtResource("1_mbrs5")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 process_callback = 0
@@ -42,6 +53,6 @@ modulate = Color(0.615686, 0.615686, 0.615686, 1)
 tile_set = SubResource("TileSet_k0n52")
 rendering_quadrant_size = 32
 format = 2
-layer_0/tile_data = PackedInt32Array(262143, 1, 0, 196608, 1, 0, 196609, 1, 0, 262142, 1, 0, 262141, 1, 0, 262140, 1, 0, 262139, 1, 0, 327675, 1, 0, 327676, 1, 0, 327677, 1, 0, 327678, 1, 0, 327679, 1, 0, 262144, 1, 0, 262145, 1, 0, 262146, 1, 0, 196610, 1, 0, 196611, 1, 0, 262147, 1, 0, -327675, 1, 0, -262139, 1, 0, -196603, 1, 0, -131067, 1, 0, -65531, 1, 0, 5, 1, 0, 65541, 1, 0, 131077, 1, 0, 196613, 1, 0, 262149, 1, 0, 262148, 1, 0, 327674, 1, 0, 262138, 1, 0, 196602, 1, 0, 131066, 1, 0, 65530, 1, 0, -6, 1, 0, -65542, 1, 0, -131078, 1, 0, -196614, 1, 0, -262150, 1, 0, -327686, 1, 0, -327687, 1, 0, -262151, 1, 0, -196615, 1, 0, -131079, 1, 0, -65543, 1, 0, 262137, 1, 0, 327673, 1, 0, 196601, 1, 0, 131065, 1, 0, 65529, 1, 0, -7, 1, 0, -458758, 1, 0, -393222, 1, 0, -393223, 1, 0, -458759, 1, 0, -393211, 1, 0, -458747, 1, 0, -524283, 1, 0, 196612, 1, 0, 262150, 1, 0, 196614, 1, 0, 131078, 1, 0, 65542, 1, 0, 6, 1, 0, -65530, 1, 0, -131066, 1, 0, -196602, 1, 0, -262138, 1, 0, -327674, 1, 0, -393210, 1, 0, -458746, 1, 0, -524282, 1, 0)
+layer_0/tile_data = PackedInt32Array(262143, 1, 0, 196608, 1, 0, 196609, 1, 0, 262142, 1, 0, 262141, 1, 0, 262140, 1, 0, 262139, 1, 0, 327675, 1, 0, 327676, 1, 0, 327677, 1, 0, 327678, 1, 0, 327679, 1, 0, 262144, 1, 0, 262145, 1, 0, 262146, 1, 0, 196610, 1, 0, 196611, 1, 0, 262147, 1, 0, -327675, 1, 0, -262139, 1, 0, -65531, 1, 0, 5, 1, 0, 65541, 1, 0, 131077, 1, 0, 196613, 1, 0, 262149, 1, 0, 262148, 1, 0, 327674, 1, 0, 262138, 1, 0, 196602, 1, 0, 131066, 1, 0, 65530, 1, 0, -6, 1, 0, -196614, 1, 0, -262150, 1, 0, -327686, 1, 0, -327687, 1, 0, -262151, 1, 0, -196615, 1, 0, -131079, 1, 0, -65543, 1, 0, 262137, 1, 0, 327673, 1, 0, 196601, 1, 0, 131065, 1, 0, 65529, 1, 0, -7, 1, 0, -458758, 1, 0, -393222, 1, 0, -393223, 1, 0, -458759, 1, 0, -393211, 1, 0, -458747, 1, 0, -524283, 1, 0, 196612, 1, 0, 262150, 1, 0, 196614, 1, 0, 131078, 1, 0, 65542, 1, 0, 6, 1, 0, -65530, 1, 0, -131066, 1, 0, -196602, 1, 0, -262138, 1, 0, -327674, 1, 0, -393210, 1, 0, -458746, 1, 0, -524282, 1, 0, -65542, 1, 65536, -131078, 1, 65536, -196603, 1, 65536, -131067, 1, 65536)
 
 [node name="Player" parent="." instance=ExtResource("2_aaiv1")]

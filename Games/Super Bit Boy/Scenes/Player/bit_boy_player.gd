@@ -52,6 +52,9 @@ func _physics_process(delta):
 		die()
 	
 	move_and_slide()
+	
+	detect_custom_tile_data()
+	print(velocity)
 
 func walljump(left: bool):
 	if velocity.y > 0:
@@ -71,12 +74,17 @@ func die():
 	bonus_velocity = Vector2.ZERO
 	modulate = Color.CRIMSON
 	await get_tree().create_timer(0.75).timeout
-	reload_scene()
+	get_parent().reload_scene()
 
-func reload_scene():
-	var next_scene: Node = load("res://Games/Super Bit Boy/Scenes/test.tscn").instantiate()
-	get_parent().add_sibling(next_scene)
-	get_parent().queue_free()
+func detect_custom_tile_data():
+	for i in range(get_slide_collision_count()):
+		var collision: KinematicCollision2D = get_slide_collision(i)
+		if collision.get_collider() is TileMap:
+			var tilemap: TileMap = collision.get_collider()
+			var tile_coords: Vector2i = tilemap.get_coords_for_body_rid(collision.get_collider_rid())
+			var tile_data: TileData = tilemap.get_cell_tile_data(0, tile_coords)
+			if tile_data.get_custom_data("instakill"):
+				die()
 
 func _on_left_wall_jump_area_2d_body_entered(body):
 	if body is StaticBody2D or body is TileMap:
