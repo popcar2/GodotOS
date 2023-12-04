@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name BitBoyPlayer
 
 const ACCELERATION: float = 50.0
 const SPEED: float = 400.0
@@ -54,7 +55,6 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	detect_custom_tile_data()
-	print(velocity)
 
 func walljump(left: bool):
 	if velocity.y > 0:
@@ -75,6 +75,14 @@ func die():
 	modulate = Color.CRIMSON
 	await get_tree().create_timer(0.75).timeout
 	get_parent().reload_scene()
+
+func win():
+	is_dead = true # Just so the player stops moving around
+	velocity = Vector2.ZERO
+	bonus_velocity = Vector2.ZERO
+	modulate = Color.SPRING_GREEN
+	await get_tree().create_timer(0.75).timeout
+	get_parent().load_next_scene()
 
 func detect_custom_tile_data():
 	for i in range(get_slide_collision_count()):

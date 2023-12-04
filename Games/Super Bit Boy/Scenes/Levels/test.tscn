@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://b7c1q7v5qtx28"]
 
 [ext_resource type="Script" path="res://Games/Super Bit Boy/Other Scripts/Camera2D.gd" id="1_1vy60"]
-[ext_resource type="Script" path="res://Games/Super Bit Boy/Scenes/bit_boy_scene_manager.gd" id="1_mbrs5"]
+[ext_resource type="Script" path="res://Games/Super Bit Boy/Scenes/Levels/bit_boy_scene_manager.gd" id="1_mbrs5"]
 [ext_resource type="Texture2D" uid="uid://bwxnhif5h1cck" path="res://Art/Pixel_32.png" id="1_uhyve"]
 [ext_resource type="PackedScene" uid="uid://bxv24mjcranba" path="res://Games/Super Bit Boy/Scenes/Player/bit_boy_player.tscn" id="2_aaiv1"]
 

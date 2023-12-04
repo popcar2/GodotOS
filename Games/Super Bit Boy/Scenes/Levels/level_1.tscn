@@ -1,0 +1,64 @@
+[gd_scene load_steps=10 format=3 uid="uid://t3fobsr7gklg"]
+
+[ext_resource type="Script" path="res://Games/Super Bit Boy/Scenes/Levels/bit_boy_scene_manager.gd" id="1_yi0p1"]
+[ext_resource type="Script" path="res://Games/Super Bit Boy/Other Scripts/Camera2D.gd" id="2_68u54"]
+[ext_resource type="Texture2D" uid="uid://bwxnhif5h1cck" path="res://Art/Pixel_32.png" id="3_75lam"]
+[ext_resource type="PackedScene" uid="uid://bxv24mjcranba" path="res://Games/Super Bit Boy/Scenes/Player/bit_boy_player.tscn" id="4_bfb5o"]
+[ext_resource type="PackedScene" uid="uid://b3u7st4i1algn" path="res://Games/Super Bit Boy/Scenes/Exit/bit_boy_exit.tscn" id="5_38t8g"]
+
+[sub_resource type="Gradient" id="Gradient_yyofs"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_xxn30"]
+gradient = SubResource("Gradient_yyofs")
+width = 1920
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kk343"]
+texture = ExtResource("3_75lam")
+texture_region_size = Vector2i(32, 32)
+0:0/next_alternative_id = 2
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+0:0/1 = 1
+0:0/1/modulate = Color(1, 0, 0, 1)
+0:0/1/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/1/physics_layer_0/angular_velocity = 0.0
+0:0/1/physics_layer_0/polygon_0/points = PackedVector2Array(-10.6667, -10.6667, 10.6667, -10.6667, 10.6667, 10.6667, -10.6667, 10.6667)
+0:0/1/custom_data_0 = true
+
+[sub_resource type="TileSet" id="TileSet_k0n52"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+custom_data_layer_0/name = "instakill"
+custom_data_layer_0/type = 1
+sources/1 = SubResource("TileSetAtlasSource_kk343")
+
+[node name="Level 1" type="Node2D"]
+script = ExtResource("1_yi0p1")
+next_scene_str = "res://Games/Super Bit Boy/Scenes/Levels/level_2.tscn"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.75, 0.75)
+process_callback = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 7.0
+script = ExtResource("2_68u54")
+
+[node name="Sprite2D" type="Sprite2D" parent="Camera2D"]
+scale = Vector2(1, 1920)
+texture = SubResource("GradientTexture1D_xxn30")
+
+[node name="TileMap" type="TileMap" parent="."]
+modulate = Color(0.615686, 0.615686, 0.615686, 1)
+tile_set = SubResource("TileSet_k0n52")
+rendering_quadrant_size = 32
+format = 2
+layer_0/tile_data = PackedInt32Array(131070, 1, 0, 196606, 1, 0, 131071, 1, 0, 196607, 1, 0, 65536, 1, 0, 131072, 1, 0, 65537, 1, 0, 131073, 1, 0, 65538, 1, 0, 131074, 1, 0, 65539, 1, 0, 131075, 1, 0, 65540, 1, 0, 131076, 1, 0, 65541, 1, 0, 131077, 1, 0, 131068, 1, 0, 196604, 1, 0, 131069, 1, 0, 196605, 1, 0, 4, 1, 0, 5, 1, 0, 6, 1, 0, 65542, 1, 0, 131078, 1, 0, 7, 1, 0, 65543, 1, 0, 131079, 1, 0, -131064, 1, 0, -65528, 1, 0, 8, 1, 0, 65544, 1, 0, 131080, 1, 0, -131063, 1, 0, -65527, 1, 0, 9, 1, 0, 65545, 1, 0, 131081, 1, 0, -65532, 1, 0, -65531, 1, 0, -65530, 1, 0, -65529, 1, 0, -262136, 1, 0, -196600, 1, 0, -262135, 1, 0, -196599, 1, 0, -262134, 1, 0, -196598, 1, 0, -131062, 1, 0, -65526, 1, 0, 10, 1, 0, 65546, 1, 0, 131082, 1, 0, -262133, 1, 0, -196597, 1, 0, -131061, 1, 0, -65525, 1, 0, 11, 1, 0, 65547, 1, 0, 131083, 1, 0, -262132, 1, 0, -196596, 1, 0, -131060, 1, 0, -65524, 1, 0, 12, 1, 0, 65548, 1, 0, 131084, 1, 0, -262126, 1, 0, -196590, 1, 0, -131054, 1, 0, -65518, 1, 0, 18, 1, 0, 65554, 1, 0, 131090, 1, 0, -262125, 1, 0, -196589, 1, 0, -131053, 1, 0, -65517, 1, 0, 19, 1, 0, 65555, 1, 0, 131091, 1, 0, -262124, 1, 0, -196588, 1, 0, -131052, 1, 0, -65516, 1, 0, 20, 1, 0, 65556, 1, 0, 131092, 1, 0, -262123, 1, 0, -196587, 1, 0, -131051, 1, 0, -65515, 1, 0, 21, 1, 0, 65557, 1, 0, 131093, 1, 0, -262122, 1, 0, -196586, 1, 0, -131050, 1, 0, -65514, 1, 0, 22, 1, 0, 65558, 1, 0, 131094, 1, 0, -458726, 1, 0, -393190, 1, 0, -327654, 1, 0, -262118, 1, 0, -196582, 1, 0, -131046, 1, 0, -65510, 1, 0, 26, 1, 0, 65562, 1, 0, 131098, 1, 0, -458725, 1, 0, -393189, 1, 0, -327653, 1, 0, -262117, 1, 0, -196581, 1, 0, -131045, 1, 0, -65509, 1, 0, 27, 1, 0, 65563, 1, 0, 131099, 1, 0, -458724, 1, 0, -393188, 1, 0, -327652, 1, 0, -262116, 1, 0, -196580, 1, 0, -131044, 1, 0, -65508, 1, 0, 28, 1, 0, 65564, 1, 0, 131100, 1, 0, -786413, 1, 0, -720877, 1, 0, -786412, 1, 0, -720876, 1, 0, -786411, 1, 0, -720875, 1, 0, -786410, 1, 0, -720874, 1, 0, -786414, 1, 0, -720878, 1, 0, -851960, 1, 0, -786424, 1, 0, -851959, 1, 0, -786423, 1, 0, -851958, 1, 0, -786422, 1, 0, -851957, 1, 0, -786421, 1, 0, -851956, 1, 0, -786420, 1, 0, -458723, 1, 0, -393187, 1, 0, -327651, 1, 0, -262115, 1, 0, -196579, 1, 0, -131043, 1, 0, -65507, 1, 0, 29, 1, 0, 65565, 1, 0, 131101, 1, 0)
+
+[node name="Player" parent="." instance=ExtResource("4_bfb5o")]
+
+[node name="Exit" parent="." instance=ExtResource("5_38t8g")]
+position = Vector2(336, -440)
