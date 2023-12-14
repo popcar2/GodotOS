@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/Taskbar/start_button.gd" id="1_aypgd"]
 [ext_resource type="PackedScene" uid="uid://da4oly47yx3ja" path="res://Scenes/Taskbar/start_menu_option.tscn" id="2_1ualm"]
-[ext_resource type="Texture2D" uid="uid://dnvmy7l1wrerh" path="res://Art/power-button.png" id="3_sudyn"]
+[ext_resource type="Texture2D" uid="uid://dnvmy7l1wrerh" path="res://Art/Icons/power-button.png" id="3_sudyn"]
 [ext_resource type="Script" path="res://Scenes/Taskbar/power_button.gd" id="4_cnyss"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_s4q16"]

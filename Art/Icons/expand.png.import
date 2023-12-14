@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dnvmy7l1wrerh"
-path="res://.godot/imported/power-button.png-cb89af4f2712517bb8d77b32554299eb.ctex"
+uid="uid://1ockgc20p033"
+path="res://.godot/imported/expand.png-0cfa2f4dc161ed96abbe3fc8e4a4d9f3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/power-button.png"
-dest_files=["res://.godot/imported/power-button.png-cb89af4f2712517bb8d77b32554299eb.ctex"]
+source_file="res://Art/Icons/expand.png"
+dest_files=["res://.godot/imported/expand.png-0cfa2f4dc161ed96abbe3fc8e4a4d9f3.ctex"]
 
 [params]
 

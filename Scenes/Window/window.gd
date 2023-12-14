@@ -12,9 +12,16 @@ var mouse_start_drag_position: Vector2
 var is_being_deleted: bool
 var is_minimized: bool
 var is_selected: bool
+var is_maximized: bool
+
+var maximize_icon: CompressedTexture2D = preload("res://Art/Icons/expand.png")
+var unmaximize_icon: CompressedTexture2D = preload("res://Art/Icons/shrink.png")
+var old_unmaximized_position: Vector2
+var old_unmaximized_size: Vector2
 
 signal minimized(is_minimized: bool)
 signal selected(is_selected: bool)
+signal maximized(is_maximized: bool)
 signal deleted()
 
 func _ready():
@@ -142,3 +149,34 @@ func clamp_window_inside_viewport():
 	
 	global_position.y = clamp(global_position.y, 0, game_window_size.y - size.y - 40)
 	global_position.x = clamp(global_position.x, 0, game_window_size.x - size.x)
+
+func _on_maximize_button_pressed():
+	maximize_window()
+
+func maximize_window():
+	if is_maximized:
+		is_maximized = !is_maximized
+		$"Top Bar/HBoxContainer/Maximize Button".icon = maximize_icon
+		
+		var tween: Tween = create_tween()
+		tween.set_parallel(true)
+		tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+		tween.tween_property(self, "global_position", old_unmaximized_position, 0.25)
+		await tween.tween_property(self, "size", old_unmaximized_size, 0.25).finished
+		$"Resize Drag Spot".window_resized.emit()
+	else:
+		is_maximized = !is_maximized
+		$"Top Bar/HBoxContainer/Maximize Button".icon = unmaximize_icon
+		
+		old_unmaximized_position = global_position
+		old_unmaximized_size = size
+		
+		var new_size = get_viewport_rect().size
+		new_size.y -= 40 #Because taskbar
+		
+		var tween: Tween = create_tween()
+		tween.set_parallel(true)
+		tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+		tween.tween_property(self, "global_position", Vector2.ZERO, 0.25)
+		await tween.tween_property(self, "size", new_size, 0.25).finished
+		$"Resize Drag Spot".window_resized.emit()

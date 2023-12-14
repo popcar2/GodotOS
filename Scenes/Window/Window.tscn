@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://cojrqff5vocjv"]
+[gd_scene load_steps=7 format=3 uid="uid://cojrqff5vocjv"]
 
 [ext_resource type="Script" path="res://Scenes/Window/window.gd" id="1_c3iwi"]
+[ext_resource type="Texture2D" uid="uid://1ockgc20p033" path="res://Art/Icons/expand.png" id="2_bcfhp"]
 [ext_resource type="Script" path="res://Scenes/Window/resize_drag_spot.gd" id="2_xymxc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_es3h4"]
@@ -73,6 +74,17 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_iro1c")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_epasn")
 text = "-"
 
+[node name="Maximize Button" type="Button" parent="Top Bar/HBoxContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+focus_mode = 0
+theme_override_constants/icon_max_width = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_es3h4")
+theme_override_styles/hover = SubResource("StyleBoxFlat_iro1c")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_epasn")
+icon = ExtResource("2_bcfhp")
+icon_alignment = 1
+
 [node name="Close Button" type="Button" parent="Top Bar/HBoxContainer"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
@@ -100,4 +112,5 @@ script = ExtResource("2_xymxc")
 
 [connection signal="gui_input" from="Top Bar" to="." method="_on_top_bar_gui_input"]
 [connection signal="pressed" from="Top Bar/HBoxContainer/Minimize Button" to="." method="_on_minimize_button_pressed"]
+[connection signal="pressed" from="Top Bar/HBoxContainer/Maximize Button" to="." method="_on_maximize_button_pressed"]
 [connection signal="pressed" from="Top Bar/HBoxContainer/Close Button" to="." method="_on_close_button_pressed"]
