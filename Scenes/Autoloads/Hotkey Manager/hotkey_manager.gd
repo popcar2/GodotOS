@@ -10,7 +10,10 @@ func _input(event: InputEvent):
 		else:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	if event.is_action_pressed("open_in_file_manager"):
-		OS.shell_show_in_file_manager(ProjectSettings.globalize_path("user://files/"))
+		if OS.has_feature("web"):
+			NotificationManager.spawn_notification("GodotOS can't let you browse files on a browser. Download GodotOS to import/export files!")
+		else:
+			OS.shell_show_in_file_manager(ProjectSettings.globalize_path("user://files/"))
 	
 	#TODO notification for zoom levels
 	if event.is_action_pressed("zoom_in"):
