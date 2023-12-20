@@ -12,6 +12,8 @@ config_version=5
 
 config/name="GodotOS"
 run/main_scene="res://Scenes/Main/MainScene.tscn"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="GodotOSData"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 run/low_processor_mode=true
 boot_splash/bg_color=Color(0, 0, 0, 1)
