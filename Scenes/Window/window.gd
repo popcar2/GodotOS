@@ -21,18 +21,21 @@ var unmaximize_icon: CompressedTexture2D = preload("res://Art/Icons/shrink.png")
 var old_unmaximized_position: Vector2
 var old_unmaximized_size: Vector2
 
+var start_bg_color_alpha: float
+
 signal minimized(is_minimized: bool)
 signal selected(is_selected: bool)
 signal maximized(is_maximized: bool)
 signal deleted()
 
 func _ready():
-	num_of_windows += 1
-	select_window(false)
-	
 	# Duplicate theme override so values can be set without affecting other windows
 	self["theme_override_styles/panel"] = self["theme_override_styles/panel"].duplicate()
 	top_bar["theme_override_styles/panel"] = top_bar["theme_override_styles/panel"].duplicate()
+	start_bg_color_alpha = self["theme_override_styles/panel"]["bg_color"].a
+	
+	num_of_windows += 1
+	select_window(false)
 	
 	$"Top Bar/Title Text".text = " ".join(title_text.split("\n"))
 	
@@ -109,6 +112,7 @@ func show_window():
 	tween.tween_property(self, "position:y", position.y - 20, 0.25)
 	tween.tween_property(self, "modulate:a", 1, 0.25)
 
+## Actually "focuses" the window and brings it to the front
 func select_window(play_fade_animation: bool):
 	if is_selected:
 		return
@@ -120,6 +124,7 @@ func select_window(play_fade_animation: bool):
 	tween.set_parallel(true)
 	tween.set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property($"Top Bar/Title Text", "modulate", Color("3cffff"), 0.25)
+	tween.tween_property(self["theme_override_styles/panel"], "shadow_size", 20, 0.25)
 	if play_fade_animation:
 		tween.tween_property(self, "modulate:a", 1, 0.1)
 	
@@ -139,6 +144,7 @@ func deselect_window():
 	tween.set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property(self, "modulate:a", 0.75, 0.25)
 	tween.tween_property($"Top Bar/Title Text", "modulate", Color.WHITE, 0.25)
+	tween.tween_property(self["theme_override_styles/panel"], "shadow_size", 0, 0.25)
 
 func deselect_other_windows():
 	for window in get_tree().get_nodes_in_group("window"):
@@ -168,6 +174,7 @@ func maximize_window():
 		tween.set_parallel(true)
 		tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 		tween.tween_property(self, "global_position", old_unmaximized_position, 0.25)
+		tween.tween_property(self["theme_override_styles/panel"], "bg_color:a", start_bg_color_alpha, 0.25)
 		await tween.tween_property(self, "size", old_unmaximized_size, 0.25).finished
 		
 		self["theme_override_styles/panel"].set_corner_radius_all(5)
@@ -189,6 +196,7 @@ func maximize_window():
 		tween.set_parallel(true)
 		tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 		tween.tween_property(self, "global_position", Vector2.ZERO, 0.25)
+		tween.tween_property(self["theme_override_styles/panel"], "bg_color:a", 1, 0.25)
 		await tween.tween_property(self, "size", new_size, 0.25).finished
 		
 		self["theme_override_styles/panel"].set_corner_radius_all(0)

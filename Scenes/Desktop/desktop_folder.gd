@@ -37,6 +37,7 @@ func _input(event: InputEvent):
 			if $"Double Click".is_stopped():
 				$"Double Click".start()
 			else:
+				accept_event()
 				hide_selected_highlight()
 				if get_parent().is_in_group("file_manager_window") and file_type == file_type_enum.FOLDER:
 					get_parent().reload_window(folder_path)
