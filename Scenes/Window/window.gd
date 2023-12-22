@@ -1,6 +1,8 @@
 extends Panel
 class_name FakeWindow
 
+@onready var top_bar: Panel = $"Top Bar"
+
 static var num_of_windows: int
 
 var title_text: String
@@ -27,6 +29,10 @@ signal deleted()
 func _ready():
 	num_of_windows += 1
 	select_window(false)
+	
+	# Duplicate theme override so values can be set without affecting other windows
+	self["theme_override_styles/panel"] = self["theme_override_styles/panel"].duplicate()
+	top_bar["theme_override_styles/panel"] = top_bar["theme_override_styles/panel"].duplicate()
 	
 	$"Top Bar/Title Text".text = " ".join(title_text.split("\n"))
 	
@@ -163,6 +169,11 @@ func maximize_window():
 		tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 		tween.tween_property(self, "global_position", old_unmaximized_position, 0.25)
 		await tween.tween_property(self, "size", old_unmaximized_size, 0.25).finished
+		
+		self["theme_override_styles/panel"].set_corner_radius_all(5)
+		top_bar["theme_override_styles/panel"]["corner_radius_top_left"] = 5
+		top_bar["theme_override_styles/panel"]["corner_radius_top_right"] = 5
+		
 		$"Resize Drag Spot".window_resized.emit()
 	else:
 		is_maximized = !is_maximized
@@ -179,4 +190,9 @@ func maximize_window():
 		tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 		tween.tween_property(self, "global_position", Vector2.ZERO, 0.25)
 		await tween.tween_property(self, "size", new_size, 0.25).finished
+		
+		self["theme_override_styles/panel"].set_corner_radius_all(0)
+		top_bar["theme_override_styles/panel"]["corner_radius_top_left"] = 0
+		top_bar["theme_override_styles/panel"]["corner_radius_top_right"] = 0
+		
 		$"Resize Drag Spot".window_resized.emit()
