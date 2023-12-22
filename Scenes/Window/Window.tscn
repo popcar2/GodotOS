@@ -1,17 +1,43 @@
-[gd_scene load_steps=7 format=3 uid="uid://cojrqff5vocjv"]
+[gd_scene load_steps=12 format=3 uid="uid://cojrqff5vocjv"]
 
 [ext_resource type="Script" path="res://Scenes/Window/window.gd" id="1_c3iwi"]
 [ext_resource type="Texture2D" uid="uid://1ockgc20p033" path="res://Art/Icons/expand.png" id="2_bcfhp"]
 [ext_resource type="Script" path="res://Scenes/Window/resize_drag_spot.gd" id="2_xymxc"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gwhiu"]
+bg_color = Color(0.2, 0.2, 0.2, 0.6)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 10
+shadow_color = Color(0, 0, 0, 0.0784314)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4otup"]
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_es3h4"]
 bg_color = Color(0, 0, 0, 0.392157)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iro1c"]
-bg_color = Color(0.666667, 0, 0, 0.392157)
+bg_color = Color(0.501961, 0.501961, 0.501961, 0.392157)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_epasn"]
+bg_color = Color(0.4, 0.4, 0.4, 0.392157)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i3xsn"]
+bg_color = Color(0, 0, 0, 0.392157)
+corner_radius_top_right = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g3pwt"]
+bg_color = Color(0.666667, 0, 0, 0.392157)
+corner_radius_top_right = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jljmq"]
 bg_color = Color(1, 0.247059, 0.188235, 0.588235)
+corner_radius_top_right = 5
 
 [node name="Window" type="Panel" groups=["window"]]
 custom_minimum_size = Vector2(250, 150)
@@ -26,6 +52,7 @@ offset_right = 250.0
 offset_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gwhiu")
 script = ExtResource("1_c3iwi")
 
 [node name="Top Bar" type="Panel" parent="."]
@@ -35,6 +62,7 @@ anchors_preset = 10
 anchor_right = 1.0
 grow_horizontal = 2
 mouse_filter = 1
+theme_override_styles/panel = SubResource("StyleBoxFlat_4otup")
 
 [node name="Title Text" type="RichTextLabel" parent="Top Bar"]
 custom_minimum_size = Vector2(0, 22)
@@ -89,9 +117,9 @@ icon_alignment = 1
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 focus_mode = 0
-theme_override_styles/normal = SubResource("StyleBoxFlat_es3h4")
-theme_override_styles/hover = SubResource("StyleBoxFlat_iro1c")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_epasn")
+theme_override_styles/normal = SubResource("StyleBoxFlat_i3xsn")
+theme_override_styles/hover = SubResource("StyleBoxFlat_g3pwt")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_jljmq")
 text = "X"
 
 [node name="Resize Drag Spot" type="Control" parent="."]

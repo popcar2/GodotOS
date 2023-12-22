@@ -5,6 +5,9 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5cq01"]
 bg_color = Color(0.196078, 0.101961, 0.196078, 0.6)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+shadow_color = Color(0, 0, 0, 0.0784314)
 
 [node name="Window" instance=ExtResource("1_r6cfa")]
 offset_left = -288.0

@@ -5,6 +5,11 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_22tla"]
 bg_color = Color(0, 0.272546, 0.269272, 0.862745)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0, 0, 0, 0.0784314)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uonls"]
 

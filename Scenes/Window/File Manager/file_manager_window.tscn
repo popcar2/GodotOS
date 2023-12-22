@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://i03dt4l5msgl"]
+[gd_scene load_steps=8 format=3 uid="uid://i03dt4l5msgl"]
 
 [ext_resource type="PackedScene" uid="uid://cojrqff5vocjv" path="res://Scenes/Window/Window.tscn" id="1_xona8"]
 [ext_resource type="Script" path="res://Scenes/Window/File Manager/file_manager_window.gd" id="2_prcfs"]
@@ -11,11 +11,24 @@ content_margin_top = 0.0
 content_margin_right = 0.0
 content_margin_bottom = 0.0
 bg_color = Color(0.101961, 0.196078, 0.101961, 0.6)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 corner_detail = 5
+shadow_color = Color(0, 0, 0, 0.0784314)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xgbvp"]
+bg_color = Color(0, 0, 0, 0.392157)
+corner_radius_top_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lrke7"]
+bg_color = Color(0.501961, 0.501961, 0.501961, 0.392157)
+corner_radius_top_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ogij0"]
+bg_color = Color(0.4, 0.4, 0.4, 0.392157)
+corner_radius_top_left = 5
 
 [node name="Window" instance=ExtResource("1_xona8")]
 offset_left = -267.5
@@ -55,6 +68,9 @@ offset_right = 8.0
 grow_vertical = 2
 focus_mode = 0
 mouse_filter = 1
+theme_override_styles/normal = SubResource("StyleBoxFlat_xgbvp")
+theme_override_styles/hover = SubResource("StyleBoxFlat_lrke7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_ogij0")
 text = "^"
 
 [connection signal="pressed" from="Top Bar/Back Button" to="ScrollContainer/File Manager Window" method="_on_back_button_pressed"]

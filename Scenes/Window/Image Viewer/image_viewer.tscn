@@ -5,6 +5,11 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8a368"]
 bg_color = Color(0.196078, 0.196078, 0.101961, 0.6)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+shadow_color = Color(0, 0, 0, 0.0784314)
 
 [node name="Window" instance=ExtResource("1_bisfo")]
 clip_contents = true
