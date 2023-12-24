@@ -86,6 +86,13 @@ func add_folder_options():
 	delete_option.option_clicked.connect(_handle_folder_delete)
 	
 	$VBoxContainer.add_child(rename_option)
+	
+	if target.file_type == FakeFolder.file_type_enum.IMAGE:
+		var set_wallpaper_option: Control = context_menu_option.instantiate()
+		set_wallpaper_option.get_node("%Option Text").text = "Set as wallpaper"
+		set_wallpaper_option.option_clicked.connect(_handle_set_wallpaper)
+		$VBoxContainer.add_child(set_wallpaper_option)
+	
 	$VBoxContainer.add_child(context_menu_seperator.instantiate())
 	$VBoxContainer.add_child(copy_option)
 	$VBoxContainer.add_child(cut_option)
@@ -118,6 +125,10 @@ func add_file_manager_options():
 
 func _handle_folder_rename():
 	target.get_node("%Folder Title Edit").show_rename()
+
+func _handle_set_wallpaper():
+	# TODO make this a relative path?
+	get_node("/root/Control/Wallpaper").apply_wallpaper_from_file(target)
 
 func _handle_folder_delete():
 	target.delete_file()

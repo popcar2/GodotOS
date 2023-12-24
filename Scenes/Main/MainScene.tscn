@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bmjyglrsf04uo"]
+[gd_scene load_steps=8 format=3 uid="uid://bmjyglrsf04uo"]
 
 [ext_resource type="Script" path="res://Scenes/Main/desktop_file_manager.gd" id="1_c0q37"]
+[ext_resource type="Script" path="res://Scenes/Main/wallpaper.gd" id="1_xkkt2"]
 [ext_resource type="PackedScene" uid="uid://cfj5p5pgfnywp" path="res://Scenes/Taskbar/taskbar.tscn" id="2_35ao4"]
 [ext_resource type="PackedScene" uid="uid://bwyybu5i3kid" path="res://Scenes/Main/Boot Splash/boot_splash.tscn" id="3_ifoxq"]
 
@@ -13,6 +14,14 @@ func _ready():
 	get_parent().move_child.call_deferred(self, 0)
 "
 
+[sub_resource type="Gradient" id="Gradient_g3gwb"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_agg5v"]
+gradient = SubResource("Gradient_g3gwb")
+width = 1
+
 [node name="Control" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -21,6 +30,26 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = SubResource("GDScript_fyyaf")
+
+[node name="Wallpaper" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+expand_mode = 3
+script = ExtResource("1_xkkt2")
+
+[node name="Fade" type="TextureRect" parent="Wallpaper"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_agg5v")
 
 [node name="DesktopFileManager" type="Control" parent="." groups=["desktop_file_manager", "right_click_enabled"]]
 layout_mode = 1

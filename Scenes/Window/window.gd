@@ -128,7 +128,8 @@ func select_window(play_fade_animation: bool):
 	if play_fade_animation:
 		tween.tween_property(self, "modulate:a", 1, 0.1)
 	
-	get_parent().move_child(self, num_of_windows)
+	# Move in front of all other windows
+	get_parent().move_child(self, num_of_windows + 1)
 	
 	deselect_other_windows()
 
