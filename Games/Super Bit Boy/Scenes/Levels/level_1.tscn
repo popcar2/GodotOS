@@ -1,18 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://t3fobsr7gklg"]
+[gd_scene load_steps=8 format=3 uid="uid://t3fobsr7gklg"]
 
 [ext_resource type="Script" path="res://Games/Super Bit Boy/Scenes/Levels/bit_boy_scene_manager.gd" id="1_yi0p1"]
-[ext_resource type="Script" path="res://Games/Super Bit Boy/Other Scripts/Camera2D.gd" id="2_68u54"]
+[ext_resource type="PackedScene" uid="uid://chfpq4oi0dogc" path="res://Games/Super Bit Boy/Other Scenes/bit_boy_camera.tscn" id="2_4pma2"]
 [ext_resource type="Texture2D" uid="uid://bwxnhif5h1cck" path="res://Art/Pixel_32.png" id="3_75lam"]
 [ext_resource type="PackedScene" uid="uid://bxv24mjcranba" path="res://Games/Super Bit Boy/Scenes/Player/bit_boy_player.tscn" id="4_bfb5o"]
 [ext_resource type="PackedScene" uid="uid://b3u7st4i1algn" path="res://Games/Super Bit Boy/Scenes/Exit/bit_boy_exit.tscn" id="5_38t8g"]
-
-[sub_resource type="Gradient" id="Gradient_yyofs"]
-offsets = PackedFloat32Array(0)
-colors = PackedColorArray(0, 0, 0, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_xxn30"]
-gradient = SubResource("Gradient_yyofs")
-width = 1920
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kk343"]
 texture = ExtResource("3_75lam")
@@ -40,16 +32,7 @@ sources/1 = SubResource("TileSetAtlasSource_kk343")
 script = ExtResource("1_yi0p1")
 next_scene_str = "res://Games/Super Bit Boy/Scenes/Levels/level_2.tscn"
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.75, 0.75)
-process_callback = 0
-position_smoothing_enabled = true
-position_smoothing_speed = 7.0
-script = ExtResource("2_68u54")
-
-[node name="Sprite2D" type="Sprite2D" parent="Camera2D"]
-scale = Vector2(1, 1920)
-texture = SubResource("GradientTexture1D_xxn30")
+[node name="Camera2D" parent="." instance=ExtResource("2_4pma2")]
 
 [node name="TileMap" type="TileMap" parent="."]
 modulate = Color(0.615686, 0.615686, 0.615686, 1)
