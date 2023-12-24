@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scenes/Window/Text Editor/text_editor.gd" id="2_4wajo"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_22tla"]
-bg_color = Color(0, 0.272546, 0.269272, 0.862745)
+bg_color = Color(0, 0.270588, 0.270588, 0.862745)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5

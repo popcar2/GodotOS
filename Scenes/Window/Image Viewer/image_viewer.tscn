@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Scenes/Window/Image Viewer/image_viewer.gd" id="2_3oyj5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8a368"]
-bg_color = Color(0.196078, 0.196078, 0.101961, 0.6)
+bg_color = Color(0.337151, 0.3052, 0.145422, 0.784314)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -12,10 +12,19 @@ corner_radius_bottom_left = 5
 shadow_color = Color(0, 0, 0, 0.0784314)
 
 [node name="Window" instance=ExtResource("1_bisfo")]
-clip_contents = true
 theme_override_styles/panel = SubResource("StyleBoxFlat_8a368")
 
-[node name="Image Viewer" type="TextureRect" parent="." index="2"]
+[node name="Control" type="Control" parent="." index="2"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Image Viewer" type="TextureRect" parent="Control" index="0"]
 unique_name_in_owner = true
 texture_filter = 6
 layout_mode = 1

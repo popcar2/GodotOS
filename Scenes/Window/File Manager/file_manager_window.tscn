@@ -1,16 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://i03dt4l5msgl"]
+[gd_scene load_steps=7 format=3 uid="uid://i03dt4l5msgl"]
 
 [ext_resource type="PackedScene" uid="uid://cojrqff5vocjv" path="res://Scenes/Window/Window.tscn" id="1_xona8"]
 [ext_resource type="Script" path="res://Scenes/Window/File Manager/file_manager_window.gd" id="2_prcfs"]
-
-[sub_resource type="Theme" id="Theme_nruh0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8j66m"]
 content_margin_left = 0.0
 content_margin_top = 0.0
 content_margin_right = 0.0
 content_margin_bottom = 0.0
-bg_color = Color(0.101961, 0.196078, 0.101961, 0.6)
+bg_color = Color(0.196078, 0.333333, 0.196078, 0.784314)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -33,7 +31,6 @@ corner_radius_top_left = 5
 [node name="Window" instance=ExtResource("1_xona8")]
 offset_left = -267.5
 offset_right = 267.5
-theme = SubResource("Theme_nruh0")
 theme_override_styles/panel = SubResource("StyleBoxFlat_8j66m")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="." index="0"]
