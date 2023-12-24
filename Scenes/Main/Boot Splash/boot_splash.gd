@@ -29,7 +29,6 @@ func play_quit_animation():
 	
 	var tween: Tween = create_tween()
 	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
-	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_EXPO)
 	tween.set_parallel(true)
 	tween.tween_property($Logo, "scale", Vector2(1, 1), 2)
 	tween.tween_property($CanvasGroup/Logo, "scale", Vector2(1, 1), 2)

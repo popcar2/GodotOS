@@ -101,9 +101,14 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(95, 0)
 layout_mode = 2
 mouse_filter = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
 theme_override_font_sizes/normal_font_size = 14
 bbcode_enabled = true
-text = "[center]Hello World!"
+text = "[center]Hello World!
+Hello World."
 fit_content = true
 
 [node name="CenterContainer2" type="CenterContainer" parent="Control"]
