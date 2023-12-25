@@ -32,6 +32,7 @@ grow_vertical = 2
 script = SubResource("GDScript_fyyaf")
 
 [node name="Wallpaper" type="TextureRect" parent="."]
+texture_filter = 6
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -43,6 +44,7 @@ expand_mode = 3
 script = ExtResource("1_xkkt2")
 
 [node name="Fade" type="TextureRect" parent="Wallpaper"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

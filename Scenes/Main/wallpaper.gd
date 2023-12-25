@@ -3,6 +3,7 @@ extends TextureRect
 func _ready():
 	# I use a node to fade because fading modulate doesn't work if there is no texture
 	$Fade.modulate.a = 0
+	$Fade.visible = true
 
 ## Applies wallpaper from an image file
 func apply_wallpaper_from_file(image_file: FakeFolder):

@@ -1,0 +1,154 @@
+[gd_scene load_steps=12 format=3 uid="uid://5sdddkl3mfbw"]
+
+[ext_resource type="PackedScene" uid="uid://cojrqff5vocjv" path="res://Scenes/Window/Window.tscn" id="1_rx4sm"]
+[ext_resource type="Script" path="res://Scenes/Window/Settings Window/scaling_spinbox.gd" id="2_a71vs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_txq2q"]
+bg_color = Color(0, 0, 0, 0.313726)
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8v10x"]
+bg_color = Color(0.392157, 0.392157, 0.392157, 0.313726)
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2u54r"]
+bg_color = Color(0, 0, 0, 0.313726)
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nenhp"]
+bg_color = Color(0, 0, 0, 0.313726)
+corner_radius_top_left = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jeame"]
+bg_color = Color(0.392157, 0.392157, 0.392157, 0.313726)
+corner_radius_top_left = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7822x"]
+bg_color = Color(0, 0, 0, 0.313726)
+corner_radius_top_left = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3dvlq"]
+bg_color = Color(0.0941176, 0.0941176, 0.0941176, 1)
+
+[sub_resource type="Theme" id="Theme_c40gw"]
+LineEdit/styles/normal = SubResource("StyleBoxFlat_3dvlq")
+
+[sub_resource type="ImageTexture" id="ImageTexture_0jw4l"]
+
+[node name="Window" instance=ExtResource("1_rx4sm")]
+
+[node name="Title Text" parent="Top Bar" index="0"]
+text = "[center]Settings"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="." index="2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="ScrollContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ScrollContainer/MarginContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="GridContainer" type="GridContainer" parent="ScrollContainer/MarginContainer/VBoxContainer" index="0"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_vertical = 3
+columns = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer/GridContainer" index="0"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 20
+text = "Screen Scaling"
+
+[node name="Control" type="Control" parent="ScrollContainer/MarginContainer/VBoxContainer/GridContainer" index="1"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+
+[node name="IncrementScaling" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/GridContainer/Control" index="0"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = -15.0
+offset_right = -1.0
+offset_bottom = 15.0
+grow_horizontal = 0
+grow_vertical = 2
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_txq2q")
+theme_override_styles/hover = SubResource("StyleBoxFlat_8v10x")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_2u54r")
+text = "+"
+
+[node name="DecrementScaling" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/GridContainer/Control" index="1"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -97.667
+offset_top = -15.0
+offset_right = -77.667
+offset_bottom = 15.0
+grow_horizontal = 0
+grow_vertical = 2
+focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_nenhp")
+theme_override_styles/hover = SubResource("StyleBoxFlat_jeame")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7822x")
+text = "-"
+
+[node name="ScalingSpinbox" type="SpinBox" parent="ScrollContainer/MarginContainer/VBoxContainer/GridContainer/Control" index="2"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -78.667
+offset_top = -15.0
+offset_right = -20.0003
+offset_bottom = 15.0
+grow_horizontal = 0
+grow_vertical = 2
+theme = SubResource("Theme_c40gw")
+theme_override_icons/updown = SubResource("ImageTexture_0jw4l")
+min_value = 0.5
+max_value = 3.0
+step = 0.005
+value = 1.0
+alignment = 1
+script = ExtResource("2_a71vs")
+
+[connection signal="pressed" from="ScrollContainer/MarginContainer/VBoxContainer/GridContainer/Control/IncrementScaling" to="ScrollContainer/MarginContainer/VBoxContainer/GridContainer/Control/ScalingSpinbox" method="_on_increment_scaling_pressed"]
+[connection signal="pressed" from="ScrollContainer/MarginContainer/VBoxContainer/GridContainer/Control/DecrementScaling" to="ScrollContainer/MarginContainer/VBoxContainer/GridContainer/Control/ScalingSpinbox" method="_on_decrement_scaling_pressed"]
+[connection signal="mouse_entered" from="ScrollContainer/MarginContainer/VBoxContainer/GridContainer/Control/ScalingSpinbox" to="ScrollContainer/MarginContainer/VBoxContainer/GridContainer/Control/ScalingSpinbox" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ScrollContainer/MarginContainer/VBoxContainer/GridContainer/Control/ScalingSpinbox" to="ScrollContainer/MarginContainer/VBoxContainer/GridContainer/Control/ScalingSpinbox" method="_on_mouse_exited"]
+[connection signal="value_changed" from="ScrollContainer/MarginContainer/VBoxContainer/GridContainer/Control/ScalingSpinbox" to="ScrollContainer/MarginContainer/VBoxContainer/GridContainer/Control/ScalingSpinbox" method="_on_value_changed"]

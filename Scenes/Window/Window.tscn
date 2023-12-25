@@ -94,6 +94,7 @@ grow_horizontal = 0
 grow_vertical = 2
 
 [node name="Minimize Button" type="Button" parent="Top Bar/HBoxContainer"]
+texture_filter = 6
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 focus_mode = 0
@@ -103,6 +104,7 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_epasn")
 text = "-"
 
 [node name="Maximize Button" type="Button" parent="Top Bar/HBoxContainer"]
+texture_filter = 6
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 focus_mode = 0
@@ -114,6 +116,7 @@ icon = ExtResource("2_bcfhp")
 icon_alignment = 1
 
 [node name="Close Button" type="Button" parent="Top Bar/HBoxContainer"]
+texture_filter = 6
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 focus_mode = 0
@@ -129,10 +132,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -15.0
-offset_top = -15.0
-offset_right = 5.0
-offset_bottom = 5.0
+offset_left = -17.0
+offset_top = -17.0
+offset_right = 3.0
+offset_bottom = 3.0
 grow_horizontal = 0
 grow_vertical = 0
 mouse_default_cursor_shape = 12
