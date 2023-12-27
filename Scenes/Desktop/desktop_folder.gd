@@ -96,7 +96,7 @@ func spawn_window():
 	window.title_text = %"Folder Title".text
 	get_tree().current_scene.add_child(window)
 	
-	var taskbar_button: MarginContainer = load("res://Scenes/Taskbar/taskbar_button.tscn").instantiate()
+	var taskbar_button: Control = load("res://Scenes/Taskbar/taskbar_button.tscn").instantiate()
 	taskbar_button.target_window = window
 	
 	if file_type == file_type_enum.FOLDER:

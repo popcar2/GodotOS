@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cfj5p5pgfnywp"]
+[gd_scene load_steps=13 format=3 uid="uid://cfj5p5pgfnywp"]
 
 [ext_resource type="Script" path="res://Scenes/Taskbar/start_button.gd" id="1_aypgd"]
 [ext_resource type="PackedScene" uid="uid://da4oly47yx3ja" path="res://Scenes/Taskbar/start_menu_option.tscn" id="2_1ualm"]
@@ -6,6 +6,9 @@
 [ext_resource type="Script" path="res://Scenes/Taskbar/power_button.gd" id="4_cnyss"]
 [ext_resource type="Texture2D" uid="uid://cwnaaut64gd15" path="res://Art/Icons/cog.png" id="5_srcnq"]
 [ext_resource type="Script" path="res://Scenes/Taskbar/settings_button.gd" id="6_38i4x"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mxh1o"]
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_s4q16"]
 
@@ -30,6 +33,7 @@ anchor_bottom = 1.0
 offset_top = -40.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_mxh1o")
 
 [node name="Start Button" type="MarginContainer" parent="."]
 layout_mode = 0

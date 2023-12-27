@@ -1,4 +1,8 @@
-extends MarginContainer
+extends Control
+
+@onready var taskbar_button: MarginContainer = $"Taskbar Button"
+@onready var texture_rect: TextureRect = $"Taskbar Button/TextureRect"
+@onready var selected_background: TextureRect = $SelectedBackground
 
 var target_window: FakeWindow
 
@@ -6,9 +10,10 @@ var active_color: Color = Color("6de700")
 var disabled_color: Color = Color("908a8c")
 
 func _ready():
-	target_window.minimized.connect(on_window_minimized)
-	target_window.deleted.connect(on_window_deleted)
-	$TextureRect.self_modulate = active_color
+	target_window.minimized.connect(_on_window_minimized)
+	target_window.deleted.connect(_on_window_deleted)
+	target_window.selected.connect(_on_window_selected)
+	texture_rect.self_modulate = active_color
 
 func _gui_input(event: InputEvent):
 	if event is InputEventMouseButton and event.button_index == 1 and event.is_pressed():
@@ -18,24 +23,33 @@ func _gui_input(event: InputEvent):
 			target_window.hide_window()
 
 func _on_mouse_entered():
-	add_theme_constant_override("margin_bottom", 7)
-	add_theme_constant_override("margin_left", 7)
-	add_theme_constant_override("margin_right", 7)
-	add_theme_constant_override("margin_top", 7)
+	taskbar_button.add_theme_constant_override("margin_bottom", 7)
+	taskbar_button.add_theme_constant_override("margin_left", 7)
+	taskbar_button.add_theme_constant_override("margin_right", 7)
+	taskbar_button.add_theme_constant_override("margin_top", 7)
 
 func _on_mouse_exited():
-	add_theme_constant_override("margin_bottom", 5)
-	add_theme_constant_override("margin_left", 5)
-	add_theme_constant_override("margin_right", 5)
-	add_theme_constant_override("margin_top", 5)
+	taskbar_button.add_theme_constant_override("margin_bottom", 5)
+	taskbar_button.add_theme_constant_override("margin_left", 5)
+	taskbar_button.add_theme_constant_override("margin_right", 5)
+	taskbar_button.add_theme_constant_override("margin_top", 5)
 
-func on_window_minimized(is_minimized: bool):
+func _on_window_minimized(is_minimized: bool):
 	var tween: Tween = create_tween()
 	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 	if is_minimized:
-		tween.tween_property($TextureRect, "self_modulate", disabled_color, 0.25)
+		tween.tween_property(texture_rect, "self_modulate", disabled_color, 0.25)
 	else:
-		tween.tween_property($TextureRect, "self_modulate", active_color, 0.25)
+		tween.tween_property(texture_rect, "self_modulate", active_color, 0.25)
 
-func on_window_deleted():
+func _on_window_deleted():
 	queue_free()
+
+func _on_window_selected(selected: bool):
+	var tween: Tween = create_tween()
+	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+	
+	if selected:
+		tween.tween_property(selected_background, "self_modulate:a", 1, 0.25)
+	else:
+		tween.tween_property(selected_background, "self_modulate:a", 0, 0.25)

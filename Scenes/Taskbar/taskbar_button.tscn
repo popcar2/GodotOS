@@ -1,18 +1,51 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7mejsbueubva"]
+[gd_scene load_steps=5 format=3 uid="uid://b7mejsbueubva"]
 
 [ext_resource type="Script" path="res://Scenes/Taskbar/taskbar_button.gd" id="1_j5fdb"]
 
+[sub_resource type="Gradient" id="Gradient_l7111"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mftby"]
+gradient = SubResource("Gradient_l7111")
+width = 1
+
 [sub_resource type="CanvasTexture" id="CanvasTexture_s4q16"]
 
-[node name="Taskbar Button" type="MarginContainer"]
+[node name="Control" type="Control"]
 custom_minimum_size = Vector2(40, 0)
+layout_mode = 3
+anchors_preset = 0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 35.0
+offset_bottom = 6.0
+mouse_filter = 1
+script = ExtResource("1_j5fdb")
+
+[node name="SelectedBackground" type="TextureRect" parent="."]
+modulate = Color(0, 0.498039, 1, 0.470588)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("GradientTexture1D_mftby")
+expand_mode = 2
+
+[node name="Taskbar Button" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
-script = ExtResource("1_j5fdb")
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="Taskbar Button"]
 self_modulate = Color(0.427451, 0.905882, 0, 1)
 layout_mode = 2
 mouse_filter = 2
