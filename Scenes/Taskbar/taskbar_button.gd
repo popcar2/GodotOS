@@ -1,7 +1,7 @@
 extends Control
 
-@onready var taskbar_button: MarginContainer = $"Taskbar Button"
-@onready var texture_rect: TextureRect = $"Taskbar Button/TextureRect"
+@onready var texture_margin: MarginContainer = $TextureMargin
+@onready var texture_rect: TextureRect = $"TextureMargin/TextureRect"
 @onready var selected_background: TextureRect = $SelectedBackground
 
 var target_window: FakeWindow
@@ -23,16 +23,16 @@ func _gui_input(event: InputEvent):
 			target_window.hide_window()
 
 func _on_mouse_entered():
-	taskbar_button.add_theme_constant_override("margin_bottom", 7)
-	taskbar_button.add_theme_constant_override("margin_left", 7)
-	taskbar_button.add_theme_constant_override("margin_right", 7)
-	taskbar_button.add_theme_constant_override("margin_top", 7)
+	texture_margin.add_theme_constant_override("margin_bottom", 7)
+	texture_margin.add_theme_constant_override("margin_left", 7)
+	texture_margin.add_theme_constant_override("margin_right", 7)
+	texture_margin.add_theme_constant_override("margin_top", 7)
 
 func _on_mouse_exited():
-	taskbar_button.add_theme_constant_override("margin_bottom", 5)
-	taskbar_button.add_theme_constant_override("margin_left", 5)
-	taskbar_button.add_theme_constant_override("margin_right", 5)
-	taskbar_button.add_theme_constant_override("margin_top", 5)
+	texture_margin.add_theme_constant_override("margin_bottom", 5)
+	texture_margin.add_theme_constant_override("margin_left", 5)
+	texture_margin.add_theme_constant_override("margin_right", 5)
+	texture_margin.add_theme_constant_override("margin_top", 5)
 
 func _on_window_minimized(is_minimized: bool):
 	var tween: Tween = create_tween()

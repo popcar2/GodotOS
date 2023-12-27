@@ -12,7 +12,7 @@ width = 1
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_s4q16"]
 
-[node name="Control" type="Control"]
+[node name="TaskbarButton" type="Control"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 3
 anchors_preset = 0
@@ -31,7 +31,7 @@ offset_bottom = 40.0
 texture = SubResource("GradientTexture1D_mftby")
 expand_mode = 2
 
-[node name="Taskbar Button" type="MarginContainer" parent="."]
+[node name="TextureMargin" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 1
 anchors_preset = 15
@@ -45,7 +45,7 @@ theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="TextureRect" type="TextureRect" parent="Taskbar Button"]
+[node name="TextureRect" type="TextureRect" parent="TextureMargin"]
 self_modulate = Color(0.427451, 0.905882, 0, 1)
 layout_mode = 2
 mouse_filter = 2
