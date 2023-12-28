@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Scenes/Window/resize_drag_spot.gd" id="2_xymxc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gwhiu"]
-bg_color = Color(0.2, 0.2, 0.2, 0.6)
+bg_color = Color(0.2, 0.2, 0.2, 0.666667)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5

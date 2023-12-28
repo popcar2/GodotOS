@@ -1,7 +1,17 @@
-[gd_scene load_steps=12 format=3 uid="uid://5sdddkl3mfbw"]
+[gd_scene load_steps=14 format=3 uid="uid://5sdddkl3mfbw"]
 
 [ext_resource type="PackedScene" uid="uid://cojrqff5vocjv" path="res://Scenes/Window/Window.tscn" id="1_rx4sm"]
 [ext_resource type="Script" path="res://Scenes/Window/Settings Window/scaling_spinbox.gd" id="2_a71vs"]
+[ext_resource type="Script" path="res://Scenes/Window/Settings Window/window_options.gd" id="3_7t58g"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g2ist"]
+bg_color = Color(0.2, 0.2, 0.2, 0.862745)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 10
+shadow_color = Color(0, 0, 0, 0.0784314)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_txq2q"]
 bg_color = Color(0, 0, 0, 0.313726)
@@ -42,6 +52,7 @@ LineEdit/styles/normal = SubResource("StyleBoxFlat_3dvlq")
 [sub_resource type="ImageTexture" id="ImageTexture_0jw4l"]
 
 [node name="Window" instance=ExtResource("1_rx4sm")]
+theme_override_styles/panel = SubResource("StyleBoxFlat_g2ist")
 
 [node name="Title Text" parent="Top Bar" index="0"]
 text = "[center]Settings"
@@ -68,13 +79,11 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="GridContainer" type="GridContainer" parent="ScrollContainer/MarginContainer/VBoxContainer" index="0"]
-custom_minimum_size = Vector2(0, 40)
+[node name="Screen Scaling" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer" index="0"]
 layout_mode = 2
-size_flags_vertical = 3
-columns = 2
+size_flags_vertical = 0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer/GridContainer" index="0"]
+[node name="RichTextLabel" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer/Screen Scaling" index="0"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -82,12 +91,12 @@ mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 20
 text = "Screen Scaling"
 
-[node name="Control" type="Control" parent="ScrollContainer/MarginContainer/VBoxContainer/GridContainer" index="1"]
+[node name="Control" type="Control" parent="ScrollContainer/MarginContainer/VBoxContainer/Screen Scaling" index="1"]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 
-[node name="IncrementScaling" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/GridContainer/Control" index="0"]
+[node name="IncrementScaling" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Screen Scaling/Control" index="0"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -106,7 +115,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_8v10x")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2u54r")
 text = "+"
 
-[node name="DecrementScaling" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/GridContainer/Control" index="1"]
+[node name="DecrementScaling" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Screen Scaling/Control" index="1"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -125,7 +134,7 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_jeame")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_7822x")
 text = "-"
 
-[node name="ScalingSpinbox" type="SpinBox" parent="ScrollContainer/MarginContainer/VBoxContainer/GridContainer/Control" index="2"]
+[node name="ScalingSpinbox" type="SpinBox" parent="ScrollContainer/MarginContainer/VBoxContainer/Screen Scaling/Control" index="2"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -147,8 +156,35 @@ value = 1.0
 alignment = 1
 script = ExtResource("2_a71vs")
 
-[connection signal="pressed" from="ScrollContainer/MarginContainer/VBoxContainer/GridContainer/Control/IncrementScaling" to="ScrollContainer/MarginContainer/VBoxContainer/GridContainer/Control/ScalingSpinbox" method="_on_increment_scaling_pressed"]
-[connection signal="pressed" from="ScrollContainer/MarginContainer/VBoxContainer/GridContainer/Control/DecrementScaling" to="ScrollContainer/MarginContainer/VBoxContainer/GridContainer/Control/ScalingSpinbox" method="_on_decrement_scaling_pressed"]
-[connection signal="mouse_entered" from="ScrollContainer/MarginContainer/VBoxContainer/GridContainer/Control/ScalingSpinbox" to="ScrollContainer/MarginContainer/VBoxContainer/GridContainer/Control/ScalingSpinbox" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="ScrollContainer/MarginContainer/VBoxContainer/GridContainer/Control/ScalingSpinbox" to="ScrollContainer/MarginContainer/VBoxContainer/GridContainer/Control/ScalingSpinbox" method="_on_mouse_exited"]
-[connection signal="value_changed" from="ScrollContainer/MarginContainer/VBoxContainer/GridContainer/Control/ScalingSpinbox" to="ScrollContainer/MarginContainer/VBoxContainer/GridContainer/Control/ScalingSpinbox" method="_on_value_changed"]
+[node name="Window Mode" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer" index="1"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer/Window Mode" index="0"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 20
+text = "Window Mode"
+
+[node name="WindowOptions" type="OptionButton" parent="ScrollContainer/MarginContainer/VBoxContainer/Window Mode" index="1"]
+layout_mode = 2
+focus_mode = 0
+item_count = 3
+selected = 0
+fit_to_longest_item = false
+popup/item_0/text = "Windowed"
+popup/item_0/id = 0
+popup/item_1/text = "Borderless Fullscreen"
+popup/item_1/id = 1
+popup/item_2/text = "Exclusive Fullscreen"
+popup/item_2/id = 2
+script = ExtResource("3_7t58g")
+
+[connection signal="pressed" from="ScrollContainer/MarginContainer/VBoxContainer/Screen Scaling/Control/IncrementScaling" to="ScrollContainer/MarginContainer/VBoxContainer/Screen Scaling/Control/ScalingSpinbox" method="_on_increment_scaling_pressed"]
+[connection signal="pressed" from="ScrollContainer/MarginContainer/VBoxContainer/Screen Scaling/Control/DecrementScaling" to="ScrollContainer/MarginContainer/VBoxContainer/Screen Scaling/Control/ScalingSpinbox" method="_on_decrement_scaling_pressed"]
+[connection signal="mouse_entered" from="ScrollContainer/MarginContainer/VBoxContainer/Screen Scaling/Control/ScalingSpinbox" to="ScrollContainer/MarginContainer/VBoxContainer/Screen Scaling/Control/ScalingSpinbox" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="ScrollContainer/MarginContainer/VBoxContainer/Screen Scaling/Control/ScalingSpinbox" to="ScrollContainer/MarginContainer/VBoxContainer/Screen Scaling/Control/ScalingSpinbox" method="_on_mouse_exited"]
+[connection signal="value_changed" from="ScrollContainer/MarginContainer/VBoxContainer/Screen Scaling/Control/ScalingSpinbox" to="ScrollContainer/MarginContainer/VBoxContainer/Screen Scaling/Control/ScalingSpinbox" method="_on_value_changed"]
+[connection signal="item_selected" from="ScrollContainer/MarginContainer/VBoxContainer/Window Mode/WindowOptions" to="ScrollContainer/MarginContainer/VBoxContainer/Window Mode/WindowOptions" method="_on_item_selected"]

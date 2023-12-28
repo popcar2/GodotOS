@@ -118,14 +118,19 @@ icon = ExtResource("5_srcnq")
 icon_alignment = 1
 script = ExtResource("6_38i4x")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." groups=["taskbar_buttons"]]
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 50.0
+offset_left = 48.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer" groups=["taskbar_buttons"]]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [connection signal="mouse_entered" from="Start Button" to="Start Button" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Start Button" to="Start Button" method="_on_mouse_exited"]
