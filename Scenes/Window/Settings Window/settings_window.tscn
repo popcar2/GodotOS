@@ -1,8 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://5sdddkl3mfbw"]
+[gd_scene load_steps=16 format=3 uid="uid://5sdddkl3mfbw"]
 
 [ext_resource type="PackedScene" uid="uid://cojrqff5vocjv" path="res://Scenes/Window/Window.tscn" id="1_rx4sm"]
 [ext_resource type="Script" path="res://Scenes/Window/Settings Window/scaling_spinbox.gd" id="2_a71vs"]
 [ext_resource type="Script" path="res://Scenes/Window/Settings Window/window_options.gd" id="3_7t58g"]
+[ext_resource type="Script" path="res://Scenes/Window/Settings Window/background_color_picker.gd" id="4_vnxcp"]
+[ext_resource type="Script" path="res://Scenes/Window/Settings Window/remove_wallpaper.gd" id="5_p360g"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g2ist"]
 bg_color = Color(0.2, 0.2, 0.2, 0.862745)
@@ -78,6 +80,7 @@ theme_override_constants/margin_right = 10
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_constants/separation = 8
 
 [node name="Screen Scaling" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer" index="0"]
 layout_mode = 2
@@ -182,9 +185,49 @@ popup/item_2/text = "Exclusive Fullscreen"
 popup/item_2/id = 2
 script = ExtResource("3_7t58g")
 
+[node name="Background Color" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer" index="2"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer/Background Color" index="0"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 20
+text = "Background Color"
+
+[node name="BackgroundColorPicker" type="ColorPickerButton" parent="ScrollContainer/MarginContainer/VBoxContainer/Background Color" index="1"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+focus_mode = 0
+edit_alpha = false
+script = ExtResource("4_vnxcp")
+
+[node name="Remove Wallpaper" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer" index="3"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer/Remove Wallpaper" index="0"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 20
+text = "Remove Background"
+
+[node name="RemoveWallpaper" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Remove Wallpaper" index="1"]
+layout_mode = 2
+focus_mode = 0
+text = "Remove BG"
+script = ExtResource("5_p360g")
+
 [connection signal="pressed" from="ScrollContainer/MarginContainer/VBoxContainer/Screen Scaling/Control/IncrementScaling" to="ScrollContainer/MarginContainer/VBoxContainer/Screen Scaling/Control/ScalingSpinbox" method="_on_increment_scaling_pressed"]
 [connection signal="pressed" from="ScrollContainer/MarginContainer/VBoxContainer/Screen Scaling/Control/DecrementScaling" to="ScrollContainer/MarginContainer/VBoxContainer/Screen Scaling/Control/ScalingSpinbox" method="_on_decrement_scaling_pressed"]
 [connection signal="mouse_entered" from="ScrollContainer/MarginContainer/VBoxContainer/Screen Scaling/Control/ScalingSpinbox" to="ScrollContainer/MarginContainer/VBoxContainer/Screen Scaling/Control/ScalingSpinbox" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="ScrollContainer/MarginContainer/VBoxContainer/Screen Scaling/Control/ScalingSpinbox" to="ScrollContainer/MarginContainer/VBoxContainer/Screen Scaling/Control/ScalingSpinbox" method="_on_mouse_exited"]
 [connection signal="value_changed" from="ScrollContainer/MarginContainer/VBoxContainer/Screen Scaling/Control/ScalingSpinbox" to="ScrollContainer/MarginContainer/VBoxContainer/Screen Scaling/Control/ScalingSpinbox" method="_on_value_changed"]
 [connection signal="item_selected" from="ScrollContainer/MarginContainer/VBoxContainer/Window Mode/WindowOptions" to="ScrollContainer/MarginContainer/VBoxContainer/Window Mode/WindowOptions" method="_on_item_selected"]
+[connection signal="color_changed" from="ScrollContainer/MarginContainer/VBoxContainer/Background Color/BackgroundColorPicker" to="ScrollContainer/MarginContainer/VBoxContainer/Background Color/BackgroundColorPicker" method="_on_color_changed"]
+[connection signal="pressed" from="ScrollContainer/MarginContainer/VBoxContainer/Remove Wallpaper/RemoveWallpaper" to="ScrollContainer/MarginContainer/VBoxContainer/Remove Wallpaper/RemoveWallpaper" method="_on_pressed"]
