@@ -128,8 +128,8 @@ func select_window(play_fade_animation: bool):
 	if play_fade_animation:
 		tween.tween_property(self, "modulate:a", 1, 0.1)
 	
-	# Move in front of all other windows
-	get_parent().move_child(self, num_of_windows + 1)
+	# Move in front of all other windows (+2 to ignore wallpaper and bg color)
+	get_parent().move_child(self, num_of_windows + 2)
 	
 	deselect_other_windows()
 

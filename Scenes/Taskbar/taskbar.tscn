@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cfj5p5pgfnywp"]
+[gd_scene load_steps=15 format=3 uid="uid://cfj5p5pgfnywp"]
 
 [ext_resource type="Script" path="res://Scenes/Taskbar/start_button.gd" id="1_aypgd"]
 [ext_resource type="PackedScene" uid="uid://da4oly47yx3ja" path="res://Scenes/Taskbar/start_menu_option.tscn" id="2_1ualm"]
@@ -12,16 +12,24 @@ bg_color = Color(0.1, 0.1, 0.1, 0.6)
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_s4q16"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lxws7"]
+bg_color = Color(0.0784314, 0.0784314, 0.0784314, 0.784314)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lnonj"]
 bg_color = Color(0.666667, 0, 0, 0.392157)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nbmie"]
 bg_color = Color(1, 0.247059, 0.188235, 0.588235)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m6thp"]
-bg_color = Color(0.501961, 0.501961, 0.501961, 0.392157)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2dh2v"]
+bg_color = Color(0.0784314, 0.0784314, 0.0784314, 0.784314)
+corner_radius_top_left = 10
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mgsdk"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bd8k4"]
+bg_color = Color(0.501961, 0.501961, 0.501961, 0.392157)
+corner_radius_top_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bm3y2"]
 bg_color = Color(0.4, 0.4, 0.4, 0.392157)
 
 [node name="Taskbar" type="Panel"]
@@ -96,8 +104,10 @@ offset_top = -48.0
 grow_horizontal = 0
 grow_vertical = 0
 focus_mode = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_lxws7")
 theme_override_styles/hover = SubResource("StyleBoxFlat_lnonj")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_nbmie")
+action_mode = 0
 icon = ExtResource("3_sudyn")
 icon_alignment = 1
 script = ExtResource("4_cnyss")
@@ -105,15 +115,21 @@ script = ExtResource("4_cnyss")
 [node name="Settings Button" type="Button" parent="Start Menu"]
 texture_filter = 6
 layout_mode = 1
-anchors_preset = 2
+anchors_preset = 3
+anchor_left = 1.0
 anchor_top = 1.0
+anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -96.0
 offset_top = -48.0
-offset_right = 48.0
+offset_right = -48.0
+grow_horizontal = 0
 grow_vertical = 0
 focus_mode = 0
-theme_override_styles/hover = SubResource("StyleBoxFlat_m6thp")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_mgsdk")
+theme_override_styles/normal = SubResource("StyleBoxFlat_2dh2v")
+theme_override_styles/hover = SubResource("StyleBoxFlat_bd8k4")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_bm3y2")
+action_mode = 0
 icon = ExtResource("5_srcnq")
 icon_alignment = 1
 script = ExtResource("6_38i4x")

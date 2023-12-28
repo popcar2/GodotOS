@@ -31,6 +31,16 @@ grow_horizontal = 2
 grow_vertical = 2
 script = SubResource("GDScript_fyyaf")
 
+[node name="BackgroundColor" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.301961, 0.301961, 0.301961, 1)
+
 [node name="Wallpaper" type="TextureRect" parent="."]
 texture_filter = 6
 layout_mode = 1

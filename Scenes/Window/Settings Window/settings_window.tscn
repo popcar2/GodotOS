@@ -59,7 +59,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_g2ist")
 [node name="Title Text" parent="Top Bar" index="0"]
 text = "[center]Settings"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="." index="2"]
+[node name="ScrollContainer" type="ScrollContainer" parent="." index="1"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
