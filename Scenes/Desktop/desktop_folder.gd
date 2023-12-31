@@ -43,12 +43,16 @@ func _input(event: InputEvent):
 					get_parent().reload_window(folder_path)
 				else:
 					spawn_window()
-	elif event.is_action_pressed("delete") and $"Selected Highlight".visible:
-		delete_file()
-	elif event.is_action_pressed("copy") and $"Selected Highlight".visible:
-		CopyPasteManager.copy_folder(self)
-	elif event.is_action_pressed("cut") and $"Selected Highlight".visible:
-		CopyPasteManager.cut_folder(self)
+	if $"Selected Highlight".visible:
+		if event.is_action_pressed("delete"):
+			delete_file()
+		elif event.is_action_pressed("copy"):
+			CopyPasteManager.copy_folder(self)
+		elif event.is_action_pressed("cut"):
+			CopyPasteManager.cut_folder(self)
+		
+		if event.is_action_pressed("ui_up"):
+			print("Up!")
 
 func _on_mouse_entered():
 	show_hover_highlight()

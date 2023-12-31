@@ -24,6 +24,9 @@ var just_updated: bool
 ## Global Vector2 to calculate the next position of each container child
 var next_position: Vector2
 
+## How many folders make up a line (column or row)
+var line_count: int
+
 var start_min_size: Vector2
 
 func _ready():
@@ -48,15 +51,22 @@ func update_positions(update_again: bool = true):
 		update_vertical_direction()
 
 func update_horizontal_direction():
+	var new_line_count: int = 0
+	line_count = 0
+	
 	var tallest_child: int = 0
+	
 	for child: Node in get_children():
-		if !(child is Control):
+		if !(child is FakeFolder):
 			continue
 		
 		if next_position.x + right_margin + child.size.x > size.x:
 			next_position.x = left_margin
 			next_position.y += tallest_child + vertical_spacing
 			tallest_child = 0
+			
+			line_count = new_line_count
+			new_line_count = 0
 		
 		if child.position != next_position:
 			if tween == null or !tween.is_running():
@@ -67,14 +77,22 @@ func update_horizontal_direction():
 			tallest_child = child.size.y
 		
 		next_position.x += child.size.x + horizontal_spacing
+		new_line_count += 1
+	
+	if line_count == 0:
+		line_count = new_line_count
 	
 	if get_parent() is ScrollContainer:
 		if next_position.y + tallest_child > get_parent().size.y:
 			custom_minimum_size.y = next_position.y + tallest_child + down_margin
 		else:
 			custom_minimum_size.y = start_min_size.y
+	
 
 func update_vertical_direction():
+	var new_line_count: int = 0
+	line_count = 0
+	
 	var longest_child: int = 0
 	for child: Node in get_children():
 		if !(child is Control):
@@ -84,6 +102,9 @@ func update_vertical_direction():
 			next_position.y = up_margin
 			next_position.x += longest_child + horizontal_spacing
 			longest_child = 0
+			
+			line_count = new_line_count
+			new_line_count = 0
 		
 		if child.position != next_position:
 			if tween == null or !tween.is_running():
@@ -94,6 +115,10 @@ func update_vertical_direction():
 			longest_child = child.size.x
 		
 		next_position.y += child.size.y + vertical_spacing
+		new_line_count += 1
+	
+	if line_count == 0:
+		line_count = new_line_count
 	
 	if get_parent() is ScrollContainer:
 		if next_position.x + longest_child > get_parent().size.x:
