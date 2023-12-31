@@ -21,6 +21,7 @@ func _on_mouse_exited():
 
 func _on_value_changed(new_value):
 	get_window().content_scale_factor = new_value
+	DefaultValues.save_state()
 
 func _on_increment_scaling_pressed():
 	if value + 0.125 > max_value:
