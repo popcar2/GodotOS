@@ -107,6 +107,67 @@ func delete_file_with_name(file_name: String):
 	await get_tree().process_frame
 	sort_folders()
 
+func select_folder_up(current_folder: FakeFolder):
+	if direction == "Horizontal":
+		select_previous_line_folder(current_folder)
+	elif direction == "Vertical":
+		select_previous_folder(current_folder)
+
+func select_folder_down(current_folder: FakeFolder):
+	if direction == "Horizontal":
+		select_next_line_folder(current_folder)
+	elif direction == "Vertical":
+		select_next_folder(current_folder)
+
+func select_folder_left(current_folder: FakeFolder):
+	if direction == "Horizontal":
+		select_previous_folder(current_folder)
+	elif direction == "Vertical":
+		select_previous_line_folder(current_folder)
+
+func select_folder_right(current_folder: FakeFolder):
+	if direction == "Horizontal":
+		select_next_folder(current_folder)
+	elif direction == "Vertical":
+		select_next_line_folder(current_folder)
+
+func select_next_folder(current_folder: FakeFolder):
+	var target_index: int = current_folder.get_index() + 1
+	if target_index >= get_child_count():
+		return
+	var next_child: Node = get_child(target_index)
+	if next_child is FakeFolder:
+		current_folder.hide_selected_highlight()
+		next_child.show_selected_highlight()
+
+func select_next_line_folder(current_folder: FakeFolder):
+	var target_index: int = current_folder.get_index() + line_count
+	if target_index >= get_child_count():
+		return
+	var target_folder: Node = get_child(target_index)
+	if target_folder is FakeFolder:
+		current_folder.hide_selected_highlight()
+		target_folder.show_selected_highlight()
+
+func select_previous_folder(current_folder: FakeFolder):
+	var target_index: int = current_folder.get_index() - 1
+	if target_index < 0:
+		return
+	var previous_child: Node = get_child(target_index)
+	if previous_child is FakeFolder:
+		current_folder.hide_selected_highlight()
+		previous_child.show_selected_highlight()
+
+func select_previous_line_folder(current_folder: FakeFolder):
+	var target_index: int = current_folder.get_index() - line_count
+	if target_index < 0:
+		return
+	var target_folder: Node = get_child(target_index)
+	if target_folder is FakeFolder:
+		current_folder.hide_selected_highlight()
+		target_folder.show_selected_highlight()
+
+
 ## Sorts folders based on their name
 func _custom_folder_sort(a: FakeFolder, b: FakeFolder):
 	if a.folder_name.to_lower() < b.folder_name.to_lower():

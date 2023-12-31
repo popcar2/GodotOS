@@ -38,11 +38,7 @@ func _input(event: InputEvent):
 				$"Double Click".start()
 			else:
 				accept_event()
-				hide_selected_highlight()
-				if get_parent().is_in_group("file_manager_window") and file_type == file_type_enum.FOLDER:
-					get_parent().reload_window(folder_path)
-				else:
-					spawn_window()
+				open_folder()
 	if $"Selected Highlight".visible:
 		if event.is_action_pressed("delete"):
 			delete_file()
@@ -52,7 +48,20 @@ func _input(event: InputEvent):
 			CopyPasteManager.cut_folder(self)
 		
 		if event.is_action_pressed("ui_up"):
-			print("Up!")
+			accept_event()
+			get_parent().select_folder_up(self)
+		elif event.is_action_pressed("ui_down"):
+			accept_event()
+			get_parent().select_folder_down(self)
+		elif event.is_action_pressed("ui_left"):
+			accept_event()
+			get_parent().select_folder_left(self)
+		elif event.is_action_pressed("ui_right"):
+			accept_event()
+			get_parent().select_folder_right(self)
+		elif event.is_action_pressed("ui_accept"):
+			accept_event()
+			open_folder()
 
 func _on_mouse_entered():
 	show_hover_highlight()
@@ -143,3 +152,10 @@ func delete_file():
 	# TODO make the color file_type dependent?
 	NotificationManager.spawn_notification("Moved [color=59ea90][wave freq=7]%s[/wave][/color] to trash!" % folder_name)
 	queue_free()
+
+func open_folder():
+	hide_selected_highlight()
+	if get_parent().is_in_group("file_manager_window") and file_type == file_type_enum.FOLDER:
+		get_parent().reload_window(folder_path)
+	else:
+		spawn_window()
