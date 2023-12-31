@@ -23,7 +23,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-DefaultValues="res://Scenes/Autoloads/Default Values/default_values.tscn"
+DefaultValues="*res://Scenes/Autoloads/Default Values/default_values.tscn"
 HotkeyManager="res://Scenes/Autoloads/Hotkey Manager/hotkey_manager.tscn"
 ContextMenu="*res://Scenes/Autoloads/Context Menu/context_menu.tscn"
 NotificationManager="*res://Scenes/Autoloads/Notification Manager/notification_manager.tscn"
@@ -156,3 +156,4 @@ cut={
 textures/canvas_textures/default_texture_filter=2
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.301961, 0.301961, 0.301961, 1)

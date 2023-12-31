@@ -2,6 +2,9 @@ extends SpinBox
 
 var is_mouse_over: bool
 
+func _ready():
+	value = get_window().content_scale_factor
+
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == 1 and event.is_pressed() and !is_mouse_over:
 		get_line_edit().release_focus()

@@ -5,6 +5,7 @@ class_name BootSplash
 
 func _ready():
 	visible = true
+	scale /= get_window().content_scale_factor
 	if quit_animation:
 		play_quit_animation()
 	else:

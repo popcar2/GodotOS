@@ -16,3 +16,4 @@ func _on_color_changed(new_color):
 	var tween: Tween = create_tween()
 	tween.set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property(background_color, "color", new_color, 0.5)
+	DefaultValues.save_state()

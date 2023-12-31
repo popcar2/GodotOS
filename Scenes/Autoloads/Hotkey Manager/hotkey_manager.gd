@@ -19,6 +19,8 @@ func _input(event: InputEvent):
 	if event.is_action_pressed("zoom_in"):
 		if get_window().content_scale_factor < 4:
 			get_window().content_scale_factor += 0.125
+			DefaultValues.save_state()
 	elif event.is_action_pressed("zoom_out"):
 		if get_window().content_scale_factor > 0.25:
 			get_window().content_scale_factor -= 0.125
+			DefaultValues.save_state()
