@@ -47,6 +47,8 @@ func _input(event: InputEvent):
 		delete_file()
 	elif event.is_action_pressed("copy") and $"Selected Highlight".visible:
 		CopyPasteManager.copy_folder(self)
+	elif event.is_action_pressed("cut") and $"Selected Highlight".visible:
+		CopyPasteManager.cut_folder(self)
 
 func _on_mouse_entered():
 	show_hover_highlight()
