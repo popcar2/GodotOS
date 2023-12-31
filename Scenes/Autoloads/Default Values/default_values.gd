@@ -8,6 +8,10 @@ var wallpaper_name: String
 func _ready():
 	DisplayServer.window_set_min_size(Vector2i(600, 525))
 	
+	if wallpaper == null or background_color_rect == null:
+		printerr("default_values.gd: Couldn't find wallpaper (are you debugging a scene?)")
+		return
+	
 	if FileAccess.file_exists("user://user_preferences.txt"):
 		load_state()
 	else:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cfj5p5pgfnywp"]
+[gd_scene load_steps=16 format=3 uid="uid://cfj5p5pgfnywp"]
 
 [ext_resource type="Script" path="res://Scenes/Taskbar/start_button.gd" id="1_aypgd"]
 [ext_resource type="PackedScene" uid="uid://da4oly47yx3ja" path="res://Scenes/Taskbar/start_menu_option.tscn" id="2_1ualm"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scenes/Taskbar/power_button.gd" id="4_cnyss"]
 [ext_resource type="Texture2D" uid="uid://cwnaaut64gd15" path="res://Art/Icons/cog.png" id="5_srcnq"]
 [ext_resource type="Script" path="res://Scenes/Taskbar/settings_button.gd" id="6_38i4x"]
+[ext_resource type="Script" path="res://Scenes/Taskbar/taskbar_time.gd" id="7_2yhho"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mxh1o"]
 bg_color = Color(0.1, 0.1, 0.1, 0.6)
@@ -140,6 +141,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 48.0
+offset_right = -94.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -148,9 +150,60 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
+[node name="TimeAndDate" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -92.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+script = ExtResource("7_2yhho")
+
+[node name="TimeText" type="RichTextLabel" parent="TimeAndDate"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 2.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+bbcode_enabled = true
+text = "[center]22:22 PM"
+
+[node name="DateText" type="RichTextLabel" parent="TimeAndDate"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[center]69/69/2024"
+
+[node name="Timer" type="Timer" parent="TimeAndDate"]
+wait_time = 10.0
+autostart = true
+
 [connection signal="mouse_entered" from="Start Button" to="Start Button" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Start Button" to="Start Button" method="_on_mouse_exited"]
 [connection signal="mouse_entered" from="Start Menu" to="Start Button" method="_on_start_menu_mouse_entered"]
 [connection signal="mouse_exited" from="Start Menu" to="Start Button" method="_on_start_menu_mouse_exited"]
 [connection signal="pressed" from="Start Menu/Power Button" to="Start Menu/Power Button" method="_on_pressed"]
 [connection signal="pressed" from="Start Menu/Settings Button" to="Start Menu/Settings Button" method="_on_pressed"]
+[connection signal="timeout" from="TimeAndDate/Timer" to="TimeAndDate" method="_on_timer_timeout"]
