@@ -5,7 +5,7 @@ var wallpaper_name: String
 @onready var background_color_rect: ColorRect = $"/root/Control/BackgroundColor"
 @onready var wallpaper: Wallpaper = $"/root/Control/Wallpaper"
 
-func _ready():
+func _ready() -> void:
 	DisplayServer.window_set_min_size(Vector2i(600, 525))
 	
 	if wallpaper == null or background_color_rect == null:
@@ -17,7 +17,7 @@ func _ready():
 	else:
 		save_state()
 
-func save_state():
+func save_state() -> void:
 	var save_dict: Dictionary = {
 		"wallpaper_name": wallpaper_name,
 		"background_color": background_color_rect.color.to_html(),
@@ -29,7 +29,7 @@ func save_state():
 	var save_file: FileAccess = FileAccess.open("user://user_preferences.txt", FileAccess.WRITE)
 	save_file.store_line(json_string)
 
-func load_state():
+func load_state() -> void:
 	var save_file: FileAccess = FileAccess.open("user://user_preferences.txt", FileAccess.READ)
 	
 	var json_string: String = save_file.get_line()
@@ -48,7 +48,7 @@ func load_state():
 	background_color_rect.color = Color.from_string(save_dict.background_color, Color8(77, 77, 77))
 	get_window().content_scale_factor = save_dict.zoom_level
 
-func save_wallpaper(wallpaper_file: FakeFolder):
+func save_wallpaper(wallpaper_file: FakeFolder) -> void:
 	delete_wallpaper()
 	
 	var from: String = "user://files/%s/%s" % [wallpaper_file.folder_path, wallpaper_file.folder_name]
@@ -57,7 +57,7 @@ func save_wallpaper(wallpaper_file: FakeFolder):
 	wallpaper_name = wallpaper_file.folder_name
 	save_state()
 
-func delete_wallpaper():
+func delete_wallpaper() -> void:
 	if !wallpaper_name.is_empty():
 		DirAccess.remove_absolute("user://%s" % wallpaper_name)
 	wallpaper_name = ""

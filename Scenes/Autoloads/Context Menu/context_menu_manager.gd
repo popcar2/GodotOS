@@ -9,7 +9,7 @@ var target: Control
 var is_mouse_over: bool
 var is_shown_recently: bool
 
-func _ready():
+func _ready() -> void:
 	visible = false
 	await get_tree().physics_frame # Give nodes a chance to add other children first
 	for node in get_tree().get_nodes_in_group("right_click_enabled"):
@@ -17,13 +17,13 @@ func _ready():
 	get_tree().node_added.connect(_add_right_click_handler)
 
 ## Adds right click handler to every node in the group
-func _add_right_click_handler(node: Node):
+func _add_right_click_handler(node: Node) -> void:
 	if node.is_in_group("right_click_enabled"):
 		await node.ready # Give nodes a chance to add other children first
 		node.add_child(right_click_handler.instantiate())
 
 ## This gets called from right_click_handler
-func handle_right_click(node: Control):
+func handle_right_click(node: Control) -> void:
 	if is_shown_recently:
 		return
 	
@@ -41,12 +41,12 @@ func handle_right_click(node: Control):
 	
 	show_context_menu()
 
-func _input(event: InputEvent):
+func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.is_pressed():
 		if event.button_index == 1 and visible:
 			hide_context_menu()
 
-func show_context_menu():
+func show_context_menu() -> void:
 	visible = true
 	global_position = get_global_mouse_position() + Vector2(10, 15)
 	clamp_inside_viewport()
@@ -54,7 +54,7 @@ func show_context_menu():
 	var tween: Tween = create_tween()
 	tween.tween_property(self, "modulate:a", 1, 0.15)
 
-func hide_context_menu():
+func hide_context_menu() -> void:
 	var tween: Tween = create_tween()
 	await tween.tween_property(self, "modulate:a", 0, 0.10).finished
 	if modulate.a == 0:
@@ -62,7 +62,7 @@ func hide_context_menu():
 
 # ----------
 
-func add_folder_options():
+func add_folder_options() -> void:
 	var type_name: String
 	if target.file_type == FakeFolder.file_type_enum.FOLDER:
 		type_name = "Folder"
@@ -99,7 +99,7 @@ func add_folder_options():
 	$VBoxContainer.add_child(context_menu_seperator.instantiate())
 	$VBoxContainer.add_child(delete_option)
 
-func add_file_manager_options():
+func add_file_manager_options() -> void:
 	var new_folder_option: Control = context_menu_option.instantiate()
 	new_folder_option.get_node("%Option Text").text = "New Folder"
 	new_folder_option.option_clicked.connect(_handle_new_folder)
@@ -123,44 +123,44 @@ func add_file_manager_options():
 
 # ----------
 
-func _handle_folder_rename():
+func _handle_folder_rename() -> void:
 	target.get_node("%Folder Title Edit").show_rename()
 
-func _handle_set_wallpaper():
+func _handle_set_wallpaper() -> void:
 	# TODO make this a relative path?
 	get_node("/root/Control/Wallpaper").apply_wallpaper_from_file(target)
 
-func _handle_folder_delete():
+func _handle_folder_delete() -> void:
 	target.delete_file()
 
-func _handle_new_folder():
+func _handle_new_folder() -> void:
 	target.new_folder()
 
-func _handle_new_text_file():
+func _handle_new_text_file() -> void:
 	target.new_file(".txt", FakeFolder.file_type_enum.TEXT_FILE)
 
-func _handle_copy_folder():
+func _handle_copy_folder() -> void:
 	CopyPasteManager.copy_folder(target)
 
-func _handle_cut_folder():
+func _handle_cut_folder() -> void:
 	CopyPasteManager.cut_folder(target)
 
-func _handle_paste_folder():
+func _handle_paste_folder() -> void:
 	CopyPasteManager.paste_folder(target.file_path)
 # ----------
 
-func _on_mouse_entered():
+func _on_mouse_entered() -> void:
 	is_mouse_over = true
 
-func _on_mouse_exited():
+func _on_mouse_exited() -> void:
 	is_mouse_over = false
 
-func play_cooldown():
+func play_cooldown() -> void:
 	is_shown_recently = true
 	await get_tree().create_timer(0.1).timeout
 	is_shown_recently = false
 
-func clamp_inside_viewport():
+func clamp_inside_viewport() -> void:
 	var game_window_size: Vector2 = get_viewport_rect().size
 	if (size.y > game_window_size.y - 40):
 		size.y = game_window_size.y - 40

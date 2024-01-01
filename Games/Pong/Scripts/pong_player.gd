@@ -8,7 +8,7 @@ const SPEED = 250.0
 var up_input: bool
 var down_input: bool
 
-func _input(event: InputEvent):
+func _input(event: InputEvent) -> void:
 	# For some reason get_action_strength() wouldn't work in multiplayer,
 	# only one player could move at the same time
 	if event.is_action_pressed(up_axis):
@@ -21,7 +21,7 @@ func _input(event: InputEvent):
 		down_input = false
 	
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	if up_input:
 		velocity.y = -SPEED
 	elif down_input:

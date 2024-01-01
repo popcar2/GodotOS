@@ -28,7 +28,7 @@ signal selected(is_selected: bool)
 signal maximized(is_maximized: bool)
 signal deleted()
 
-func _ready():
+func _ready() -> void:
 	# Duplicate theme override so values can be set without affecting other windows
 	self["theme_override_styles/panel"] = self["theme_override_styles/panel"].duplicate()
 	top_bar["theme_override_styles/panel"] = top_bar["theme_override_styles/panel"].duplicate()
@@ -46,16 +46,16 @@ func _ready():
 	tween.set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property(self, "modulate:a", 1, 0.5)
 
-func _physics_process(_delta):
+func _physics_process(_delta: float) -> void:
 	if is_dragging:
 		global_position = start_drag_position + (get_global_mouse_position() - mouse_start_drag_position)
 		clamp_window_inside_viewport()
 
-func _gui_input(event: InputEvent):
+func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and (event.button_index == 1 or event.button_index == 2) and event.is_pressed():
 		select_window(true)
 
-func _on_top_bar_gui_input(event):
+func _on_top_bar_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == 1:
 		if event.is_pressed():
 			is_dragging = true
@@ -64,7 +64,7 @@ func _on_top_bar_gui_input(event):
 		else:
 			is_dragging = false
 
-func _on_close_button_pressed():
+func _on_close_button_pressed() -> void:
 	if is_being_deleted:
 		return
 	
@@ -76,11 +76,11 @@ func _on_close_button_pressed():
 	await tween.tween_property(self, "modulate:a", 0, 0.25).finished
 	queue_free()
 
-func _on_minimize_button_pressed():
+func _on_minimize_button_pressed() -> void:
 	hide_window()
 
 
-func hide_window():
+func hide_window() -> void:
 	if is_minimized:
 		return
 	
@@ -96,7 +96,7 @@ func hide_window():
 	if !is_selected:
 		visible = false
 
-func show_window():
+func show_window() -> void:
 	if !is_minimized:
 		return
 	
@@ -113,7 +113,7 @@ func show_window():
 	tween.tween_property(self, "modulate:a", 1, 0.25)
 
 ## Actually "focuses" the window and brings it to the front
-func select_window(play_fade_animation: bool):
+func select_window(play_fade_animation: bool) -> void:
 	if is_selected:
 		return
 	
@@ -133,7 +133,7 @@ func select_window(play_fade_animation: bool):
 	
 	deselect_other_windows()
 
-func deselect_window():
+func deselect_window() -> void:
 	if !is_selected:
 		return
 	
@@ -147,13 +147,13 @@ func deselect_window():
 	tween.tween_property($"Top Bar/Title Text", "modulate", Color.WHITE, 0.25)
 	tween.tween_property(self["theme_override_styles/panel"], "shadow_size", 0, 0.25)
 
-func deselect_other_windows():
+func deselect_other_windows() -> void:
 	for window in get_tree().get_nodes_in_group("window"):
 		if window == self:
 			continue
 		window.deselect_window()
 
-func clamp_window_inside_viewport():
+func clamp_window_inside_viewport() -> void:
 	var game_window_size: Vector2 = get_viewport_rect().size
 	if (size.y > game_window_size.y - 40):
 		size.y = game_window_size.y - 40
@@ -163,10 +163,10 @@ func clamp_window_inside_viewport():
 	global_position.y = clamp(global_position.y, 0, game_window_size.y - size.y - 40)
 	global_position.x = clamp(global_position.x, 0, game_window_size.x - size.x)
 
-func _on_maximize_button_pressed():
+func _on_maximize_button_pressed() -> void:
 	maximize_window()
 
-func maximize_window():
+func maximize_window() -> void:
 	if is_maximized:
 		is_maximized = !is_maximized
 		$"Top Bar/HBoxContainer/Maximize Button".icon = maximize_icon
@@ -190,7 +190,7 @@ func maximize_window():
 		old_unmaximized_position = global_position
 		old_unmaximized_size = size
 		
-		var new_size = get_viewport_rect().size
+		var new_size: Vector2 = get_viewport_rect().size
 		new_size.y -= 40 #Because taskbar
 		
 		var tween: Tween = create_tween()

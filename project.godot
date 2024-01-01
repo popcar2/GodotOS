@@ -29,6 +29,10 @@ ContextMenu="*res://Scenes/Autoloads/Context Menu/context_menu.tscn"
 NotificationManager="*res://Scenes/Autoloads/Notification Manager/notification_manager.tscn"
 CopyPasteManager="*res://Scenes/Autoloads/CopyPaste Manager/copy_paste_manager.tscn"
 
+[debug]
+
+gdscript/warnings/untyped_declaration=1
+
 [file_customization]
 
 folder_colors={

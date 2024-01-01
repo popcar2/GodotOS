@@ -15,7 +15,7 @@ var right_walljump_active: bool
 
 # TODO put input in _input() which for some reason is a pain in the ass
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	if is_dead:
 		return
 	
@@ -56,7 +56,7 @@ func _physics_process(delta):
 	
 	detect_custom_tile_data()
 
-func walljump(left: bool):
+func walljump(left: bool) -> void:
 	if velocity.y > 0:
 		velocity.y = JUMP_VELOCITY * 0.90
 	else:
@@ -68,7 +68,7 @@ func walljump(left: bool):
 		velocity.x = -400
 		bonus_velocity.x -= 150
 
-func die():
+func die() -> void:
 	is_dead = true
 	velocity = Vector2.ZERO
 	bonus_velocity = Vector2.ZERO
@@ -76,7 +76,7 @@ func die():
 	await get_tree().create_timer(0.75).timeout
 	get_parent().reload_scene()
 
-func win():
+func win() -> void:
 	is_dead = true # Just so the player stops moving around
 	velocity = Vector2.ZERO
 	bonus_velocity = Vector2.ZERO
@@ -84,7 +84,7 @@ func win():
 	await get_tree().create_timer(0.75).timeout
 	get_parent().load_next_scene()
 
-func detect_custom_tile_data():
+func detect_custom_tile_data() -> void:
 	for i in range(get_slide_collision_count()):
 		var collision: KinematicCollision2D = get_slide_collision(i)
 		if collision.get_collider() is TileMap:
@@ -94,18 +94,18 @@ func detect_custom_tile_data():
 			if tile_data.get_custom_data("instakill"):
 				die()
 
-func _on_left_wall_jump_area_2d_body_entered(body):
+func _on_left_wall_jump_area_2d_body_entered(body: Node2D) -> void:
 	if body is StaticBody2D or body is TileMap:
 		left_walljump_active = true
 
-func _on_left_wall_jump_area_2d_body_exited(body):
+func _on_left_wall_jump_area_2d_body_exited(body: Node2D) -> void:
 	if body is StaticBody2D or body is TileMap:
 		left_walljump_active = false
 
-func _on_right_wall_jump_area_2d_body_entered(body):
+func _on_right_wall_jump_area_2d_body_entered(body: Node2D) -> void:
 	if body is StaticBody2D or body is TileMap:
 		right_walljump_active = true
 
-func _on_right_wall_jump_area_2d_body_exited(body):
+func _on_right_wall_jump_area_2d_body_exited(body: Node2D) -> void:
 	if body is StaticBody2D or body is TileMap:
 		right_walljump_active = false

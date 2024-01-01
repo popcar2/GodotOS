@@ -8,10 +8,10 @@ var mouse_start_drag_position: Vector2
 
 signal window_resized()
 
-func _ready():
+func _ready() -> void:
 	window = get_parent()
 
-func _gui_input(event):
+func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == 1:
 		if event.is_pressed():
 			is_dragging = true
@@ -20,7 +20,7 @@ func _gui_input(event):
 		else:
 			is_dragging = false
 
-func _physics_process(_delta):
+func _physics_process(_delta: float) -> void:
 	if is_dragging:
 		# TODO optimize this a bit?
 		window_resized.emit()

@@ -9,7 +9,7 @@
 resource_name = "MainScene"
 script/source = "extends Control
 
-func _ready():
+func _ready() -> void:
 	# Just shoves this back on ready so autoloads like the context menu can be in front
 	get_parent().move_child.call_deferred(self, 0)
 "

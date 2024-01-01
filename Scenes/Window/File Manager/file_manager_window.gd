@@ -1,13 +1,13 @@
 extends BaseFileManager
 class_name FileManagerWindow
 
-func _ready():
+func _ready() -> void:
 	populate_file_manager()
 	sort_folders()
 	
 	$"../../Resize Drag Spot".window_resized.connect(update_positions)
 
-func reload_window(folder_path: String):
+func reload_window(folder_path: String) -> void:
 	# Reload the same path if not given folder_path
 	if !folder_path.is_empty():
 		file_path = folder_path
@@ -21,10 +21,10 @@ func reload_window(folder_path: String):
 	#TODO make this less dumb
 	$"../../Top Bar/Title Text".text = "[center]%s" % file_path
 
-func close_window():
+func close_window() -> void:
 	$"../.."._on_close_button_pressed()
 
-func _on_back_button_pressed():
+func _on_back_button_pressed() -> void:
 	#TODO move it to a position that's less stupid
 	var split_path: PackedStringArray = file_path.split("/")
 	if split_path.size() <= 1:

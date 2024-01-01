@@ -6,7 +6,7 @@ var target_folder: FakeFolder
 enum StateEnum{COPY, CUT}
 var state: StateEnum = StateEnum.COPY
 
-func copy_folder(folder: FakeFolder):
+func copy_folder(folder: FakeFolder) -> void:
 	if target_folder:
 		target_folder.modulate.a = 1
 	target_folder = folder
@@ -14,7 +14,7 @@ func copy_folder(folder: FakeFolder):
 	state = StateEnum.COPY
 	NotificationManager.spawn_notification("Copied [color=59ea90][wave freq=7]%s[/wave][/color]" % target_folder.folder_name)
 
-func cut_folder(folder: FakeFolder):
+func cut_folder(folder: FakeFolder) -> void:
 	if target_folder:
 		target_folder.modulate.a = 1
 	target_folder = folder
@@ -22,7 +22,7 @@ func cut_folder(folder: FakeFolder):
 	state = StateEnum.CUT
 	NotificationManager.spawn_notification("Cutting [color=59ea90][wave freq=7]%s[/wave][/color]" % target_folder.folder_name)
 
-func paste_folder(to_path: String):
+func paste_folder(to_path: String) -> void:
 	if !target_folder:
 		NotificationManager.spawn_notification("Error: Nothing to copy")
 	
@@ -31,7 +31,7 @@ func paste_folder(to_path: String):
 	elif state == StateEnum.CUT:
 		paste_folder_cut(to_path)
 
-func paste_folder_copy(to_path: String):
+func paste_folder_copy(to_path: String) -> void:
 	var to: String = "user://files/%s/%s" % [to_path, target_folder.folder_name]
 	if target_folder.file_type == FakeFolder.file_type_enum.FOLDER:
 		var from: String = "user://files/%s" % target_folder.folder_path
@@ -52,7 +52,7 @@ func paste_folder_copy(to_path: String):
 	
 	target_folder = null
 
-func paste_folder_cut(to_path: String):
+func paste_folder_cut(to_path: String) -> void:
 	var to: String = "user://files/%s/%s" % [to_path, target_folder.folder_name]
 	if target_folder.file_type == FakeFolder.file_type_enum.FOLDER:
 		var from: String = "user://files/%s" % target_folder.folder_path
@@ -77,7 +77,7 @@ func paste_folder_cut(to_path: String):
 	
 	target_folder = null
 
-func copy_directory_recursively(dir_path: String, to_path: String):
+func copy_directory_recursively(dir_path: String, to_path: String) -> void:
 	if to_path.begins_with(dir_path):
 		NotificationManager.spawn_notification("ERROR: Can't copy a folder into itself!")
 		return
@@ -87,7 +87,7 @@ func copy_directory_recursively(dir_path: String, to_path: String):
 	for file_name in DirAccess.get_files_at(dir_path):
 		DirAccess.copy_absolute("%s/%s" % [dir_path, file_name], "%s/%s" % [to_path, file_name])
 
-func instantiate_file_and_sort(file_manager: BaseFileManager, to_path: String):
+func instantiate_file_and_sort(file_manager: BaseFileManager, to_path: String) -> void:
 	if target_folder.file_type == FakeFolder.file_type_enum.FOLDER:
 		file_manager.instantiate_file(target_folder.folder_name, "%s/%s" % [to_path, target_folder.folder_name], target_folder.file_type)
 	else:

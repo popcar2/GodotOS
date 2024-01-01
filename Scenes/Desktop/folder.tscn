@@ -111,14 +111,14 @@ text = "[center]Hello World!
 Hello World."
 fit_content = true
 
-[node name="CenterContainer2" type="CenterContainer" parent="Control"]
+[node name="Title Edit Container" type="CenterContainer" parent="Control"]
 visible = false
 layout_mode = 0
 offset_right = 100.0
 offset_bottom = 40.0
 mouse_filter = 2
 
-[node name="Folder Title Edit" type="TextEdit" parent="Control/CenterContainer2"]
+[node name="Folder Title Edit" type="TextEdit" parent="Control/Title Edit Container"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(95, 40)
 layout_mode = 2

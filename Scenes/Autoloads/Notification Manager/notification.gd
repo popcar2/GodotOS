@@ -1,10 +1,10 @@
 extends Panel
 
-func _ready():
+func _ready() -> void:
 	adjust_width()
 	play_animation()
 
-func adjust_width():
+func adjust_width() -> void:
 	while true:
 		if $"Notification Text".get_line_count() > 1:
 			size.x += 20
@@ -14,7 +14,7 @@ func adjust_width():
 			position.x -= 10
 			return
 
-func play_animation():
+func play_animation() -> void:
 	var tween: Tween = create_tween()
 	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
 	tween.tween_property(self, "position:y", position.y - 75, 3)

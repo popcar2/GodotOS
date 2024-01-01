@@ -3,7 +3,7 @@ class_name DesktopFileManager
 
 # Desktop file manager
 
-func _ready():
+func _ready() -> void:
 	var user_dir: DirAccess = DirAccess.open("user://")
 	if !user_dir.dir_exists("files"):
 		# Can't just use absolute paths due to https://github.com/godotengine/godot/issues/82550
@@ -16,7 +16,7 @@ func _ready():
 	get_window().size_changed.connect(update_positions)
 	get_window().focus_entered.connect(_on_window_focus)
 
-func copy_from_res(from: String, to: String):
+func copy_from_res(from: String, to: String) -> void:
 	var file_from: FileAccess = FileAccess.open(from, FileAccess.READ)
 	var file_to: FileAccess = FileAccess.open(to, FileAccess.WRITE)
 	file_to.store_buffer(file_from.get_buffer(file_from.get_length()))
@@ -25,7 +25,7 @@ func copy_from_res(from: String, to: String):
 	file_to.close()
 
 ## Checks if any files were changed on the desktop, and populates the file manager again if so.
-func _on_window_focus():
+func _on_window_focus() -> void:
 	var current_file_names: Array[String] = []
 	for child in get_children():
 		if !(child is FakeFolder):

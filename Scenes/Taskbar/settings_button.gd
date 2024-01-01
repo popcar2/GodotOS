@@ -1,6 +1,6 @@
 extends Button
 
-func _on_pressed():
+func _on_pressed() -> void:
 	var window: FakeWindow
 	window = load("res://Scenes/Window/Settings Window/settings_window.tscn").instantiate()
 	

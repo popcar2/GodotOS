@@ -3,7 +3,7 @@ class_name BootSplash
 
 @export var quit_animation: bool
 
-func _ready():
+func _ready() -> void:
 	visible = true
 	scale /= get_window().content_scale_factor
 	if quit_animation:
@@ -11,7 +11,7 @@ func _ready():
 	else:
 		play_animation()
 
-func play_animation():
+func play_animation() -> void:
 	var tween: Tween = create_tween()
 	tween.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_EXPO)
 	tween.set_parallel(true)
@@ -23,7 +23,7 @@ func play_animation():
 	await get_tree().create_timer(3).timeout
 	queue_free()
 
-func play_quit_animation():
+func play_quit_animation() -> void:
 	$Logo.scale = Vector2(10, 10)
 	$Logo.self_modulate.a = 0
 	$CanvasGroup/Logo.scale = Vector2(10, 10)
@@ -43,7 +43,7 @@ func play_quit_animation():
 	await get_tree().create_timer(2).timeout
 	get_tree().quit()
 
-func _physics_process(_delta):
+func _physics_process(_delta: float) -> void:
 	var window_size: Vector2 = DisplayServer.window_get_size() as Vector2
 	$CanvasGroup/Background.scale = window_size
 	$CanvasGroup/Background.global_position = window_size / 2

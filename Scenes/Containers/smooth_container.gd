@@ -29,13 +29,13 @@ var line_count: int
 
 var start_min_size: Vector2
 
-func _ready():
+func _ready() -> void:
 	# I don't know why but having a container parent forces this node's size to be (0, 0) in the first frame
 	await get_tree().physics_frame
 	start_min_size = custom_minimum_size
 	update_positions(false)
 
-func update_positions(update_again: bool = true):
+func update_positions(update_again: bool = true) -> void:
 	if just_updated:
 		return
 	
@@ -50,7 +50,7 @@ func update_positions(update_again: bool = true):
 	elif direction == "Vertical":
 		update_vertical_direction()
 
-func update_horizontal_direction():
+func update_horizontal_direction() -> void:
 	var new_line_count: int = 0
 	line_count = 0
 	
@@ -89,7 +89,7 @@ func update_horizontal_direction():
 			custom_minimum_size.y = start_min_size.y
 	
 
-func update_vertical_direction():
+func update_vertical_direction() -> void:
 	var new_line_count: int = 0
 	line_count = 0
 	
@@ -128,13 +128,13 @@ func update_vertical_direction():
 
 ## Creates a cooldown of x seconds rather than using the function every single frame.
 ## Plays the function again after poll rate ends to readjust positions.
-func cooldown_update():
+func cooldown_update() -> void:
 	just_updated = true
 	await get_tree().create_timer(poll_rate).timeout
 	just_updated = false
 	update_positions(false)
 
-func restore_tween():
+func restore_tween() -> void:
 	tween = create_tween()
 	tween.set_parallel(true)
 	tween.set_trans(Tween.TRANS_CUBIC)

@@ -1,6 +1,6 @@
 extends TextEdit
 
-func _input(event: InputEvent):
+func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("rename") and $"../../../Selected Highlight".visible:
 		show_rename()
 	
@@ -8,23 +8,24 @@ func _input(event: InputEvent):
 		return
 	
 	if event.is_action_pressed("ui_accept"):
+		accept_event()
 		trigger_rename()
 	
 	if event.is_action_pressed("ui_cancel"):
 		cancel_rename()
 	
 	if event is InputEventMouseButton and event.is_pressed():
-		var evLocal = make_input_local(event)
+		var evLocal: InputEvent = make_input_local(event)
 		if !Rect2(Vector2(0,0), size).has_point(evLocal.position):
 			cancel_rename()
 
-func show_rename():
+func show_rename() -> void:
 	get_parent().visible = true
 	grab_focus()
 	text = %"Folder Title".text.trim_prefix("[center]").split(".")[0]
 	select_all()
 
-func trigger_rename():
+func trigger_rename() -> void:
 	get_parent().visible = false
 	#TODO stop file from adding periods
 	var folder: FakeFolder = $"../../.."
@@ -84,6 +85,6 @@ func trigger_rename():
 	
 	text = ""
 
-func cancel_rename():
+func cancel_rename() -> void:
 	get_parent().visible = false
 	text = ""

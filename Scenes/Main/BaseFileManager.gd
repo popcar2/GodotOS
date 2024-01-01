@@ -3,7 +3,7 @@ class_name BaseFileManager
 
 @export var file_path: String # Relative to user://files/
 
-func populate_file_manager():
+func populate_file_manager() -> void:
 	for child in get_children():
 		if child is FakeFolder:
 			child.queue_free()
@@ -24,14 +24,14 @@ func populate_file_manager():
 	await get_tree().process_frame # TODO fix whatever's causing a race condition :/
 	sort_folders()
 
-func instantiate_file(file_name: String, path: String, file_type: FakeFolder.file_type_enum):
+func instantiate_file(file_name: String, path: String, file_type: FakeFolder.file_type_enum) -> void:
 	var folder: FakeFolder = load("res://Scenes/Desktop/folder.tscn").instantiate()
 	folder.folder_name = file_name
 	folder.folder_path = path
 	folder.file_type = file_type
 	add_child(folder)
 
-func sort_folders():
+func sort_folders() -> void:
 	if len(get_children()) < 3:
 		update_positions(false)
 		return
@@ -48,7 +48,7 @@ func sort_folders():
 	await get_tree().process_frame
 	update_positions(false)
 
-func new_folder():
+func new_folder() -> void:
 	var new_folder_name: String = "New Folder"
 	var padded_file_path: String # Since I sometimes want the / and sometimes not
 	if !file_path.is_empty():
@@ -71,7 +71,7 @@ func new_folder():
 		sort_folders()
 
 
-func new_file(extension: String, file_type: FakeFolder.file_type_enum):
+func new_file(extension: String, file_type: FakeFolder.file_type_enum) -> void:
 	var new_file_name: String = "New File%s" % extension
 	var padded_file_path: String # Since I sometimes want the / and sometimes not
 	if !file_path.is_empty():
@@ -96,7 +96,7 @@ func new_file(extension: String, file_type: FakeFolder.file_type_enum):
 		instantiate_file(new_file_name, file_path, file_type)
 		sort_folders()
 
-func delete_file_with_name(file_name: String):
+func delete_file_with_name(file_name: String) -> void:
 	for child in get_children():
 		if !(child is FakeFolder):
 			continue
@@ -107,31 +107,31 @@ func delete_file_with_name(file_name: String):
 	await get_tree().process_frame
 	sort_folders()
 
-func select_folder_up(current_folder: FakeFolder):
+func select_folder_up(current_folder: FakeFolder) -> void:
 	if direction == "Horizontal":
 		select_previous_line_folder(current_folder)
 	elif direction == "Vertical":
 		select_previous_folder(current_folder)
 
-func select_folder_down(current_folder: FakeFolder):
+func select_folder_down(current_folder: FakeFolder) -> void:
 	if direction == "Horizontal":
 		select_next_line_folder(current_folder)
 	elif direction == "Vertical":
 		select_next_folder(current_folder)
 
-func select_folder_left(current_folder: FakeFolder):
+func select_folder_left(current_folder: FakeFolder) -> void:
 	if direction == "Horizontal":
 		select_previous_folder(current_folder)
 	elif direction == "Vertical":
 		select_previous_line_folder(current_folder)
 
-func select_folder_right(current_folder: FakeFolder):
+func select_folder_right(current_folder: FakeFolder) -> void:
 	if direction == "Horizontal":
 		select_next_folder(current_folder)
 	elif direction == "Vertical":
 		select_next_line_folder(current_folder)
 
-func select_next_folder(current_folder: FakeFolder):
+func select_next_folder(current_folder: FakeFolder) -> void:
 	var target_index: int = current_folder.get_index() + 1
 	if target_index >= get_child_count():
 		return
@@ -140,7 +140,7 @@ func select_next_folder(current_folder: FakeFolder):
 		current_folder.hide_selected_highlight()
 		next_child.show_selected_highlight()
 
-func select_next_line_folder(current_folder: FakeFolder):
+func select_next_line_folder(current_folder: FakeFolder) -> void:
 	var target_index: int = current_folder.get_index() + line_count
 	if target_index >= get_child_count():
 		return
@@ -149,7 +149,7 @@ func select_next_line_folder(current_folder: FakeFolder):
 		current_folder.hide_selected_highlight()
 		target_folder.show_selected_highlight()
 
-func select_previous_folder(current_folder: FakeFolder):
+func select_previous_folder(current_folder: FakeFolder) -> void:
 	var target_index: int = current_folder.get_index() - 1
 	if target_index < 0:
 		return
@@ -158,7 +158,7 @@ func select_previous_folder(current_folder: FakeFolder):
 		current_folder.hide_selected_highlight()
 		previous_child.show_selected_highlight()
 
-func select_previous_line_folder(current_folder: FakeFolder):
+func select_previous_line_folder(current_folder: FakeFolder) -> void:
 	var target_index: int = current_folder.get_index() - line_count
 	if target_index < 0:
 		return
@@ -169,13 +169,13 @@ func select_previous_line_folder(current_folder: FakeFolder):
 
 
 ## Sorts folders based on their name
-func _custom_folder_sort(a: FakeFolder, b: FakeFolder):
+func _custom_folder_sort(a: FakeFolder, b: FakeFolder) -> bool:
 	if a.folder_name.to_lower() < b.folder_name.to_lower():
 		return true
 	return false
 
 ## Puts folders first in the array
-func _custom_folders_first_sort(a: FakeFolder, b: FakeFolder):
+func _custom_folders_first_sort(a: FakeFolder, b: FakeFolder) -> bool:
 	if a.file_type == FakeFolder.file_type_enum.FOLDER and a.file_type != b.file_type:
 		return true
 	return false

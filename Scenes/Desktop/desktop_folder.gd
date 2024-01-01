@@ -13,7 +13,7 @@ var folder_path: String # Relative to user://files/
 
 var is_mouse_over: bool
 
-func _ready():
+func _ready() -> void:
 	$"Hover Highlight".self_modulate.a = 0
 	$"Selected Highlight".visible = false
 	%"Folder Title".text = "[center]%s" % folder_name
@@ -28,7 +28,7 @@ func _ready():
 		$Folder/TextureRect.modulate = IMAGE_COLOR
 		$Folder/TextureRect.texture = load("res://Art/Folder Icons/image.png")
 
-func _input(event: InputEvent):
+func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.is_pressed():
 		if !is_mouse_over:
 			hide_selected_highlight()
@@ -66,33 +66,33 @@ func _input(event: InputEvent):
 			accept_event()
 			open_folder()
 
-func _on_mouse_entered():
+func _on_mouse_entered() -> void:
 	show_hover_highlight()
 	is_mouse_over = true
 
-func _on_mouse_exited():
+func _on_mouse_exited() -> void:
 	hide_hover_highlight()
 	is_mouse_over = false
 
 # ------
 
-func show_hover_highlight():
+func show_hover_highlight() -> void:
 	var tween: Tween = create_tween()
 	tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	tween.tween_property($"Hover Highlight", "self_modulate:a", 1, 0.25).from(0.1)
 
-func hide_hover_highlight():
+func hide_hover_highlight() -> void:
 	var tween: Tween = create_tween()
 	tween.set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property($"Hover Highlight", "self_modulate:a", 0, 0.25)
 
-func show_selected_highlight():
+func show_selected_highlight() -> void:
 	$"Selected Highlight".visible = true
 
-func hide_selected_highlight():
+func hide_selected_highlight() -> void:
 	$"Selected Highlight".visible = false
 
-func spawn_window():
+func spawn_window() -> void:
 	var window: FakeWindow
 	if file_type == file_type_enum.FOLDER:
 		window = load("res://Scenes/Window/File Manager/file_manager_window.tscn").instantiate()
@@ -128,7 +128,7 @@ func spawn_window():
 	
 	get_tree().get_first_node_in_group("taskbar_buttons").add_child(taskbar_button)
 
-func delete_file():
+func delete_file() -> void:
 	if file_type == file_type_enum.FOLDER:
 		var delete_path: String = ProjectSettings.globalize_path("user://files/%s" % folder_path)
 		if !DirAccess.dir_exists_absolute(delete_path):
@@ -158,7 +158,7 @@ func delete_file():
 	NotificationManager.spawn_notification("Moved [color=59ea90][wave freq=7]%s[/wave][/color] to trash!" % folder_name)
 	queue_free()
 
-func open_folder():
+func open_folder() -> void:
 	hide_selected_highlight()
 	if get_parent().is_in_group("file_manager_window") and file_type == file_type_enum.FOLDER:
 		get_parent().reload_window(folder_path)

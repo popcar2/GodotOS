@@ -20,13 +20,13 @@ var enemy_score: int :
 			$"Game Over Screen".visible = true
 			$"Game Over Screen/Game Over Title".text = "[center]%s" % enemy_won_text
 
-func load_scene(path: String):
+func load_scene(path: String) -> void:
 	var next_scene: Node = load(path).instantiate()
 	add_sibling(next_scene)
 	queue_free()
 
-func _on_restart_btn_pressed():
+func _on_restart_btn_pressed() -> void:
 	load_scene(restart_scene_string)
 
-func _on_main_menu_btn_pressed():
+func _on_main_menu_btn_pressed() -> void:
 	load_scene("res://Games/Pong/Scenes/pong_main_menu.tscn")

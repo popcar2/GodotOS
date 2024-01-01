@@ -6,23 +6,23 @@ extends Panel
 
 var is_mouse_over: bool
 
-func _ready():
+func _ready() -> void:
 	$"Background Panel".visible = false
 	%"Menu Title".text = "[center]%s" % title_text
 	%"Menu Description".text = "[center]%s" % description_text
 
-func _gui_input(event: InputEvent):
+func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.button_index == 1 and event.is_pressed():
 		spawn_window()
 
-func _on_mouse_entered():
+func _on_mouse_entered() -> void:
 	is_mouse_over = true
 	$"Background Panel".visible = true
 	var tween: Tween = create_tween()
 	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
 	tween.tween_property($"Background Panel", "modulate:a", 1, 0.2)
 
-func _on_mouse_exited():
+func _on_mouse_exited() -> void:
 	is_mouse_over = false
 	var tween: Tween = create_tween()
 	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
@@ -32,7 +32,7 @@ func _on_mouse_exited():
 
 # WARNING WARNING WARNING
 # TODO find a better way than copying this from desktop_folder.gd
-func spawn_window():
+func spawn_window() -> void:
 	var window: FakeWindow
 	window = load("res://Scenes/Window/Game Window/game_window.tscn").instantiate()
 	window.get_node("%Game Window").add_child(load(game_scene).instantiate())

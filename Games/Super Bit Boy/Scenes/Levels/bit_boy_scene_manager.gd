@@ -4,7 +4,7 @@ extends Node2D
 
 var is_loading: bool
 
-func reload_scene():
+func reload_scene() -> void:
 	if is_loading:
 		return
 	
@@ -13,7 +13,7 @@ func reload_scene():
 	add_sibling(current_scene)
 	queue_free()
 
-func load_next_scene():
+func load_next_scene() -> void:
 	if is_loading:
 		return
 	

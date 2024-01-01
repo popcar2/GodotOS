@@ -5,10 +5,10 @@ var collision_data: KinematicCollision2D
 @export var speed_gain_percent: float = 1.03
 @export var rand_angle: float = 50
 
-func _ready():
+func _ready() -> void:
 	velocity = Vector2(400,0)
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	collision_data = move_and_collide(velocity * delta)
 	if collision_data:
 		if collision_data.get_collider() is CharacterBody2D:
@@ -23,7 +23,7 @@ func _physics_process(delta):
 		velocity = velocity.bounce(collision_data.get_normal())
 		velocity.y = clamp(velocity.y, -1000, 1000)
 
-func reset_ball():
+func reset_ball() -> void:
 	if get_parent().player_score >= 3 or get_parent().enemy_score >= 3:
 		return
 	
