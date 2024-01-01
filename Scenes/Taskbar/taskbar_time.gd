@@ -11,6 +11,8 @@ func update_time() -> void:
 		suffix = "PM"
 	else:
 		suffix = "AM"
+		if date_dict.hour == 0:
+			date_dict.hour = 12
 	
 	$TimeText.text = "[center]%02d:%02d %s" % [date_dict.hour, date_dict.minute, suffix]
 	$DateText.text = "[center]%02d/%02d/%d" % [date_dict.day, date_dict.month, date_dict.year]

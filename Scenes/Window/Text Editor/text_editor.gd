@@ -9,7 +9,7 @@ var file_path: String :
 		else:
 			$"../../Top Bar/Title Text".text = "[center]%s" % file_path.split('/')[-1]
 
-func _input(event: InputEvent):
+func _input(event: InputEvent) -> void:
 	if !$"../..".is_selected:
 		return
 	
@@ -17,19 +17,19 @@ func _input(event: InputEvent):
 		accept_event()
 		save_file()
 
-func populate_text(path: String):
+func populate_text(path: String) -> void:
 	file_path = path
 	var file: FileAccess = FileAccess.open("user://files/%s" % file_path, FileAccess.READ)
 	text = file.get_as_text()
 
-func _on_text_changed():
+func _on_text_changed() -> void:
 	if text_edited:
 		return
 	
 	text_edited = true
 	$"../../Top Bar/Title Text".text += '*' 
 
-func save_file():
+func save_file() -> void:
 	if !text_edited:
 		return
 	
