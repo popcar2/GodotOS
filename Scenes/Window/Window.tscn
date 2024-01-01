@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://cojrqff5vocjv"]
+[gd_scene load_steps=13 format=3 uid="uid://cojrqff5vocjv"]
 
 [ext_resource type="Script" path="res://Scenes/Window/window.gd" id="1_c3iwi"]
 [ext_resource type="Texture2D" uid="uid://1ockgc20p033" path="res://Art/Icons/expand.png" id="2_bcfhp"]
 [ext_resource type="Script" path="res://Scenes/Window/resize_drag_spot.gd" id="2_xymxc"]
+[ext_resource type="Texture2D" uid="uid://detscivjcbnpi" path="res://Art/Icons/corner-handle.png" id="4_qn6o7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gwhiu"]
 bg_color = Color(0.2, 0.2, 0.2, 0.666667)
@@ -140,6 +141,23 @@ grow_horizontal = 0
 grow_vertical = 0
 mouse_default_cursor_shape = 12
 script = ExtResource("2_xymxc")
+
+[node name="CornerHandle" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.25)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+texture = ExtResource("4_qn6o7")
+expand_mode = 1
+stretch_mode = 4
 
 [connection signal="gui_input" from="Top Bar" to="." method="_on_top_bar_gui_input"]
 [connection signal="pressed" from="Top Bar/HBoxContainer/Minimize Button" to="." method="_on_minimize_button_pressed"]

@@ -6,7 +6,7 @@ enum file_type_enum {FOLDER, TEXT_FILE, IMAGE}
 
 const FOLDER_COLOR: Color = Color("4efa82")
 const TEXT_FILE_COLOR: Color = Color("4deff5")
-const IMAGE_COLOR: Color = Color("ffed4c")
+const IMAGE_COLOR: Color = Color("f9ee13")
 
 var folder_name: String
 var folder_path: String # Relative to user://files/
@@ -20,10 +20,13 @@ func _ready():
 	
 	if file_type == file_type_enum.FOLDER:
 		$Folder/TextureRect.modulate = FOLDER_COLOR
+		$Folder/TextureRect.texture = load("res://Art/Folder Icons/folder.png")
 	elif file_type == file_type_enum.TEXT_FILE:
 		$Folder/TextureRect.modulate = TEXT_FILE_COLOR
+		$Folder/TextureRect.texture = load("res://Art/Folder Icons/text_file.png")
 	elif file_type == file_type_enum.IMAGE:
 		$Folder/TextureRect.modulate = IMAGE_COLOR
+		$Folder/TextureRect.texture = load("res://Art/Folder Icons/image.png")
 
 func _input(event: InputEvent):
 	if event is InputEventMouseButton and event.is_pressed():
@@ -120,6 +123,8 @@ func spawn_window():
 		taskbar_button.active_color = TEXT_FILE_COLOR
 	elif file_type == file_type_enum.IMAGE:
 		taskbar_button.active_color = IMAGE_COLOR
+	
+	taskbar_button.get_node("TextureMargin/TextureRect").texture = $"Folder/TextureRect".texture
 	
 	get_tree().get_first_node_in_group("taskbar_buttons").add_child(taskbar_button)
 

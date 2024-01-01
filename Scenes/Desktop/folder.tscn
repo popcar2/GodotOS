@@ -1,6 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dci6t0fj42xpv"]
 
 [ext_resource type="Script" path="res://Scenes/Desktop/desktop_folder.gd" id="1_44lov"]
+[ext_resource type="Texture2D" uid="uid://cjve37ywrq6qo" path="res://Art/Folder Icons/folder.png" id="2_8hyqf"]
 [ext_resource type="Script" path="res://Scenes/Desktop/folder_title_edit.gd" id="2_aux0e"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fr400"]
@@ -21,8 +22,6 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_nljri"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1hkig"]
 bg_color = Color(0, 0, 0, 0.784314)
@@ -74,7 +73,8 @@ theme_override_constants/margin_bottom = 30
 modulate = Color(0.305882, 0.980392, 0.509804, 1)
 layout_mode = 2
 mouse_filter = 2
-texture = SubResource("CanvasTexture_nljri")
+texture = ExtResource("2_8hyqf")
+expand_mode = 4
 
 [node name="Double Click" type="Timer" parent="."]
 wait_time = 0.3

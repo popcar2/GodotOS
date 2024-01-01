@@ -50,6 +50,7 @@ self_modulate = Color(0.427451, 0.905882, 0, 1)
 layout_mode = 2
 mouse_filter = 2
 texture = SubResource("CanvasTexture_s4q16")
+expand_mode = 2
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
