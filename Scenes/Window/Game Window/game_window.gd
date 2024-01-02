@@ -5,6 +5,10 @@ extends SubViewport
 func _ready() -> void:
 	window.minimized.connect(_handle_window_minimized)
 	window.selected.connect(_handle_window_selected)
+	
+	# WIP: Making game scene resolution not tied to screen scale
+	#$"../..".scale /= get_window().content_scale_factor
+	#$"../..".size *= get_window().content_scale_factor
 
 func _handle_window_minimized(is_minimized: bool) -> void:
 	if is_minimized:

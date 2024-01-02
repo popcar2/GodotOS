@@ -1,5 +1,7 @@
 extends CodeEdit
 
+@onready var window: FakeWindow = $"../.."
+
 var text_edited: bool
 var file_path: String : 
 	set(value):
@@ -8,6 +10,9 @@ var file_path: String :
 			$"../../Top Bar/Title Text".text = "[center]%s*" % file_path.split('/')[-1]
 		else:
 			$"../../Top Bar/Title Text".text = "[center]%s" % file_path.split('/')[-1]
+
+func _ready():
+	window.selected.connect(_on_window_selected)
 
 func _input(event: InputEvent) -> void:
 	if !$"../..".is_selected:
@@ -49,3 +54,9 @@ func save_file() -> void:
 	$"../..".add_child(saved_notification)
 
 #TODO add warning when someone exits without saving
+
+func _on_window_selected(selected: bool) -> void:
+	if selected:
+		grab_focus()
+	else:
+		release_focus()

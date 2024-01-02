@@ -34,6 +34,7 @@ theme_override_constants/margin_bottom = 10
 [node name="Text Editor" type="CodeEdit" parent="MarginContainer" index="0" groups=["text_editor_window"]]
 unique_name_in_owner = true
 layout_mode = 2
+focus_mode = 1
 mouse_filter = 1
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = SubResource("StyleBoxEmpty_uonls")
