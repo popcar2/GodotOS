@@ -11,7 +11,7 @@ var file_path: String :
 		else:
 			$"../../Top Bar/Title Text".text = "[center]%s" % file_path.split('/')[-1]
 
-func _ready():
+func _ready() -> void:
 	window.selected.connect(_on_window_selected)
 
 func _input(event: InputEvent) -> void:

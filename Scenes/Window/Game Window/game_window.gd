@@ -7,6 +7,7 @@ func _ready() -> void:
 	window.selected.connect(_handle_window_selected)
 	
 	# WIP: Making game scene resolution not tied to screen scale
+	#await get_tree().process_frame
 	#$"../..".scale /= get_window().content_scale_factor
 	#$"../..".size *= get_window().content_scale_factor
 

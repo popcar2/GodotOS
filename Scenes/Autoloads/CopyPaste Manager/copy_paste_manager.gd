@@ -6,6 +6,9 @@ var target_folder: FakeFolder
 enum StateEnum{COPY, CUT}
 var state: StateEnum = StateEnum.COPY
 
+func _ready() -> void:
+	get_viewport().files_dropped.connect(_handle_dropped_folders)
+
 func copy_folder(folder: FakeFolder) -> void:
 	if target_folder:
 		target_folder.modulate.a = 1
@@ -93,3 +96,12 @@ func instantiate_file_and_sort(file_manager: BaseFileManager, to_path: String) -
 	else:
 		file_manager.instantiate_file(target_folder.folder_name, to_path, target_folder.file_type)
 	file_manager.sort_folders()
+
+func _handle_dropped_folders(files: PackedStringArray) -> void:
+	print(files)
+	for file_name: String in files:
+		var extension: String = file_name.split(".")[-1]
+		match extension:
+			"txt", "md", "jpg", "jpeg", "png", "webp":
+				DirAccess.copy_absolute(file_name, "user://files/%s" % file_name.split("/")[-1])
+				get_tree().get_first_node_in_group("desktop_file_manager").populate_file_manager()

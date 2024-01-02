@@ -12,7 +12,7 @@ func _ready() -> void:
 func apply_wallpaper_from_path(path: String) -> void:
 	wallpaper_added.emit()
 	
-	var image: Image = Image.load_from_file("user://files/%s" % path)
+	var image: Image = Image.load_from_file("user://%s" % path)
 	add_wallpaper(image)
 
 ## Applies wallpaper from an image file
