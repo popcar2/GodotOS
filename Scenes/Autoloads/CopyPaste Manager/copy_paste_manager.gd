@@ -98,7 +98,6 @@ func instantiate_file_and_sort(file_manager: BaseFileManager, to_path: String) -
 	file_manager.sort_folders()
 
 func _handle_dropped_folders(files: PackedStringArray) -> void:
-	print(files)
 	for file_name: String in files:
 		var extension: String = file_name.split(".")[-1]
 		match extension:
