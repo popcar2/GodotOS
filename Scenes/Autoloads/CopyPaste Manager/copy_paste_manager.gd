@@ -102,5 +102,10 @@ func _handle_dropped_folders(files: PackedStringArray) -> void:
 		var extension: String = file_name.split(".")[-1]
 		match extension:
 			"txt", "md", "jpg", "jpeg", "png", "webp":
-				DirAccess.copy_absolute(file_name, "user://files/%s" % file_name.split("/")[-1])
+				var new_file_name: String
+				if OS.has_feature("windows"):
+					new_file_name = file_name.replace("\\", "/").split("/")[-1]
+				else:
+					new_file_name = file_name.split("/")[-1]
+				DirAccess.copy_absolute(file_name, "user://files/%s" % new_file_name)
 				get_tree().get_first_node_in_group("desktop_file_manager").populate_file_manager()
