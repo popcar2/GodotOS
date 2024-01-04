@@ -30,7 +30,6 @@ sources/1 = SubResource("TileSetAtlasSource_kk343")
 
 [node name="Level 1" type="Node2D"]
 script = ExtResource("1_yi0p1")
-next_scene_str = "res://Games/Super Bit Boy/Scenes/Levels/level_2.tscn"
 
 [node name="Camera2D" parent="." instance=ExtResource("2_4pma2")]
 

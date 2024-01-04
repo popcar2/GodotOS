@@ -6,10 +6,10 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qnd7w"]
 bg_color = Color(0.2, 0.2, 0.25098, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 
 [node name="Context Menu" type="Panel"]
 clip_contents = true
