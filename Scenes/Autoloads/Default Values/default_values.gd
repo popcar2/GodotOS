@@ -8,6 +8,15 @@ var wallpaper_name: String
 func _ready() -> void:
 	DisplayServer.window_set_min_size(Vector2i(600, 525))
 	
+	#NOTE: Vsync is disabled due to input lag: https://github.com/godotengine/godot/issues/75830
+	#NOTE: Web can't get screen refresh rate
+	var new_max_fps: int = int(DisplayServer.screen_get_refresh_rate())
+	if new_max_fps == -1:
+		Engine.max_fps = 60
+	else:
+		Engine.max_fps = new_max_fps
+	
+	
 	if wallpaper == null or background_color_rect == null:
 		printerr("default_values.gd: Couldn't find wallpaper (are you debugging a scene?)")
 		return

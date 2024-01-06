@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://5sdddkl3mfbw"]
+[gd_scene load_steps=17 format=3 uid="uid://5sdddkl3mfbw"]
 
 [ext_resource type="PackedScene" uid="uid://cojrqff5vocjv" path="res://Scenes/Window/Window.tscn" id="1_rx4sm"]
 [ext_resource type="Script" path="res://Scenes/Window/Settings Window/scaling_spinbox.gd" id="2_a71vs"]
 [ext_resource type="Script" path="res://Scenes/Window/Settings Window/window_options.gd" id="3_7t58g"]
 [ext_resource type="Script" path="res://Scenes/Window/Settings Window/background_color_picker.gd" id="4_vnxcp"]
+[ext_resource type="Script" path="res://Scenes/Window/Settings Window/max_fps_options.gd" id="4_xp0bf"]
 [ext_resource type="Script" path="res://Scenes/Window/Settings Window/remove_wallpaper.gd" id="5_p360g"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g2ist"]
@@ -185,7 +186,43 @@ popup/item_2/text = "Exclusive Fullscreen"
 popup/item_2/id = 2
 script = ExtResource("3_7t58g")
 
-[node name="Background Color" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer" index="2"]
+[node name="Max Framerate" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer" index="2"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer/Max Framerate" index="0"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 20
+text = "Maximum FPS"
+
+[node name="WindowOptions" type="OptionButton" parent="ScrollContainer/MarginContainer/VBoxContainer/Max Framerate" index="1"]
+layout_mode = 2
+focus_mode = 0
+item_count = 8
+selected = 0
+fit_to_longest_item = false
+popup/item_0/text = "30"
+popup/item_0/id = 0
+popup/item_1/text = "60"
+popup/item_1/id = 1
+popup/item_2/text = "90"
+popup/item_2/id = 2
+popup/item_3/text = "120"
+popup/item_3/id = 3
+popup/item_4/text = "144"
+popup/item_4/id = 4
+popup/item_5/text = "165"
+popup/item_5/id = 5
+popup/item_6/text = "240"
+popup/item_6/id = 6
+popup/item_7/text = "360"
+popup/item_7/id = 7
+script = ExtResource("4_xp0bf")
+
+[node name="Background Color" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer" index="3"]
 layout_mode = 2
 size_flags_vertical = 0
 
@@ -205,7 +242,7 @@ focus_mode = 0
 edit_alpha = false
 script = ExtResource("4_vnxcp")
 
-[node name="Remove Wallpaper" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer" index="3"]
+[node name="Remove Wallpaper" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer" index="4"]
 layout_mode = 2
 size_flags_vertical = 0
 
@@ -229,5 +266,6 @@ script = ExtResource("5_p360g")
 [connection signal="mouse_exited" from="ScrollContainer/MarginContainer/VBoxContainer/Screen Scaling/Control/ScalingSpinbox" to="ScrollContainer/MarginContainer/VBoxContainer/Screen Scaling/Control/ScalingSpinbox" method="_on_mouse_exited"]
 [connection signal="value_changed" from="ScrollContainer/MarginContainer/VBoxContainer/Screen Scaling/Control/ScalingSpinbox" to="ScrollContainer/MarginContainer/VBoxContainer/Screen Scaling/Control/ScalingSpinbox" method="_on_value_changed"]
 [connection signal="item_selected" from="ScrollContainer/MarginContainer/VBoxContainer/Window Mode/WindowOptions" to="ScrollContainer/MarginContainer/VBoxContainer/Window Mode/WindowOptions" method="_on_item_selected"]
+[connection signal="item_selected" from="ScrollContainer/MarginContainer/VBoxContainer/Max Framerate/WindowOptions" to="ScrollContainer/MarginContainer/VBoxContainer/Max Framerate/WindowOptions" method="_on_item_selected"]
 [connection signal="color_changed" from="ScrollContainer/MarginContainer/VBoxContainer/Background Color/BackgroundColorPicker" to="ScrollContainer/MarginContainer/VBoxContainer/Background Color/BackgroundColorPicker" method="_on_color_changed"]
 [connection signal="pressed" from="ScrollContainer/MarginContainer/VBoxContainer/Remove Wallpaper/RemoveWallpaper" to="ScrollContainer/MarginContainer/VBoxContainer/Remove Wallpaper/RemoveWallpaper" method="_on_pressed"]

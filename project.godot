@@ -33,6 +33,10 @@ CopyPasteManager="*res://Scenes/Autoloads/CopyPaste Manager/copy_paste_manager.t
 
 gdscript/warnings/untyped_declaration=1
 
+[display]
+
+window/vsync/vsync_mode=0
+
 [file_customization]
 
 folder_colors={
