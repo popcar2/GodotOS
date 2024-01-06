@@ -9,6 +9,10 @@ var state: StateEnum = StateEnum.COPY
 func _ready() -> void:
 	get_viewport().files_dropped.connect(_handle_dropped_folders)
 
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed("ui_paste"):
+		print("PASTED!")
+
 func copy_folder(folder: FakeFolder) -> void:
 	if target_folder:
 		target_folder.modulate.a = 1

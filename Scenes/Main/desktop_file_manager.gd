@@ -9,8 +9,9 @@ func _ready() -> void:
 		# Can't just use absolute paths due to https://github.com/godotengine/godot/issues/82550
 		# Also DirAccess can't open on res:// at export, but FileAccess does...
 		user_dir.make_dir_recursive("files/Welcome Folder")
-		copy_from_res("res://Default Files/Welcome.txt", "user://files/Welcome.txt")
+		copy_from_res("res://Default Files/Welcome.txt", "user://files/Welcome Folder/Welcome.txt")
 		copy_from_res("res://Default Files/Credits.txt", "user://files/Welcome Folder/Credits.txt")
+		copy_from_res("res://Default Files/GodotOS Handbook.txt", "user://files/Welcome Folder/GodotOS Handbook.txt")
 	
 	populate_file_manager()
 	get_window().size_changed.connect(update_positions)

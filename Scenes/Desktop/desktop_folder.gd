@@ -45,9 +45,9 @@ func _input(event: InputEvent) -> void:
 	if $"Selected Highlight".visible:
 		if event.is_action_pressed("delete"):
 			delete_file()
-		elif event.is_action_pressed("copy"):
+		elif event.is_action_pressed("ui_copy"):
 			CopyPasteManager.copy_folder(self)
-		elif event.is_action_pressed("cut"):
+		elif event.is_action_pressed("ui_cut"):
 			CopyPasteManager.cut_folder(self)
 		
 		if event.is_action_pressed("ui_up"):

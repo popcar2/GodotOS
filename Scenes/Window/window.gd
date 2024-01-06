@@ -68,6 +68,9 @@ func _on_close_button_pressed() -> void:
 	if is_being_deleted:
 		return
 	
+	if GlobalValues.selected_window == self:
+		GlobalValues.selected_window = null
+	
 	deleted.emit()
 	num_of_windows -= 1
 	is_being_deleted = true
@@ -119,6 +122,7 @@ func select_window(play_fade_animation: bool) -> void:
 	
 	is_selected = true
 	selected.emit(true)
+	GlobalValues.selected_window = self
 	
 	var tween: Tween = create_tween()
 	tween.set_parallel(true)

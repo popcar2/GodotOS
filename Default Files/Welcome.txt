@@ -6,5 +6,6 @@ view images, and edit text files!
 
 Here are some shortcuts to get you started:
 
-*    Fullscreen: Alt + Enter
+*    Fullscreen: Alt + Enter or F11
 *    Open (real) file manager: Ctrl + Shift + F
+*    Close ALL windows: Ctrl + Shift + Delete
