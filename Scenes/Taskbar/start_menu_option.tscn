@@ -48,7 +48,7 @@ theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/MarginContainer"]
-modulate = Color(1, 0, 0, 1)
+modulate = Color(0.78, 0.082, 0.521, 1)
 layout_mode = 2
 mouse_filter = 2
 texture = SubResource("CanvasTexture_r5rha")
