@@ -77,22 +77,22 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 1
 
-[node name="Start Menu Option" parent="Start Menu/VBoxContainer" instance=ExtResource("2_1ualm")]
-layout_mode = 2
-title_text = "Cube Scene"
-description_text = "THE CUBE. THE CUBE. THE CUBE."
-
-[node name="Start Menu Option2" parent="Start Menu/VBoxContainer" instance=ExtResource("2_1ualm")]
+[node name="Pong Option" parent="Start Menu/VBoxContainer" instance=ExtResource("2_1ualm")]
 layout_mode = 2
 game_scene = "res://Games/Pong/Scenes/pong_main_menu.tscn"
 title_text = "Pong"
-description_text = "A timeless classic"
+description_text = "Timeless Classic"
 
-[node name="Start Menu Option3" parent="Start Menu/VBoxContainer" instance=ExtResource("2_1ualm")]
+[node name="Super Bit Boy Option" parent="Start Menu/VBoxContainer" instance=ExtResource("2_1ualm")]
 layout_mode = 2
 game_scene = "res://Games/Super Bit Boy/Scenes/Levels/level_1.tscn"
 title_text = "Super Bit Boy"
-description_text = "Hard but fair 2D platformer"
+description_text = "Hard but Fair 2D Platformer"
+
+[node name="Cube Scene Option" parent="Start Menu/VBoxContainer" instance=ExtResource("2_1ualm")]
+layout_mode = 2
+title_text = "Cube Scene"
+description_text = "THE CUBE. THE CUBE. THE CUBE."
 
 [node name="Power Button" type="Button" parent="Start Menu"]
 layout_mode = 1

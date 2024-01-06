@@ -1,5 +1,6 @@
 extends Node2D
 
+@export var next_level_number: int = -1
 var is_loading: bool
 
 func reload_scene() -> void:
@@ -16,7 +17,6 @@ func load_next_scene() -> void:
 		return
 	
 	is_loading = true
-	var next_level_number: int = int(name.split(" ")[-1]) + 1
 	var next_scene: Node = load("res://Games/Super Bit Boy/Scenes/Levels/level_%d.tscn" % next_level_number).instantiate()
 	add_sibling(next_scene)
 	queue_free()

@@ -47,7 +47,6 @@ func _ready() -> void:
 	tween.tween_property(self, "modulate:a", 1, 0.5)
 
 func _process(_delta: float) -> void:
-	# TODO: Figure out why there's a delay and fix it
 	if is_dragging:
 		global_position = start_drag_position + (get_global_mouse_position() - mouse_start_drag_position)
 		clamp_window_inside_viewport()
