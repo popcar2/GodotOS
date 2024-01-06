@@ -8,17 +8,17 @@ func _input(event: InputEvent) -> void:
 		handle_mouse_click()
 
 func _on_mouse_entered() -> void:
-	add_theme_constant_override("margin_bottom", 7)
-	add_theme_constant_override("margin_left", 7)
-	add_theme_constant_override("margin_right", 7)
-	add_theme_constant_override("margin_top", 7)
-	is_mouse_over = true
-
-func _on_mouse_exited() -> void:
 	add_theme_constant_override("margin_bottom", 5)
 	add_theme_constant_override("margin_left", 5)
 	add_theme_constant_override("margin_right", 5)
 	add_theme_constant_override("margin_top", 5)
+	is_mouse_over = true
+
+func _on_mouse_exited() -> void:
+	add_theme_constant_override("margin_bottom", 3)
+	add_theme_constant_override("margin_left", 3)
+	add_theme_constant_override("margin_right", 3)
+	add_theme_constant_override("margin_top", 3)
 	is_mouse_over = false
 
 func handle_mouse_click() -> void:

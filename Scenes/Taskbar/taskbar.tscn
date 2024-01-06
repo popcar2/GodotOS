@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/Taskbar/start_button.gd" id="1_aypgd"]
 [ext_resource type="PackedScene" uid="uid://da4oly47yx3ja" path="res://Scenes/Taskbar/start_menu_option.tscn" id="2_1ualm"]
+[ext_resource type="Texture2D" uid="uid://dyucn32xje8bj" path="res://Art/Icons/Start Menu Button.png" id="2_mu355"]
 [ext_resource type="Texture2D" uid="uid://dnvmy7l1wrerh" path="res://Art/Icons/power-button.png" id="3_sudyn"]
 [ext_resource type="Script" path="res://Scenes/Taskbar/power_button.gd" id="4_cnyss"]
 [ext_resource type="Texture2D" uid="uid://cwnaaut64gd15" path="res://Art/Icons/cog.png" id="5_srcnq"]
@@ -10,8 +11,6 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mxh1o"]
 bg_color = Color(0.1, 0.1, 0.1, 0.6)
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_s4q16"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lxws7"]
 bg_color = Color(0.0784314, 0.0784314, 0.0784314, 0.784314)
@@ -48,17 +47,19 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_mxh1o")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 5
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
 script = ExtResource("1_aypgd")
 
 [node name="TextureRect" type="TextureRect" parent="Start Button"]
 self_modulate = Color(0, 0.792157, 0.952941, 1)
+texture_filter = 4
 layout_mode = 2
 mouse_filter = 2
-texture = SubResource("CanvasTexture_s4q16")
+texture = ExtResource("2_mu355")
+expand_mode = 4
 
 [node name="Start Menu" type="Panel" parent="."]
 layout_mode = 0
