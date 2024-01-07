@@ -14,7 +14,7 @@ shadow_color = Color(0, 0, 0, 0.0784314)
 [node name="Window" instance=ExtResource("1_bisfo")]
 theme_override_styles/panel = SubResource("StyleBoxFlat_8a368")
 
-[node name="Control" type="Control" parent="." index="2"]
+[node name="Control" type="Control" parent="." index="1"]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15

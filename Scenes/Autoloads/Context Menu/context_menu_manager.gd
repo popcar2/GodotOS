@@ -108,9 +108,9 @@ func add_file_manager_options() -> void:
 	new_text_file_option.get_node("%Option Text").text = "New Text File"
 	new_text_file_option.option_clicked.connect(_handle_new_text_file)
 	
-	if CopyPasteManager.target_folder != null:
+	if !CopyPasteManager.target_folder_name.is_empty():
 		var paste_folder_option: Control = context_menu_option.instantiate()
-		if CopyPasteManager.target_folder.file_type == FakeFolder.file_type_enum.FOLDER:
+		if CopyPasteManager.target_folder_type == FakeFolder.file_type_enum.FOLDER:
 			paste_folder_option.get_node("%Option Text").text = "Paste Folder"
 		else:
 			paste_folder_option.get_node("%Option Text").text = "Paste File"
