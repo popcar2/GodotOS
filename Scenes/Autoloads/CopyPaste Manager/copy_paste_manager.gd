@@ -3,6 +3,7 @@ extends Node
 
 ## The target folder. NOT used for variables since it could be freed by a file manager window!
 var target_folder: FakeFolder
+## The target folder's name. Gets emptied after a paste.
 var target_folder_name: String
 var target_folder_path: String
 var target_folder_type: FakeFolder.file_type_enum
@@ -17,11 +18,13 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_paste"):
 		var selected_window: FakeWindow = GlobalValues.selected_window
 		# Paste in desktop if no selected window. Paste in file manager if file manager is selected.
-		if !selected_window:
-			#paste_folder(target_folder.folder_name)
-			pass
-		if selected_window and !selected_window.get_node_or_null("%Text Editor") and !selected_window.get_node_or_null("%Image Viewer"):
-			print("Text or image")
+		if selected_window == null:
+			paste_folder("")
+			return
+		
+		var file_manager_window: FileManagerWindow = selected_window.get_node_or_null("%File Manager Window")
+		if selected_window and file_manager_window != null:
+			paste_folder(file_manager_window.file_path)
 
 func copy_folder(folder: FakeFolder) -> void:
 	if target_folder:
@@ -34,6 +37,9 @@ func copy_folder(folder: FakeFolder) -> void:
 	folder.modulate.a = 0.8
 	state = StateEnum.COPY
 	NotificationManager.spawn_notification("Copied [color=59ea90][wave freq=7]%s[/wave][/color]" % target_folder_name)
+	
+	print(target_folder_name)
+	print(target_folder_path)
 
 func cut_folder(folder: FakeFolder) -> void:
 	if target_folder:
