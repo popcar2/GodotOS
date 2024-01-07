@@ -12,6 +12,14 @@ func _ready() -> void:
 		copy_from_res("res://Default Files/Welcome.txt", "user://files/Welcome Folder/Welcome.txt")
 		copy_from_res("res://Default Files/Credits.txt", "user://files/Welcome Folder/Credits.txt")
 		copy_from_res("res://Default Files/GodotOS Handbook.txt", "user://files/Welcome Folder/GodotOS Handbook.txt")
+		copy_from_res("res://Default Files/default wall.webp", "user://files/default wall.webp")
+		
+		var wallpaper: Wallpaper = $"/root/Control/Wallpaper"
+		wallpaper.apply_wallpaper_from_path("files/default wall.webp")
+		
+		copy_from_res("res://Default Files/default wall.webp", "user://default wall.webp")
+		DefaultValues.wallpaper_name = "default wall.webp"
+		DefaultValues.save_state()
 	
 	populate_file_manager()
 	get_window().size_changed.connect(update_positions)

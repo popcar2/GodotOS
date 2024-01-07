@@ -5,7 +5,9 @@ you can play games, manage folders,
 view images, and edit text files!
 
 Here are some shortcuts to get you started:
-
 *    Fullscreen: Alt + Enter or F11
-*    Open (real) file manager: Ctrl + Shift + F
-*    Close ALL windows: Ctrl + Shift + Delete
+*    Open (real) File Manager: Ctrl + Shift + F
+*    Close ALL Windows: Ctrl + Shift + Delete
+
+If you need more info, read the GodotOS Handbook!
+It's in this very same folder.

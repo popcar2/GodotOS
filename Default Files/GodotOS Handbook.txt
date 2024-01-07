@@ -3,7 +3,8 @@ Welcome to GodotOS! This handbook will show in detail all the things you can do 
 Chapters:
 	1. Handling windows
 	2. Managing files
-	3. Playing games
+	3. Managing settings
+	4. Playing games
 
 ----- CHAPTER 1: HANDLING WINDOWS -----
 To open a new window, you can either double click a file or open a game through the start menu in the bottom left of the screen.
@@ -32,3 +33,41 @@ Only support files will be seen by GodotOS. These are currently:
 	* Image files (JPG, PNG, WEBP)
 	* Text files (TXT, MD)
 
+Inside of GodotOS, you can right click in empty spaces to create folders and text files.
+You can also right click to copy or cut folders and files anywhere else.
+Right click in an empty space to paste your files. This can be in the desktop or in a file manager window.
+
+You may also rename files and move them to trash.
+Note that moving files to trash does NOT delete them, but instead moves them to your system's trash.
+
+Hotkeys you would expect to work do actually work (Ctrl+C, Ctrl+X, Ctrl+V, F2, DELETE).
+
+GodotOS currently can't browse other files in your system. This is mainly for your safety, as it's not 100% stable and I don't want you to lose any important stuff.
+The second reason is to reinforce that GodotOS is not a serious project, and shouldn't be used as an actual replacement for your real operating system!
+
+----- CHAPTER 3: MANAGING SETTINGS -----
+To access the settings menu, click on the start button (bottom left), then click on the cog icon next to the power button.
+The settings allows you to customize many things, including your screen scale, fullscreen mode, background color, and more!
+
+Many of these settings can also be changed via hotkeys:
+	* Increase Scale: Ctrl +
+	* Decrease Scale: Ctrl -
+	* Enter/Exit Fullscreen: Alt Enter / F11
+
+Here you can remove your current wallpaper (you can add one by right clicking an image file).
+You can change your background color, which is visible only if there is no wallpaper applied.
+
+----- CHAPTER 4: PLAYING GAMES -----
+Now for some fun! GodotOS currently comes packaged with 2 basic games: Pong & Super Bit Boy.
+Note that hopefully more games will be added in the future!
+You can access these from the start menu in the bottom left.
+
+All games automatically pause when minimized, and automatically continue when restored.
+
+There are 3 modes in Pong:
+	* Singleplayer - The default mode against an AI. Use the up and down arrow keys to move.
+	* Survival - Try to last as long as possible with an increasingly speedy ball.
+	* Multiplayer - Play locally with a friend. The 2nd paddle is controlled with W and S.
+
+Super Bit Boy, on the other hand, is a 2D platformer inspired by Super Meat Boy!
+Move left and right with the arrow keys or A and D, jump with space or Z.
