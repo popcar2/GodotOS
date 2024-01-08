@@ -1,5 +1,7 @@
 extends ColorPickerButton
 
+## The background color picker used in the settings menu.
+
 @onready var background_color: ColorRect = $"/root/Control/BackgroundColor"
 
 func _ready() -> void:

@@ -1,5 +1,8 @@
 extends Node
 
+## Just a stupid benchmark to spam windows and see how it hurts FPS.
+## Results: Starts lagging after 100 windows, starts chugging after ~200, barely runs at 1fps after 1500.
+
 var windows: int
 
 func _physics_process(_delta):

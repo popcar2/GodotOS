@@ -1,6 +1,9 @@
 extends Panel
 class_name ContextMenuOption
 
+## One of the options that are clickable inside of a context menu.
+## Used by context_menu_manager.
+
 signal option_clicked()
 
 func _gui_input(event: InputEvent) -> void:

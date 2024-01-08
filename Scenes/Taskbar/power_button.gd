@@ -1,5 +1,7 @@
 extends Button
 
+## The power button in the start menu. Does nothing if you're on the web version.
+
 var boot_splash_scene: PackedScene = preload("res://Scenes/Main/Boot Splash/boot_splash.tscn")
 
 func _on_pressed() -> void:

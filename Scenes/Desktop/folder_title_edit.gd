@@ -1,5 +1,7 @@
 extends TextEdit
 
+## Handles renaming of a folder.
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("rename") and $"../../../Selected Highlight".visible:
 		show_rename()

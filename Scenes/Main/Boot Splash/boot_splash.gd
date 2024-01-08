@@ -1,6 +1,9 @@
 extends CanvasLayer
 class_name BootSplash
 
+## The boot splash animation that's shown when GodotOS is opened or powered off.
+## It uses a CanvasGroup with 2D nodes for masking, hence why it adjusts scale manually.
+
 @export var quit_animation: bool
 
 func _ready() -> void:

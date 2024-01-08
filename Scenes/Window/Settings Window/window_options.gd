@@ -1,5 +1,7 @@
 extends OptionButton
 
+## The window fullscreen options in the settings menu.
+
 func _ready() -> void:
 	set_selected_window_mode()
 

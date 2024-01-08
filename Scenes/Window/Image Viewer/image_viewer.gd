@@ -1,5 +1,7 @@
 extends TextureRect
 
+## The image viewer window.
+
 func import_image(file_path: String) -> void:
 	if !FileAccess.file_exists("user://files/%s" % file_path):
 		NotificationManager.spawn_notification("Error: Cannot find file (was it moved or deleted?)")

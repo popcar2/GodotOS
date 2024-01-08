@@ -1,7 +1,7 @@
 extends BaseFileManager
 class_name DesktopFileManager
 
-# Desktop file manager
+## The desktop file manager.
 
 func _ready() -> void:
 	var user_dir: DirAccess = DirAccess.open("user://")

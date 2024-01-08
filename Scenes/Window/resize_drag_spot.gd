@@ -1,5 +1,7 @@
 extends Control
 
+## The resize drag spot in the bottom right of each window.
+
 var window: FakeWindow
 var is_dragging: bool
 

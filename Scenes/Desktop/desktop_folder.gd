@@ -1,6 +1,9 @@
 extends Control
 class_name FakeFolder
 
+## A folder that can be opened and interacted with.
+## Files like text/image files are just folders with a different file_type_enum.
+
 enum file_type_enum {FOLDER, TEXT_FILE, IMAGE}
 @export var file_type: file_type_enum
 

@@ -1,6 +1,8 @@
 extends Control
 class_name SmoothContainer
 
+## Smoothly tweens all children into place. Used in file managers.
+
 @export_enum("Horizontal", "Vertical") var direction: String = "Horizontal"
 ## How often the update function runs, in seconds. Low values are performance intensive!
 @export var poll_rate: float = 0.15

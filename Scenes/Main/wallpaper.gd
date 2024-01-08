@@ -1,6 +1,8 @@
 extends TextureRect
 class_name Wallpaper
 
+## The desktop wallpaper, has an empty texture when the wallpaper is removed.
+
 signal wallpaper_added()
 
 func _ready() -> void:

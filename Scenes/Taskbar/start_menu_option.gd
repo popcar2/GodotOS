@@ -1,5 +1,7 @@
 extends Panel
 
+## A start menu option. Currently only used to spawn game windows and nothing else.
+
 @export var game_scene: String
 @export var title_text: String
 @export var description_text: String

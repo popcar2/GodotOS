@@ -1,6 +1,8 @@
 extends Panel
 class_name FakeWindow
 
+## The base class for each window. Handles moving, resizing, minimizing, etc.
+
 @onready var top_bar: Panel = $"Top Bar"
 
 static var num_of_windows: int

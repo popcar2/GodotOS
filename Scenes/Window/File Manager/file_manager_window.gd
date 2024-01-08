@@ -1,6 +1,8 @@
 extends BaseFileManager
 class_name FileManagerWindow
 
+## The file manager window.
+
 func _ready() -> void:
 	populate_file_manager()
 	sort_folders()
@@ -24,6 +26,7 @@ func reload_window(folder_path: String) -> void:
 func close_window() -> void:
 	$"../.."._on_close_button_pressed()
 
+## Goes to the folder above the currently shown one. Can't go higher than user://files/
 func _on_back_button_pressed() -> void:
 	#TODO move it to a position that's less stupid
 	var split_path: PackedStringArray = file_path.split("/")

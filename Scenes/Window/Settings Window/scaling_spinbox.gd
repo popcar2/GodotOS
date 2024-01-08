@@ -1,5 +1,8 @@
 extends SpinBox
 
+## The scaling spinbox in the settings menu.
+## Also handles the + and - buttons next to it.
+
 var is_mouse_over: bool
 
 func _ready() -> void:

@@ -1,5 +1,7 @@
 extends Button
 
+## The settings menu in the start menu. Just spawns the settings menu.
+
 func _on_pressed() -> void:
 	var window: FakeWindow
 	window = load("res://Scenes/Window/Settings Window/settings_window.tscn").instantiate()

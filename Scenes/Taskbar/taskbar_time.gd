@@ -1,5 +1,8 @@
 extends Control
 
+## The time and date in the taskbar.
+## Updates once every 10 seconds since string replacements can be a waste of resources.
+
 func _ready() -> void:
 	update_time()
 

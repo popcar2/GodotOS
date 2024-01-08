@@ -1,5 +1,7 @@
 extends Button
 
+## The remove wallpaper button in the settings menu.
+
 @onready var wallpaper: Wallpaper = $"/root/Control/Wallpaper"
 
 func _ready() -> void:

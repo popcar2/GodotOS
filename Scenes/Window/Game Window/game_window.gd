@@ -1,5 +1,7 @@
 extends SubViewport
 
+## The game window, used to show games.
+
 @onready var window: FakeWindow = $"../../.."
 
 func _ready() -> void:
@@ -17,9 +19,10 @@ func _handle_window_minimized(is_minimized: bool) -> void:
 	else:
 		get_child(0).process_mode = Node.PROCESS_MODE_INHERIT
 
+## Disables input if the window isn't selected.
 func _handle_window_selected(is_selected: bool) -> void:
 	# TODO check if this wrecks performance
-	handle_input_locally = false
+	#handle_input_locally = false
 	set_input(self, is_selected)
 
 # WARNING recursively loops on every node in the game. Probably a bad idea.

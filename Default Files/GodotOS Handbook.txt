@@ -1,4 +1,4 @@
-Welcome to GodotOS! This handbook will show in detail all the things you can do in GodotOS.
+Welcome to GodotOS! This handbook will show in detail all the things you can do here.
 
 Chapters:
 	1. Handling windows

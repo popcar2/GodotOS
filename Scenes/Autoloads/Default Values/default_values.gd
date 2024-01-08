@@ -57,6 +57,8 @@ func load_state() -> void:
 	background_color_rect.color = Color.from_string(save_dict.background_color, Color8(77, 77, 77))
 	get_window().content_scale_factor = save_dict.zoom_level
 
+## Copies the wallpaper to root GodotOS folder so it can load it again later. 
+## It doesn't use the actual wallpaper file since it can be removed/deleted.
 func save_wallpaper(wallpaper_file: FakeFolder) -> void:
 	delete_wallpaper()
 	

@@ -1,5 +1,8 @@
 extends Control
 
+## A window's taskbar button. Used to minimize/restore a window.
+## Also shows which window is selected or minimized via colors.
+
 @onready var texture_margin: MarginContainer = $TextureMargin
 @onready var texture_rect: TextureRect = $"TextureMargin/TextureRect"
 @onready var selected_background: TextureRect = $SelectedBackground

@@ -1,8 +1,12 @@
 extends SmoothContainer
 class_name BaseFileManager
 
-@export var file_path: String # Relative to user://files/
+## The base file manager inherited by desktop file manager and the file manager window.
 
+## The file manager's path (relative to user://files/)
+@export var file_path: String
+
+## Removes all current folders (if any) and populates the file manager from file path.
 func populate_file_manager() -> void:
 	for child in get_children():
 		if child is FakeFolder:
@@ -24,6 +28,7 @@ func populate_file_manager() -> void:
 	await get_tree().process_frame # TODO fix whatever's causing a race condition :/
 	sort_folders()
 
+## Adds a folder as a child
 func instantiate_file(file_name: String, path: String, file_type: FakeFolder.file_type_enum) -> void:
 	var folder: FakeFolder = load("res://Scenes/Desktop/folder.tscn").instantiate()
 	folder.folder_name = file_name
@@ -31,6 +36,7 @@ func instantiate_file(file_name: String, path: String, file_type: FakeFolder.fil
 	folder.file_type = file_type
 	add_child(folder)
 
+## Sorts all folders to their correct positions. 
 func sort_folders() -> void:
 	if len(get_children()) < 3:
 		update_positions(false)
@@ -48,6 +54,8 @@ func sort_folders() -> void:
 	await get_tree().process_frame
 	update_positions(false)
 
+## Creates a new folder.
+## Not to be confused with instantiating which adds an existing real folder, this function CREATES one. 
 func new_folder() -> void:
 	var new_folder_name: String = "New Folder"
 	var padded_file_path: String # Since I sometimes want the / and sometimes not
@@ -70,7 +78,8 @@ func new_folder() -> void:
 		instantiate_file(new_folder_name, "%s" % new_folder_name, FakeFolder.file_type_enum.FOLDER)
 		sort_folders()
 
-
+## Creates a new file.
+## Not to be confused with instantiating which adds an existing real folder, this function CREATES one. 
 func new_file(extension: String, file_type: FakeFolder.file_type_enum) -> void:
 	var new_file_name: String = "New File%s" % extension
 	var padded_file_path: String # Since I sometimes want the / and sometimes not
@@ -96,6 +105,7 @@ func new_file(extension: String, file_type: FakeFolder.file_type_enum) -> void:
 		instantiate_file(new_file_name, file_path, file_type)
 		sort_folders()
 
+## Finds a file/folder based on name and frees it (but doesn't delete it from the actual system)
 func delete_file_with_name(file_name: String) -> void:
 	for child in get_children():
 		if !(child is FakeFolder):
@@ -107,6 +117,8 @@ func delete_file_with_name(file_name: String) -> void:
 	await get_tree().process_frame
 	sort_folders()
 
+## Keyboard controls for selecting files.
+## Is kind of messy because the file manager can be horizontal or vertical, which changes which direction the next folder is.
 func select_folder_up(current_folder: FakeFolder) -> void:
 	if direction == "Horizontal":
 		select_previous_line_folder(current_folder)
@@ -174,7 +186,7 @@ func _custom_folder_sort(a: FakeFolder, b: FakeFolder) -> bool:
 		return true
 	return false
 
-## Puts folders first in the array
+## Puts folders first in the array (as opposed to files)
 func _custom_folders_first_sort(a: FakeFolder, b: FakeFolder) -> bool:
 	if a.file_type == FakeFolder.file_type_enum.FOLDER and a.file_type != b.file_type:
 		return true

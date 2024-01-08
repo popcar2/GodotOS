@@ -1,10 +1,12 @@
 extends Node
-## Copies and pastes folders and files
+## Managed copying and pasting of files and folders.
 
 ## The target folder. NOT used for variables since it could be freed by a file manager window!
 var target_folder: FakeFolder
+
 ## The target folder's name. Gets emptied after a paste.
 var target_folder_name: String
+
 var target_folder_path: String
 var target_folder_type: FakeFolder.file_type_enum
 
@@ -37,9 +39,6 @@ func copy_folder(folder: FakeFolder) -> void:
 	folder.modulate.a = 0.8
 	state = StateEnum.COPY
 	NotificationManager.spawn_notification("Copied [color=59ea90][wave freq=7]%s[/wave][/color]" % target_folder_name)
-	
-	print(target_folder_name)
-	print(target_folder_path)
 
 func cut_folder(folder: FakeFolder) -> void:
 	if target_folder:
@@ -53,6 +52,7 @@ func cut_folder(folder: FakeFolder) -> void:
 	state = StateEnum.CUT
 	NotificationManager.spawn_notification("Cutting [color=59ea90][wave freq=7]%s[/wave][/color]" % target_folder_name)
 
+## Pastes the folder, caling paste_folder_copy() or paste_folder_cut() depending on the state selected
 func paste_folder(to_path: String) -> void:
 	if target_folder_name.is_empty():
 		NotificationManager.spawn_notification("Error: Nothing to copy")
@@ -122,6 +122,7 @@ func copy_directory_recursively(dir_path: String, to_path: String) -> void:
 	for file_name in DirAccess.get_files_at(dir_path):
 		DirAccess.copy_absolute("%s/%s" % [dir_path, file_name], "%s/%s" % [to_path, file_name])
 
+## Instantiates a new file in the file manager then refreshes. Used for adding a single file without causing a full refresh.
 func instantiate_file_and_sort(file_manager: BaseFileManager, to_path: String) -> void:
 	if target_folder_type == FakeFolder.file_type_enum.FOLDER:
 		file_manager.instantiate_file(target_folder_name, "%s/%s" % [to_path, target_folder_name], target_folder_type)
@@ -129,6 +130,7 @@ func instantiate_file_and_sort(file_manager: BaseFileManager, to_path: String) -
 		file_manager.instantiate_file(target_folder_name, to_path, target_folder_type)
 	file_manager.sort_folders()
 
+## Copies files that get dragged and dropped into GodotOS (if the file format is supported).
 func _handle_dropped_folders(files: PackedStringArray) -> void:
 	for file_name: String in files:
 		var extension: String = file_name.split(".")[-1]

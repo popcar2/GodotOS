@@ -1,12 +1,18 @@
 extends Panel
 
+## An autoload to manage the context menu (right click menu)
+
 const right_click_handler: PackedScene = preload("res://Scenes/Autoloads/Context Menu/right_click_handler.tscn")
 const context_menu_option: PackedScene = preload("res://Scenes/Autoloads/Context Menu/context_menu_option.tscn")
 const context_menu_seperator: PackedScene = preload("res://Scenes/Autoloads/Context Menu/context_menu_seperator.tscn")
 
+## The Control node that got right clicked.
 var target: Control
 
+## Checks if the mouse is currently over the menu
 var is_mouse_over: bool
+
+## Used as a cooldown for not spawning the right click menu dozens of times per second
 var is_shown_recently: bool
 
 func _ready() -> void:
@@ -62,6 +68,7 @@ func hide_context_menu() -> void:
 
 # ----------
 
+## Adds options that would be visible when right clicking a folder
 func add_folder_options() -> void:
 	var type_name: String
 	if target.file_type == FakeFolder.file_type_enum.FOLDER:
@@ -99,6 +106,7 @@ func add_folder_options() -> void:
 	$VBoxContainer.add_child(context_menu_seperator.instantiate())
 	$VBoxContainer.add_child(delete_option)
 
+## Adds options that would be visible when right clicking a file manager
 func add_file_manager_options() -> void:
 	var new_folder_option: Control = context_menu_option.instantiate()
 	new_folder_option.get_node("%Option Text").text = "New Folder"

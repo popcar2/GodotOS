@@ -1,5 +1,7 @@
 extends OptionButton
 
+## The max FPS options in the settings menu.
+
 func _ready() -> void:
 	var index: int
 	match Engine.max_fps:

@@ -1,5 +1,7 @@
 extends CodeEdit
 
+## The text editor window. Is actually a CodeEdit to support line numbers for each row.
+
 @onready var window: FakeWindow = $"../.."
 
 var text_edited: bool

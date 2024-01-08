@@ -9,6 +9,7 @@ donating, even if it's only a few dollars:
 https://ko-fi.com/popcar2
 
 --- Other credits ---
-* Default wallpaper was created by Haseeb Jamil.
+* Default wallpaper was created by Haseeb Jamil
+  ( https://unsplash.com/photos/snow-capped-mountain-at-night-3s85IxVDyXE )
 * File icons are from FlatIcon.
 * Misc icons are from game-icons.

@@ -1,5 +1,7 @@
 extends MarginContainer
 
+## The start menu in the taskbar. Handles showing and hiding the start menu.
+
 var is_mouse_over_menu: bool
 var is_mouse_over: bool
 
