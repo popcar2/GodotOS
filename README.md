@@ -10,7 +10,8 @@ Aside from that, GodotOS is also meant to be a hub for small games and experienc
 
 # Download
 
-TBD
+* Try the web version on [Itch.io page](https://popcar2.itch.io/godotos)
+* Download all versions from the [releases page](https://github.com/popcar2/GodotOS/releases)
 
 # Credits
 
