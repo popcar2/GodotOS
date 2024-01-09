@@ -6,7 +6,7 @@ Welcome to GodotOS, an operating system interface created entirely in Godot! Bro
 
 GodotOS is more of a toy than a serious project. It's meant to push the limits on UI design in Godot while creating a desktop that is minimalist, distraction-free, and aesthetically pleasing.
 
-Aside from that, GodotOS is also meant to be a hub for small games and experiences that can easily be bundled in. Want to add your own game to the start menu? Check the contributing guide!
+Aside from that, GodotOS is also meant to be a hub for small games and experiences that can easily be bundled in. Want to add your own game to the start menu? Check the [contributing guide!](CONTRIBUTING.md)
 
 # Download
 
