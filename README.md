@@ -1,4 +1,4 @@
-# GodotOS
+# GodotOS | [Trailer](https://www.youtube.com/watch?v=44LcozXequw)
 
 Welcome to GodotOS, an operating system interface created entirely in Godot! Browse folders, edit text files, view images, play games, and more in one cohesive polished interface that can even be used on the web!
 
