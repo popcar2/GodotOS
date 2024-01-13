@@ -1,0 +1,208 @@
+[gd_scene load_steps=15 format=3 uid="uid://xl674gbk881y"]
+
+[ext_resource type="Script" path="res://Games/Godotris/Game/godotris_game.gd" id="1_0mtes"]
+[ext_resource type="Script" path="res://Games/Godotris/Game/godotris_input_handler.gd" id="1_g8vii"]
+[ext_resource type="PackedScene" uid="uid://bh4wsctpxw88n" path="res://Games/Godotris/Grid/grid.tscn" id="2_1r4od"]
+[ext_resource type="PackedScene" uid="uid://b1xykl5fledwa" path="res://Games/Godotris/PieceHolder/piece_holder.tscn" id="3_la86e"]
+[ext_resource type="PackedScene" uid="uid://corveaa2iq24x" path="res://Games/Godotris/Piece/i_piece.tscn" id="5_jv2ro"]
+[ext_resource type="PackedScene" uid="uid://cuxy2r5ex7lxa" path="res://Games/Godotris/Piece/j_piece.tscn" id="6_tqwyl"]
+[ext_resource type="PackedScene" uid="uid://b7kkiimno5ae5" path="res://Games/Godotris/Piece/l_piece.tscn" id="7_iwxu5"]
+[ext_resource type="Script" path="res://Games/Godotris/Game/godotris_piece_spawner.gd" id="7_kptm2"]
+[ext_resource type="PackedScene" uid="uid://ddf8eap1k00yb" path="res://Games/Godotris/Piece/o_piece.tscn" id="8_kiqdo"]
+[ext_resource type="PackedScene" uid="uid://bu55cplk7o7ja" path="res://Games/Godotris/Piece/s_piece.tscn" id="9_8dy2y"]
+[ext_resource type="PackedScene" uid="uid://dfa5tvxkoi4ii" path="res://Games/Godotris/Piece/t_piece.tscn" id="10_4werb"]
+[ext_resource type="PackedScene" uid="uid://ntmchus4unn0" path="res://Games/Godotris/Piece/z_piece.tscn" id="11_1drbf"]
+
+[sub_resource type="Gradient" id="Gradient_nlwv3"]
+colors = PackedColorArray(1, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_he5fk"]
+gradient = SubResource("Gradient_nlwv3")
+fill_from = Vector2(0.226496, 0.987179)
+fill_to = Vector2(0.722222, 0.0811966)
+
+[node name="GodotrisGame" type="Control" node_paths=PackedStringArray("start_menu", "end_menu", "countdown_timer", "countdown_label", "score_label", "level_label", "lines_label", "piece_spawner", "input_handler", "grid")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0mtes")
+start_menu = NodePath("StartMenu")
+end_menu = NodePath("EndMenu")
+countdown_timer = NodePath("StartTimer")
+countdown_label = NodePath("CountdownLabel")
+score_label = NodePath("Grid/ScoreLabel")
+level_label = NodePath("Grid/LevelLabel")
+lines_label = NodePath("Grid/LinesLabel")
+piece_spawner = NodePath("PieceSpawner")
+input_handler = NodePath("InputHandler")
+grid = NodePath("Grid")
+
+[node name="StartTimer" type="Timer" parent="."]
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_he5fk")
+
+[node name="Grid" parent="." instance=ExtResource("2_1r4od")]
+layout_mode = 1
+
+[node name="PiecePreview" parent="Grid" instance=ExtResource("3_la86e")]
+layout_mode = 0
+offset_left = 320.0
+offset_right = 480.0
+offset_bottom = 96.0
+
+[node name="LinesLabel" type="Label" parent="Grid"]
+layout_mode = 1
+offset_left = 352.0
+offset_top = 320.0
+offset_right = 720.0
+offset_bottom = 397.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 40
+text = "Lines cleared: 0"
+vertical_alignment = 1
+
+[node name="LevelLabel" type="Label" parent="Grid"]
+layout_mode = 1
+offset_left = 352.0
+offset_top = 400.0
+offset_right = 720.0
+offset_bottom = 477.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 40
+text = "Level: 0"
+vertical_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="Grid"]
+layout_mode = 1
+offset_left = 352.0
+offset_top = 480.0
+offset_right = 720.0
+offset_bottom = 557.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 40
+text = "Score: 0"
+vertical_alignment = 1
+
+[node name="CountdownLabel" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -21.0
+offset_top = -11.5
+offset_right = 21.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 100
+text = "Start!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PieceSpawner" type="Node" parent="." node_paths=PackedStringArray("previews", "grid")]
+script = ExtResource("7_kptm2")
+previews = [NodePath("../Grid/PiecePreview")]
+pieces = {
+"i": ExtResource("5_jv2ro"),
+"j": ExtResource("6_tqwyl"),
+"l": ExtResource("7_iwxu5"),
+"o": ExtResource("8_kiqdo"),
+"s": ExtResource("9_8dy2y"),
+"t": ExtResource("10_4werb"),
+"z": ExtResource("11_1drbf")
+}
+grid = NodePath("../Grid")
+
+[node name="InputHandler" type="Node" parent="." node_paths=PackedStringArray("piece_spawner", "grid")]
+script = ExtResource("1_g8vii")
+piece_spawner = NodePath("../PieceSpawner")
+grid = NodePath("../Grid")
+
+[node name="StartMenu" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="StartMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="Title" type="Label" parent="StartMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 100
+text = "Godotris"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StartButton" type="Button" parent="StartMenu/VBoxContainer"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 70
+text = "Start!"
+
+[node name="EndMenu" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RestartButton" type="Button" parent="EndMenu"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -136.5
+offset_top = -53.0
+offset_right = 136.5
+offset_bottom = 53.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 70
+text = "Restart"
+
+[connection signal="timeout" from="StartTimer" to="." method="on_timer_tick"]
+[connection signal="piece_placed" from="Grid" to="." method="on_piece_placed"]
+[connection signal="piece_placed" from="Grid" to="InputHandler" method="on_piece_placed"]
+[connection signal="cant_spawn" from="PieceSpawner" to="." method="end_game"]
+[connection signal="cant_spawn" from="PieceSpawner" to="InputHandler" method="stop_control"]
+[connection signal="piece_softdropped" from="InputHandler" to="." method="on_piece_softdropped"]
+[connection signal="pressed" from="StartMenu/VBoxContainer/StartButton" to="." method="start_game"]
+[connection signal="pressed" from="EndMenu/RestartButton" to="." method="start_game"]

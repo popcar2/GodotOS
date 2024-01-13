@@ -83,6 +83,12 @@ game_scene = "res://Games/Pong/Scenes/pong_main_menu.tscn"
 title_text = "Pong"
 description_text = "Timeless Classic"
 
+[node name="Godotris Option" parent="Start Menu/VBoxContainer" instance=ExtResource("2_1ualm")]
+layout_mode = 2
+game_scene = "res://Games/Godotris/Game/godotris_game.tscn"
+title_text = "Godotris"
+description_text = "Stack blocks, clear lines!"
+
 [node name="Super Bit Boy Option" parent="Start Menu/VBoxContainer" instance=ExtResource("2_1ualm")]
 layout_mode = 2
 game_scene = "res://Games/Super Bit Boy/Scenes/Levels/level_1.tscn"
