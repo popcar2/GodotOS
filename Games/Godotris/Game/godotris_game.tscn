@@ -60,6 +60,23 @@ offset_left = 320.0
 offset_right = 480.0
 offset_bottom = 96.0
 
+[node name="ControlsLabel" type="Label" parent="Grid"]
+layout_mode = 1
+offset_left = -400.0
+offset_top = 336.0
+offset_right = -32.0
+offset_bottom = 523.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_font_sizes/font_size = 25
+text = "Move left: Left arrow
+Move right: Right arrow
+Soft drop: Down arrow
+Rotate: Up arrow
+Hard drop: Space"
+horizontal_alignment = 2
+vertical_alignment = 1
+
 [node name="LinesLabel" type="Label" parent="Grid"]
 layout_mode = 1
 offset_left = 352.0
