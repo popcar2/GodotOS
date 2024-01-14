@@ -28,6 +28,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_0mtes")
 start_menu = NodePath("StartMenu")
 end_menu = NodePath("EndMenu")
@@ -49,6 +50,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = SubResource("GradientTexture2D_he5fk")
 
 [node name="Grid" parent="." instance=ExtResource("2_1r4od")]
@@ -59,6 +61,7 @@ layout_mode = 0
 offset_left = 320.0
 offset_right = 480.0
 offset_bottom = 96.0
+mouse_filter = 2
 
 [node name="ControlsLabel" type="Label" parent="Grid"]
 layout_mode = 1
@@ -160,6 +163,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="StartMenu"]
 layout_mode = 1
@@ -169,6 +173,7 @@ anchor_bottom = 1.0
 offset_bottom = -100.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/separation = 40
 alignment = 1
 
@@ -196,6 +201,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="RestartButton" type="Button" parent="EndMenu"]
 custom_minimum_size = Vector2(250, 0)

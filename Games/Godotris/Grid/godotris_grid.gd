@@ -100,17 +100,3 @@ func clear_lines(lines: Array[int]) -> void:
 				if block == null:
 					continue
 				block.global_position += Vector2.DOWN * BLOCK_SIZE
-
-
-
-
-
-
-
-
-
-
-
-
-
-

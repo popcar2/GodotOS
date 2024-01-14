@@ -13,3 +13,7 @@ https://ko-fi.com/popcar2
   ( https://unsplash.com/photos/snow-capped-mountain-at-night-3s85IxVDyXE )
 * File icons are from FlatIcon.
 * Misc icons are from game-icons.
+
+--- Game credits ---
+* Pong & Super Bit Boy by popcar2
+* Godotris by MrakDun-desu

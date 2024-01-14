@@ -157,14 +157,3 @@ func handle_das(time: int) -> void:
 					active_piece.position += Vector2i.LEFT * grid.BLOCK_SIZE
 		DasStatus.Inactive:
 			pass
-
-
-
-
-
-
-
-
-
-
-

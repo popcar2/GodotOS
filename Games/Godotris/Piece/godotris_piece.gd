@@ -16,4 +16,3 @@ func on_block_cleared() -> void:
 	child_count -= 1
 	if child_count == 0:
 		queue_free()
-

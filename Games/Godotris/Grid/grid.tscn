@@ -26,6 +26,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
+mouse_filter = 2
 script = ExtResource("1_dx6kk")
 
 [node name="Background" type="ColorRect" parent="."]
@@ -35,6 +36,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Lines" type="Control" parent="."]
@@ -45,6 +47,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="HorizontalLines" type="VBoxContainer" parent="Lines"]
 layout_mode = 1
@@ -57,130 +60,152 @@ offset_right = 1.0
 offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Panel1" type="Panel" parent="Lines/HorizontalLines"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxLine_m513q")
 
 [node name="Panel2" type="Panel" parent="Lines/HorizontalLines"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxLine_m513q")
 
 [node name="Panel3" type="Panel" parent="Lines/HorizontalLines"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxLine_m513q")
 
 [node name="Panel4" type="Panel" parent="Lines/HorizontalLines"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxLine_m513q")
 
 [node name="Panel5" type="Panel" parent="Lines/HorizontalLines"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxLine_m513q")
 
 [node name="Panel6" type="Panel" parent="Lines/HorizontalLines"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxLine_m513q")
 
 [node name="Panel7" type="Panel" parent="Lines/HorizontalLines"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxLine_m513q")
 
 [node name="Panel8" type="Panel" parent="Lines/HorizontalLines"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxLine_m513q")
 
 [node name="Panel9" type="Panel" parent="Lines/HorizontalLines"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxLine_m513q")
 
 [node name="Panel10" type="Panel" parent="Lines/HorizontalLines"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxLine_m513q")
 
 [node name="Panel11" type="Panel" parent="Lines/HorizontalLines"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxLine_m513q")
 
 [node name="Panel12" type="Panel" parent="Lines/HorizontalLines"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxLine_m513q")
 
 [node name="Panel13" type="Panel" parent="Lines/HorizontalLines"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxLine_m513q")
 
 [node name="Panel14" type="Panel" parent="Lines/HorizontalLines"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxLine_m513q")
 
 [node name="Panel15" type="Panel" parent="Lines/HorizontalLines"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxLine_m513q")
 
 [node name="Panel16" type="Panel" parent="Lines/HorizontalLines"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxLine_m513q")
 
 [node name="Panel17" type="Panel" parent="Lines/HorizontalLines"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxLine_m513q")
 
 [node name="Panel18" type="Panel" parent="Lines/HorizontalLines"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxLine_m513q")
 
 [node name="Panel19" type="Panel" parent="Lines/HorizontalLines"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxLine_m513q")
 
 [node name="Panel20" type="Panel" parent="Lines/HorizontalLines"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxLine_m513q")
 
 [node name="Panel21" type="Panel" parent="Lines/HorizontalLines"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxLine_m513q")
 
 [node name="VerticalLines" type="HBoxContainer" parent="Lines"]
@@ -192,57 +217,69 @@ offset_left = -1.0
 offset_right = -1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Panel1" type="Panel" parent="Lines/VerticalLines"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxLine_rlnry")
 
 [node name="Panel2" type="Panel" parent="Lines/VerticalLines"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxLine_rlnry")
 
 [node name="Panel3" type="Panel" parent="Lines/VerticalLines"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxLine_rlnry")
 
 [node name="Panel4" type="Panel" parent="Lines/VerticalLines"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxLine_rlnry")
 
 [node name="Panel5" type="Panel" parent="Lines/VerticalLines"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxLine_rlnry")
 
 [node name="Panel6" type="Panel" parent="Lines/VerticalLines"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxLine_rlnry")
 
 [node name="Panel7" type="Panel" parent="Lines/VerticalLines"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxLine_rlnry")
 
 [node name="Panel8" type="Panel" parent="Lines/VerticalLines"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxLine_rlnry")
 
 [node name="Panel9" type="Panel" parent="Lines/VerticalLines"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxLine_rlnry")
 
 [node name="Panel10" type="Panel" parent="Lines/VerticalLines"]
 layout_mode = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxLine_rlnry")
 
 [node name="Panel11" type="Panel" parent="Lines/VerticalLines"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxLine_rlnry")
