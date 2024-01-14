@@ -52,6 +52,19 @@ func _input(event: InputEvent) -> void:
 		return
 		
 	match event.keycode:
+		KEY_SPACE:
+			if !event.is_pressed() or active_piece == null:
+				return
+			
+			var movement := Vector2i.UP
+			while grid.can_place(active_piece, movement):
+				movement += Vector2i.UP
+			movement -= Vector2i.UP
+			
+			active_piece.position += Vector2.DOWN * grid.BLOCK_SIZE * (-movement.y)
+			var tmp := active_piece
+			stop_control()
+			grid.place(tmp)
 		KEY_DOWN:
 			if event.is_pressed():
 				# if softdrop is activated already, we need to return
