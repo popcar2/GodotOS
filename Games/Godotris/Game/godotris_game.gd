@@ -111,6 +111,10 @@ func on_piece_softdropped() -> void:
 	current_score += 1
 	update_score()
 
+func on_piece_harddropped(lines: int) -> void:
+	current_score += lines * 2
+	update_score()
+
 func update_score() -> void:
 	score_label.text = "Score: " + str(current_score)
 

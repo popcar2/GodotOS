@@ -19,6 +19,7 @@ enum DasStatus {
 const MAX_INT := 9223372036854775807
 
 signal piece_softdropped
+signal piece_harddropped(lines: int)
 
 var active_piece: GodotrisPiece
 var normal_drop_time: int
@@ -62,6 +63,7 @@ func _input(event: InputEvent) -> void:
 			movement -= Vector2i.UP
 			
 			active_piece.position += Vector2.DOWN * grid.BLOCK_SIZE * (-movement.y)
+			piece_harddropped.emit(-movement.y)
 			var tmp := active_piece
 			stop_control()
 			grid.place(tmp)
