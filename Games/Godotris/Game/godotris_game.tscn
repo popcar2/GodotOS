@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://ntmchus4unn0" path="res://Games/Godotris/Piece/z_piece.tscn" id="11_1drbf"]
 
 [sub_resource type="Gradient" id="Gradient_nlwv3"]
-colors = PackedColorArray(1, 0, 0, 1, 0, 0, 0, 1)
+colors = PackedColorArray(0, 0.556863, 0.568627, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_he5fk"]
 gradient = SubResource("Gradient_nlwv3")
