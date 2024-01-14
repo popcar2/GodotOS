@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddpkw5l32ogx2"]
+
+[ext_resource type="Script" path="res://Games/Godotris/Block/godotris_block.gd" id="1_xp0iy"]
+
+[sub_resource type="Gradient" id="Gradient_hw1qf"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vv7n2"]
+gradient = SubResource("Gradient_hw1qf")
+width = 32
+height = 32
+
+[node name="Block" type="Sprite2D"]
+texture = SubResource("GradientTexture2D_vv7n2")
+script = ExtResource("1_xp0iy")

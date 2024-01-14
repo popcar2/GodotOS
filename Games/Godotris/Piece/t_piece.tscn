@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfa5tvxkoi4ii"]
+
+[ext_resource type="Script" path="res://Games/Godotris/Piece/godotris_piece.gd" id="1_km4jt"]
+[ext_resource type="PackedScene" uid="uid://ddpkw5l32ogx2" path="res://Games/Godotris/Block/Block.tscn" id="2_kdkdp"]
+
+[sub_resource type="Gradient" id="Gradient_ahtic"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.513726, 0, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_t3xc7"]
+gradient = SubResource("Gradient_ahtic")
+width = 32
+height = 32
+
+[node name="TPiece" type="Node2D"]
+script = ExtResource("1_km4jt")
+spawn_offset = Vector2i(144, 16)
+container_offset = Vector2i(80, 64)
+
+[node name="Block" parent="." instance=ExtResource("2_kdkdp")]
+texture = SubResource("GradientTexture2D_t3xc7")
+
+[node name="Block2" parent="." instance=ExtResource("2_kdkdp")]
+position = Vector2(32, 0)
+texture = SubResource("GradientTexture2D_t3xc7")
+
+[node name="Block3" parent="." instance=ExtResource("2_kdkdp")]
+position = Vector2(0, -32)
+texture = SubResource("GradientTexture2D_t3xc7")
+
+[node name="Block4" parent="." instance=ExtResource("2_kdkdp")]
+position = Vector2(-32, 0)
+texture = SubResource("GradientTexture2D_t3xc7")
