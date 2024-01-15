@@ -44,5 +44,6 @@ func spawn_window() -> void:
 	
 	var taskbar_button: Control = load("res://Scenes/Taskbar/taskbar_button.tscn").instantiate()
 	taskbar_button.target_window = window
-	taskbar_button.active_color = Color.MEDIUM_VIOLET_RED
+	taskbar_button.get_node("TextureMargin/TextureRect").texture = $"HBoxContainer/MarginContainer/TextureRect".texture
+	taskbar_button.active_color = $"HBoxContainer/MarginContainer/TextureRect".modulate
 	get_tree().get_first_node_in_group("taskbar_buttons").add_child(taskbar_button)

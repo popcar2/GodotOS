@@ -4,12 +4,12 @@
 [ext_resource type="Script" path="res://Scenes/Window/Game Window/game_window.gd" id="2_83d0v"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5cq01"]
-bg_color = Color(0.196078, 0.101961, 0.196078, 0.6)
+bg_color = Color(0.188235, 0.105882, 0.243137, 0.6)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 shadow_color = Color(0, 0, 0, 0.0784314)
 
-[node name="Window2" instance=ExtResource("1_r6cfa")]
+[node name="Window" instance=ExtResource("1_r6cfa")]
 offset_left = -288.0
 offset_top = -177.0
 offset_right = 288.0
@@ -38,7 +38,7 @@ stretch = true
 unique_name_in_owner = true
 own_world_3d = true
 handle_input_locally = false
-size = Vector2i(2, 2)
+size = Vector2i(576, 323)
 size_2d_override = Vector2i(1152, 648)
 size_2d_override_stretch = true
 render_target_update_mode = 4

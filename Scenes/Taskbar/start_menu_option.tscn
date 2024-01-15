@@ -1,6 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://da4oly47yx3ja"]
 
 [ext_resource type="Script" path="res://Scenes/Taskbar/start_menu_option.gd" id="1_2fneu"]
+[ext_resource type="Texture2D" uid="uid://2sqrvihn1cjq" path="res://Art/Folder Icons/game.png" id="2_4g113"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0gkon"]
 bg_color = Color(0, 0.792157, 0.952941, 0.72549)
@@ -9,8 +10,6 @@ border_width_top = 2
 border_width_right = 2
 border_width_bottom = 2
 border_color = Color(0, 1, 0.952941, 1)
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_r5rha"]
 
 [node name="Start Menu Option" type="Panel"]
 clip_contents = true
@@ -48,10 +47,11 @@ theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
 [node name="TextureRect" type="TextureRect" parent="HBoxContainer/MarginContainer"]
-modulate = Color(0.78, 0.082, 0.521, 1)
+modulate = Color(0.811765, 0.329412, 0.960784, 1)
 layout_mode = 2
 mouse_filter = 2
-texture = SubResource("CanvasTexture_r5rha")
+texture = ExtResource("2_4g113")
+expand_mode = 2
 
 [node name="Control" type="Control" parent="HBoxContainer"]
 layout_mode = 2
