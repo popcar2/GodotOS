@@ -41,7 +41,7 @@ func _ready() -> void:
 	
 	$"Top Bar/Title Text".text = " ".join(title_text.split("\n"))
 	
-	get_viewport().size_changed.connect(clamp_window_inside_viewport)
+	get_viewport().size_changed.connect(_on_viewport_size_changed)
 	
 	modulate.a = 0
 	var tween: Tween = create_tween()
@@ -168,6 +168,15 @@ func clamp_window_inside_viewport() -> void:
 	
 	global_position.y = clamp(global_position.y, 0, game_window_size.y - size.y - 40)
 	global_position.x = clamp(global_position.x, 0, game_window_size.x - size.x)
+
+func _on_viewport_size_changed() -> void:
+	if is_maximized:
+		var new_size: Vector2 = get_viewport_rect().size
+		new_size.y -= 40 #Because taskbar
+		global_position = Vector2.ZERO
+		size = new_size
+	
+	clamp_window_inside_viewport()
 
 func _on_maximize_button_pressed() -> void:
 	maximize_window()
