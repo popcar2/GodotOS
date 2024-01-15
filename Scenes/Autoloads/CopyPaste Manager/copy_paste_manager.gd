@@ -67,20 +67,23 @@ func paste_folder_copy(to_path: String) -> void:
 	var to: String = "user://files/%s/%s" % [to_path, target_folder_name]
 	if target_folder_type == FakeFolder.file_type_enum.FOLDER:
 		var from: String = "user://files/%s" % target_folder_path
-		DirAccess.make_dir_absolute(to)
-		copy_directory_recursively(from, to)
+		if from != to:
+			DirAccess.make_dir_absolute(to)
 	else:
 		var from: String = "user://files/%s/%s" % [target_folder_path, target_folder_name]
-		DirAccess.copy_absolute(from, to)
+		if from != to:
+			DirAccess.copy_absolute(from, to)
 	
 	if target_folder != null:
 		target_folder.modulate.a = 1
 	if to_path.is_empty():
 		var desktop_file_manager: DesktopFileManager = get_tree().get_first_node_in_group("desktop_file_manager")
+		desktop_file_manager.delete_file_with_name(target_folder_name)
 		instantiate_file_and_sort(desktop_file_manager, to_path)
 	else:
 		for file_manager: FileManagerWindow in get_tree().get_nodes_in_group("file_manager_window"):
 			if file_manager.file_path == to_path:
+				file_manager.delete_file_with_name(target_folder_name)
 				instantiate_file_and_sort(file_manager, to_path)
 	
 	target_folder_name = ""
