@@ -69,6 +69,7 @@ func paste_folder_copy(to_path: String) -> void:
 		var from: String = "user://files/%s" % target_folder_path
 		if from != to:
 			DirAccess.make_dir_absolute(to)
+			copy_directory_recursively(from, to)
 	else:
 		var from: String = "user://files/%s/%s" % [target_folder_path, target_folder_name]
 		if from != to:
