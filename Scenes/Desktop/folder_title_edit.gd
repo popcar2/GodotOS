@@ -29,7 +29,11 @@ func show_rename() -> void:
 
 func trigger_rename() -> void:
 	if text.contains('/') or text.contains('\\') or text.contains('¥') or text.contains('₩'):
-		NotificationManager.spawn_notification("Error: You can't add slashes in file names!")
+		NotificationManager.spawn_notification("Error: File name can't include slashes!")
+		return
+	
+	if text.is_empty():
+		NotificationManager.spawn_notification("Error: File name can't be empty!")
 		return
 	
 	get_parent().visible = false
