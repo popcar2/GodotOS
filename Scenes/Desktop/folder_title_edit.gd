@@ -28,7 +28,7 @@ func show_rename() -> void:
 	select_all()
 
 func trigger_rename() -> void:
-	if text.contains('/') or text.contains('\\'):
+	if text.contains('/') or text.contains('\\') or text.contains('¥') or text.contains('₩'):
 		NotificationManager.spawn_notification("Error: You can't add slashes in file names!")
 		return
 	
