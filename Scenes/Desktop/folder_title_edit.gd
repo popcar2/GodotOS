@@ -28,9 +28,13 @@ func show_rename() -> void:
 	select_all()
 
 func trigger_rename() -> void:
+	if text.contains('/') or text.contains('\\'):
+		NotificationManager.spawn_notification("Error: You can't add slashes in file names!")
+		return
+	
 	get_parent().visible = false
-	#TODO stop file from adding periods
 	var folder: FakeFolder = $"../../.."
+	
 	if folder.file_type != folder.file_type_enum.FOLDER:
 		var old_folder_name: String = folder.folder_name
 		var new_folder_name: String = "%s.%s" % [text, folder.folder_name.split('.')[-1]]

@@ -45,7 +45,7 @@ func _input(event: InputEvent) -> void:
 			else:
 				accept_event()
 				open_folder()
-	if $"Selected Highlight".visible:
+	if $"Selected Highlight".visible and !$"Control/Title Edit Container".visible:
 		if event.is_action_pressed("delete"):
 			delete_file()
 		elif event.is_action_pressed("ui_copy"):
