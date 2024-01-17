@@ -5,6 +5,7 @@ extends Panel
 @export var game_scene: String
 @export var title_text: String
 @export var description_text: String
+@export var use_generic_pause_menu: bool
 
 var is_mouse_over: bool
 
@@ -38,6 +39,9 @@ func spawn_window() -> void:
 	var window: FakeWindow
 	window = load("res://Scenes/Window/Game Window/game_window.tscn").instantiate()
 	window.get_node("%Game Window").add_child(load(game_scene).instantiate())
+	
+	if use_generic_pause_menu:
+		window.get_node("%GamePauseManager").process_mode = Node.PROCESS_MODE_INHERIT
 	
 	window.title_text = %"Menu Title".text
 	get_tree().current_scene.add_child(window)

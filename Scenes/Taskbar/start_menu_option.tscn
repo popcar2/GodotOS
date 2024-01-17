@@ -16,6 +16,7 @@ clip_contents = true
 custom_minimum_size = Vector2(0, 50)
 script = ExtResource("1_2fneu")
 game_scene = "res://Games/Cube Scene/cube_scene.tscn"
+use_generic_pause_menu = true
 
 [node name="Background Panel" type="Panel" parent="."]
 visible = false
@@ -68,7 +69,7 @@ grow_horizontal = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 bbcode_enabled = true
-text = "[center]GodotOS"
+text = "[center]Game Title"
 
 [node name="Menu Description" type="RichTextLabel" parent="HBoxContainer/Control"]
 unique_name_in_owner = true
@@ -85,7 +86,7 @@ size_flags_horizontal = 3
 mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 14
 bbcode_enabled = true
-text = "[center]GodotOS in GodotOS in GodotOS in"
+text = "[center]Your very cool game description"
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

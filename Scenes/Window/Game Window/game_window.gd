@@ -3,6 +3,7 @@ extends SubViewport
 ## The game window, used to show games.
 
 @onready var window: FakeWindow = $"../../.."
+@onready var game_pause_manager: GamePauseManager = %"GamePauseManager"
 
 func _ready() -> void:
 	window.minimized.connect(_handle_window_minimized)
@@ -14,6 +15,9 @@ func _ready() -> void:
 	#$"../..".size *= get_window().content_scale_factor
 
 func _handle_window_minimized(is_minimized: bool) -> void:
+	if game_pause_manager.is_paused:
+		return
+	
 	if is_minimized:
 		get_child(0).process_mode = Node.PROCESS_MODE_DISABLED
 	else:
