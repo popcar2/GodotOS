@@ -47,6 +47,7 @@ theme_override_constants/margin_bottom = 5
 
 [node name="TextureRect" type="TextureRect" parent="TextureMargin"]
 self_modulate = Color(0.427451, 0.905882, 0, 1)
+texture_filter = 4
 layout_mode = 2
 mouse_filter = 2
 texture = SubResource("CanvasTexture_s4q16")

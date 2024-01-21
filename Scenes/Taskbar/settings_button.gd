@@ -12,4 +12,5 @@ func _on_pressed() -> void:
 	var taskbar_button: Control = load("res://Scenes/Taskbar/taskbar_button.tscn").instantiate()
 	taskbar_button.target_window = window
 	taskbar_button.active_color = Color.WHITE
+	taskbar_button.get_node("TextureMargin/TextureRect").texture = icon
 	get_tree().get_first_node_in_group("taskbar_buttons").add_child(taskbar_button)
