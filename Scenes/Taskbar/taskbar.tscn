@@ -100,6 +100,12 @@ layout_mode = 2
 title_text = "Cube Scene"
 description_text = "THE CUBE. THE CUBE. THE CUBE."
 
+[node name="Snake Option" parent="Start Menu/VBoxContainer" instance=ExtResource("2_1ualm")]
+layout_mode = 2
+game_scene = "res://Games/Snake/snake_scene.tscn"
+title_text = "Snake"
+description_text = "A simple version of the classic"
+
 [node name="Power Button" type="Button" parent="Start Menu"]
 layout_mode = 1
 anchors_preset = 3

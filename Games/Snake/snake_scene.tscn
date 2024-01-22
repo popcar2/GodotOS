@@ -1,0 +1,82 @@
+[gd_scene load_steps=10 format=3 uid="uid://6e6rkceymrxy"]
+
+[ext_resource type="Script" path="res://Games/Snake/SnakeBoard.gd" id="1_vn6nx"]
+[ext_resource type="Script" path="res://Games/Snake/SnakeLabel.gd" id="2_36w75"]
+[ext_resource type="Script" path="res://Games/Snake/SnakeGameOver.gd" id="3_fyb7g"]
+
+[sub_resource type="Gradient" id="Gradient_lott4"]
+colors = PackedColorArray(0, 0.745098, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_d3c20"]
+gradient = SubResource("Gradient_lott4")
+width = 1152
+height = 648
+fill_from = Vector2(0.204128, 0.611621)
+fill_to = Vector2(0, 0)
+
+[sub_resource type="Gradient" id="Gradient_sbx2e"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_mt1rj"]
+gradient = SubResource("Gradient_sbx2e")
+height = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_jdgya"]
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_agtc8"]
+font_size = 64
+
+[node name="SnakeScene" type="Control"]
+texture_filter = 1
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_d3c20")
+centered = false
+
+[node name="Board" type="Sprite2D" parent="Background"]
+position = Vector2(534, 281)
+scale = Vector2(16, 16)
+texture = SubResource("GradientTexture2D_mt1rj")
+script = ExtResource("1_vn6nx")
+
+[node name="Label" type="Label" parent="Background"]
+offset_left = 46.0
+offset_top = 541.0
+offset_right = 288.0
+offset_bottom = 631.0
+text = "Score: 0"
+label_settings = SubResource("LabelSettings_jdgya")
+script = ExtResource("2_36w75")
+
+[node name="GameOver" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_left = 200.0
+offset_top = 40.0
+offset_right = 200.0
+offset_bottom = 40.0
+script = ExtResource("3_fyb7g")
+
+[node name="Label" type="Label" parent="GameOver"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 22.3333
+text = "Game Over!"
+label_settings = SubResource("LabelSettings_agtc8")
+
+[node name="Button" type="Button" parent="GameOver"]
+layout_mode = 0
+offset_top = 100.0
+offset_right = 87.0
+offset_bottom = 131.0
+scale = Vector2(2, 2)
+text = ">Play again<"
+
+[connection signal="game_ended" from="Background/Board" to="GameOver" method="_on_board_game_ended"]
+[connection signal="score_updated" from="Background/Board" to="Background/Label" method="_on_board_score_updated"]
+[connection signal="new_game_should_start" from="GameOver" to="Background/Board" method="_on_play_button_pressed"]
+[connection signal="pressed" from="GameOver/Button" to="GameOver" method="_on_button_pressed"]
