@@ -77,12 +77,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 1
 
-[node name="Pong Option" parent="Start Menu/VBoxContainer" instance=ExtResource("2_1ualm")]
-layout_mode = 2
-game_scene = "res://Games/Pong/Scenes/pong_main_menu.tscn"
-title_text = "Pong"
-description_text = "Timeless Classic"
-
 [node name="Godotris Option" parent="Start Menu/VBoxContainer" instance=ExtResource("2_1ualm")]
 layout_mode = 2
 game_scene = "res://Games/Godotris/Game/godotris_game.tscn"
@@ -99,7 +93,13 @@ description_text = "Hard but Fair 2D Platformer"
 layout_mode = 2
 game_scene = "res://Games/Snake/snake_scene.tscn"
 title_text = "Snake"
-description_text = "A simple version of the classic"
+description_text = "Eat fruit, grow long!"
+
+[node name="Pong Option" parent="Start Menu/VBoxContainer" instance=ExtResource("2_1ualm")]
+layout_mode = 2
+game_scene = "res://Games/Pong/Scenes/pong_main_menu.tscn"
+title_text = "Pong"
+description_text = "Timeless Classic"
 
 [node name="Cube Scene Option" parent="Start Menu/VBoxContainer" instance=ExtResource("2_1ualm")]
 layout_mode = 2

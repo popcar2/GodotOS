@@ -10,7 +10,8 @@ Thanks for coming by! Here are some general contributing tips:
 
 One thing I will always welcome is more games! There are just a few notes I have before you try to submit a PR for your game.
 
-* **Try to make your game as small as you can.** GodotOS is built in mind to run on the web, so any large files can greatly detract from its loading times and portability.
+* **Try to make your game as small as you can.** GodotOS is built in mind to run on the web, so any large files can greatly detract from its loading times and portability. 
+This doesn't mean you can't have SFX or sprites, just use them in moderation! 
 As a rule of thumb, try to make your game under 1 megabyte. Consider compressing your assets, going for a pixel-art or minimalist style, using a sprite atlas, etc.
 * Don't use autoloads in your game since it would have to always be running for the entire application. If you **really** need an autoload, consider passing data through save files or adding a node in `/root/`.
   Remember to delete it on window exit if you're doing this!

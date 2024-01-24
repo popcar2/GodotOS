@@ -2,7 +2,6 @@ extends RichTextLabel
 
 var best_score: int = 0
 
-
 func _on_board_game_ended(final_score: int) -> void:
 	if final_score <= best_score: return
 	best_score = final_score
