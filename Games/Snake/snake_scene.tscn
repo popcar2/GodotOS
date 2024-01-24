@@ -23,40 +23,100 @@ width = 68
 height = 32
 
 [node name="SnakeScene" type="Control"]
-texture_filter = 1
 layout_mode = 3
-anchors_preset = 0
-offset_right = 1152.0
-offset_bottom = 648.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="Background" type="Sprite2D" parent="."]
 texture = SubResource("GradientTexture2D_d3c20")
 centered = false
 
 [node name="Board" type="Sprite2D" parent="Background"]
+texture_filter = 1
 position = Vector2(576, 281)
 scale = Vector2(16, 16)
 texture = SubResource("GradientTexture2D_mt1rj")
 script = ExtResource("1_vn6nx")
 
-[node name="ScoreLabel" type="RichTextLabel" parent="Background"]
-offset_left = 46.0
-offset_top = 541.0
-offset_right = 446.0
-offset_bottom = 631.0
+[node name="GameOver" type="Control" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("3_fyb7g")
+
+[node name="GameOverLabel" type="RichTextLabel" parent="GameOver"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -204.0
+offset_top = -166.0
+offset_right = 204.0
+offset_bottom = -56.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
 theme_override_font_sizes/normal_font_size = 64
-theme_override_font_sizes/bold_font_size = 64
-theme_override_font_sizes/italics_font_size = 64
-theme_override_font_sizes/bold_italics_font_size = 64
-theme_override_font_sizes/mono_font_size = 64
+bbcode_enabled = true
+text = "[center]Game Over!"
+
+[node name="RestartButton" type="Button" parent="GameOver"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -197.5
+offset_top = -49.0
+offset_right = 197.5
+offset_bottom = 49.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 64
+text = "Play again"
+
+[node name="ScoreLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_top = -101.0
+offset_right = 440.0
+offset_bottom = -11.0
+grow_vertical = 0
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 64
 text = "Score: 0"
 script = ExtResource("2_36w75")
 
-[node name="ScoreLabel2" type="RichTextLabel" parent="Background"]
-offset_left = 612.0
-offset_top = 541.0
-offset_right = 1012.0
-offset_bottom = 631.0
+[node name="BestScoreLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -400.0
+offset_top = -100.0
+offset_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 64
 theme_override_font_sizes/bold_font_size = 64
 theme_override_font_sizes/italics_font_size = 64
@@ -65,36 +125,9 @@ theme_override_font_sizes/mono_font_size = 64
 text = "Best: 0"
 script = ExtResource("3_3qlc5")
 
-[node name="GameOver" type="Control" parent="."]
-visible = false
-anchors_preset = 0
-offset_left = 200.0
-offset_top = 40.0
-offset_right = 200.0
-offset_bottom = 40.0
-script = ExtResource("3_fyb7g")
-
-[node name="GameOverLabel" type="RichTextLabel" parent="GameOver"]
-layout_mode = 0
-offset_left = 203.0
-offset_top = 75.0
-offset_right = 611.0
-offset_bottom = 185.0
-theme_override_font_sizes/normal_font_size = 64
-text = "Game Over!"
-
-[node name="RestartButton" type="Button" parent="GameOver"]
-layout_mode = 0
-offset_left = 194.0
-offset_top = 220.0
-offset_right = 589.0
-offset_bottom = 318.0
-theme_override_font_sizes/font_size = 64
-text = "Play again"
-
-[connection signal="game_ended" from="Background/Board" to="Background/ScoreLabel2" method="_on_board_game_ended"]
+[connection signal="game_ended" from="Background/Board" to="BestScoreLabel" method="_on_board_game_ended"]
 [connection signal="game_ended" from="Background/Board" to="GameOver" method="_on_board_game_ended"]
-[connection signal="score_updated" from="Background/Board" to="Background/ScoreLabel" method="_on_board_score_updated"]
+[connection signal="score_updated" from="Background/Board" to="ScoreLabel" method="_on_board_score_updated"]
 [connection signal="new_game_should_start" from="GameOver" to="Background/Board" method="_on_play_button_pressed"]
-[connection signal="pressed" from="GameOver/RestartButton" to="Background/ScoreLabel2" method="_on_restart_button_pressed"]
+[connection signal="pressed" from="GameOver/RestartButton" to="BestScoreLabel" method="_on_restart_button_pressed"]
 [connection signal="pressed" from="GameOver/RestartButton" to="GameOver" method="_on_button_pressed"]

@@ -54,7 +54,7 @@ func _process(delta: float) -> void:
 	while time>time_per_tick:
 		time -= time_per_tick;
 		tick()
-		
+
 # Called when a key is pressed (or released, technically)
 func _input(event: InputEvent) -> void:
 	if !playing: return
@@ -75,7 +75,7 @@ func _input(event: InputEvent) -> void:
 func start_game() -> void:
 	init_game()
 	playing = true
-	
+
 func init_game() -> void:
 	time_per_tick = 1.0/initial_fps
 	inc_score(-score)
@@ -88,7 +88,7 @@ func init_game() -> void:
 		body.push_back(head)
 	place_apple()
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
-	
+
 func place_apple() -> void:
 	var attempts:= 200
 	while (attempts > 0):
@@ -105,20 +105,20 @@ func place_apple() -> void:
 		board_image.set_pixel(apple.x, apple.y, apple_color)
 		return
 	print("Unable to place apple (?), this shouldn't happen it's a bug.")
-	
+
 func inc_score(delta: int) -> void:
 	score += delta
 	@warning_ignore("integer_division")
 	var fps:int = initial_fps + (score/increase_fps_every)
 	time_per_tick = 1.0/fps
-	score_updated.emit(score-delta, score)
-	
+	score_updated.emit(score)
+
 func eat_apple() -> void:
 	inc_score(10)
 	place_apple()
 	for i in range(length_increase):
 		body.push_back(body[-1])
-	
+
 func game_over() -> void:
 	playing = false
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -154,7 +154,6 @@ func tick() -> void:
 		return
 	elif pix == apple_color:
 		eat_apple()
-	
 
 func _on_play_button_pressed() -> void:
 	start_game()
