@@ -5,6 +5,11 @@ class_name SnakeBoard
 # This script runs basically the whole "snake" game.
 # It lives in the rectangle where we display the game.
 
+# Eat the apples, avoid hitting the wall or yourself!
+# Careful, you get longer as you eat more apples.
+# Also, every 50 points you move a bit faster.
+# Can you beat your high score?
+
 signal score_updated(old_score:int, new_score:int)
 signal game_ended(final_score:int)
 
@@ -24,7 +29,11 @@ var dir: Vector2i = Vector2i(1,0)
 var initial_length := 5
 var length_increase := 10
 var time: float = 0.0
-var time_per_tick := 1.0/20.0
+var initial_fps := 20
+var time_per_tick := 1.0/initial_fps
+var increase_fps_every := 50
+# We keep a list of inputs to allow (right,down) on the same frame to be
+# interpreted as "turn right this frame, then down on the next frame."
 var inputs: Array[Vector2i] = []
 var score:= 0
 var apple: Vector2i = Vector2i(10,10)
@@ -49,6 +58,8 @@ func _process(delta: float) -> void:
 # Called when a key is pressed (or released, technically)
 func _input(event: InputEvent) -> void:
 	if !playing: return
+	if (event is InputEventMouseMotion and event.relative.length_squared()>1.0):
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	if !(event is InputEventKey and event.is_pressed()):
 		return
 	match event.keycode:
@@ -66,6 +77,7 @@ func start_game() -> void:
 	playing = true
 	
 func init_game() -> void:
+	time_per_tick = 1.0/initial_fps
 	inc_score(-score)
 	board_image.fill(bg_color)
 	self.texture.update(board_image)
@@ -75,21 +87,30 @@ func init_game() -> void:
 	for i in range(initial_length):
 		body.push_back(head)
 	place_apple()
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	
 func place_apple() -> void:
-	var attempts:= 100
+	var attempts:= 200
 	while (attempts > 0):
 		attempts -= 1
-		var pos := Vector2i(randi_range(0, sizeX-1), randi_range(0, sizeY-1))
+		var pos := Vector2i(1+randi_range(0, sizeX-3), 1+randi_range(0, sizeY-3))
 		var pix: Color = board_image.get_pixel(pos.x, pos.y)
-		if pix!=bg_color: continue
+		# This should be very unlikely to happen, but the "attempts>0" check is here so
+		# if we don't find a good spot for an apple then we still place one
+		# at random anyways. It's better to have an apple over the snake's body
+		# (visual glitch but still winnable) rather than to not have an apple at all
+		# (then the player is stuck).
+		if (pix!=bg_color and attempts>0): continue
 		apple = pos
 		board_image.set_pixel(apple.x, apple.y, apple_color)
 		return
-	print("Unable to place apple (?)")
+	print("Unable to place apple (?), this shouldn't happen it's a bug.")
 	
 func inc_score(delta: int) -> void:
 	score += delta
+	@warning_ignore("integer_division")
+	var fps:int = initial_fps + (score/increase_fps_every)
+	time_per_tick = 1.0/fps
 	score_updated.emit(score-delta, score)
 	
 func eat_apple() -> void:
@@ -100,6 +121,7 @@ func eat_apple() -> void:
 	
 func game_over() -> void:
 	playing = false
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	game_ended.emit(score)
 	
 func in_bounds(pos: Vector2i) -> bool:
@@ -120,6 +142,8 @@ func tick() -> void:
 	var gone: Vector2i = body.pop_back()
 	body.push_front(head)
 	var pix: Color = board_image.get_pixel(head.x, head.y)
+	# Always redraw the apple just in case it's over the snake body
+	# (see place_apple).
 	board_image.set_pixel(apple.x, apple.y, apple_color)
 	board_image.set_pixel(head.x, head.y, snake_color)
 	board_image.set_pixel(gone.x, gone.y, bg_color)
