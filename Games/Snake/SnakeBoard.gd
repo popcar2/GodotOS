@@ -9,7 +9,7 @@ signal score_updated(old_score:int, new_score:int)
 signal game_ended(final_score:int)
 
 var board_image: Image
-var sizeX := 64
+var sizeX := 68
 var sizeY := 32
 @export var bg_color: Color = Color.BLACK
 @export var snake_color: Color = Color.WHITE
@@ -24,11 +24,12 @@ var dir: Vector2i = Vector2i(1,0)
 var initial_length := 5
 var length_increase := 10
 var time: float = 0.0
-var time_per_tick := 1.0/25.0
+var time_per_tick := 1.0/20.0
 var inputs: Array[Vector2i] = []
 var score:= 0
 var apple: Vector2i = Vector2i(10,10)
 var playing:= true
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -65,6 +66,7 @@ func start_game() -> void:
 	playing = true
 	
 func init_game() -> void:
+	inc_score(-score)
 	board_image.fill(bg_color)
 	self.texture.update(board_image)
 	head = Vector2i(1,1)
@@ -111,6 +113,10 @@ func tick() -> void:
 		if new_dir != -dir:
 			dir = new_dir
 	head += dir
+	if !in_bounds(head):
+		# hit the edge, you die
+		game_over()
+		return
 	var gone: Vector2i = body.pop_back()
 	body.push_front(head)
 	var pix: Color = board_image.get_pixel(head.x, head.y)
@@ -120,18 +126,11 @@ func tick() -> void:
 	self.texture.update(board_image)
 	if pix == snake_color:
 		# self-collision, you die.
-		print("Self-collision - You died!")
 		game_over()
-		#init_game()
 		return
 	elif pix == apple_color:
 		eat_apple()
-	if !in_bounds(head):
-		print("Out of bounds - You died!")
-		game_over()
-		#init_game()
-		return
-
+	
 
 func _on_play_button_pressed() -> void:
 	start_game()
