@@ -54,9 +54,9 @@ script = ExtResource("2_36w75")
 
 [node name="ScoreLabel2" type="RichTextLabel" parent="Background"]
 offset_left = 612.0
-offset_top = 543.0
+offset_top = 541.0
 offset_right = 1012.0
-offset_bottom = 633.0
+offset_bottom = 631.0
 theme_override_font_sizes/normal_font_size = 64
 theme_override_font_sizes/bold_font_size = 64
 theme_override_font_sizes/italics_font_size = 64
@@ -92,9 +92,9 @@ offset_bottom = 318.0
 theme_override_font_sizes/font_size = 64
 text = "Play again"
 
-[connection signal="game_ended" from="Background/Board" to="GameOver" method="_on_board_game_ended"]
 [connection signal="game_ended" from="Background/Board" to="Background/ScoreLabel2" method="_on_board_game_ended"]
+[connection signal="game_ended" from="Background/Board" to="GameOver" method="_on_board_game_ended"]
 [connection signal="score_updated" from="Background/Board" to="Background/ScoreLabel" method="_on_board_score_updated"]
 [connection signal="new_game_should_start" from="GameOver" to="Background/Board" method="_on_play_button_pressed"]
-[connection signal="pressed" from="GameOver/RestartButton" to="GameOver" method="_on_button_pressed"]
 [connection signal="pressed" from="GameOver/RestartButton" to="Background/ScoreLabel2" method="_on_restart_button_pressed"]
+[connection signal="pressed" from="GameOver/RestartButton" to="GameOver" method="_on_button_pressed"]
