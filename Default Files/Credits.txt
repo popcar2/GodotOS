@@ -17,3 +17,4 @@ https://ko-fi.com/popcar2
 --- Game credits ---
 * Pong & Super Bit Boy by popcar2
 * Godotris by MrakDun-desu
+* Snake by jean-philippe-martin
