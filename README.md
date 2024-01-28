@@ -20,6 +20,7 @@ Aside from that, GodotOS is also meant to be a hub for small games and experienc
 * Misc icons are from [game-icons](https://game-icons.net/).
 * Folder icons are from [flaticon](https://www.flaticon.com/)
 * "Godotris" by [MrakDun-desu](https://github.com/MrakDun-desu)
+* "Snake" by [jean-philippe-martin](https://github.com/jean-philippe-martin)
 
 ---
 
