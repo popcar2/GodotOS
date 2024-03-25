@@ -15,6 +15,8 @@ var file_path: String :
 
 func _ready() -> void:
 	window.selected.connect(_on_window_selected)
+	
+	adjust_menu_options()
 
 func _input(event: InputEvent) -> void:
 	if !$"../..".is_selected:
@@ -62,3 +64,28 @@ func _on_window_selected(selected: bool) -> void:
 		grab_focus()
 	else:
 		release_focus()
+
+## Adjusts right click options for this TextEdit.
+## Removes unnecessary options and adds one for word wrap.
+func adjust_menu_options() -> void:
+	var menu: PopupMenu = get_menu()
+	
+	menu.remove_item(5)
+	menu.remove_item(10)
+	menu.remove_item(10)
+	menu.remove_item(10)
+	
+	menu.add_check_item("Word Wrap")
+	menu.set_item_checked(-1, true)
+	
+	menu.id_pressed.connect(_set_word_wrap)
+
+func _set_word_wrap(id: int) -> void:
+	if id == 10:
+		var menu: PopupMenu = get_menu()
+		if wrap_mode == TextEdit.LINE_WRAPPING_NONE:
+			wrap_mode = TextEdit.LINE_WRAPPING_BOUNDARY
+			menu.set_item_checked(-1, true)
+		else:
+			wrap_mode = TextEdit.LINE_WRAPPING_NONE
+			menu.set_item_checked(-1, false)
