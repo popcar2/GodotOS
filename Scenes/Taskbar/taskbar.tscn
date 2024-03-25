@@ -9,9 +9,6 @@
 [ext_resource type="Script" path="res://Scenes/Taskbar/settings_button.gd" id="6_38i4x"]
 [ext_resource type="Script" path="res://Scenes/Taskbar/taskbar_time.gd" id="7_2yhho"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mxh1o"]
-bg_color = Color(0.1, 0.1, 0.1, 0.6)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lxws7"]
 bg_color = Color(0.0784314, 0.0784314, 0.0784314, 0.784314)
 
@@ -32,43 +29,35 @@ corner_radius_top_left = 10
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bm3y2"]
 bg_color = Color(0.4, 0.4, 0.4, 0.392157)
 
-[node name="Taskbar" type="Panel"]
-custom_minimum_size = Vector2(0, 40)
-anchors_preset = 12
-anchor_top = 1.0
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mxh1o"]
+bg_color = Color(0.1, 0.1, 0.1, 0.6)
+
+[node name="Taskbar" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -40.0
 grow_horizontal = 2
-grow_vertical = 0
-theme_override_styles/panel = SubResource("StyleBoxFlat_mxh1o")
-
-[node name="Start Button" type="MarginContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-theme_override_constants/margin_left = 3
-theme_override_constants/margin_top = 3
-theme_override_constants/margin_right = 3
-theme_override_constants/margin_bottom = 3
-script = ExtResource("1_aypgd")
-
-[node name="TextureRect" type="TextureRect" parent="Start Button"]
-self_modulate = Color(0, 0.792157, 0.952941, 1)
-texture_filter = 4
-layout_mode = 2
+grow_vertical = 2
 mouse_filter = 2
-texture = ExtResource("2_mu355")
-expand_mode = 4
 
-[node name="Start Menu" type="Panel" parent="."]
-layout_mode = 0
+[node name="StartMenuAnchor" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+
+[node name="Start Menu" type="Panel" parent="StartMenuAnchor"]
+layout_mode = 1
 offset_left = 5.0
 offset_top = 50.0
 offset_right = 355.0
 offset_bottom = 450.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Start Menu"]
+[node name="VBoxContainer" type="VBoxContainer" parent="StartMenuAnchor/Start Menu"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -77,36 +66,36 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 1
 
-[node name="Godotris Option" parent="Start Menu/VBoxContainer" instance=ExtResource("2_1ualm")]
+[node name="Godotris Option" parent="StartMenuAnchor/Start Menu/VBoxContainer" instance=ExtResource("2_1ualm")]
 layout_mode = 2
 game_scene = "res://Games/Godotris/Game/godotris_game.tscn"
 title_text = "Godotris"
 description_text = "Stack blocks, clear lines!"
 
-[node name="Super Bit Boy Option" parent="Start Menu/VBoxContainer" instance=ExtResource("2_1ualm")]
+[node name="Super Bit Boy Option" parent="StartMenuAnchor/Start Menu/VBoxContainer" instance=ExtResource("2_1ualm")]
 layout_mode = 2
 game_scene = "res://Games/Super Bit Boy/Scenes/Levels/level_1.tscn"
 title_text = "Super Bit Boy"
 description_text = "Hard but Fair 2D Platformer"
 
-[node name="Snake Option" parent="Start Menu/VBoxContainer" instance=ExtResource("2_1ualm")]
+[node name="Snake Option" parent="StartMenuAnchor/Start Menu/VBoxContainer" instance=ExtResource("2_1ualm")]
 layout_mode = 2
 game_scene = "res://Games/Snake/snake_scene.tscn"
 title_text = "Snake"
 description_text = "Eat fruit, grow long!"
 
-[node name="Pong Option" parent="Start Menu/VBoxContainer" instance=ExtResource("2_1ualm")]
+[node name="Pong Option" parent="StartMenuAnchor/Start Menu/VBoxContainer" instance=ExtResource("2_1ualm")]
 layout_mode = 2
 game_scene = "res://Games/Pong/Scenes/pong_main_menu.tscn"
 title_text = "Pong"
 description_text = "Timeless Classic"
 
-[node name="Cube Scene Option" parent="Start Menu/VBoxContainer" instance=ExtResource("2_1ualm")]
+[node name="Cube Scene Option" parent="StartMenuAnchor/Start Menu/VBoxContainer" instance=ExtResource("2_1ualm")]
 layout_mode = 2
 title_text = "Cube Scene"
 description_text = "THE CUBE. THE CUBE. THE CUBE."
 
-[node name="Power Button" type="Button" parent="Start Menu"]
+[node name="Power Button" type="Button" parent="StartMenuAnchor/Start Menu"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -126,7 +115,7 @@ icon = ExtResource("3_sudyn")
 icon_alignment = 1
 script = ExtResource("4_cnyss")
 
-[node name="Settings Button" type="Button" parent="Start Menu"]
+[node name="Settings Button" type="Button" parent="StartMenuAnchor/Start Menu"]
 texture_filter = 6
 layout_mode = 1
 anchors_preset = 3
@@ -148,7 +137,37 @@ icon = ExtResource("5_srcnq")
 icon_alignment = 1
 script = ExtResource("6_38i4x")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="."]
+[node name="Taskbar" type="Panel" parent="."]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_mxh1o")
+
+[node name="Start Button" type="MarginContainer" parent="Taskbar"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 3
+script = ExtResource("1_aypgd")
+
+[node name="TextureRect" type="TextureRect" parent="Taskbar/Start Button"]
+self_modulate = Color(0, 0.792157, 0.952941, 1)
+texture_filter = 4
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("2_mu355")
+expand_mode = 4
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Taskbar"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -158,12 +177,12 @@ offset_right = -94.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ScrollContainer" groups=["taskbar_buttons"]]
+[node name="HBoxContainer" type="HBoxContainer" parent="Taskbar/ScrollContainer" groups=["taskbar_buttons"]]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="TimeAndDate" type="Control" parent="."]
+[node name="TimeAndDate" type="Control" parent="Taskbar"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -177,7 +196,7 @@ grow_horizontal = 0
 grow_vertical = 2
 script = ExtResource("7_2yhho")
 
-[node name="TimeText" type="RichTextLabel" parent="TimeAndDate"]
+[node name="TimeText" type="RichTextLabel" parent="Taskbar/TimeAndDate"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -192,7 +211,7 @@ theme_override_constants/shadow_offset_y = 1
 bbcode_enabled = true
 text = "[center]22:22 PM"
 
-[node name="DateText" type="RichTextLabel" parent="TimeAndDate"]
+[node name="DateText" type="RichTextLabel" parent="Taskbar/TimeAndDate"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -208,14 +227,14 @@ theme_override_font_sizes/normal_font_size = 12
 bbcode_enabled = true
 text = "[center]69/69/2024"
 
-[node name="Timer" type="Timer" parent="TimeAndDate"]
+[node name="Timer" type="Timer" parent="Taskbar/TimeAndDate"]
 wait_time = 10.0
 autostart = true
 
-[connection signal="mouse_entered" from="Start Button" to="Start Button" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Start Button" to="Start Button" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="Start Menu" to="Start Button" method="_on_start_menu_mouse_entered"]
-[connection signal="mouse_exited" from="Start Menu" to="Start Button" method="_on_start_menu_mouse_exited"]
-[connection signal="pressed" from="Start Menu/Power Button" to="Start Menu/Power Button" method="_on_pressed"]
-[connection signal="pressed" from="Start Menu/Settings Button" to="Start Menu/Settings Button" method="_on_pressed"]
-[connection signal="timeout" from="TimeAndDate/Timer" to="TimeAndDate" method="_on_timer_timeout"]
+[connection signal="mouse_entered" from="StartMenuAnchor/Start Menu" to="Taskbar/Start Button" method="_on_start_menu_mouse_entered"]
+[connection signal="mouse_exited" from="StartMenuAnchor/Start Menu" to="Taskbar/Start Button" method="_on_start_menu_mouse_exited"]
+[connection signal="pressed" from="StartMenuAnchor/Start Menu/Power Button" to="StartMenuAnchor/Start Menu/Power Button" method="_on_pressed"]
+[connection signal="pressed" from="StartMenuAnchor/Start Menu/Settings Button" to="StartMenuAnchor/Start Menu/Settings Button" method="_on_pressed"]
+[connection signal="mouse_entered" from="Taskbar/Start Button" to="Taskbar/Start Button" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="Taskbar/Start Button" to="Taskbar/Start Button" method="_on_mouse_exited"]
+[connection signal="timeout" from="Taskbar/TimeAndDate/Timer" to="Taskbar/TimeAndDate" method="_on_timer_timeout"]

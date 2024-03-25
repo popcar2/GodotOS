@@ -2,6 +2,8 @@ extends MarginContainer
 
 ## The start menu in the taskbar. Handles showing and hiding the start menu.
 
+@onready var start_menu: Panel = $"../../StartMenuAnchor/Start Menu"
+
 var is_mouse_over_menu: bool
 var is_mouse_over: bool
 
@@ -28,7 +30,7 @@ func handle_mouse_click() -> void:
 		return
 	
 	if is_mouse_over:
-		if $"../Start Menu".position.y == 50:
+		if start_menu.position.y == 50:
 			show_start_menu()
 		else:
 			hide_start_menu()
@@ -38,13 +40,13 @@ func handle_mouse_click() -> void:
 func show_start_menu() -> void:
 	var tween: Tween = create_tween()
 	tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
-	tween.tween_property($"../Start Menu", "position:y", -405, 0.3).from(-50)
+	tween.tween_property(start_menu, "position:y", -405, 0.3).from(-50)
 
 func hide_start_menu() -> void:
 	# Called from clicking on desktop
 	var tween: Tween = create_tween()
 	tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
-	tween.tween_property($"../Start Menu", "position:y", 50, 0.3)
+	tween.tween_property(start_menu, "position:y", 50, 0.3)
 
 func _on_start_menu_mouse_entered() -> void:
 	is_mouse_over_menu = true
