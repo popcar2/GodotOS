@@ -30,7 +30,7 @@ func handle_mouse_click() -> void:
 		return
 	
 	if is_mouse_over:
-		if start_menu.position.y == 50:
+		if start_menu.position.y > 0:
 			show_start_menu()
 		else:
 			hide_start_menu()
