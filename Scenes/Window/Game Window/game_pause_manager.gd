@@ -18,7 +18,7 @@ func _input(event: InputEvent) -> void:
 	if !window.is_selected:
 		return
 	
-	if event.is_action_pressed("ui_cancel"):
+	if event.is_action_pressed("pause_game"):
 		toggle_pause()
 
 ## Pauses and adds the pause screen as a child to the game scene.
