@@ -29,7 +29,7 @@ Note that people using GodotOS on the web can't access their files due to browse
 You import your files into GodotOS by either dragging them over GodotOS or placing them in your own file manager. The changes will sync immediately.
 To export your files, simply open the files in your file manager (CTRL + SHIFT + F) and copy them out. 
 
-Only support files will be seen by GodotOS. These are currently:
+Only supported files will be seen by GodotOS. These are currently:
 	* Image files (JPG, PNG, WEBP)
 	* Text files (TXT, MD)
 
@@ -58,7 +58,7 @@ Here you can remove your current wallpaper (you can add one by right clicking an
 You can change your background color, which is visible only if there is no wallpaper applied.
 
 ----- CHAPTER 4: PLAYING GAMES -----
-Now for some fun! GodotOS currently comes packaged with 2 basic games: Pong & Super Bit Boy.
+Now for some fun! GodotOS currently comes packaged with 3 basic games: Pong, Super Bit Boy & Snake.
 Note that hopefully more games will be added in the future!
 You can access these from the start menu in the bottom left.
 
@@ -71,3 +71,6 @@ There are 3 modes in Pong:
 
 Super Bit Boy, on the other hand, is a 2D platformer inspired by Super Meat Boy!
 Move left and right with the arrow keys or A and D, jump with space or Z.
+
+In Snake, your goal is to eat fruits and get longer. Don't bite yourself or hit the wall!
+Use the arrow keys to move. The game keeps track of your high score until it's closed.
