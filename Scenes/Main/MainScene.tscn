@@ -51,6 +51,7 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 expand_mode = 3
+stretch_mode = 6
 script = ExtResource("1_xkkt2")
 
 [node name="Fade" type="TextureRect" parent="Wallpaper"]
@@ -80,7 +81,6 @@ right_margin = 10
 
 [node name="Taskbar" parent="." instance=ExtResource("2_35ao4")]
 layout_mode = 1
-offset_top = 0.0
 
 [node name="Boot Splash" parent="." instance=ExtResource("3_ifoxq")]
 visible = false

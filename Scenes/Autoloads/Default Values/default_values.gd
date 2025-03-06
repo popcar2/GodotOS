@@ -2,6 +2,7 @@ extends Node
 ## Sets some default values on startup and handles saving/loading user preferences
 
 var wallpaper_name: String
+var wallpaper_stretch_mode: TextureRect.StretchMode # int from 0 to 6
 @onready var background_color_rect: ColorRect = $"/root/Control/BackgroundColor"
 @onready var wallpaper: Wallpaper = $"/root/Control/Wallpaper"
 
@@ -29,6 +30,7 @@ func _ready() -> void:
 func save_state() -> void:
 	var save_dict: Dictionary = {
 		"wallpaper_name": wallpaper_name,
+		"wallpaper_stretch_mode": wallpaper_stretch_mode,
 		"background_color": background_color_rect.color.to_html(),
 		"zoom_level": get_window().content_scale_factor
 	}
@@ -53,6 +55,9 @@ func load_state() -> void:
 	wallpaper_name = save_dict.wallpaper_name
 	if !wallpaper_name.is_empty():
 		wallpaper.apply_wallpaper_from_path(wallpaper_name)
+	
+	wallpaper_stretch_mode = save_dict.wallpaper_stretch_mode
+	wallpaper.apply_wallpaper_stretch_mode(wallpaper_stretch_mode)
 	
 	background_color_rect.color = Color.from_string(save_dict.background_color, Color8(77, 77, 77))
 	get_window().content_scale_factor = save_dict.zoom_level

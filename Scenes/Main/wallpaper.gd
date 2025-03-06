@@ -50,3 +50,8 @@ func remove_wallpaper() -> void:
 	var tween2: Tween = create_tween()
 	tween2.set_trans(Tween.TRANS_CUBIC)
 	tween2.tween_property($Fade, "modulate:a", 0, 0.5)
+
+func apply_wallpaper_stretch_mode(new_stretch_mode: TextureRect.StretchMode) -> void:
+	stretch_mode = new_stretch_mode
+	DefaultValues.wallpaper_stretch_mode = stretch_mode
+	DefaultValues.save_state()
