@@ -19,7 +19,7 @@ Aside from that, GodotOS is also meant to be a hub for small games and experienc
 * [Default wallpaper](https://unsplash.com/photos/snow-capped-mountain-at-night-3s85IxVDyXE) was made by Haseeb Jamil.
 * Misc icons are from [game-icons](https://game-icons.net/).
 * Folder icons are from [flaticon](https://www.flaticon.com/)
-* Additionals Wallpapers are by [lydex256]("https://github.com/lydex256").
+* Additionals Wallpapers are by [lydex256](https://github.com/lydex256).
 * "Godotris" by [MrakDun-desu](https://github.com/MrakDun-desu)
 * "Snake" by [jean-philippe-martin](https://github.com/jean-philippe-martin)
 
