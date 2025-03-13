@@ -13,12 +13,12 @@ func _ready() -> void:
 		copy_from_res("res://Default Files/Welcome.txt", "user://files/Welcome Folder/Welcome.txt")
 		copy_from_res("res://Default Files/Credits.txt", "user://files/Welcome Folder/Credits.txt")
 		copy_from_res("res://Default Files/GodotOS Handbook.txt", "user://files/Welcome Folder/GodotOS Handbook.txt")
-		copy_from_res("res://Default Files/default wall.webp", "user://files/default wall.webp")
+		copy_from_res("res://Default Files/default wall.webp", "user://files/Wallpapers/default wall.webp")
 		
 		#Additional wallpapers
-		copy_from_res("res://Default Files/wallpaper_chill.png", "user://files/Wallpapers//chill.png")
-		copy_from_res("res://Default Files/wallpaper_minimalism.png", "user://files/Wallpapers//minimalism.png")
-		copy_from_res("res://Default Files/wallpaper_mosaic.png", "user://files/Wallpapers/mosaic.png")
+		copy_from_res("res://Default Files/wallpaper_chill.webp", "user://files/Wallpapers/chill.webp")
+		copy_from_res("res://Default Files/wallpaper_minimalism.webp", "user://files/Wallpapers/minimalism.webp")
+		copy_from_res("res://Default Files/wallpaper_mosaic.webp", "user://files/Wallpapers/mosaic.webp")
 		
 		var wallpaper: Wallpaper = $"/root/Control/Wallpaper"
 		wallpaper.apply_wallpaper_from_path("files/default wall.webp")
