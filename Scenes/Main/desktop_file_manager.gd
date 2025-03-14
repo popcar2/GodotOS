@@ -18,10 +18,9 @@ func _ready() -> void:
 		#Additional wallpapers
 		copy_from_res("res://Default Files/wallpaper_chill.webp", "user://files/Wallpapers/chill.webp")
 		copy_from_res("res://Default Files/wallpaper_minimalism.webp", "user://files/Wallpapers/minimalism.webp")
-		copy_from_res("res://Default Files/wallpaper_mosaic.webp", "user://files/Wallpapers/mosaic.webp")
-		
+
 		var wallpaper: Wallpaper = $"/root/Control/Wallpaper"
-		wallpaper.apply_wallpaper_from_path("files/default wall.webp")
+		wallpaper.apply_wallpaper_from_path("files/Wallpapers/default wall.webp")
 		
 		copy_from_res("res://Default Files/default wall.webp", "user://default wall.webp")
 		DefaultValues.wallpaper_name = "default wall.webp"

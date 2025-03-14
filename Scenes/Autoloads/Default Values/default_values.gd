@@ -59,7 +59,7 @@ func load_state() -> void:
 	if save_dict.has(wallpaper_stretch_mode):
 		wallpaper_stretch_mode = save_dict.wallpaper_stretch_mode
 	else:
-		wallpaper_stretch_mode = 0
+		wallpaper_stretch_mode = 6
 	wallpaper.apply_wallpaper_stretch_mode(wallpaper_stretch_mode)
 	
 	background_color_rect.color = Color.from_string(save_dict.background_color, Color8(77, 77, 77))
