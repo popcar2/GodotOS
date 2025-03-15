@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://deshqi61tsibm"
-path="res://.godot/imported/default wall.webp-563f2d520b51a97fe5dc3c439d3de834.ctex"
+uid="uid://5ti8xjus7t0n"
+path="res://.godot/imported/wallpaper_minimalism.webp-1568cd19422ebdc6d66d2ba585f15039.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Default Files/default wall.webp"
-dest_files=["res://.godot/imported/default wall.webp-563f2d520b51a97fe5dc3c439d3de834.ctex"]
+source_file="res://Default Files/wallpaper_minimalism.webp"
+dest_files=["res://.godot/imported/wallpaper_minimalism.webp-1568cd19422ebdc6d66d2ba585f15039.ctex"]
 
 [params]
 

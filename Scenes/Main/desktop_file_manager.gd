@@ -9,13 +9,18 @@ func _ready() -> void:
 		# Can't just use absolute paths due to https://github.com/godotengine/godot/issues/82550
 		# Also DirAccess can't open on res:// at export, but FileAccess does...
 		user_dir.make_dir_recursive("files/Welcome Folder")
+		user_dir.make_dir_recursive("files/Wallpapers")
 		copy_from_res("res://Default Files/Welcome.txt", "user://files/Welcome Folder/Welcome.txt")
 		copy_from_res("res://Default Files/Credits.txt", "user://files/Welcome Folder/Credits.txt")
 		copy_from_res("res://Default Files/GodotOS Handbook.txt", "user://files/Welcome Folder/GodotOS Handbook.txt")
-		copy_from_res("res://Default Files/default wall.webp", "user://files/default wall.webp")
+		copy_from_res("res://Default Files/default wall.webp", "user://files/Wallpapers/default wall.webp")
 		
+		#Additional wallpapers
+		copy_from_res("res://Default Files/wallpaper_chill.webp", "user://files/Wallpapers/chill.webp")
+		copy_from_res("res://Default Files/wallpaper_minimalism.webp", "user://files/Wallpapers/minimalism.webp")
+
 		var wallpaper: Wallpaper = $"/root/Control/Wallpaper"
-		wallpaper.apply_wallpaper_from_path("files/default wall.webp")
+		wallpaper.apply_wallpaper_from_path("files/Wallpapers/default wall.webp")
 		
 		copy_from_res("res://Default Files/default wall.webp", "user://default wall.webp")
 		DefaultValues.wallpaper_name = "default wall.webp"

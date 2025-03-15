@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://5sdddkl3mfbw"]
+[gd_scene load_steps=18 format=3 uid="uid://5sdddkl3mfbw"]
 
 [ext_resource type="PackedScene" uid="uid://cojrqff5vocjv" path="res://Scenes/Window/Window.tscn" id="1_rx4sm"]
 [ext_resource type="Script" path="res://Scenes/Window/Settings Window/scaling_spinbox.gd" id="2_a71vs"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scenes/Window/Settings Window/background_color_picker.gd" id="4_vnxcp"]
 [ext_resource type="Script" path="res://Scenes/Window/Settings Window/max_fps_options.gd" id="4_xp0bf"]
 [ext_resource type="Script" path="res://Scenes/Window/Settings Window/remove_wallpaper.gd" id="5_p360g"]
+[ext_resource type="Script" path="res://Scenes/Window/Settings Window/stretch_wallpaper.gd" id="7_h8so0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g2ist"]
 bg_color = Color(0.2, 0.2, 0.2, 0.862745)
@@ -260,6 +261,34 @@ focus_mode = 0
 text = "Remove BG"
 script = ExtResource("5_p360g")
 
+[node name="Stretch Wallpaper" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer" index="5"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer/Stretch Wallpaper" index="0"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+theme_override_font_sizes/normal_font_size = 20
+text = "Wallpaper Stretching Mode"
+
+[node name="WindowOptions" type="OptionButton" parent="ScrollContainer/MarginContainer/VBoxContainer/Stretch Wallpaper" index="1"]
+layout_mode = 2
+focus_mode = 0
+item_count = 4
+selected = 0
+fit_to_longest_item = false
+popup/item_0/text = "Scale"
+popup/item_0/id = 0
+popup/item_1/text = "Tile"
+popup/item_1/id = 1
+popup/item_2/text = "Center"
+popup/item_2/id = 2
+popup/item_3/text = "Cover"
+popup/item_3/id = 3
+script = ExtResource("7_h8so0")
+
 [connection signal="pressed" from="ScrollContainer/MarginContainer/VBoxContainer/Screen Scaling/Control/IncrementScaling" to="ScrollContainer/MarginContainer/VBoxContainer/Screen Scaling/Control/ScalingSpinbox" method="_on_increment_scaling_pressed"]
 [connection signal="pressed" from="ScrollContainer/MarginContainer/VBoxContainer/Screen Scaling/Control/DecrementScaling" to="ScrollContainer/MarginContainer/VBoxContainer/Screen Scaling/Control/ScalingSpinbox" method="_on_decrement_scaling_pressed"]
 [connection signal="mouse_entered" from="ScrollContainer/MarginContainer/VBoxContainer/Screen Scaling/Control/ScalingSpinbox" to="ScrollContainer/MarginContainer/VBoxContainer/Screen Scaling/Control/ScalingSpinbox" method="_on_mouse_entered"]
@@ -269,3 +298,4 @@ script = ExtResource("5_p360g")
 [connection signal="item_selected" from="ScrollContainer/MarginContainer/VBoxContainer/Max Framerate/WindowOptions" to="ScrollContainer/MarginContainer/VBoxContainer/Max Framerate/WindowOptions" method="_on_item_selected"]
 [connection signal="color_changed" from="ScrollContainer/MarginContainer/VBoxContainer/Background Color/BackgroundColorPicker" to="ScrollContainer/MarginContainer/VBoxContainer/Background Color/BackgroundColorPicker" method="_on_color_changed"]
 [connection signal="pressed" from="ScrollContainer/MarginContainer/VBoxContainer/Remove Wallpaper/RemoveWallpaper" to="ScrollContainer/MarginContainer/VBoxContainer/Remove Wallpaper/RemoveWallpaper" method="_on_pressed"]
+[connection signal="item_selected" from="ScrollContainer/MarginContainer/VBoxContainer/Stretch Wallpaper/WindowOptions" to="ScrollContainer/MarginContainer/VBoxContainer/Stretch Wallpaper/WindowOptions" method="_on_item_selected"]
