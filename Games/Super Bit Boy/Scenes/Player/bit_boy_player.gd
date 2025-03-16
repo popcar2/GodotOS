@@ -87,25 +87,25 @@ func win() -> void:
 func detect_custom_tile_data() -> void:
 	for i in range(get_slide_collision_count()):
 		var collision: KinematicCollision2D = get_slide_collision(i)
-		if collision.get_collider() is TileMap:
-			var tilemap: TileMap = collision.get_collider()
-			var tile_coords: Vector2i = tilemap.get_coords_for_body_rid(collision.get_collider_rid())
-			var tile_data: TileData = tilemap.get_cell_tile_data(0, tile_coords)
+		if collision.get_collider() is TileMapLayer:
+			var tilemap_layer: TileMapLayer = collision.get_collider()
+			var tile_coords: Vector2i = tilemap_layer.get_coords_for_body_rid(collision.get_collider_rid())
+			var tile_data: TileData = tilemap_layer.get_cell_tile_data(tile_coords)
 			if tile_data.get_custom_data("instakill"):
 				die()
 
 func _on_left_wall_jump_area_2d_body_entered(body: Node2D) -> void:
-	if body is StaticBody2D or body is TileMap:
+	if body is StaticBody2D or body is TileMapLayer:
 		left_walljump_active = true
 
 func _on_left_wall_jump_area_2d_body_exited(body: Node2D) -> void:
-	if body is StaticBody2D or body is TileMap:
+	if body is StaticBody2D or body is TileMapLayer:
 		left_walljump_active = false
 
 func _on_right_wall_jump_area_2d_body_entered(body: Node2D) -> void:
-	if body is StaticBody2D or body is TileMap:
+	if body is StaticBody2D or body is TileMapLayer:
 		right_walljump_active = true
 
 func _on_right_wall_jump_area_2d_body_exited(body: Node2D) -> void:
-	if body is StaticBody2D or body is TileMap:
+	if body is StaticBody2D or body is TileMapLayer:
 		right_walljump_active = false

@@ -11,6 +11,8 @@ config_version=5
 [application]
 
 config/name="GodotOS"
+config/description="A fake operating system interface, created by popcar2 for fun!"
+config/version="1.1.0"
 run/main_scene="res://Scenes/Main/MainScene.tscn"
 config/use_custom_user_dir=true
 config/custom_user_dir_name="GodotOS"

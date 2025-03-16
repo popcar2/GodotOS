@@ -62,7 +62,7 @@ func load_state() -> void:
 		wallpaper_stretch_mode = 6
 	wallpaper.apply_wallpaper_stretch_mode(wallpaper_stretch_mode)
 	
-	background_color_rect.color = Color.from_string(save_dict.background_color, Color8(77, 77, 77))
+	background_color_rect.color = Color.from_string(save_dict.background_color, Color.from_rgba8(77, 77, 77))
 	get_window().content_scale_factor = save_dict.zoom_level
 
 ## Copies the wallpaper to root GodotOS folder so it can load it again later. 

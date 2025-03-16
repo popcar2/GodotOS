@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://5sdddkl3mfbw"]
+[gd_scene load_steps=26 format=3 uid="uid://5sdddkl3mfbw"]
 
 [ext_resource type="PackedScene" uid="uid://cojrqff5vocjv" path="res://Scenes/Window/Window.tscn" id="1_rx4sm"]
 [ext_resource type="Script" uid="uid://cthe8oglu2808" path="res://Scenes/Window/Settings Window/scaling_spinbox.gd" id="2_a71vs"]
@@ -52,6 +52,24 @@ bg_color = Color(0.0941176, 0.0941176, 0.0941176, 1)
 
 [sub_resource type="Theme" id="Theme_c40gw"]
 LineEdit/styles/normal = SubResource("StyleBoxFlat_3dvlq")
+
+[sub_resource type="ImageTexture" id="ImageTexture_gcdyy"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_ocir4"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_3o4ub"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_bbdg7"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_5mi80"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_7jcwr"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_1i4r4"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_vvomw"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_xjfew"]
 
 [node name="Window" instance=ExtResource("1_rx4sm")]
 theme_override_styles/panel = SubResource("StyleBoxFlat_g2ist")
@@ -151,6 +169,15 @@ grow_horizontal = 0
 grow_vertical = 2
 theme = SubResource("Theme_c40gw")
 theme_override_constants/field_and_buttons_separation = -20
+theme_override_icons/up_disabled = SubResource("ImageTexture_gcdyy")
+theme_override_icons/down = SubResource("ImageTexture_ocir4")
+theme_override_icons/down_hover = SubResource("ImageTexture_3o4ub")
+theme_override_icons/down_pressed = SubResource("ImageTexture_bbdg7")
+theme_override_icons/down_disabled = SubResource("ImageTexture_5mi80")
+theme_override_icons/up_pressed = SubResource("ImageTexture_7jcwr")
+theme_override_icons/up_hover = SubResource("ImageTexture_1i4r4")
+theme_override_icons/up = SubResource("ImageTexture_vvomw")
+theme_override_icons/updown = SubResource("ImageTexture_xjfew")
 min_value = 0.5
 max_value = 3.0
 step = 0.005

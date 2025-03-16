@@ -18,4 +18,4 @@ func _on_mouse_entered() -> void:
 func _on_mouse_exited() -> void:
 	var tween: Tween = create_tween()
 	tween.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
-	tween.tween_property(self, "self_modulate:a", 0.3, 0.2)
+	tween.tween_property(self, "self_modulate:a", 0.2, 0.2)

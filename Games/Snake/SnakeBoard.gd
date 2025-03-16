@@ -43,7 +43,7 @@ var playing:= true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	board_image = Image.new()
-	board_image = Image.create(sizeX, sizeY, false, Image.FORMAT_RGB8)
+	board_image = Image.create_empty(sizeX, sizeY, false, Image.FORMAT_RGB8)
 	self.texture = ImageTexture.create_from_image(board_image)
 	init_game()
 

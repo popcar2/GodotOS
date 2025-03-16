@@ -10,7 +10,7 @@ corner_radius_bottom_right = 12
 corner_radius_bottom_left = 12
 
 [node name="Context Menu Option" type="Panel"]
-self_modulate = Color(1, 1, 1, 0.3)
+self_modulate = Color(1, 1, 1, 0.2)
 custom_minimum_size = Vector2(0, 30)
 mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxFlat_xn8jj")
