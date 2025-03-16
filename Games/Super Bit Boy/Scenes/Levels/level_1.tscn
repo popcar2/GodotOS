@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://t3fobsr7gklg"]
 
-[ext_resource type="Script" path="res://Games/Super Bit Boy/Scenes/Levels/bit_boy_scene_manager.gd" id="1_yi0p1"]
+[ext_resource type="Script" uid="uid://5s567w1vfwab" path="res://Games/Super Bit Boy/Scenes/Levels/bit_boy_scene_manager.gd" id="1_yi0p1"]
 [ext_resource type="PackedScene" uid="uid://chfpq4oi0dogc" path="res://Games/Super Bit Boy/Other Scenes/bit_boy_camera.tscn" id="2_4pma2"]
 [ext_resource type="Texture2D" uid="uid://bwxnhif5h1cck" path="res://Art/Pixel_32.png" id="3_75lam"]
 [ext_resource type="PackedScene" uid="uid://bxv24mjcranba" path="res://Games/Super Bit Boy/Scenes/Player/bit_boy_player.tscn" id="4_bfb5o"]
@@ -11,13 +11,9 @@ texture = ExtResource("3_75lam")
 texture_region_size = Vector2i(32, 32)
 0:0/next_alternative_id = 2
 0:0/0 = 0
-0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 0:0/1 = 1
 0:0/1/modulate = Color(1, 0, 0, 1)
-0:0/1/physics_layer_0/linear_velocity = Vector2(0, 0)
-0:0/1/physics_layer_0/angular_velocity = 0.0
 0:0/1/physics_layer_0/polygon_0/points = PackedVector2Array(-10.6667, -10.6667, 10.6667, -10.6667, 10.6667, 10.6667, -10.6667, 10.6667)
 0:0/1/custom_data_0 = true
 

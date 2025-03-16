@@ -58,7 +58,7 @@ Here you can remove your current wallpaper (you can add one by right clicking an
 You can change your background color, which is visible only if there is no wallpaper applied.
 
 ----- CHAPTER 4: PLAYING GAMES -----
-Now for some fun! GodotOS currently comes packaged with 3 basic games: Pong, Super Bit Boy & Snake.
+Now for some fun! GodotOS currently comes packaged with 4 basic games: Pong, Super Bit Boy, Snake, and Godotris.
 Note that hopefully more games will be added in the future!
 You can access these from the start menu in the bottom left.
 
@@ -74,3 +74,5 @@ Move left and right with the arrow keys or A and D, jump with space or Z.
 
 In Snake, your goal is to eat fruits and get longer. Don't bite yourself or hit the wall!
 Use the arrow keys to move. The game keeps track of your high score until it's closed.
+
+Godotris the classic falling-blocks game made for GodotOS. Clear lines and aim for a high score!

@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://i03dt4l5msgl"]
 
 [ext_resource type="PackedScene" uid="uid://cojrqff5vocjv" path="res://Scenes/Window/Window.tscn" id="1_xona8"]
-[ext_resource type="Script" path="res://Scenes/Window/File Manager/file_manager_window.gd" id="2_prcfs"]
+[ext_resource type="Script" uid="uid://0e08uudim1di" path="res://Scenes/Window/File Manager/file_manager_window.gd" id="2_prcfs"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8j66m"]
 content_margin_left = 0.0

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://ddpkw5l32ogx2"]
 
-[ext_resource type="Script" path="res://Games/Godotris/Block/godotris_block.gd" id="1_xp0iy"]
+[ext_resource type="Script" uid="uid://dxmw86xjvx7pq" path="res://Games/Godotris/Block/godotris_block.gd" id="1_xp0iy"]
 
 [sub_resource type="Gradient" id="Gradient_hw1qf"]
 offsets = PackedFloat32Array(1)

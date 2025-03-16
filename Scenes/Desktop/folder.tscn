@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://dci6t0fj42xpv"]
 
-[ext_resource type="Script" path="res://Scenes/Desktop/desktop_folder.gd" id="1_44lov"]
+[ext_resource type="Script" uid="uid://j6auwoexib63" path="res://Scenes/Desktop/desktop_folder.gd" id="1_44lov"]
 [ext_resource type="Texture2D" uid="uid://cjve37ywrq6qo" path="res://Art/Folder Icons/folder.png" id="2_8hyqf"]
-[ext_resource type="Script" path="res://Scenes/Desktop/folder_title_edit.gd" id="2_aux0e"]
+[ext_resource type="Script" uid="uid://csxjm2dry3dji" path="res://Scenes/Desktop/folder_title_edit.gd" id="2_aux0e"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fr400"]
 bg_color = Color(0, 0.521569, 0.627451, 0.784314)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://da4oly47yx3ja"]
 
-[ext_resource type="Script" path="res://Scenes/Taskbar/start_menu_option.gd" id="1_2fneu"]
+[ext_resource type="Script" uid="uid://b4pjauo2jicy2" path="res://Scenes/Taskbar/start_menu_option.gd" id="1_2fneu"]
 [ext_resource type="Texture2D" uid="uid://2sqrvihn1cjq" path="res://Art/Folder Icons/game.png" id="2_4g113"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0gkon"]

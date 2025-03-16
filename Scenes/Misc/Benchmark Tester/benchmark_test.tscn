@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://gmc12dsm1usj"]
 
-[ext_resource type="Script" path="res://Scenes/Misc/Benchmark Tester/benchmark_test.gd" id="1_vxxfi"]
+[ext_resource type="Script" uid="uid://4bxqshfsr7cl" path="res://Scenes/Misc/Benchmark Tester/benchmark_test.gd" id="1_vxxfi"]
 
 [node name="Benchmark Test" type="Node"]
 script = ExtResource("1_vxxfi")

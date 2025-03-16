@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b1xykl5fledwa"]
 
 [ext_resource type="StyleBox" uid="uid://dk7t88f1jcvln" path="res://Games/Godotris/PieceHolder/piece_holder.tres" id="1_4bbpr"]
-[ext_resource type="Script" path="res://Games/Godotris/PieceHolder/godotris_piece_holder.gd" id="1_k6oki"]
+[ext_resource type="Script" uid="uid://4rd0y0bvnn80" path="res://Games/Godotris/PieceHolder/godotris_piece_holder.gd" id="1_k6oki"]
 
 [node name="PieceHolder" type="Panel"]
 custom_minimum_size = Vector2(160, 96)

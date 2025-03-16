@@ -1,11 +1,11 @@
 [gd_scene load_steps=23 format=3 uid="uid://dcf7si5errywd"]
 
-[ext_resource type="Script" path="res://Games/Pong/Scripts/pong_singleplayer_manager.gd" id="1_oef8c"]
-[ext_resource type="Script" path="res://Games/Pong/Scripts/pong_player.gd" id="2_ugmxi"]
-[ext_resource type="Script" path="res://Games/Pong/Scripts/pong_enemy.gd" id="3_oxy8k"]
-[ext_resource type="Script" path="res://Games/Pong/Scripts/pong_ball.gd" id="4_oaee3"]
-[ext_resource type="Script" path="res://Games/Pong/Scripts/pong_player_fail_area.gd" id="5_n8v32"]
-[ext_resource type="Script" path="res://Games/Pong/Scripts/pong_enemy_fail_area.gd" id="6_dbi4x"]
+[ext_resource type="Script" uid="uid://bjigiyom43bx5" path="res://Games/Pong/Scripts/pong_singleplayer_manager.gd" id="1_oef8c"]
+[ext_resource type="Script" uid="uid://cy0d05k2sudu5" path="res://Games/Pong/Scripts/pong_player.gd" id="2_ugmxi"]
+[ext_resource type="Script" uid="uid://djuup8btqvpab" path="res://Games/Pong/Scripts/pong_enemy.gd" id="3_oxy8k"]
+[ext_resource type="Script" uid="uid://bs6tax1wxufkp" path="res://Games/Pong/Scripts/pong_ball.gd" id="4_oaee3"]
+[ext_resource type="Script" uid="uid://58oaqyk4r3ub" path="res://Games/Pong/Scripts/pong_player_fail_area.gd" id="5_n8v32"]
+[ext_resource type="Script" uid="uid://brw5t4xl7hndq" path="res://Games/Pong/Scripts/pong_enemy_fail_area.gd" id="6_dbi4x"]
 
 [sub_resource type="Gradient" id="Gradient_01x5j"]
 offsets = PackedFloat32Array(0)

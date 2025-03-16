@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b3u7st4i1algn"]
 
-[ext_resource type="Script" path="res://Games/Super Bit Boy/Scenes/Exit/bit_boy_exit.gd" id="1_s358w"]
+[ext_resource type="Script" uid="uid://euby5h52vpr7" path="res://Games/Super Bit Boy/Scenes/Exit/bit_boy_exit.gd" id="1_s358w"]
 [ext_resource type="Texture2D" uid="uid://bwxnhif5h1cck" path="res://Art/Pixel_32.png" id="2_5apsu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_am6qy"]

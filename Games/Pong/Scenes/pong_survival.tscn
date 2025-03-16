@@ -1,8 +1,8 @@
 [gd_scene load_steps=20 format=3 uid="uid://jqitoetare6"]
 
-[ext_resource type="Script" path="res://Games/Pong/Scripts/pong_survival_manager.gd" id="1_jcasi"]
-[ext_resource type="Script" path="res://Games/Pong/Scripts/pong_player.gd" id="2_bxknv"]
-[ext_resource type="Script" path="res://Games/Pong/Scripts/pong_ball.gd" id="4_yffib"]
+[ext_resource type="Script" uid="uid://b4qdqhwk3y63w" path="res://Games/Pong/Scripts/pong_survival_manager.gd" id="1_jcasi"]
+[ext_resource type="Script" uid="uid://cy0d05k2sudu5" path="res://Games/Pong/Scripts/pong_player.gd" id="2_bxknv"]
+[ext_resource type="Script" uid="uid://bs6tax1wxufkp" path="res://Games/Pong/Scripts/pong_ball.gd" id="4_yffib"]
 
 [sub_resource type="Gradient" id="Gradient_01x5j"]
 offsets = PackedFloat32Array(0)

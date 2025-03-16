@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://6e6rkceymrxy"]
 
-[ext_resource type="Script" path="res://Games/Snake/SnakeBoard.gd" id="1_vn6nx"]
-[ext_resource type="Script" path="res://Games/Snake/SnakeLabel.gd" id="2_36w75"]
-[ext_resource type="Script" path="res://Games/Snake/SnakeBestScoreLabel.gd" id="3_3qlc5"]
-[ext_resource type="Script" path="res://Games/Snake/SnakeGameOver.gd" id="3_fyb7g"]
+[ext_resource type="Script" uid="uid://det8w80ts5qm8" path="res://Games/Snake/SnakeBoard.gd" id="1_vn6nx"]
+[ext_resource type="Script" uid="uid://rqcrafnl1ub1" path="res://Games/Snake/SnakeLabel.gd" id="2_36w75"]
+[ext_resource type="Script" uid="uid://cvxcqhf0g1uhd" path="res://Games/Snake/SnakeBestScoreLabel.gd" id="3_3qlc5"]
+[ext_resource type="Script" uid="uid://d05cq0k5yj2fc" path="res://Games/Snake/SnakeGameOver.gd" id="3_fyb7g"]
 
 [sub_resource type="Gradient" id="Gradient_lott4"]
 colors = PackedColorArray(0, 0.745098, 0, 1, 1, 1, 1, 1)

@@ -1,13 +1,13 @@
 [gd_scene load_steps=16 format=3 uid="uid://cfj5p5pgfnywp"]
 
-[ext_resource type="Script" path="res://Scenes/Taskbar/start_button.gd" id="1_aypgd"]
+[ext_resource type="Script" uid="uid://clkes7h7romou" path="res://Scenes/Taskbar/start_button.gd" id="1_aypgd"]
 [ext_resource type="PackedScene" uid="uid://da4oly47yx3ja" path="res://Scenes/Taskbar/start_menu_option.tscn" id="2_1ualm"]
 [ext_resource type="Texture2D" uid="uid://dyucn32xje8bj" path="res://Art/Icons/Start Menu Button.png" id="2_mu355"]
 [ext_resource type="Texture2D" uid="uid://dnvmy7l1wrerh" path="res://Art/Icons/power-button.png" id="3_sudyn"]
-[ext_resource type="Script" path="res://Scenes/Taskbar/power_button.gd" id="4_cnyss"]
+[ext_resource type="Script" uid="uid://ovt5fnqwt48p" path="res://Scenes/Taskbar/power_button.gd" id="4_cnyss"]
 [ext_resource type="Texture2D" uid="uid://cwnaaut64gd15" path="res://Art/Icons/cog.png" id="5_srcnq"]
-[ext_resource type="Script" path="res://Scenes/Taskbar/settings_button.gd" id="6_38i4x"]
-[ext_resource type="Script" path="res://Scenes/Taskbar/taskbar_time.gd" id="7_2yhho"]
+[ext_resource type="Script" uid="uid://bcvlao324av3w" path="res://Scenes/Taskbar/settings_button.gd" id="6_38i4x"]
+[ext_resource type="Script" uid="uid://33k2ree3e2yt" path="res://Scenes/Taskbar/taskbar_time.gd" id="7_2yhho"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lxws7"]
 bg_color = Color(0.0784314, 0.0784314, 0.0784314, 0.784314)

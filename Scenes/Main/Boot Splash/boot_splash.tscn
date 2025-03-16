@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bwyybu5i3kid"]
 
 [ext_resource type="Texture2D" uid="uid://b7m5up7nr6tko" path="res://Art/Godot Logo.png" id="1_h7qs8"]
-[ext_resource type="Script" path="res://Scenes/Main/Boot Splash/boot_splash.gd" id="1_oyw0a"]
+[ext_resource type="Script" uid="uid://cv20x048ht4ki" path="res://Scenes/Main/Boot Splash/boot_splash.gd" id="1_oyw0a"]
 
 [sub_resource type="Gradient" id="Gradient_w533j"]
 offsets = PackedFloat32Array(0)

@@ -1,12 +1,12 @@
 [gd_scene load_steps=18 format=3 uid="uid://5sdddkl3mfbw"]
 
 [ext_resource type="PackedScene" uid="uid://cojrqff5vocjv" path="res://Scenes/Window/Window.tscn" id="1_rx4sm"]
-[ext_resource type="Script" path="res://Scenes/Window/Settings Window/scaling_spinbox.gd" id="2_a71vs"]
-[ext_resource type="Script" path="res://Scenes/Window/Settings Window/window_options.gd" id="3_7t58g"]
-[ext_resource type="Script" path="res://Scenes/Window/Settings Window/background_color_picker.gd" id="4_vnxcp"]
-[ext_resource type="Script" path="res://Scenes/Window/Settings Window/max_fps_options.gd" id="4_xp0bf"]
-[ext_resource type="Script" path="res://Scenes/Window/Settings Window/remove_wallpaper.gd" id="5_p360g"]
-[ext_resource type="Script" path="res://Scenes/Window/Settings Window/stretch_wallpaper.gd" id="7_h8so0"]
+[ext_resource type="Script" uid="uid://cthe8oglu2808" path="res://Scenes/Window/Settings Window/scaling_spinbox.gd" id="2_a71vs"]
+[ext_resource type="Script" uid="uid://bmylb2xf7e5ih" path="res://Scenes/Window/Settings Window/window_options.gd" id="3_7t58g"]
+[ext_resource type="Script" uid="uid://n3mn2lwk6v46" path="res://Scenes/Window/Settings Window/background_color_picker.gd" id="4_vnxcp"]
+[ext_resource type="Script" uid="uid://c84pgsmltldk4" path="res://Scenes/Window/Settings Window/max_fps_options.gd" id="4_xp0bf"]
+[ext_resource type="Script" uid="uid://kmfv0m283o0l" path="res://Scenes/Window/Settings Window/remove_wallpaper.gd" id="5_p360g"]
+[ext_resource type="Script" uid="uid://bofup4ya34voc" path="res://Scenes/Window/Settings Window/stretch_wallpaper.gd" id="7_h8so0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g2ist"]
 bg_color = Color(0.2, 0.2, 0.2, 0.862745)

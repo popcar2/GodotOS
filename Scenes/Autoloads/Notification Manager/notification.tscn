@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dgrw5q1qwsr33"]
 
-[ext_resource type="Script" path="res://Scenes/Autoloads/Notification Manager/notification.gd" id="1_0ehe8"]
+[ext_resource type="Script" uid="uid://cv6vbo4w5ecmt" path="res://Scenes/Autoloads/Notification Manager/notification.gd" id="1_0ehe8"]
 
 [node name="Notification" type="Panel"]
 anchors_preset = 3

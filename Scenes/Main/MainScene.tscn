@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bmjyglrsf04uo"]
 
-[ext_resource type="Script" path="res://Scenes/Main/desktop_file_manager.gd" id="1_c0q37"]
-[ext_resource type="Script" path="res://Scenes/Main/wallpaper.gd" id="1_xkkt2"]
+[ext_resource type="Script" uid="uid://crccellk2oo41" path="res://Scenes/Main/desktop_file_manager.gd" id="1_c0q37"]
+[ext_resource type="Script" uid="uid://fgth35grbgyv" path="res://Scenes/Main/wallpaper.gd" id="1_xkkt2"]
 [ext_resource type="PackedScene" uid="uid://cfj5p5pgfnywp" path="res://Scenes/Taskbar/taskbar.tscn" id="2_35ao4"]
 [ext_resource type="PackedScene" uid="uid://bwyybu5i3kid" path="res://Scenes/Main/Boot Splash/boot_splash.tscn" id="3_ifoxq"]
 

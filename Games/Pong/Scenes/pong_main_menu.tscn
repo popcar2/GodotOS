@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://dui0012ehv8h0"]
 
-[ext_resource type="Script" path="res://Games/Pong/Scripts/pong_main_menu.gd" id="1_jwauq"]
+[ext_resource type="Script" uid="uid://bybio3o0igxpy" path="res://Games/Pong/Scripts/pong_main_menu.gd" id="1_jwauq"]
 
 [sub_resource type="Gradient" id="Gradient_beqym"]
 offsets = PackedFloat32Array(0)

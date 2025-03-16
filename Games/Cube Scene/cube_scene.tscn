@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://vd6e1ofpyhwd"]
 
-[ext_resource type="Script" path="res://Games/Cube Scene/cube.gd" id="1_xfqds"]
+[ext_resource type="Script" uid="uid://paulxnd8hmgt" path="res://Games/Cube Scene/cube.gd" id="1_xfqds"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0bl4j"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dnr2whboi3cm8"]
 
-[ext_resource type="Script" path="res://Scenes/Autoloads/GlobalValues/global_values.gd" id="1_17jpm"]
+[ext_resource type="Script" uid="uid://dp6eii4lmnhuh" path="res://Scenes/Autoloads/GlobalValues/global_values.gd" id="1_17jpm"]
 
 [node name="GlobalValues" type="Node"]
 script = ExtResource("1_17jpm")

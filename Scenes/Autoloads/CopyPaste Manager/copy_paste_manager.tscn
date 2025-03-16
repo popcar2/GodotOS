@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://mv3dwdjmlm58"]
 
-[ext_resource type="Script" path="res://Scenes/Autoloads/CopyPaste Manager/copy_paste_manager.gd" id="1_cvn0g"]
+[ext_resource type="Script" uid="uid://cb6g2tw1ikimw" path="res://Scenes/Autoloads/CopyPaste Manager/copy_paste_manager.gd" id="1_cvn0g"]
 
 [node name="CopyPasteManager" type="Node"]
 script = ExtResource("1_cvn0g")

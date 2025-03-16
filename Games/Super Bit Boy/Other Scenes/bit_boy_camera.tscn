@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://chfpq4oi0dogc"]
 
-[ext_resource type="Script" path="res://Games/Super Bit Boy/Other Scenes/bit_boy_camera.gd" id="1_uvdeb"]
+[ext_resource type="Script" uid="uid://65kr3tt4jbk2" path="res://Games/Super Bit Boy/Other Scenes/bit_boy_camera.gd" id="1_uvdeb"]
 
 [sub_resource type="Gradient" id="Gradient_yyofs"]
 offsets = PackedFloat32Array(0)

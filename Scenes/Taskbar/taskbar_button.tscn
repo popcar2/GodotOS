@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b7mejsbueubva"]
 
-[ext_resource type="Script" path="res://Scenes/Taskbar/taskbar_button.gd" id="1_j5fdb"]
+[ext_resource type="Script" uid="uid://2grdmbycx712" path="res://Scenes/Taskbar/taskbar_button.gd" id="1_j5fdb"]
 
 [sub_resource type="Gradient" id="Gradient_l7111"]
 offsets = PackedFloat32Array(0)

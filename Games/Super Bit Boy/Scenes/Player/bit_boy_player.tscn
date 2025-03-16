@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bxv24mjcranba"]
 
-[ext_resource type="Script" path="res://Games/Super Bit Boy/Scenes/Player/bit_boy_player.gd" id="1_pr5ix"]
+[ext_resource type="Script" uid="uid://b0iyafva2jgrt" path="res://Games/Super Bit Boy/Scenes/Player/bit_boy_player.gd" id="1_pr5ix"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_adjwb"]
 size = Vector2(32, 32)

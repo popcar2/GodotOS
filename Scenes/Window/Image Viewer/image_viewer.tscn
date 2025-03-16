@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bw213qcym41ma"]
 
 [ext_resource type="PackedScene" uid="uid://cojrqff5vocjv" path="res://Scenes/Window/Window.tscn" id="1_bisfo"]
-[ext_resource type="Script" path="res://Scenes/Window/Image Viewer/image_viewer.gd" id="2_3oyj5"]
+[ext_resource type="Script" uid="uid://dy8ijrxds68k6" path="res://Scenes/Window/Image Viewer/image_viewer.gd" id="2_3oyj5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8a368"]
 bg_color = Color(0.337151, 0.3052, 0.145422, 0.784314)

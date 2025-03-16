@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cuxy2r5ex7lxa"]
 
-[ext_resource type="Script" path="res://Games/Godotris/Piece/godotris_piece.gd" id="1_cooja"]
+[ext_resource type="Script" uid="uid://mwugeohylsl8" path="res://Games/Godotris/Piece/godotris_piece.gd" id="1_cooja"]
 [ext_resource type="PackedScene" uid="uid://ddpkw5l32ogx2" path="res://Games/Godotris/Block/Block.tscn" id="2_qfksp"]
 
 [sub_resource type="Gradient" id="Gradient_dmevm"]
