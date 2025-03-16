@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://5sdddkl3mfbw"]
+[gd_scene load_steps=17 format=3 uid="uid://5sdddkl3mfbw"]
 
 [ext_resource type="PackedScene" uid="uid://cojrqff5vocjv" path="res://Scenes/Window/Window.tscn" id="1_rx4sm"]
 [ext_resource type="Script" uid="uid://cthe8oglu2808" path="res://Scenes/Window/Settings Window/scaling_spinbox.gd" id="2_a71vs"]
@@ -17,11 +17,6 @@ corner_radius_bottom_left = 5
 corner_detail = 10
 shadow_color = Color(0, 0, 0, 0.0784314)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_txq2q"]
-bg_color = Color(0, 0, 0, 0.313726)
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8v10x"]
 bg_color = Color(0.392157, 0.392157, 0.392157, 0.313726)
 corner_radius_top_right = 5
@@ -32,10 +27,10 @@ bg_color = Color(0, 0, 0, 0.313726)
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nenhp"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_txq2q"]
 bg_color = Color(0, 0, 0, 0.313726)
-corner_radius_top_left = 5
-corner_radius_bottom_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jeame"]
 bg_color = Color(0.392157, 0.392157, 0.392157, 0.313726)
@@ -47,13 +42,16 @@ bg_color = Color(0, 0, 0, 0.313726)
 corner_radius_top_left = 5
 corner_radius_bottom_left = 5
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nenhp"]
+bg_color = Color(0, 0, 0, 0.313726)
+corner_radius_top_left = 5
+corner_radius_bottom_left = 5
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3dvlq"]
 bg_color = Color(0.0941176, 0.0941176, 0.0941176, 1)
 
 [sub_resource type="Theme" id="Theme_c40gw"]
 LineEdit/styles/normal = SubResource("StyleBoxFlat_3dvlq")
-
-[sub_resource type="ImageTexture" id="ImageTexture_0jw4l"]
 
 [node name="Window" instance=ExtResource("1_rx4sm")]
 theme_override_styles/panel = SubResource("StyleBoxFlat_g2ist")
@@ -82,7 +80,7 @@ theme_override_constants/margin_right = 10
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_constants/separation = 8
+theme_override_constants/separation = 12
 
 [node name="Screen Scaling" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer" index="0"]
 layout_mode = 2
@@ -108,16 +106,15 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -21.0
+offset_left = -20.0
 offset_top = -15.0
-offset_right = -1.0
-offset_bottom = 15.0
+offset_bottom = 16.0
 grow_horizontal = 0
 grow_vertical = 2
 focus_mode = 0
-theme_override_styles/normal = SubResource("StyleBoxFlat_txq2q")
 theme_override_styles/hover = SubResource("StyleBoxFlat_8v10x")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_2u54r")
+theme_override_styles/normal = SubResource("StyleBoxFlat_txq2q")
 text = "+"
 
 [node name="DecrementScaling" type="Button" parent="ScrollContainer/MarginContainer/VBoxContainer/Screen Scaling/Control" index="1"]
@@ -127,16 +124,16 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -97.667
+offset_left = -104.667
 offset_top = -15.0
-offset_right = -77.667
-offset_bottom = 15.0
+offset_right = -84.667
+offset_bottom = 16.0
 grow_horizontal = 0
 grow_vertical = 2
 focus_mode = 0
-theme_override_styles/normal = SubResource("StyleBoxFlat_nenhp")
 theme_override_styles/hover = SubResource("StyleBoxFlat_jeame")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_7822x")
+theme_override_styles/normal = SubResource("StyleBoxFlat_nenhp")
 text = "-"
 
 [node name="ScalingSpinbox" type="SpinBox" parent="ScrollContainer/MarginContainer/VBoxContainer/Screen Scaling/Control" index="2"]
@@ -146,19 +143,20 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -78.667
+offset_left = -86.0
 offset_top = -15.0
-offset_right = -20.0003
-offset_bottom = 15.0
+offset_right = -22.0
+offset_bottom = 16.0
 grow_horizontal = 0
 grow_vertical = 2
 theme = SubResource("Theme_c40gw")
-theme_override_icons/updown = SubResource("ImageTexture_0jw4l")
+theme_override_constants/field_and_buttons_separation = -20
 min_value = 0.5
 max_value = 3.0
 step = 0.005
 value = 1.0
 alignment = 1
+custom_arrow_step = 0.125
 script = ExtResource("2_a71vs")
 
 [node name="Window Mode" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer" index="1"]
@@ -176,9 +174,9 @@ text = "Window Mode"
 [node name="WindowOptions" type="OptionButton" parent="ScrollContainer/MarginContainer/VBoxContainer/Window Mode" index="1"]
 layout_mode = 2
 focus_mode = 0
-item_count = 3
 selected = 0
 fit_to_longest_item = false
+item_count = 3
 popup/item_0/text = "Windowed"
 popup/item_0/id = 0
 popup/item_1/text = "Borderless Fullscreen"
@@ -202,9 +200,9 @@ text = "Maximum FPS"
 [node name="WindowOptions" type="OptionButton" parent="ScrollContainer/MarginContainer/VBoxContainer/Max Framerate" index="1"]
 layout_mode = 2
 focus_mode = 0
-item_count = 8
 selected = 1
 fit_to_longest_item = false
+item_count = 8
 popup/item_0/text = "30"
 popup/item_0/id = 0
 popup/item_1/text = "60"
@@ -223,25 +221,33 @@ popup/item_7/text = "360"
 popup/item_7/id = 7
 script = ExtResource("4_xp0bf")
 
-[node name="Background Color" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer" index="3"]
+[node name="Stretch Wallpaper" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer" index="3"]
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer/Background Color" index="0"]
+[node name="RichTextLabel" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer/Stretch Wallpaper" index="0"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 20
-text = "Background Color"
+text = "Wallpaper Stretching Mode"
 
-[node name="BackgroundColorPicker" type="ColorPickerButton" parent="ScrollContainer/MarginContainer/VBoxContainer/Background Color" index="1"]
-custom_minimum_size = Vector2(80, 0)
+[node name="WindowOptions" type="OptionButton" parent="ScrollContainer/MarginContainer/VBoxContainer/Stretch Wallpaper" index="1"]
 layout_mode = 2
-size_flags_horizontal = 8
 focus_mode = 0
-edit_alpha = false
-script = ExtResource("4_vnxcp")
+selected = 0
+fit_to_longest_item = false
+item_count = 4
+popup/item_0/text = "Scale"
+popup/item_0/id = 0
+popup/item_1/text = "Tile"
+popup/item_1/id = 1
+popup/item_2/text = "Center"
+popup/item_2/id = 2
+popup/item_3/text = "Cover"
+popup/item_3/id = 3
+script = ExtResource("7_h8so0")
 
 [node name="Remove Wallpaper" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer" index="4"]
 layout_mode = 2
@@ -261,33 +267,25 @@ focus_mode = 0
 text = "Remove BG"
 script = ExtResource("5_p360g")
 
-[node name="Stretch Wallpaper" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer" index="5"]
+[node name="Background Color" type="HBoxContainer" parent="ScrollContainer/MarginContainer/VBoxContainer" index="5"]
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="RichTextLabel" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer/Stretch Wallpaper" index="0"]
+[node name="RichTextLabel" type="RichTextLabel" parent="ScrollContainer/MarginContainer/VBoxContainer/Background Color" index="0"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 theme_override_font_sizes/normal_font_size = 20
-text = "Wallpaper Stretching Mode"
+text = "Background Color"
 
-[node name="WindowOptions" type="OptionButton" parent="ScrollContainer/MarginContainer/VBoxContainer/Stretch Wallpaper" index="1"]
+[node name="BackgroundColorPicker" type="ColorPickerButton" parent="ScrollContainer/MarginContainer/VBoxContainer/Background Color" index="1"]
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
+size_flags_horizontal = 8
 focus_mode = 0
-item_count = 4
-selected = 0
-fit_to_longest_item = false
-popup/item_0/text = "Scale"
-popup/item_0/id = 0
-popup/item_1/text = "Tile"
-popup/item_1/id = 1
-popup/item_2/text = "Center"
-popup/item_2/id = 2
-popup/item_3/text = "Cover"
-popup/item_3/id = 3
-script = ExtResource("7_h8so0")
+edit_alpha = false
+script = ExtResource("4_vnxcp")
 
 [connection signal="pressed" from="ScrollContainer/MarginContainer/VBoxContainer/Screen Scaling/Control/IncrementScaling" to="ScrollContainer/MarginContainer/VBoxContainer/Screen Scaling/Control/ScalingSpinbox" method="_on_increment_scaling_pressed"]
 [connection signal="pressed" from="ScrollContainer/MarginContainer/VBoxContainer/Screen Scaling/Control/DecrementScaling" to="ScrollContainer/MarginContainer/VBoxContainer/Screen Scaling/Control/ScalingSpinbox" method="_on_decrement_scaling_pressed"]
@@ -296,6 +294,6 @@ script = ExtResource("7_h8so0")
 [connection signal="value_changed" from="ScrollContainer/MarginContainer/VBoxContainer/Screen Scaling/Control/ScalingSpinbox" to="ScrollContainer/MarginContainer/VBoxContainer/Screen Scaling/Control/ScalingSpinbox" method="_on_value_changed"]
 [connection signal="item_selected" from="ScrollContainer/MarginContainer/VBoxContainer/Window Mode/WindowOptions" to="ScrollContainer/MarginContainer/VBoxContainer/Window Mode/WindowOptions" method="_on_item_selected"]
 [connection signal="item_selected" from="ScrollContainer/MarginContainer/VBoxContainer/Max Framerate/WindowOptions" to="ScrollContainer/MarginContainer/VBoxContainer/Max Framerate/WindowOptions" method="_on_item_selected"]
-[connection signal="color_changed" from="ScrollContainer/MarginContainer/VBoxContainer/Background Color/BackgroundColorPicker" to="ScrollContainer/MarginContainer/VBoxContainer/Background Color/BackgroundColorPicker" method="_on_color_changed"]
-[connection signal="pressed" from="ScrollContainer/MarginContainer/VBoxContainer/Remove Wallpaper/RemoveWallpaper" to="ScrollContainer/MarginContainer/VBoxContainer/Remove Wallpaper/RemoveWallpaper" method="_on_pressed"]
 [connection signal="item_selected" from="ScrollContainer/MarginContainer/VBoxContainer/Stretch Wallpaper/WindowOptions" to="ScrollContainer/MarginContainer/VBoxContainer/Stretch Wallpaper/WindowOptions" method="_on_item_selected"]
+[connection signal="pressed" from="ScrollContainer/MarginContainer/VBoxContainer/Remove Wallpaper/RemoveWallpaper" to="ScrollContainer/MarginContainer/VBoxContainer/Remove Wallpaper/RemoveWallpaper" method="_on_pressed"]
+[connection signal="color_changed" from="ScrollContainer/MarginContainer/VBoxContainer/Background Color/BackgroundColorPicker" to="ScrollContainer/MarginContainer/VBoxContainer/Background Color/BackgroundColorPicker" method="_on_color_changed"]
