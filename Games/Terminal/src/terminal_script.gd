@@ -28,20 +28,16 @@ func _ready() -> void:
 			path_indicator_label.text = virtual_path_manager.get_current_folder() + " > "
 	)
 	
-	#Check for focused folder icons first
+	# Set initial virtual_path
+	# Check for focused folder icon first
 	if ContextMenu.target is FakeFolder:
 		virtual_path_manager.set_path(ContextMenu.target.folder_path)
-		return
-	
 	# Check for a focused folder window to be the starting path
-	for window: FakeWindow in get_tree().get_nodes_in_group("window"):
-		if window.is_selected:
-			var rich_label: RichTextLabel = window.get_node("Top Bar/Title Text")
-			var path: String = rich_label.get_parsed_text()
-			
-			if virtual_path_manager.path_is_valid_folder(path):
-				virtual_path_manager.set_path(path)
-				return
+	elif ContextMenu.target is FileManagerWindow:
+		var path: String = ContextMenu.target.file_path
+		
+		if virtual_path_manager.path_is_valid_folder(path):
+			virtual_path_manager.set_path(path)
 
 
 # Create and append a new CommandOutputLabel to the container
