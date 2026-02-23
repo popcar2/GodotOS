@@ -5,7 +5,8 @@ class_name Terminal
 # Tab autocomplete
 # scripting
 # new commands:
-#	rm, copy, move, var, exit, run
+#	rm, copy, move, var, exit, run, touch
+#BUG: Fix folder copy/paste
 
 const COMMAND_OUTPUT_LABEL_SCENE: PackedScene = preload("res://Games/Terminal/src/command_output_label/command_output_label.tscn")
 
@@ -26,6 +27,21 @@ func _ready() -> void:
 		func(_new_virt_path: String) -> void:
 			path_indicator_label.text = virtual_path_manager.get_current_folder() + " > "
 	)
+	
+	#Check for focused folder icons first
+	if ContextMenu.target is FakeFolder:
+		virtual_path_manager.set_path(ContextMenu.target.folder_path)
+		return
+	
+	# Check for a focused folder window to be the starting path
+	for window: FakeWindow in get_tree().get_nodes_in_group("window"):
+		if window.is_selected:
+			var rich_label: RichTextLabel = window.get_node("Top Bar/Title Text")
+			var path: String = rich_label.get_parsed_text()
+			
+			if virtual_path_manager.path_is_valid_folder(path):
+				virtual_path_manager.set_path(path)
+				return
 
 
 # Create and append a new CommandOutputLabel to the container

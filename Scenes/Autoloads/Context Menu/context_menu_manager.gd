@@ -105,6 +105,12 @@ func add_folder_options() -> void:
 	$VBoxContainer.add_child(cut_option)
 	$VBoxContainer.add_child(context_menu_seperator.instantiate())
 	$VBoxContainer.add_child(delete_option)
+	
+	if type_name == "Folder":
+		var open_terminal_option: Control = context_menu_option.instantiate()
+		open_terminal_option.get_node("%Option Text").text = "Open in Terminal"
+		open_terminal_option.option_clicked.connect(_handle_open_terminal)
+		$VBoxContainer.add_child(open_terminal_option)
 
 ## Adds options that would be visible when right clicking a file manager
 func add_file_manager_options() -> void:
@@ -128,11 +134,19 @@ func add_file_manager_options() -> void:
 		$VBoxContainer.add_child(context_menu_seperator.instantiate())
 	$VBoxContainer.add_child(new_folder_option)
 	$VBoxContainer.add_child(new_text_file_option)
+	
+	var open_terminal_option: Control = context_menu_option.instantiate()
+	open_terminal_option.get_node("%Option Text").text = "Open in Terminal"
+	open_terminal_option.option_clicked.connect(_handle_open_terminal)
+	$VBoxContainer.add_child(open_terminal_option)
 
 # ----------
 
 func _handle_folder_rename() -> void:
 	target.get_node("%Folder Title Edit").show_rename()
+
+func _handle_open_terminal() -> void:
+	get_node("/root/Control/Taskbar/StartMenuAnchor/Start Menu/VBoxContainer/Terminal").spawn_window()
 
 func _handle_set_wallpaper() -> void:
 	# TODO make this a relative path?
