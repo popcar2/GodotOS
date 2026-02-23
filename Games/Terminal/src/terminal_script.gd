@@ -38,6 +38,17 @@ func _ready() -> void:
 		
 		if virtual_path_manager.path_is_valid_folder(path):
 			virtual_path_manager.set_path(path)
+	
+	# command_line focus follows window focus
+	var parent_window: FakeWindow = find_parent_window()
+	if parent_window != null:
+		parent_window.selected.connect(
+			func(is_selected: bool) -> void:
+				if is_selected:
+					command_line.call_deferred("grab_focus")
+				else:
+					command_line.call_deferred("release_focus")
+		)
 
 
 # Create and append a new CommandOutputLabel to the container
@@ -78,6 +89,23 @@ func update_scroll() -> void:
 func clear_output() -> void:
 	for child: CommandOutputLabel in command_output_container.get_children():
 		child.queue_free()
+
+
+# Get the FakeWindow that is parent of self
+func find_parent_window() -> FakeWindow:
+	const MAX_ITERATIONS: int = 1000
+	var node: Node = null
+	
+	for x: int in range(MAX_ITERATIONS):
+		if node == null:
+			node = get_parent() 
+		else:
+			node = node.get_parent()
+		
+		if node is FakeWindow and node.is_ancestor_of(self):
+			break
+	
+	return node
 
 
 # Called when the user presses enter with the command line in focus
