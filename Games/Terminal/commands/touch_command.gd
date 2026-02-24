@@ -6,9 +6,9 @@ func _init() -> void:
 
 
 func execute(terminal: Terminal, args: Array[String]) -> void:
-	if args.size() == 0 or args.size() > 1:
+	if args.size() <= 0:
 		terminal.push_line_to_output(
-			"Invalid number of arguments, expected 1, found %s." % [args.size()]
+			"Expected more than 0 arguments"
 		)
 		return
 	
@@ -16,10 +16,9 @@ func execute(terminal: Terminal, args: Array[String]) -> void:
 	if current_path != "" and current_path[-1] != '/':
 		current_path += '/'
 	
-	var file_name: String = args[0]
-	
 	var desktop: DesktopFileManager = terminal.get_tree().get_first_node_in_group("desktop_file_manager")
-	desktop.new_file(".txt", FakeFolder.file_type_enum.TEXT_FILE, file_name, current_path)
+	for file_name in args:
+		desktop.new_file(".txt", FakeFolder.file_type_enum.TEXT_FILE, file_name, current_path)
 
 
 func usage() -> Array[String]:
