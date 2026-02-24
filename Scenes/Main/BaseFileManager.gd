@@ -82,34 +82,42 @@ func new_folder(new_folder_name: String = "New Folder", folder_path: String = ""
 			sort_folders()
 	
 	if folder_path.is_empty():
-		instantiate_file(new_folder_name, "%s" % new_folder_name, FakeFolder.file_type_enum.FOLDER)
+		instantiate_file(new_folder_name, new_folder_name, FakeFolder.file_type_enum.FOLDER)
 		sort_folders()
 
 ## Creates a new file.
 ## Not to be confused with instantiating which adds an existing real folder, this function CREATES one. 
-func new_file(extension: String, file_type: FakeFolder.file_type_enum) -> void:
-	var new_file_name: String = "New File%s" % extension
-	var padded_file_path: String # Since I sometimes want the / and sometimes not
-	if !file_path.is_empty():
-		padded_file_path = "%s/" % file_path
+func new_file(extension: String, file_type: FakeFolder.file_type_enum, new_file_name: String = "New File", new_file_path: String = "") -> void:
+	new_file_name += extension
 	
-	if FileAccess.file_exists("user://files/%s%s" % [padded_file_path, new_file_name]):
+	# Takes file_path as priority for folders added
+	# by context menu, this is for backward compatibility
+	if not file_path.is_empty():
+		new_file_path = file_path
+	
+	# Guarantees a "/" at the end of the path
+	if new_file_path.length() > 0 and not new_file_path.ends_with('/'):
+		new_file_path += '/'
+	
+	if FileAccess.file_exists("user://files/%s%s" % [new_file_path, new_file_name]):
+		var valid_name: String = new_file_name
 		for i in range(2, 1000):
-			new_file_name = "New File %d%s" % [i, extension]
-			if !FileAccess.file_exists("user://files/%s%s" % [padded_file_path, new_file_name]):
+			valid_name = new_file_name + str(i) + extension
+			if !FileAccess.file_exists("user://files/%s%s" % [new_file_path, valid_name]):
 				break
+		new_file_name = valid_name
 	
 	# Just touches the file
-	var _file: FileAccess = FileAccess.open("user://files/%s%s" % [padded_file_path, new_file_name], FileAccess.WRITE)
+	var _file: FileAccess = FileAccess.open("user://files/%s%s" % [new_file_path, new_file_name], FileAccess.WRITE)
 	
 	for file_manager: FileManagerWindow in get_tree().get_nodes_in_group("file_manager_window"):
-		if file_manager.file_path == file_path:
-			file_manager.instantiate_file(new_file_name, file_path, file_type)
+		if file_manager.file_path + '/' == new_file_path:
+			file_manager.instantiate_file(new_file_name, new_file_path, file_type)
 			await get_tree().process_frame # Waiting for child to get added...
 			file_manager.sort_folders()
 	
-	if file_path.is_empty():
-		instantiate_file(new_file_name, file_path, file_type)
+	if new_file_path.is_empty():
+		instantiate_file(new_file_name, new_file_path, file_type)
 		sort_folders()
 
 ## Finds a file/folder based on name and frees it (but doesn't delete it from the actual system)

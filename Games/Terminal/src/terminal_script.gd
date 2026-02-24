@@ -6,7 +6,7 @@ class_name Terminal
 # scripting
 # new commands:
 #	rm, copy, move, var, exit, run, touch
-	
+
 const COMMAND_OUTPUT_LABEL_SCENE: PackedScene = preload("res://Games/Terminal/src/command_output_label/command_output_label.tscn")
 
 @onready var command_line: LineEdit = %command_line
