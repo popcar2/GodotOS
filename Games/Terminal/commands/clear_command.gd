@@ -2,7 +2,7 @@ extends TerminalCommand
 
 
 func _init() -> void:
-	call_name = "cls"
+	call_name = "clear"
 
 
 func execute(terminal: Terminal, args: Array[String]) -> void:
@@ -17,7 +17,7 @@ func execute(terminal: Terminal, args: Array[String]) -> void:
 
 func usage() -> Array[String]:
 	return [
-		"Cls - Clear screen.",
+		"Clear - Clear screen.",
 		"USAGE:",
 		"Takes no arguments.",
 		"queue_free all lines to clear screen, emptying the output history."
