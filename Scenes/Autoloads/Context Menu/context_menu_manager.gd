@@ -65,6 +65,10 @@ func hide_context_menu() -> void:
 	await tween.tween_property(self, "modulate:a", 0, 0.10).finished
 	if modulate.a == 0:
 		visible = false
+	
+	# When right click on a target and then deleted it,
+	# a invalid reference will be in target if not nullified
+	target = null
 
 # ----------
 
