@@ -27,8 +27,9 @@ var start_bg_color_alpha: float
 
 signal minimized(is_minimized: bool)
 signal selected(is_selected: bool)
-signal maximized(is_maximized: bool)
 signal deleted()
+@warning_ignore("unused_signal")
+signal maximized(is_maximized: bool)
 
 func _ready() -> void:
 	# Duplicate theme override so values can be set without affecting other windows
