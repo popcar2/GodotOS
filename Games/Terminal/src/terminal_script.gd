@@ -5,7 +5,7 @@ class_name Terminal
 # Tab autocomplete
 # scripting
 # new commands:
-#	rm, copy, move, var, exit, run, touch
+#	rm, copy, move, var, exit, run
 
 const COMMAND_OUTPUT_LABEL_SCENE: PackedScene = preload("res://Games/Terminal/src/command_output_label/command_output_label.tscn")
 
@@ -48,6 +48,11 @@ func _ready() -> void:
 				else:
 					command_line.call_deferred("release_focus")
 		)
+
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.is_pressed():
+		command_line.grab_focus()
 
 
 # Create and append a new CommandOutputLabel to the container
