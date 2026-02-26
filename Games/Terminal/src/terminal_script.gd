@@ -1,11 +1,6 @@
 extends Control
 class_name Terminal
 
-# TODO:
-# Tab autocomplete
-# scripting
-# new commands:
-#	rm, copy, move, var, exit, run
 
 const COMMAND_OUTPUT_LABEL_SCENE: PackedScene = preload("res://Games/Terminal/src/command_output_label/command_output_label.tscn")
 
@@ -21,7 +16,7 @@ const COMMAND_OUTPUT_LABEL_SCENE: PackedScene = preload("res://Games/Terminal/sr
 
 
 func _ready() -> void:
-	# updates the label that indicates the current path
+	# updates the label that indicates the current path when virtual path changes
 	virtual_path_manager.on_virtual_path_changes.connect(
 		func(_new_virt_path: String) -> void:
 			path_indicator_label.text = virtual_path_manager.get_current_folder() + " > "
@@ -51,6 +46,7 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
+	# command_line focus whenever the user clicks the window
 	if event is InputEventMouseButton and event.is_pressed():
 		command_line.grab_focus()
 
@@ -77,8 +73,6 @@ func push_lines_to_output(lines: Array[String]) -> void:
 # Make the container scroll all the way down
 # to keep the command input visible
 func update_scroll() -> void:
-	#TODO find a more simple and clean way
-	
 	# Wait a process_frame to update the container correctly
 	# if not, the scroll is going to jump to a position before
 	# the new label added has changed the container size
@@ -95,7 +89,7 @@ func clear_output() -> void:
 		child.queue_free()
 
 
-# Get the FakeWindow that is parent of self
+# Get the FakeWindow that's the terminal is inside
 func find_parent_window() -> FakeWindow:
 	const MAX_ITERATIONS: int = 1000
 	var node: Node = null
