@@ -17,7 +17,20 @@ func execute(terminal: Terminal, args: Array[String]) -> void:
 		current_path += '/'
 	
 	var desktop: DesktopFileManager = terminal.get_tree().get_first_node_in_group("desktop_file_manager")
+	var files: PackedStringArray = terminal.virtual_path_manager.list_files()
 	for file_name in args:
+		if file_name.begins_with('.'):
+			terminal.push_line_to_output("File %s starts with \".\", hidden files are not suported." % file_name)
+			continue
+		
+		elif file_name.contains('/') or file_name.contains('\\'):
+			terminal.push_line_to_output("File %s has a invalid name." % file_name)
+			continue
+		
+		elif files.has(file_name):
+			terminal.push_line_to_output("File %s already exists." % file_name)
+			continue
+		
 		desktop.new_file(".txt", FakeFolder.file_type_enum.TEXT_FILE, file_name, current_path)
 
 

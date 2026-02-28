@@ -88,7 +88,7 @@ func new_folder(new_folder_name: String = "New Folder", folder_path: String = ""
 ## Creates a new file.
 ## Not to be confused with instantiating which adds an existing real folder, this function CREATES one. 
 func new_file(extension: String, file_type: FakeFolder.file_type_enum, new_file_name: String = "New File", new_file_path: String = "") -> void:
-	new_file_name += extension
+	new_file_name = new_file_name.replace(".txt", "") + extension
 	
 	# Takes file_path as priority for folders added
 	# by context menu, this is for backward compatibility
