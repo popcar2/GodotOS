@@ -21,7 +21,7 @@ class_name VirtualPathManager
 ##[/codeblock]
 
 ## The real root path used together with [member _virtual_path] to access folders and files in the user machine.
-const _ROOT_PATH: String = "user://files/"
+const _ROOT_PATH: String = "user://files"
 
 ## The path within the GodotOS that the user can see and interact
 ## using [method get_path], [method set_path], [method get_base_dir], etc...
@@ -36,12 +36,17 @@ func get_path() -> String:
 	return _virtual_path
 
 
+## Returns [member _ROOT_PATH] + [member _virtual_path] after sanitization.
+func _get_real_path(virt_path: String = "=") -> String:
+	return _ROOT_PATH.path_join(virt_path).simplify_path()
+
+
 ## Asserts that [param new_virt_path] is a valid folder, then sets [member _virtual_path].[br]
 ## NOTE: [member _virtual_path] will never be a file, just a folder.
 func set_path(new_virt_path: String) -> void:
 	_assert_folder(new_virt_path)
 	
-	_virtual_path = new_virt_path
+	_virtual_path = new_virt_path.simplify_path()
 	on_virtual_path_changes.emit(new_virt_path)
 
 
@@ -63,14 +68,37 @@ func get_current_folder() -> String:
 	return _virtual_path.simplify_path().get_file()
 
 
+## Checks if given [param virtual_path] do not go outside [code]"user://files"[/code].
+func is_legal_path(virt_path: String = "=") -> bool:
+	var real_path: String = _ROOT_PATH
+	
+	if virt_path == '=':
+		real_path = real_path.path_join(_virtual_path)
+	else:
+		real_path = real_path.path_join(virt_path)
+	
+	real_path = real_path.simplify_path()
+	
+	if not real_path.begins_with(_ROOT_PATH):
+		return false
+	
+	return true
+
+
 ## Returns true if a file exists in [member _ROOT_PATH] + [member _virtual_path].
 func path_is_valid_file(virt_path: String) -> bool:
-	return FileAccess.file_exists(_ROOT_PATH + virt_path)
+	if not is_legal_path(virt_path):
+		return false
+	
+	return FileAccess.file_exists(_get_real_path(virt_path))
 
 
 ## Returns true if a folder exists in [member _ROOT_PATH] + [member _virtual_path].
 func path_is_valid_folder(virt_path: String) -> bool:
-	var dir := DirAccess.open(_ROOT_PATH + virt_path)
+	if not is_legal_path(virt_path):
+		return false
+	
+	var dir := DirAccess.open(_get_real_path(virt_path))
 	return dir != null
 
 
@@ -80,7 +108,7 @@ func path_is_valid_folder(virt_path: String) -> bool:
 func open_file(virt_path: String, flags: FileAccess.ModeFlags) -> FileAccess:
 	_assert_file(virt_path)
 	
-	return FileAccess.open(_ROOT_PATH + virt_path, flags)
+	return FileAccess.open(_get_real_path(virt_path), flags)
 
 
 ## Return a list with all files at path [param virt_path].[br]
@@ -89,10 +117,10 @@ func open_file(virt_path: String, flags: FileAccess.ModeFlags) -> FileAccess:
 ## for this use [method path_is_valid_file].
 func list_files(virt_path: String = "") -> PackedStringArray:
 	if virt_path == "":
-		return DirAccess.open(_ROOT_PATH + _virtual_path).get_files()
+		return DirAccess.open(_get_real_path(_virtual_path)).get_files()
 	
 	_assert_folder(virt_path)
-	return DirAccess.open(_ROOT_PATH + virt_path).get_files()
+	return DirAccess.open(_get_real_path(virt_path)).get_files()
 
 
 ## Return a list with all folders at path [param virt_path].[br]
@@ -101,10 +129,10 @@ func list_files(virt_path: String = "") -> PackedStringArray:
 ## for this use [method path_is_valid_folder].
 func list_directories(virt_path: String = ".") -> PackedStringArray:
 	if virt_path == '.':
-		return DirAccess.open(_ROOT_PATH + _virtual_path).get_directories()
+		return DirAccess.open(_get_real_path(_virtual_path)).get_directories()
 	
 	_assert_folder(virt_path)
-	return DirAccess.open(_ROOT_PATH + virt_path).get_directories()
+	return DirAccess.open(_get_real_path(virt_path)).get_directories()
 
 
 func _assert_file(path: String) -> void:

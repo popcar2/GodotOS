@@ -16,7 +16,8 @@ func execute(terminal: Terminal, args: Array[String]) -> void:
 		terminal.virtual_path_manager.set_path("")
 		return
 	
-	elif args[0] == "..":
+	var path_to: String = args[0].simplify_path()
+	if path_to == "..":
 		terminal.virtual_path_manager.set_path(
 			terminal.virtual_path_manager.get_base_dir()
 		)
@@ -26,7 +27,7 @@ func execute(terminal: Terminal, args: Array[String]) -> void:
 	if current_path != "" and current_path[-1] != '/':
 		current_path += '/'
 	
-	var folder_path: String = current_path + args[0]
+	var folder_path: String = current_path + path_to
 	if terminal.virtual_path_manager.path_is_valid_folder(folder_path):
 		terminal.virtual_path_manager.set_path(folder_path)
 	else:
