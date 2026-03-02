@@ -1,0 +1,67 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtveya3dnp8hj"]
+
+[ext_resource type="Script" uid="uid://c74qj78qp55ot" path="res://Games/Flappy Pixel/scripts/death_screen.gd" id="1_78sdb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xbo0y"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+
+[node name="DeathScreen" type="CanvasLayer"]
+script = ExtResource("1_78sdb")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -210.0
+offset_top = -225.0
+offset_right = 210.0
+offset_bottom = 225.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xbo0y")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.255
+anchor_top = 0.427
+anchor_right = 0.745
+anchor_bottom = 0.573
+offset_left = -0.100014
+offset_top = -0.150009
+offset_right = 0.0999756
+offset_bottom = 0.149994
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Medal" type="RichTextLabel" parent="Panel/VBoxContainer"]
+layout_mode = 2
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 31
+text = "Game Over"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="RichTextLabel" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Score"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+text = "Try Again"
+
+[connection signal="pressed" from="Panel/VBoxContainer/Button" to="." method="_on_button_pressed"]

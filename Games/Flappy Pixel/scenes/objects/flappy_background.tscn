@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://bxnhjob8r08ie"]
+
+[ext_resource type="Script" uid="uid://v2chs0uam0wb" path="res://Games/Flappy Pixel/scripts/flappy_background.gd" id="1_e4yoa"]
+[ext_resource type="Texture2D" uid="uid://bgvss615ybbd2" path="res://Games/Flappy Pixel/sprites/flappy_bg1.png" id="1_j6x65"]
+[ext_resource type="Texture2D" uid="uid://ca5m5xb631klu" path="res://Games/Flappy Pixel/sprites/flappy_bg2.png" id="2_3dnfs"]
+[ext_resource type="Texture2D" uid="uid://bdg4nbj78bp" path="res://Games/Flappy Pixel/sprites/flappy_bg3.png" id="2_e4yoa"]
+
+[node name="Background" type="ParallaxBackground"]
+script = ExtResource("1_e4yoa")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1159.0
+offset_bottom = 651.0
+color = Color(0, 0, 0, 1)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(1200, 0)
+
+[node name="Bg1" type="Sprite2D" parent="ParallaxLayer"]
+position = Vector2(600, 507)
+texture = ExtResource("1_j6x65")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="."]
+motion_scale = Vector2(0.7, 0.7)
+motion_mirroring = Vector2(1200, 0)
+
+[node name="Bg1" type="Sprite2D" parent="ParallaxLayer2"]
+position = Vector2(601, 507)
+texture = ExtResource("2_e4yoa")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(1200, 0)
+
+[node name="Bg1" type="Sprite2D" parent="ParallaxLayer3"]
+position = Vector2(600, 507)
+texture = ExtResource("2_3dnfs")

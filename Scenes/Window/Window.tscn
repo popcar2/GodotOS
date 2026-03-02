@@ -19,18 +19,14 @@ bg_color = Color(0.1, 0.1, 0.1, 0.6)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_es3h4"]
-bg_color = Color(0, 0, 0, 0.392157)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iro1c"]
 bg_color = Color(0.501961, 0.501961, 0.501961, 0.392157)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_epasn"]
 bg_color = Color(0.4, 0.4, 0.4, 0.392157)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i3xsn"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_es3h4"]
 bg_color = Color(0, 0, 0, 0.392157)
-corner_radius_top_right = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g3pwt"]
 bg_color = Color(0.666667, 0, 0, 0.392157)
@@ -38,6 +34,10 @@ corner_radius_top_right = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jljmq"]
 bg_color = Color(1, 0.247059, 0.188235, 0.588235)
+corner_radius_top_right = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i3xsn"]
+bg_color = Color(0, 0, 0, 0.392157)
 corner_radius_top_right = 5
 
 [node name="Window" type="Panel" groups=["window"]]
@@ -99,9 +99,9 @@ texture_filter = 6
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 focus_mode = 0
-theme_override_styles/normal = SubResource("StyleBoxFlat_es3h4")
 theme_override_styles/hover = SubResource("StyleBoxFlat_iro1c")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_epasn")
+theme_override_styles/normal = SubResource("StyleBoxFlat_es3h4")
 text = "-"
 
 [node name="Maximize Button" type="Button" parent="Top Bar/HBoxContainer"]
@@ -110,9 +110,9 @@ custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 focus_mode = 0
 theme_override_constants/icon_max_width = 22
-theme_override_styles/normal = SubResource("StyleBoxFlat_es3h4")
 theme_override_styles/hover = SubResource("StyleBoxFlat_iro1c")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_epasn")
+theme_override_styles/normal = SubResource("StyleBoxFlat_es3h4")
 icon = ExtResource("2_bcfhp")
 icon_alignment = 1
 
@@ -121,9 +121,9 @@ texture_filter = 6
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 focus_mode = 0
-theme_override_styles/normal = SubResource("StyleBoxFlat_i3xsn")
 theme_override_styles/hover = SubResource("StyleBoxFlat_g3pwt")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_jljmq")
+theme_override_styles/normal = SubResource("StyleBoxFlat_i3xsn")
 text = "X"
 
 [node name="Resize Drag Spot" type="Control" parent="."]

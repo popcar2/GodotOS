@@ -102,6 +102,12 @@ layout_mode = 2
 title_text = "Cube Scene"
 description_text = "THE CUBE. THE CUBE. THE CUBE."
 
+[node name="Flappy Pixel Option" parent="StartMenuAnchor/Start Menu/VBoxContainer" instance=ExtResource("2_1ualm")]
+layout_mode = 2
+game_scene = "res://Games/Flappy Pixel/scenes/flappy_main.tscn"
+title_text = "Flappy Pixel"
+description_text = "The simplest bird, the hardest flight"
+
 [node name="Power Button" type="Button" parent="StartMenuAnchor/Start Menu"]
 layout_mode = 1
 anchors_preset = 3

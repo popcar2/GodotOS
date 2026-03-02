@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dc602m1dy8vif"]
+
+[ext_resource type="Script" uid="uid://b1msnbmw5lq3a" path="res://Games/Flappy Pixel/scripts/flappy_coin.gd" id="1_n078p"]
+[ext_resource type="Texture2D" uid="uid://bg3t4t8x526xm" path="res://Games/Flappy Pixel/sprites/flappy_pixel.png" id="1_uerfd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n078p"]
+size = Vector2(0.796875, 0.742188)
+
+[node name="Coin" type="Area2D"]
+script = ExtResource("1_n078p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.0625)
+scale = Vector2(16, 16)
+shape = SubResource("RectangleShape2D_n078p")
+
+[node name="Pixel" type="Sprite2D" parent="."]
+modulate = Color(1, 0.88, 0.2, 1)
+scale = Vector2(16, 16)
+texture = ExtResource("1_uerfd")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://gi62pdwhveux"]
+
+[ext_resource type="Texture2D" uid="uid://bg3t4t8x526xm" path="res://Games/Flappy Pixel/sprites/flappy_pixel.png" id="1_fw6ui"]
+[ext_resource type="Script" uid="uid://ryjsymhbpef6" path="res://Games/Flappy Pixel/scripts/flappy_shadow_effect.gd" id="1_rj05e"]
+
+[node name="ShadowEffect" type="Sprite2D"]
+modulate = Color(0.19, 0.8245, 1, 1)
+scale = Vector2(10, 10)
+texture = ExtResource("1_fw6ui")
+script = ExtResource("1_rj05e")

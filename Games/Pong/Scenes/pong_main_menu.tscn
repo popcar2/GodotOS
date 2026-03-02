@@ -10,14 +10,6 @@ colors = PackedColorArray(0, 0, 0, 1)
 gradient = SubResource("Gradient_beqym")
 width = 1
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6x20d"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 8
-border_width_top = 8
-border_width_right = 8
-border_width_bottom = 8
-border_color = Color(1, 1, 1, 1)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gfm2w"]
 bg_color = Color(0.239216, 0.239216, 0.239216, 1)
 border_width_left = 8
@@ -28,6 +20,14 @@ border_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wxonl"]
 bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6x20d"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(1, 1, 1, 1)
 
 [node name="Pong Main Menu" type="Control"]
 layout_mode = 3
@@ -82,9 +82,9 @@ custom_minimum_size = Vector2(0, 125)
 layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 64
-theme_override_styles/normal = SubResource("StyleBoxFlat_6x20d")
 theme_override_styles/hover = SubResource("StyleBoxFlat_gfm2w")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_wxonl")
+theme_override_styles/normal = SubResource("StyleBoxFlat_6x20d")
 text = "Singleplayer"
 
 [node name="MultiplayerBtn" type="Button" parent="MainContainer"]
@@ -92,9 +92,9 @@ custom_minimum_size = Vector2(0, 125)
 layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 64
-theme_override_styles/normal = SubResource("StyleBoxFlat_6x20d")
 theme_override_styles/hover = SubResource("StyleBoxFlat_gfm2w")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_wxonl")
+theme_override_styles/normal = SubResource("StyleBoxFlat_6x20d")
 text = "Multiplayer"
 
 [node name="SingleplayerContainer" type="VBoxContainer" parent="."]
@@ -117,9 +117,9 @@ custom_minimum_size = Vector2(0, 125)
 layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 64
-theme_override_styles/normal = SubResource("StyleBoxFlat_6x20d")
 theme_override_styles/hover = SubResource("StyleBoxFlat_gfm2w")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_wxonl")
+theme_override_styles/normal = SubResource("StyleBoxFlat_6x20d")
 text = "Regular"
 
 [node name="SurvivalSingleBtn" type="Button" parent="SingleplayerContainer"]
@@ -127,9 +127,9 @@ custom_minimum_size = Vector2(0, 125)
 layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 64
-theme_override_styles/normal = SubResource("StyleBoxFlat_6x20d")
 theme_override_styles/hover = SubResource("StyleBoxFlat_gfm2w")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_wxonl")
+theme_override_styles/normal = SubResource("StyleBoxFlat_6x20d")
 text = "Survival"
 
 [connection signal="pressed" from="MainContainer/SingleplayerBtn" to="." method="_on_singleplayer_btn_pressed"]

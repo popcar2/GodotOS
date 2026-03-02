@@ -1,0 +1,46 @@
+[gd_scene load_steps=9 format=3 uid="uid://cnw1puljx6xw7"]
+
+[ext_resource type="Script" uid="uid://cc6d3safsb85a" path="res://Games/Flappy Pixel/scripts/flappy_bird.gd" id="1_vpwia"]
+[ext_resource type="PackedScene" uid="uid://gi62pdwhveux" path="res://Games/Flappy Pixel/scenes/player/flappy_shadowEffect.tscn" id="2_1pmq1"]
+[ext_resource type="PackedScene" uid="uid://cfrfprsuri0dd" path="res://Games/Flappy Pixel/scenes/ui/flappy_hud.tscn" id="3_dojqc"]
+[ext_resource type="Script" uid="uid://d03p5wc715855" path="res://Games/Flappy Pixel/scripts/flappy_sfx.gd" id="4_lusbn"]
+[ext_resource type="Script" uid="uid://begc847717o53" path="res://Games/Flappy Pixel/scripts/flappy_song.gd" id="5_0jpsh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m557x"]
+size = Vector2(36, 36)
+
+[sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_0jpsh"]
+
+[sub_resource type="AudioStreamGenerator" id="AudioStreamGenerator_n6f5r"]
+
+[node name="Bird" type="CharacterBody2D"]
+z_index = 1
+collision_mask = 2
+script = ExtResource("1_vpwia")
+shadow = ExtResource("2_1pmq1")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_m557x")
+
+[node name="Hud" parent="." instance=ExtResource("3_dojqc")]
+
+[node name="sfx" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamGenerator_0jpsh")
+script = ExtResource("4_lusbn")
+
+[node name="song" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamGenerator_n6f5r")
+script = ExtResource("5_0jpsh")

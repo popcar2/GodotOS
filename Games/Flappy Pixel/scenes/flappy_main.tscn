@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://dckhk4qtic5wn"]
+
+[ext_resource type="Script" uid="uid://c2qcftvj6c06a" path="res://Games/Flappy Pixel/scripts/flappy_main.gd" id="1_4fqwn"]
+[ext_resource type="PackedScene" uid="uid://blyopvsq7qfb4" path="res://Games/Flappy Pixel/scenes/objects/flappy_pipe.tscn" id="2_e2vp3"]
+[ext_resource type="PackedScene" uid="uid://dc602m1dy8vif" path="res://Games/Flappy Pixel/scenes/objects/flappy_coin.tscn" id="3_crr33"]
+[ext_resource type="PackedScene" uid="uid://bxnhjob8r08ie" path="res://Games/Flappy Pixel/scenes/objects/flappy_background.tscn" id="4_slf1g"]
+[ext_resource type="PackedScene" uid="uid://cnw1puljx6xw7" path="res://Games/Flappy Pixel/scenes/player/flappy_bird.tscn" id="5_tw2t4"]
+[ext_resource type="PackedScene" uid="uid://dtveya3dnp8hj" path="res://Games/Flappy Pixel/scenes/ui/flappy_deathScreen.tscn" id="6_fapkm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lovuv"]
+size = Vector2(1160, 52)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_4fqwn")
+pipe = ExtResource("2_e2vp3")
+coin = ExtResource("3_crr33")
+
+[node name="Background" parent="." instance=ExtResource("4_slf1g")]
+
+[node name="Bird" parent="." instance=ExtResource("5_tw2t4")]
+position = Vector2(82, 278)
+
+[node name="Area2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(578, 625)
+shape = SubResource("RectangleShape2D_lovuv")
+
+[node name="ColorRect2" type="ColorRect" parent="Area2D"]
+offset_left = -1.0
+offset_top = 607.0
+offset_right = 1159.0
+offset_bottom = 651.0
+color = Color(0.92, 0.92, 0.92, 1)
+
+[node name="ColorRect" type="ColorRect" parent="Area2D"]
+offset_left = -1.0
+offset_top = 597.0
+offset_right = 1159.0
+offset_bottom = 611.0
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="DeathScreen" parent="." instance=ExtResource("6_fapkm")]
+
+[connection signal="died" from="Bird" to="." method="_on_bird_died"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="start_game" from="DeathScreen" to="." method="_on_death_screen_start_game"]
