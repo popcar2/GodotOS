@@ -106,6 +106,17 @@ use_generic_pause_menu = false
 [node name="TextureRect" parent="StartMenuAnchor/Start Menu/VBoxContainer/Terminal Option/HBoxContainer/MarginContainer" index="0"]
 modulate = Color(0.91056484, 0.5161954, 0, 1)
 
+[node name="GNet Option" parent="StartMenuAnchor/Start Menu/VBoxContainer" unique_id=1777990746 instance=ExtResource("2_1ualm")]
+layout_mode = 2
+game_scene = ""
+application_scene = "uid://dhdnkc3nchqae"
+title_text = "GNet"
+description_text = "Browse the web!"
+use_generic_pause_menu = false
+
+[node name="TextureRect" parent="StartMenuAnchor/Start Menu/VBoxContainer/GNet Option/HBoxContainer/MarginContainer" index="0"]
+modulate = Color(0.91056484, 0.5161954, 0, 1)
+
 [node name="Power Button" type="Button" parent="StartMenuAnchor/Start Menu" unique_id=879138926]
 layout_mode = 1
 anchors_preset = 3
@@ -251,3 +262,4 @@ autostart = true
 [connection signal="timeout" from="Taskbar/TimeAndDate/Timer" to="Taskbar/TimeAndDate" method="_on_timer_timeout"]
 
 [editable path="StartMenuAnchor/Start Menu/VBoxContainer/Terminal Option"]
+[editable path="StartMenuAnchor/Start Menu/VBoxContainer/GNet Option"]

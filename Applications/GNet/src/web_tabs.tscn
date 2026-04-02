@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://dhdnkc3nchqae"]
+
+[ext_resource type="Script" uid="uid://ctu6c33hhwubq" path="res://Applications/GNet/src/web_tabs.gd" id="1_3r4do"]
+[ext_resource type="PackedScene" uid="uid://c1w5stafryulx" path="res://Applications/GNet/src/web_scene.tscn" id="2_6to14"]
+
+[node name="WebTabs" type="Control" unique_id=1286990390]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3r4do")
+
+[node name="VBox" type="VBoxContainer" parent="." unique_id=219963267]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabBar" type="HBoxContainer" parent="VBox" unique_id=1476623859]
+layout_mode = 2
+
+[node name="NewTabBtn" type="Button" parent="VBox/TabBar" unique_id=1496553159]
+layout_mode = 2
+text = "+"
+
+[node name="TabScroll" type="ScrollContainer" parent="VBox/TabBar" unique_id=936524600]
+layout_mode = 2
+
+[node name="Tabs" type="HBoxContainer" parent="VBox/TabBar/TabScroll" unique_id=1070281943]
+layout_mode = 2
+
+[node name="TabContent" type="Control" parent="VBox" unique_id=1474918975]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="WebScene" parent="VBox/TabContent" unique_id=95616998 instance=ExtResource("2_6to14")]
+layout_mode = 1

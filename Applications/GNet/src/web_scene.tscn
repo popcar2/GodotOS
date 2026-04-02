@@ -1,0 +1,100 @@
+[gd_scene format=3 uid="uid://c1w5stafryulx"]
+
+[ext_resource type="Script" uid="uid://dcwoxgway6ew" path="res://Applications/GNet/src/web_script.gd" id="1_3uell"]
+[ext_resource type="Script" uid="uid://cgimaxttset77" path="res://Applications/GNet/src/script_nodes/address_bar.gd" id="2_rktmk"]
+[ext_resource type="Script" uid="uid://cllanogi46fm6" path="res://Applications/GNet/src/script_classes/image_loader.gd" id="2_v8qmr"]
+
+[node name="WebScene" type="Control" unique_id=95616998]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3uell")
+
+[node name="bg" type="ColorRect" parent="." unique_id=1932056888]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.27387273, 0.27387273, 0.27387273, 1)
+
+[node name="VBox" type="VBoxContainer" parent="." unique_id=1359938729]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopBar" type="HBoxContainer" parent="VBox" unique_id=1683599720]
+layout_mode = 2
+
+[node name="GoBtn" type="Button" parent="VBox/TopBar" unique_id=1759110802]
+layout_mode = 2
+text = "GO"
+
+[node name="BackBtn" type="Button" parent="VBox/TopBar" unique_id=2114705649]
+layout_mode = 2
+text = "<"
+
+[node name="ForwardBtn" type="Button" parent="VBox/TopBar" unique_id=278517857]
+layout_mode = 2
+text = ">"
+
+[node name="AddressBar" type="LineEdit" parent="VBox/TopBar" unique_id=1224550378]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("2_rktmk")
+
+[node name="RefreshBtn" type="Button" parent="VBox/TopBar" unique_id=877487515]
+layout_mode = 2
+text = "↺"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBox" unique_id=1499948974]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="VBox/ScrollContainer" unique_id=454111978]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBox/ScrollContainer/CenterContainer" unique_id=625816956]
+custom_minimum_size = Vector2(900, 0)
+layout_mode = 2
+
+[node name="Content" type="RichTextLabel" parent="VBox/ScrollContainer/CenterContainer/MarginContainer" unique_id=1164683828]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+
+[node name="StatusBar" type="HBoxContainer" parent="VBox" unique_id=1116634274]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="StatusLabel" type="Label" parent="VBox/StatusBar" unique_id=776351614]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="LoadingBar" type="ProgressBar" parent="VBox/StatusBar" unique_id=123326194]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+indeterminate = true
+editor_preview_indeterminate = false
+
+[node name="HTTPRequest" type="HTTPRequest" parent="." unique_id=1984833990]
+use_threads = true
+
+[node name="ImageLoader" type="Node" parent="." unique_id=1952641314]
+script = ExtResource("2_v8qmr")
+metadata/_custom_type_script = "uid://cllanogi46fm6"
+
+[connection signal="focus_entered" from="VBox/TopBar/AddressBar" to="VBox/TopBar/AddressBar" method="_on_focus_entered"]
