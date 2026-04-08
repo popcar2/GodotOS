@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://clkes7h7romou" path="res://Scenes/Taskbar/start_button.gd" id="1_aypgd"]
 [ext_resource type="PackedScene" uid="uid://da4oly47yx3ja" path="res://Scenes/Taskbar/start_menu_option.tscn" id="2_1ualm"]
+[ext_resource type="Texture2D" uid="uid://bphcwi1ohyurh" path="res://Art/Folder Icons/terminal.png" id="2_esxxc"]
 [ext_resource type="Texture2D" uid="uid://dyucn32xje8bj" path="res://Art/Icons/Start Menu Button.png" id="2_mu355"]
 [ext_resource type="Texture2D" uid="uid://dnvmy7l1wrerh" path="res://Art/Icons/power-button.png" id="3_sudyn"]
 [ext_resource type="Script" uid="uid://ovt5fnqwt48p" path="res://Scenes/Taskbar/power_button.gd" id="4_cnyss"]
@@ -104,7 +105,8 @@ description_text = "Type commands into a magic box"
 use_generic_pause_menu = false
 
 [node name="TextureRect" parent="StartMenuAnchor/Start Menu/VBoxContainer/Terminal Option/HBoxContainer/MarginContainer" index="0"]
-modulate = Color(0.91056484, 0.5161954, 0, 1)
+modulate = Color(1, 1, 0.9607843, 1)
+texture = ExtResource("2_esxxc")
 
 [node name="Power Button" type="Button" parent="StartMenuAnchor/Start Menu" unique_id=879138926]
 layout_mode = 1
